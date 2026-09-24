@@ -430,7 +430,7 @@ td:first-child{font-family:var(--f-mono);font-size:0.9rem;color:var(--paper);whi
 .lim-block{margin-bottom:14px}
 .lim-block:last-child{margin-bottom:0}
 .lim-block b{display:block;font-family:var(--f-display);font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:0.84rem;margin-bottom:4px;text-align:center}
-.lim-page p{display:grid;grid-template-columns:auto 1fr auto;gap:6px;margin:0;padding:1px 6px;border-radius:3px;transition:background .35s}
+.lim-page p{display:grid;grid-template-columns:minmax(0,max-content) minmax(14px,1fr) auto;gap:6px;margin:0;padding:1px 6px;border-radius:3px;transition:background .35s}
 .lim-page p span{order:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .lim-page p::after{content:"";order:2;border-bottom:1px dotted #9A9CA8;margin-bottom:6px}
 .lim-page p i{order:3;font-style:normal}
@@ -519,6 +519,121 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;
 footer .brand{font-size:2.2rem}
 footer p{font-size:0.9rem}
 .todo-inline{color:var(--amber);border:1px dashed rgba(244,194,77,.6);border-radius:4px;padding:0 .3em;font-family:var(--f-mono);font-size:.9em}
+
+
+/* =========================================================
+   TÉLÉPHONE — mise en page dédiée
+   ========================================================= */
+.swipe-dots{display:none}
+.mcta{display:none}
+@media (max-width:700px){
+  body{font-size:17px}
+  .lede{font-size:1.06rem}
+  .sec{padding-block:72px}
+  .sec-head{margin-bottom:28px;gap:14px}
+  .tab{margin-bottom:14px}
+  h2{font-size:clamp(2rem,9vw,2.6rem)}
+
+  /* héros : tunnel visible, chiffres en 2 x 2 */
+  .hero{padding-block:104px 40px}
+  .hero::after{background:linear-gradient(to bottom, rgba(10,15,30,.35) 0%, rgba(10,15,30,.7) 45%, rgba(10,15,30,.92) 80%, var(--ink) 100%)}
+  .hero h1{font-size:clamp(3rem,15vw,4.2rem)}
+  .hero .eyebrow{font-size:.76rem;letter-spacing:.1em}
+  .hero .lede{margin-top:20px}
+  .hero-cta{margin-top:26px}
+  .hero-cta .btn{flex:1 1 100%;justify-content:center}
+  .hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:18px 16px;margin-top:40px}
+  .hero-meta strong{font-size:1.7rem}
+  .console{padding:14px}
+  .hits{min-height:0}
+
+  /* Loi 25 */
+  #seal{max-width:220px}
+  .law-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .law-points li{min-width:0;padding:12px 10px}
+  .law-points b{font-size:1.5rem}
+  .guar div{padding-right:0}
+
+  /* carrousels à glisser */
+  .swipe{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px!important;
+    margin-inline:calc(-1 * var(--gutter));padding-inline:var(--gutter);scroll-padding-inline:var(--gutter);
+    scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+  .swipe::-webkit-scrollbar{display:none}
+  .swipe > *{flex:0 0 84%;scroll-snap-align:start;min-width:0}
+  .swipe > .reveal.pending{opacity:1;transform:none}
+  .fixes.swipe > div,.wit-stats.swipe > div{border:1px solid var(--line-2);border-top:1px solid var(--line-2);border-radius:14px;background:var(--ink-2);padding:18px}
+  .fixes.swipe,.wit-stats.swipe{margin-block:20px}
+  .swipe-dots{display:flex;justify-content:center;gap:7px;margin-top:14px}
+  .swipe-dots i{width:7px;height:7px;border-radius:50%;background:var(--line-2);transition:background .3s,width .3s}
+  .swipe-dots i.on{background:var(--amber);width:20px;border-radius:4px}
+
+  /* barres défilantes (onglets, puces) */
+  .ltabs,#chips,.rules{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .ltabs::-webkit-scrollbar,#chips::-webkit-scrollbar,.rules::-webkit-scrollbar{display:none}
+  .ltab,#chips .chip,.rules .chip,.rules .mono{flex:none;white-space:nowrap}
+  .chip.undo{margin-left:0}
+
+  /* audio */
+  .timeline span:nth-child(2),.timeline span:nth-child(4){display:none}
+  .stats div{padding:14px 12px}
+  .stats strong{font-size:1.35rem}
+  .script{height:330px}
+  .transport{flex-wrap:wrap}
+  .reject{grid-template-columns:1fr}
+  .reject .tag{grid-row:auto;justify-self:start}
+  .reject p{grid-column:1}
+
+  /* classement */
+  .raw{grid-template-columns:1fr 1fr}
+  .raw li{padding:6px 8px;font-size:.76rem}
+  .raw li .ext{display:none}
+  .sort-col{padding:14px 16px}
+
+  /* recherche */
+  .sa-bar{padding:14px}
+  .sa-bar form{flex-wrap:wrap}
+  .sa-bar form .qmode{order:-1}
+  .sa-bar form .btn{flex:1 1 100%;justify-content:center}
+  .sa-side{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px 16px}
+  .sa-side .minimap{grid-column:1/-1}
+  .sa-side > .mono{display:none}
+  .gauge strong{font-size:1.9rem}
+  .sa-results{padding:14px}
+
+  /* index liminaires */
+  .lim-page{font-size:.76rem;padding:22px 16px}
+  .lim-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px}
+  .lim-stats .eyebrow{grid-column:1/-1}
+  .lim-stats strong{font-size:1.6rem}
+
+  /* tableaux -> fiches */
+  #listbox table,table.wit{min-width:0}
+  #listbox thead,table.wit thead{display:none}
+  #listbox tbody tr,table.wit tbody tr{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;padding:16px;border-bottom:1px solid var(--line)}
+  #listbox tbody td,table.wit tbody td{display:block;padding:0;border:0;white-space:normal;min-width:0}
+  #listbox tbody td::before,table.wit tbody td::before{content:attr(data-label);display:block;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  #listbox tbody td:first-child,table.wit tbody td:first-child{grid-column:1/-1;font-size:1rem;font-family:var(--f-display);color:var(--amber)}
+  #listbox tbody td:first-child::before,table.wit tbody td:first-child::before{display:none}
+  table.wit tbody td:first-child{grid-column:1;grid-row:1;align-self:center}
+  table.wit tbody td:last-child{grid-column:2;grid-row:1;justify-self:end;align-self:center}
+  table.wit tbody td:last-child::before{display:none}
+  table.wit tbody tr{gap:8px 14px;padding:14px 16px}
+  .pbar{display:block;width:100%;margin:4px 0 6px}
+  .prompt{padding:16px}
+  .tbl-foot{flex-direction:column;gap:4px}
+
+  /* témoins, calculateur */
+  .calc-in,.calc-out{padding:20px}
+
+  /* bouton démo fixé en bas */
+  .mcta{display:flex;justify-content:center;position:fixed;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:60;
+    box-shadow:0 14px 40px -10px rgba(0,0,0,.8),0 0 0 1px rgba(244,194,77,.4);transform:translateY(160%);transition:transform .45s var(--ease)}
+  .mcta.show{transform:none}
+  footer{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
+}
+@media (max-width:380px){
+  .law-points{grid-template-columns:1fr}
+}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
@@ -637,7 +752,7 @@ footer p{font-size:0.9rem}
       </div>
       <p class="lede">La divulgation arrive rarement propre. L'outil lit directement le PDF, l'image, le .docx, le .eml et le .msg d'Outlook, et convertit le reste sur place, sans dépendance externe. Avant de lancer l'analyse, il vous dit ce que contient le dossier et combien de temps elle prendra.</p>
     </div>
-    <div class="grid6">
+    <div class="swipe grid6">
       <article class="cap reveal"><div class="viz v-fmt"><span>PDF</span><span>Image</span><span>.docx</span><span>.eml</span><span>.msg</span></div><h3>Lecture directe</h3><p>Le PDF, l'image, le .docx, le .eml et le .msg d'Outlook sont lus tels quels.</p></article>
       <article class="cap reveal"><div class="viz v-conv"><div><span>.doc</span><i>→</i><b>texte</b></div><div><span>.rtf</span><i>→</i><b>texte</b></div><div><span>.numbers</span><i>→</i><b>tableau</b></div></div><h3>Conversion sur place</h3><p>Vieux .doc, .rtf, tableurs et fichiers iWork sont convertis sans aucune dépendance externe.</p></article>
       <article class="cap reveal"><div class="viz v-ocr2"><div class="bad"><span class="mono">Autre moteur</span><s>jμmvam</s></div><div class="good"><span class="mono">Qwen3-VL · local</span><b>janvier</b></div></div><h3>Pages scannées</h3><p>L'OCR tourne en local sur Qwen3-VL, retenu après un banc d'essai contre PaddleOCR, qui lisait « jμmvam » pour « janvier » sur des pages dégradées.</p></article>
@@ -738,14 +853,14 @@ footer p{font-size:0.9rem}
       <p class="lede">C'est la partie sur laquelle nous avons travaillé en dernier, et celle qui marche le mieux. Chaque résultat porte un lien cliquable vers la page exacte du PDF d'origine, à l'écran seulement&nbsp;: les livrables remis au cabinet n'en contiennent jamais.</p>
     </div>
 
-    <div class="cmds reveal">
+    <div class="swipe cmds reveal">
       <div><span class="mono">question</span><p>Cherche une information dans les pièces et rend le passage avec son volume et sa page.</p></div>
       <div><span class="mono">mentions</span><p>Quelles pièces parlent de ça, et combien de fois. La question qui n'appelle pas de rédaction.</p></div>
       <div><span class="mono">partout</span><p>La même chose, à travers tous les dossiers en base d'un coup.</p></div>
       <div><span class="mono">chronologie</span><p>Les moments datés tels qu'énoncés dans la preuve, sans aucun modèle.</p></div>
     </div>
 
-    <div class="fixes reveal">
+    <div class="swipe fixes reveal">
       <div><span class="eyebrow">Accents repliés</span><strong>123</strong><p>passages retrouvés pour « harcelement » tapé sans accent, qui n'en ramenait aucun.</p></div>
       <div><span class="eyebrow">Pluriels indexés</span><strong>banderoles</strong><p>trouvé à partir de « banderole ». Le singulier ratait le pluriel.</p></div>
       <div><span class="eyebrow">Index inversé</span><strong>3,6 s → 7 ms</strong><p>pour <span class="mono">mentions</span>, sur tout le dossier.</p></div>
@@ -924,7 +1039,7 @@ footer p{font-size:0.9rem}
       <p class="lede"><span class="mono">temoins</span> liste chaque témoin avec le nombre de fois où il a répondu qu'il ne savait pas, et mesure son changement d'attitude entre l'interrogatoire principal et le contre. Le seuil est un test statistique, le z de deux proportions, et non un écart arbitraire.</p>
     </div>
 
-    <div class="wit-stats reveal">
+    <div class="swipe wit-stats reveal">
       <div><strong>2 → 5</strong><p>témoins repérés sur un dossier de 45 volumes, une fois le seuil statistique en place.</p></div>
       <div><strong>14 pts</strong><p>d'écart pour le premier d'entre eux, entre le principal et le contre.</p></div>
       <div><strong>6 → 17</strong><p>témoins couverts après l'élargissement de la reconnaissance des en-têtes de phase.</p></div>
@@ -1055,6 +1170,8 @@ footer p{font-size:0.9rem}
   </div>
 </section>
 </main>
+
+<a class="mcta btn btn-amber" href="#demo" id="mcta">Demander une démo <span class="arr">→</span></a>
 
 <footer>
   <div class="wrap">
@@ -1600,6 +1717,32 @@ else onView($("#versus"), v => { if (v) $("#versus").classList.add("go"); }, { t
 onView($("#steps"), v => { if (v) $("#steps").classList.add("go"); }, { threshold: .4 });
 
 /* ---------- form (démo : aucun envoi) ---------- */
+
+/* ---------- téléphone : fiches, carrousels, bouton démo ---------- */
+$$("table").forEach(t => {
+  const hs = $$("thead th", t).map(th => th.textContent);
+  $$("tbody tr", t).forEach(tr => [...tr.children].forEach((td, i) => td.dataset.label = hs[i] || ""));
+});
+$$(".swipe").forEach(sw => {
+  const items = [...sw.children], dots = document.createElement("div");
+  dots.className = "swipe-dots"; dots.setAttribute("aria-hidden", "true");
+  dots.innerHTML = items.map((_, i) => `<i${i ? "" : ' class="on"'}></i>`).join("");
+  sw.after(dots);
+  const ds = [...dots.children];
+  sw.addEventListener("scroll", () => {
+    const w = items[0].getBoundingClientRect().width + 12;
+    const k = Math.min(items.length - 1, Math.round(sw.scrollLeft / w));
+    ds.forEach((d, i) => d.classList.toggle("on", i === k));
+  }, { passive: true });
+});
+(() => {
+  const b = $("#mcta"), hero = $(".hero"), demo = $("#demo");
+  let demoVisible = false;
+  onView(demo, v => { demoVisible = v; upd(); }, { threshold: 0 });
+  function upd() { b.classList.toggle("show", scrollY > hero.offsetHeight * .7 && !demoVisible); }
+  addEventListener("scroll", upd, { passive: true }); upd();
+})();
+
 /* ---------- menu mobile ---------- */
 const burger = $("#burger");
 const setMenu = open => { nav.classList.toggle("open", open); burger.setAttribute("aria-expanded", open); burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu"); };
