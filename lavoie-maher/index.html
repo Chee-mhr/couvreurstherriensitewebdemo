@@ -312,6 +312,27 @@ tbody tr:hover{background:rgba(124,146,255,.05)}
 .v-cite i:nth-child(1){width:92%}.v-cite i:nth-child(2){width:78%;background:var(--amber);animation:glow 2.2s infinite}.v-cite i:nth-child(3){width:86%}.v-cite i:nth-child(4){width:54%}
 @keyframes glow{50%{box-shadow:0 0 14px var(--amber)}}
 
+/* ---------- L&M-6 fiabilité ---------- */
+.versus{border:1px solid var(--line-2);border-radius:20px;background:var(--ink-2);overflow:hidden}
+.vs-q{display:flex;align-items:center;gap:14px;padding:20px;background:var(--panel);border-bottom:1px solid var(--line);font-size:1.05rem}
+.vs-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+@media (max-width:800px){.vs-cols{grid-template-columns:1fr}.vs-col.other{border-right:0!important;border-bottom:1px solid var(--line)}}
+.vs-col{padding:24px;display:flex;flex-direction:column;gap:14px}
+.vs-col.other{border-right:1px solid var(--line)}
+.vs-a{font-size:1rem;line-height:1.6}
+.vs-col.other .vs-a{color:var(--paper-dim)}
+.vs-col.other .vs-a span{-webkit-box-decoration-break:clone;box-decoration-break:clone;background-image:linear-gradient(var(--danger),var(--danger));background-repeat:no-repeat;background-position:0 60%;background-size:0 1px;transition:background-size 1.2s var(--ease) .6s, color .6s .6s}
+.versus.go .vs-col.other .vs-a span{background-size:100% 1px;color:var(--muted)}
+.vs-col.ours{background:linear-gradient(180deg,rgba(244,194,77,.06),transparent 70%)}
+.vs-flag{display:flex;flex-wrap:wrap;align-items:center;gap:10px;color:var(--muted);opacity:.55;transform:translateY(6px);transition:opacity .6s var(--ease) 1.4s, transform .6s var(--ease) 1.4s}
+.versus.go .vs-flag{opacity:1;transform:none}
+.vs-rows > div{display:grid;grid-template-columns:200px minmax(0,1fr) minmax(0,1fr);gap:16px;padding:14px 24px;border-top:1px solid var(--line);font-size:.93rem}
+.vs-rows > div span:nth-child(2){color:var(--muted)}
+.vs-rows > div span:nth-child(3){color:var(--paper)}
+.vs-rows > div span:nth-child(3)::before{content:"✓ ";color:var(--ok)}
+.vs-rows .mono{color:var(--muted);padding-top:2px}
+@media (max-width:700px){.vs-rows > div{grid-template-columns:1fr 1fr}.vs-rows .mono{grid-column:1/-1}}
+
 /* ---------- confidentialité ---------- */
 .vault{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,90px);align-items:center}
 @media (max-width:900px){.vault{grid-template-columns:1fr}}
@@ -371,7 +392,8 @@ footer p{font-size:.85rem}
         <li><a href="#transcription">Transcription</a></li>
         <li><a href="#resume">Résumés</a></li>
         <li><a href="#listes">Listes</a></li>
-        <li><a href="#confidentialite">Confidentialité</a></li>
+        <li><a href="#fiabilite">Fiabilité</a></li>
+        <li><a href="#confidentialite">Traitement local</a></li>
       </ul>
     </nav>
     <a class="btn btn-amber magnet" href="#demo">Demander une démo <span class="arr">→</span></a>
@@ -385,13 +407,13 @@ footer p{font-size:.85rem}
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <p class="eyebrow"><span class="pulse"></span> Intelligence de preuve · Conçu au Québec</p>
+        <p class="eyebrow"><span class="pulse"></span> Traitement 100 % local · Conçu au Québec</p>
         <h1>
           <span class="line"><span>Chaque preuve.</span></span>
           <span class="line"><span>Chaque page.</span></span>
           <span class="line"><span><em>Retrouvée.</em></span></span>
         </h1>
-        <p class="lede">L'outil d'intelligence artificielle de Lavoie&amp;Maher fouille des milliers de pièces juridiques, transcrit des heures d'audience et répond toujours avec sa source&nbsp;: la pièce, la page, la ligne.</p>
+        <p class="lede">L'outil d'intelligence artificielle de Lavoie&amp;Maher fouille des milliers de pièces juridiques, transcrit des heures d'audience et répond toujours avec sa source&nbsp;: la pièce, la page, la ligne. Le tout sur vos propres serveurs&nbsp;: aucun document ne quitte votre cabinet.</p>
         <div class="hero-cta">
           <a class="btn btn-amber magnet" href="#demo">Voir l'outil sur vos dossiers <span class="arr">→</span></a>
           <a class="btn btn-ghost magnet" href="#recherche">Essayer la recherche</a>
@@ -417,6 +439,7 @@ footer p{font-size:.85rem}
       <div><strong data-count="12480">12 480</strong><span>fichiers dans ce dossier d'exemple</span></div>
       <div><strong>7 h 42</strong><span>d'audio transcrit en une passe</span></div>
       <div><strong>100 %</strong><span>des réponses citent leur source</span></div>
+      <div><strong>0 octet</strong><span>de vos dossiers envoyé en ligne</span></div>
     </div>
   </div>
 </section>
@@ -589,18 +612,53 @@ footer p{font-size:.85rem}
   </div>
 </section>
 
+<!-- ================= L&M-6 FIABILITÉ ================= -->
+<section class="sec" id="fiabilite" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Fiabilité des réponses</span></div>
+        <h2>Si ce n'est pas dans le dossier, <em>l'outil vous le dit.</em></h2>
+      </div>
+      <p class="lede">Les IA générales en ligne répondent de mémoire et peuvent inventer une citation, une date ou une pièce qui semble plausible. L'outil de Lavoie&amp;Maher ne répond qu'à partir des documents de votre dossier. Chaque affirmation est rattachée à un passage réel, et quand la preuve n'existe pas, il le dit au lieu de combler le vide.</p>
+    </div>
+
+    <div class="versus reveal" id="versus">
+      <div class="vs-q"><span class="avatar">M</span><p>Mme Gagnon a-t-elle admis le retard par écrit&nbsp;?</p></div>
+      <div class="vs-cols">
+        <div class="vs-col other">
+          <span class="eyebrow">IA générale en ligne</span>
+          <p class="vs-a"><span>Oui. Dans un courriel du 5 avril 2021, Mme Gagnon reconnaît que « les travaux accusent un retard de trois semaines imputable à son équipe ».</span></p>
+          <div class="vs-flag"><span class="tag warn">Pièce introuvable</span><span class="mono">Aucun courriel du 5 avril au dossier. Citation inventée.</span></div>
+        </div>
+        <div class="vs-col ours">
+          <span class="eyebrow">Lavoie&amp;Maher</span>
+          <p class="vs-a">Aucune pièce du dossier ne contient d'admission écrite du retard par Mme Gagnon. Le passage le plus proche va dans le sens contraire&nbsp;: elle attribue le retard «&nbsp;<mark>exclusivement à la pluie</mark>&nbsp;».</p>
+          <div class="vs-flag"><span class="cote">D-2</span><span class="mono">Courriel · 2021-04-02 · l. 1–2 · vérifié dans le dossier</span></div>
+        </div>
+      </div>
+      <div class="vs-rows">
+        <div><span class="mono">Source des réponses</span><span>Mémoire d'un modèle entraîné sur Internet</span><span>Uniquement les pièces de votre dossier</span></div>
+        <div><span class="mono">Réponse sans source</span><span>Possible</span><span>Refusée</span></div>
+        <div><span class="mono">Preuve absente</span><span>Risque d'une réponse inventée</span><span>« Aucune pièce ne l'établit »</span></div>
+        <div><span class="mono">Où vont vos données</span><span>Serveurs d'un tiers, souvent hors Québec</span><span>Restent sur vos serveurs</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= CONFIDENTIALITÉ ================= -->
 <section class="sec" id="confidentialite" style="padding-top:0">
   <div class="wrap vault">
     <canvas id="seal" class="reveal" aria-hidden="true"></canvas>
     <div class="reveal">
-      <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Confidentialité</span></div>
-      <h2>Le secret professionnel <em>n'est pas négociable.</em></h2>
-      <p class="lede" style="margin-block:22px 34px">Vos dossiers contiennent ce que vos clients ont de plus sensible. L'outil a été pensé pour les exigences des cabinets québécois dès la première ligne de code.</p>
+      <div class="tab"><span class="cote">L&amp;M-7</span><span class="eyebrow">Traitement local</span></div>
+      <h2>Vos dossiers ne quittent <em>jamais vos murs.</em></h2>
+      <p class="lede" style="margin-block:22px 34px">L'intelligence artificielle fonctionne entièrement sur l'infrastructure de votre cabinet. Aucun document, aucune question, aucune transcription n'est envoyé à un service infonuagique externe. Le secret professionnel reste là où il doit être.</p>
       <div class="guar">
-        <div><strong>Loi 25</strong><p>Traitement des renseignements personnels encadré, journalisé et limité à la finalité du mandat.</p></div>
-        <div><strong>Cloisonnement par dossier</strong><p>Chaque mandat est isolé. Un utilisateur ne voit que les dossiers auxquels il a accès.</p></div>
-        <div><strong>Chiffrement</strong><p>Données chiffrées au repos et en transit, du téléversement à l'archivage.</p></div>
+        <div><strong>Traitement 100 % local</strong><p>Le modèle d'IA tourne sur vos serveurs. Rien ne transite par Internet, même pas vos questions.</p></div>
+        <div><strong>Loi 25</strong><p>Aucune communication de renseignements personnels à l'extérieur du Québec ni à un tiers. Le traitement reste encadré, journalisé et limité au mandat.</p></div>
+        <div><strong>Cloisonnement par dossier</strong><p>Chaque mandat est isolé et chiffré. Un utilisateur ne voit que les dossiers auxquels il a accès.</p></div>
         <div><strong>Journal d'audit</strong><p>Qui a consulté quoi, quand. Chaque recherche et chaque export sont tracés.</p></div>
       </div>
     </div>
@@ -1056,6 +1114,10 @@ const DOCS = [
   requestAnimationFrame(draw);
   document.fonts?.ready.then(() => requestAnimationFrame(draw));
 })();
+
+/* ---------- versus ---------- */
+if (RM) $("#versus").classList.add("go");
+else onView($("#versus"), v => { if (v) $("#versus").classList.add("go"); }, { threshold: .35 });
 
 /* ---------- steps ---------- */
 onView($("#steps"), v => { if (v) $("#steps").classList.add("go"); }, { threshold: .4 });
