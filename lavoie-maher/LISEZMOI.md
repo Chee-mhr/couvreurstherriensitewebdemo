@@ -1,4 +1,4 @@
-# Site Lavoi&Maher, inc.
+# Site Lavoie&Maher, inc.
 
 Site statique d'une page : aucun serveur, aucune base de données, aucune dépendance externe.
 Il fonctionne sur n'importe quel hébergeur web.
