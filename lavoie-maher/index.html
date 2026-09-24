@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Lavoie&amp;Maher | IA juridique locale, respectueuse de la Loi 25</title>
-<meta name="description" content="Lavoie&amp;Maher, inc. : intelligence artificielle 100 % locale pour la preuve juridique, qui respecte la Loi 25. Recherche dans des milliers de pièces, transcription d'audio de longue durée, résumés et listes sourcés. Zéro hallucination, aucune donnée envoyée en ligne.">
+<meta name="description" content="Lavoie&amp;Maher, inc. : intelligence artificielle 100 % locale pour la preuve juridique, qui respecte la Loi 25. Lecture de tous les formats, recherche avec volume et page, index des pages liminaires, cahiers de contre-interrogatoire, suivi des engagements et analyse des témoins. Zéro hallucination, aucune donnée envoyée en ligne.">
 <!-- DÉPLOIEMENT : remplacez VOTRE-DOMAINE.ca par votre domaine (voir LISEZMOI.md) -->
 <link rel="canonical" href="https://VOTRE-DOMAINE.ca/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -13,7 +13,7 @@
 <meta property="og:locale" content="fr_CA">
 <meta property="og:site_name" content="Lavoie&amp;Maher, inc.">
 <meta property="og:title" content="Lavoie&amp;Maher | Chaque preuve. Retrouvée.">
-<meta property="og:description" content="IA 100 % locale pour la preuve juridique : recherche, transcription, résumés et listes, toujours avec la source exacte.">
+<meta property="og:description" content="IA 100 % locale pour la preuve juridique : chaque détail retrouvé avec son volume et sa page, et les documents d'audience assemblés sans modèle.">
 <meta property="og:url" content="https://VOTRE-DOMAINE.ca/">
 <meta property="og:image" content="https://VOTRE-DOMAINE.ca/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -174,7 +174,7 @@ body::before{
 .cote{font-family:var(--f-mono);font-size:.72rem;color:var(--ink);background:var(--amber);padding:3px 7px;border-radius:5px;height:fit-content;letter-spacing:.04em;white-space:nowrap}
 .hits .hit p{font-size:.9rem;line-height:1.45;color:var(--paper-dim)}
 .hits .hit .loc{grid-column:2;font-family:var(--f-mono);font-size:.68rem;color:var(--muted)}
-mark{background:var(--amber-soft);color:var(--amber);padding:0 .15em;border-radius:3px;box-shadow:inset 0 -2px 0 rgba(244,194,77,.55)}
+mark{background:none;color:var(--paper);font-weight:600;padding:0}
 
 .hero-meta{display:flex;flex-wrap:wrap;gap:12px 36px;margin-top:64px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted)}
 .hero-meta div{display:flex;flex-direction:column;gap:2px}
@@ -230,7 +230,8 @@ section{position:relative;z-index:2}
 @keyframes resin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .res-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .res-head strong{font-weight:600;font-size:.98rem}
-.res-head .mono{color:var(--muted);margin-left:auto}
+.res-head .mono{color:var(--muted)}
+.res-head .mcount{margin-left:auto}
 .res p{color:var(--paper-dim);font-size:.94rem;line-height:1.55}
 .score{height:3px;background:var(--line);border-radius:3px;overflow:hidden}
 .score i{display:block;height:100%;background:linear-gradient(90deg,var(--azure),var(--amber))}
@@ -264,7 +265,7 @@ section{position:relative;z-index:2}
 .utt p{grid-column:2;font-size:.98rem;line-height:1.55}
 .utt p w{transition:color .2s, background .2s;border-radius:3px}
 .utt p w.said{color:var(--paper)}
-.utt p w.now{background:var(--amber-soft);color:var(--amber)}
+.utt p w.now{color:var(--amber)}
 .utt.live p{color:rgba(236,231,220,.35)}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
 .stats div{padding:18px 20px;border-right:1px solid var(--line)}
@@ -272,31 +273,11 @@ section{position:relative;z-index:2}
 .stats strong{display:block;font-family:var(--f-display);font-weight:500;font-size:1.7rem;font-variant-numeric:tabular-nums}
 .stats span{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 
-/* ---------- L&M-3 résumé ---------- */
-.sum{display:grid;grid-template-columns:minmax(0,1.15fr) auto minmax(0,.85fr);gap:24px;align-items:stretch}
-@media (max-width:900px){.sum{grid-template-columns:1fr}.sum-arrow{transform:rotate(90deg);justify-self:center}}
-.doc{background:#F3EFE6;color:#23263A;border-radius:6px;padding:34px clamp(20px,3vw,40px);position:relative;
-  box-shadow:0 50px 100px -40px rgba(0,0,0,.8), 0 0 0 1px rgba(0,0,0,.2);font-family:var(--f-display);font-size:1.02rem;line-height:1.75}
-.doc::before{content:"";position:absolute;left:clamp(10px,1.5vw,20px);top:0;bottom:0;width:1px;background:rgba(200,60,60,.25)}
+/* ---------- papier (pages liminaires) ---------- */
+.doc{background:#F3EFE6;color:#23263A;border-radius:6px;padding:30px clamp(18px,3vw,36px);position:relative;
+  box-shadow:0 50px 100px -40px rgba(0,0,0,.8), 0 0 0 1px rgba(0,0,0,.2)}
+.doc::before{content:"";position:absolute;left:clamp(10px,1.5vw,18px);top:0;bottom:0;width:1px;background:rgba(200,60,60,.25)}
 .doc-h{display:flex;justify-content:space-between;gap:12px;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.08em;color:#6B6E80;margin-bottom:18px;text-transform:uppercase}
-.doc p s{text-decoration:none;transition:opacity .5s, filter .5s}
-.doc.distill p s{opacity:.16;filter:blur(.4px)}
-.doc p s.k{transition:background .6s, color .6s, opacity .5s}
-.doc.distill p s.k{opacity:1;filter:none;background:rgba(244,194,77,.55);color:#15182A;border-radius:2px;box-shadow:0 0 0 2px rgba(244,194,77,.55)}
-.ln{font-family:var(--f-mono);font-size:.62rem;color:#9A9CA8;margin-right:.6em;user-select:none}
-.sum-arrow{display:grid;place-items:center;color:var(--amber)}
-.sum-arrow svg{animation:nudge 2s ease-in-out infinite}
-@keyframes nudge{50%{transform:translateX(6px)}}
-.summary{border:1px solid rgba(244,194,77,.3);border-radius:20px;background:linear-gradient(180deg,rgba(244,194,77,.06),transparent 60%), var(--ink-2);padding:26px;display:flex;flex-direction:column;gap:16px}
-.summary h3{font-size:1.35rem}
-.summary ol{margin:0;padding:0;list-style:none;display:grid;gap:14px;counter-reset:s}
-.summary li{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;opacity:.15;transform:translateY(8px);transition:opacity .6s var(--ease), transform .6s var(--ease)}
-.summary li.on{opacity:1;transform:none}
-.summary li::before{counter-increment:s;content:counter(s);font-family:var(--f-display);font-style:italic;color:var(--amber);font-size:1.3rem;line-height:1.2}
-.summary li span{font-size:.97rem;line-height:1.5}
-.summary li .mono{grid-column:2;color:var(--muted);font-size:.68rem}
-.ratio{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line);color:var(--muted)}
-.ratio strong{color:var(--amber);font-family:var(--f-display);font-size:1.6rem;font-weight:500}
 
 /* ---------- L&M-4 listes ---------- */
 .prompt{display:flex;align-items:flex-start;gap:14px;padding:20px;border-bottom:1px solid var(--line);background:var(--panel)}
@@ -307,9 +288,9 @@ table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:720px}
 th{text-align:left;font-family:var(--f-mono);font-weight:500;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:14px 20px;border-bottom:1px solid var(--line)}
 td{padding:14px 20px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--paper-dim)}
 td:first-child{font-family:var(--f-mono);font-size:.8rem;color:var(--paper);white-space:nowrap;font-variant-numeric:tabular-nums}
-tbody tr{opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease), transform .5s var(--ease), background .3s}
-tbody tr.on{opacity:1;transform:none}
-tbody tr:hover{background:rgba(124,146,255,.05)}
+#listbox tbody tr{opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease), transform .5s var(--ease), background .3s}
+#listbox tbody tr.on{opacity:1;transform:none}
+#listbox tbody tr:hover{background:rgba(124,146,255,.05)}
 .tag{font-family:var(--f-mono);font-size:.66rem;padding:3px 8px;border-radius:999px;border:1px solid var(--line-2);white-space:nowrap}
 .tag.warn{border-color:rgba(255,122,107,.5);color:var(--danger)}
 .ltabs{display:flex;gap:4px;padding:10px 12px 0;background:var(--panel)}
@@ -355,19 +336,7 @@ tbody tr:hover{background:rgba(124,146,255,.05)}
 .cap:hover::after{opacity:1}
 .cap p{color:var(--paper-dim);font-size:.95rem}
 .viz{height:92px;border-radius:10px;background:var(--panel);border:1px solid var(--line);position:relative;overflow:hidden;margin-bottom:6px}
-/* timeline viz */
-.v-time::before{content:"";position:absolute;left:14px;right:14px;top:50%;height:1px;background:var(--line-2)}
-.v-time i{position:absolute;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--azure);animation:pop 4s infinite}
-.v-time i:nth-child(2n){background:var(--amber)}
-@keyframes pop{0%,10%{transform:scale(0)}20%,80%{transform:scale(1)}100%{transform:scale(0)}}
-/* witness viz */
-.v-wit{padding:10px 12px;display:flex;flex-direction:column;gap:6px}
-.v-wit div{display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:.62rem;color:var(--paper-dim);animation:witin 4.5s infinite both}
-.v-wit div:nth-child(2){animation-delay:.25s}.v-wit div:nth-child(3){animation-delay:.5s}
-.v-wit i{flex:none;width:16px;height:16px;border-radius:50%;background:var(--azure-soft);border:1px solid rgba(124,146,255,.5)}
-.v-wit b{margin-left:auto;font-weight:500;color:var(--amber)}
 @keyframes witin{0%{opacity:0;transform:translateX(-8px)}12%,85%{opacity:1;transform:none}100%{opacity:0}}
-@keyframes flash{50%{background:rgba(255,122,107,.18)}}
 /* inventory viz */
 .v-inv{padding:10px 12px;display:flex;flex-direction:column;gap:5px}
 .v-inv div{display:grid;grid-template-columns:34px 1fr auto;gap:8px;align-items:center;font-family:var(--f-mono);font-size:.62rem;color:var(--paper-dim);padding:3px 6px;border-radius:5px;background:var(--ink);animation:witin 4.5s infinite both}
@@ -375,21 +344,11 @@ tbody tr:hover{background:rgba(124,146,255,.05)}
 .v-inv b{font-weight:500;color:var(--amber)}
 .v-inv span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .v-inv i{font-style:normal;color:var(--muted)}
-/* ocr viz */
-.v-ocr{display:grid;place-items:center}
-.v-ocr span{font-family:"Brush Script MT", "Segoe Script", cursive;font-size:1.5rem;color:var(--paper-dim);position:relative}
-.v-ocr::after{content:"";position:absolute;top:0;bottom:0;width:40%;background:linear-gradient(90deg,transparent,rgba(124,146,255,.35),transparent);animation:sweep 2.6s infinite linear}
-@keyframes sweep{from{left:-40%}to{left:100%}}
 /* bilingual viz */
 .v-lang{display:grid;place-items:center;font-family:var(--f-display);font-size:1.25rem}
 .v-lang span{position:absolute;transition:opacity .6s;animation:swap 5s infinite}
 .v-lang span:nth-child(2){animation-delay:-2.5s}
 @keyframes swap{0%,45%{opacity:1}50%,95%{opacity:0}100%{opacity:1}}
-/* cite viz */
-.v-cite{padding:14px;display:flex;flex-direction:column;gap:7px}
-.v-cite i{height:6px;border-radius:3px;background:var(--line-2)}
-.v-cite i:nth-child(1){width:92%}.v-cite i:nth-child(2){width:78%;background:var(--amber);animation:glow 2.2s infinite}.v-cite i:nth-child(3){width:86%}.v-cite i:nth-child(4){width:54%}
-@keyframes glow{50%{box-shadow:0 0 14px var(--amber)}}
 
 /* ---------- L&M-6 fiabilité ---------- */
 .versus{border:1px solid var(--line-2);border-radius:20px;background:var(--ink-2);overflow:hidden}
@@ -411,6 +370,111 @@ tbody tr:hover{background:rgba(124,146,255,.05)}
 .vs-rows > div span:nth-child(3)::before{content:"✓ ";color:var(--ok)}
 .vs-rows .mono{color:var(--muted);padding-top:2px}
 @media (max-width:700px){.vs-rows > div{grid-template-columns:1fr 1fr}.vs-rows .mono{grid-column:1/-1}}
+
+/* ---------- modes (question, mentions…) ---------- */
+.qmode{flex:none;font-size:.7rem;color:var(--ink);background:var(--azure);padding:3px 8px;border-radius:5px;letter-spacing:.04em}
+.sa-bar form{align-items:center}
+.mcount{font-family:var(--f-mono);font-size:.7rem;color:var(--amber);border:1px solid rgba(244,194,77,.4);padding:2px 8px;border-radius:999px;white-space:nowrap}
+
+/* ---------- faire entrer : vignettes ---------- */
+.v-fmt{display:flex;flex-wrap:wrap;gap:6px;padding:14px;align-content:center}
+.v-fmt span{font-family:var(--f-mono);font-size:.66rem;padding:4px 8px;border:1px solid var(--line-2);border-radius:5px;color:var(--paper);animation:witin 4.5s infinite both}
+.v-fmt span:nth-child(2){animation-delay:.15s}.v-fmt span:nth-child(3){animation-delay:.3s}.v-fmt span:nth-child(4){animation-delay:.45s}.v-fmt span:nth-child(5){animation-delay:.6s}
+.v-conv{padding:10px 12px;display:flex;flex-direction:column;gap:5px}
+.v-conv div{display:grid;grid-template-columns:70px 18px 1fr;align-items:center;font-family:var(--f-mono);font-size:.64rem;color:var(--paper-dim);padding:3px 6px;border-radius:5px;background:var(--ink);animation:witin 4.5s infinite both}
+.v-conv div:nth-child(2){animation-delay:.25s}.v-conv div:nth-child(3){animation-delay:.5s}
+.v-conv i{font-style:normal;color:var(--muted)}.v-conv b{font-weight:500;color:var(--amber)}
+.v-ocr2{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px}
+.v-ocr2 div{background:var(--ink);border-radius:6px;padding:8px 10px;display:flex;flex-direction:column;gap:2px}
+.v-ocr2 .mono{font-size:.58rem;color:var(--muted);letter-spacing:.04em}
+.v-ocr2 s{font-family:var(--f-display);font-size:1.25rem;color:var(--danger)}
+.v-ocr2 b{font-family:var(--f-display);font-size:1.25rem;font-weight:500;color:var(--ok)}
+.v-ocr2::after{content:"";position:absolute;top:0;bottom:0;width:30%;background:linear-gradient(90deg,transparent,rgba(124,146,255,.22),transparent);animation:sweep 2.8s infinite linear}
+@keyframes sweep{from{left:-30%}to{left:100%}}
+.v-est{padding:12px 14px;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.v-est .mono{font-size:.62rem;color:var(--muted)}
+.v-est strong{font-family:var(--f-display);font-size:1.6rem;font-weight:500;line-height:1}
+.v-est i{display:block;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--azure),var(--amber));animation:est 4s infinite}
+@keyframes est{0%{width:0}60%,100%{width:100%}}
+
+/* ---------- audio : piste rejetée ---------- */
+.utt .who.seg{color:var(--muted);text-transform:none;letter-spacing:0}
+.reject{margin-top:16px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 16px;align-items:baseline;padding:16px 20px;border:1px dashed rgba(255,122,107,.45);border-radius:14px;background:rgba(255,122,107,.05)}
+.reject .tag{grid-row:span 2}
+.reject p{color:var(--paper-dim);font-size:.95rem}
+.reject p.mono{font-size:.74rem;color:var(--muted)}
+.reject strong{color:var(--paper)}
+
+/* ---------- classement : défaire ---------- */
+.chip.undo{margin-left:auto;border-style:dashed;font-family:var(--f-mono);font-size:.74rem}
+.size{margin-left:auto;flex:none;font-size:.62rem;color:var(--muted)}
+
+/* ---------- retrouver ---------- */
+.cmds{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:8px}
+@media (max-width:960px){.cmds{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.cmds{grid-template-columns:1fr}}
+.cmds div{border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--ink-2);display:flex;flex-direction:column;gap:8px}
+.cmds .mono{color:var(--amber);font-size:.9rem}
+.cmds p{color:var(--paper-dim);font-size:.93rem}
+.fixes,.wit-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 28px;margin-block:28px}
+@media (max-width:860px){.fixes,.wit-stats{grid-template-columns:1fr}}
+.fixes div,.wit-stats div{padding-top:16px;border-top:1px solid var(--line-2);display:flex;flex-direction:column;gap:6px}
+.fixes strong,.wit-stats strong{font-family:var(--f-display);font-weight:500;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.1;color:var(--amber);font-variant-numeric:tabular-nums}
+.fixes p,.wit-stats p{color:var(--paper-dim);font-size:.92rem}
+
+/* ---------- index liminaires ---------- */
+.lim{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:24px;align-items:center}
+@media (max-width:900px){.lim{grid-template-columns:minmax(0,1fr)}.lim-arrow{transform:rotate(90deg);justify-self:center}}
+.lim-arrow{color:var(--amber);display:grid;place-items:center}
+.lim-page{font-family:var(--f-mono);font-size:.78rem;line-height:1.55}
+.lim-block{margin-bottom:14px}
+.lim-block:last-child{margin-bottom:0}
+.lim-block b{display:block;font-family:var(--f-display);font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:.76rem;margin-bottom:4px;text-align:center}
+.lim-page p{display:grid;grid-template-columns:auto 1fr auto;gap:6px;margin:0;padding:1px 6px;border-radius:3px;transition:background .35s}
+.lim-page p span{order:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lim-page p::after{content:"";order:2;border-bottom:1px dotted #9A9CA8;margin-bottom:6px}
+.lim-page p i{order:3;font-style:normal}
+.lim-page p.read{background:rgba(124,146,255,.22)}
+.lim-out{display:grid;gap:12px}
+.lim-card{border:1px solid var(--line-2);border-radius:14px;background:var(--ink-2);padding:14px 16px;display:grid;gap:6px}
+.lim-card > div{display:flex;justify-content:space-between;gap:12px;font-size:.9rem;opacity:.22;transform:translateX(-6px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.lim-card > div.on{opacity:1;transform:none}
+.lim-card b{font-weight:600}
+.lim-card .mono{color:var(--amber);white-space:nowrap}
+.lim-stats{display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px 34px;margin-top:32px;padding-top:22px;border-top:1px solid var(--line)}
+.lim-stats .eyebrow{flex-basis:100%}
+.lim-stats div{display:flex;flex-direction:column}
+.lim-stats strong{font-family:var(--f-display);font-size:2rem;font-weight:500;line-height:1.1;font-variant-numeric:tabular-nums}
+.lim-stats span{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.lim-stats .hl strong{color:var(--amber)}
+
+/* ---------- témoins ---------- */
+.pbar{display:inline-block;vertical-align:middle;width:90px;height:6px;border-radius:3px;background:var(--line);overflow:hidden;margin-right:10px}
+.pbar i{display:block;height:100%;background:var(--azure);transition:width 1s var(--ease)}
+.pbar.c i{background:var(--amber)}
+table.wit td{white-space:nowrap;font-variant-numeric:tabular-nums}
+.tag.hit{border-color:rgba(244,194,77,.6);color:var(--amber)}
+.wit-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:24px}
+@media (max-width:760px){.wit-notes{grid-template-columns:1fr}}
+.wit-notes div{display:flex;flex-direction:column;gap:8px}
+.wit-notes p{color:var(--paper-dim)}
+
+/* ---------- droit du travail ---------- */
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+@media (max-width:760px){.calc{grid-template-columns:1fr}.calc-in{border-right:0!important;border-bottom:1px solid var(--line)}}
+.calc-in{padding:24px;display:flex;flex-direction:column;gap:10px;border-right:1px solid var(--line)}
+.calc-in label{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.calc-in input[type=date]{font:1.05rem var(--f-body);color:var(--paper);background:var(--ink);border:1px solid var(--line-2);border-radius:10px;padding:12px 14px;color-scheme:dark;max-width:260px}
+.calc-in input[type=date]:disabled{opacity:.4}
+.calc-in input:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 4px var(--amber-soft)}
+.calc-in .chk{display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-family:var(--f-body);font-size:.95rem;color:var(--paper)}
+.calc-in .chk input{accent-color:var(--amber);width:18px;height:18px}
+.calc-in > .mono{color:var(--muted);margin-top:4px}
+.calc-out{padding:24px;display:flex;flex-direction:column;gap:8px;justify-content:center;background:linear-gradient(135deg,rgba(244,194,77,.07),transparent 70%)}
+.calc-out strong{font-family:var(--f-display);font-size:clamp(2rem,4vw,3rem);font-weight:500;line-height:1.05;color:var(--amber)}
+.calc-out strong.unk{color:var(--muted)}
+.calc-out p{color:var(--paper-dim)}
+.note-sm{font-size:.8rem;color:var(--muted);margin-top:10px}
 
 /* ---------- confidentialité ---------- */
 .vault{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,90px);align-items:center}
@@ -474,13 +538,13 @@ footer p{font-size:.85rem}
     <nav aria-label="Principale">
       <ul id="menu">
         <li><a href="#loi25">Loi 25</a></li>
+        <li><a href="#dossier">Dossier</a></li>
         <li><a href="#recherche">Recherche</a></li>
-        <li><a href="#transcription">Transcription</a></li>
-        <li><a href="#resume">Résumés</a></li>
-        <li><a href="#listes">Listes</a></li>
-        <li><a href="#classement">Classement</a></li>
-        <li><a href="#fiabilite">Fiabilité</a></li>
-                <li class="menu-cta"><a class="btn btn-amber" href="#demo">Demander une démo <span class="arr">→</span></a></li>
+        <li><a href="#index">Index</a></li>
+        <li><a href="#assemblages">Assemblages</a></li>
+        <li><a href="#temoins">Témoins</a></li>
+        <li><a href="#travail">Droit du travail</a></li>
+        <li class="menu-cta"><a class="btn btn-amber" href="#demo">Demander une démo <span class="arr">→</span></a></li>
       </ul>
     </nav>
     <div class="nav-right">
@@ -503,7 +567,7 @@ footer p{font-size:.85rem}
           <span class="line"><span>Chaque page.</span></span>
           <span class="line"><span><em>Retrouvée.</em></span></span>
         </h1>
-        <p class="lede">L'outil d'intelligence artificielle de Lavoie&amp;Maher fouille des milliers de pièces juridiques, transcrit des heures d'audience et répond toujours avec sa source&nbsp;: la pièce, la page, la ligne. Le tout sur vos propres serveurs&nbsp;: aucun document ne quitte votre cabinet.</p>
+        <p class="lede">Lavoie&amp;Maher lit toute la preuve d'un dossier, qu'elle arrive en PDF, en courriels Outlook, en pages scannées ou en enregistrements. L'outil retrouve chaque détail avec son volume et sa page, et monte les documents que vous prépariez à la main la veille de l'audience. Le tout sur vos serveurs.</p>
         <div class="hero-cta">
           <a class="btn btn-amber magnet" href="#demo">Voir l'outil sur vos dossiers <span class="arr">→</span></a>
           <a class="btn btn-ghost magnet" href="#loi25">Loi 25 : comment on la respecte</a>
@@ -513,21 +577,21 @@ footer p{font-size:.85rem}
       <div class="console" id="console" aria-label="Démonstration animée d'une recherche">
         <div class="console-top">
           <div class="dots"><i></i><i></i><i></i></div>
-          <span class="mono">Dossier 500-17-000000-241 · exemple</span>
+          <span class="mono">Dossier d'exemple</span>
         </div>
         <div class="q">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <span class="qmode mono" id="qmode">question</span>
           <span class="q-text"><span id="qtext">Quand la mise en demeure a-t-elle été envoyée&nbsp;?</span><span class="caret"></span></span>
         </div>
-        <div class="status mono"><span id="qstat">Prêt</span><span><b id="qcount">12 480</b> fichiers</span></div>
+        <div class="status mono"><span id="qstat">Prêt</span><span><b id="qcount">8 622</b> pages</span></div>
         <div class="bar"><i id="qbar"></i></div>
         <div class="hits" id="hits"></div>
       </div>
     </div>
 
     <div class="hero-meta">
-      <div><strong>7 h 42</strong><span>d'audio transcrit en une passe</span></div>
-      <div><strong>100 %</strong><span>des réponses citent leur source</span></div>
+      <div><strong>7 ms</strong><span>pour compter les mentions</span></div>
+      <div><strong>0,1 s</strong><span>pour lire les index de 45 volumes</span></div>
       <div><strong>0</strong><span>hallucination</span></div>
       <div><strong>0 octet</strong><span>de vos dossiers envoyé en ligne</span></div>
     </div>
@@ -536,8 +600,8 @@ footer p{font-size:.85rem}
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span>PDF NUMÉRISÉS</span><span>COURRIELS .MSG / .EML</span><span>DOCX</span><span>AUDIO .WAV .MP3 .M4A</span><span>VIDÉOS D'INTERROGATOIRE</span><span>TEXTOS</span><span>XLSX</span><span>PHOTOS DE CHANTIER</span><span>NOTES MANUSCRITES</span><span>JUGEMENTS</span><span>PROCÈS-VERBAUX</span>
-    <span>PDF NUMÉRISÉS</span><span>COURRIELS .MSG / .EML</span><span>DOCX</span><span>AUDIO .WAV .MP3 .M4A</span><span>VIDÉOS D'INTERROGATOIRE</span><span>TEXTOS</span><span>XLSX</span><span>PHOTOS DE CHANTIER</span><span>NOTES MANUSCRITES</span><span>JUGEMENTS</span><span>PROCÈS-VERBAUX</span>
+    <span>PDF</span><span>IMAGES</span><span>DOCX</span><span>COURRIELS .EML</span><span>OUTLOOK .MSG</span><span>VIEUX .DOC</span><span>.RTF</span><span>TABLEURS</span><span>IWORK</span><span>PAGES SCANNÉES</span><span>AUDIO</span><span>VIDÉO</span>
+    <span>PDF</span><span>IMAGES</span><span>DOCX</span><span>COURRIELS .EML</span><span>OUTLOOK .MSG</span><span>VIEUX .DOC</span><span>.RTF</span><span>TABLEURS</span><span>IWORK</span><span>PAGES SCANNÉES</span><span>AUDIO</span><span>VIDÉO</span>
   </div>
 </div>
 
@@ -549,77 +613,55 @@ footer p{font-size:.85rem}
     <div class="reveal">
       <div class="tab"><span class="cote">L&amp;M-1</span><span class="eyebrow">Loi 25 · Traitement 100 % local</span></div>
       <h2>La Loi 25, respectée <em>par conception.</em></h2>
-      <p class="lede" style="margin-block:22px 26px">Votre plus grand risque avec l'IA, c'est d'envoyer les renseignements personnels de vos clients sur les serveurs d'un tiers. Ici, c'est impossible. L'intelligence artificielle fonctionne entièrement sur l'infrastructure de votre cabinet. Aucun document, aucune question, aucune transcription n'est envoyé à un service infonuagique externe. Le secret professionnel reste là où il doit être.</p>
+      <p class="lede" style="margin-block:22px 26px">Votre plus grand risque avec l'IA, c'est d'envoyer les renseignements personnels de vos clients sur les serveurs d'un tiers. Ici, c'est impossible. L'outil fonctionne entièrement sur l'infrastructure de votre cabinet. Aucun document, aucune question, aucune transcription n'est envoyé à un service infonuagique externe. Le secret professionnel reste là où il doit être.</p>
       <ul class="law-points">
-      <li><b>0</b><span>transfert hors Québec</span></li>
-      <li><b>0</b><span>fournisseur infonuagique</span></li>
-      <li><b>0</b><span>connexion requise</span></li>
-    </ul>
+        <li><b>0</b><span>transfert hors Québec</span></li>
+        <li><b>0</b><span>fournisseur infonuagique</span></li>
+        <li><b>0</b><span>connexion requise</span></li>
+      </ul>
       <div class="guar">
-        <div><strong>Traitement 100 % local</strong><p>Le modèle d'IA tourne sur vos serveurs et fonctionne sans connexion Internet. Rien ne transite en ligne, même pas vos questions.</p></div>
-        <div><strong>Loi 25</strong><p>Aucune communication de renseignements personnels à un tiers ni à l'extérieur du Québec : le traitement reste sous votre contrôle, journalisé et limité à la finalité du mandat.</p></div>
-        <div><strong>Cloisonnement par dossier</strong><p>Chaque mandat est isolé et chiffré. Un utilisateur ne voit que les dossiers auxquels il a accès.</p></div>
-        <div><strong>Journal d'audit</strong><p>Qui a consulté quoi, quand. Chaque recherche et chaque export sont tracés.</p></div>
+        <div><strong>Traitement 100 % local</strong><p>Les modèles tournent sur vos serveurs et fonctionnent sans connexion Internet. Rien ne transite en ligne, même pas vos questions.</p></div>
+        <div><strong>Loi 25</strong><p>Aucune communication de renseignements personnels à un tiers ni à l'extérieur du Québec : le traitement reste sous votre contrôle.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= RECHERCHE ================= -->
-<section class="sec" id="recherche">
+<!-- ================= FAIRE ENTRER UN DOSSIER ================= -->
+<section class="sec" id="dossier">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-2</span><span class="eyebrow">Recherche de preuve</span></div>
-        <h2>Posez la question comme à un collègue. <em>Obtenez la pièce.</em></h2>
+        <div class="tab"><span class="cote">L&amp;M-2</span><span class="eyebrow">Faire entrer un dossier</span></div>
+        <h2>Une divulgation en vrac, quinze formats. <em>Un seul dossier.</em></h2>
       </div>
-      <p class="lede">Pas de mots-clés exacts, pas d'opérateurs booléens. L'outil comprend le sens de votre question, parcourt tout le dossier, et classe chaque passage selon sa pertinence. Essayez-le ci-dessous sur un petit dossier fictif.</p>
+      <p class="lede">La divulgation arrive rarement propre. L'outil lit directement le PDF, l'image, le .docx, le .eml et le .msg d'Outlook, et convertit le reste sur place, sans dépendance externe. Avant de lancer l'analyse, il vous dit ce que contient le dossier et combien de temps elle prendra.</p>
     </div>
-
-    <div class="search-app reveal">
-      <div class="sa-bar">
-        <form id="sform" role="search">
-          <label for="sq" class="mono" style="position:absolute;left:-9999px">Question</label>
-          <input id="sq" class="sa-input" type="search" autocomplete="off" value="infiltration d'eau" placeholder="Ex. : qui a approuvé la réception des travaux ?">
-          <button class="btn btn-amber" type="submit">Chercher</button>
-        </form>
-      </div>
-      <div class="chips" id="chips">
-        <button class="chip" type="button">mise en demeure</button>
-        <button class="chip" type="button">pénalité de retard</button>
-        <button class="chip" type="button">fissures fondation</button>
-        <button class="chip" type="button">paiement retenu</button>
-        <button class="chip" type="button">réception des travaux</button>
-        <button class="chip" type="button">pluie</button>
-      </div>
-      <div class="sa-body">
-        <aside class="sa-side">
-          <div class="gauge"><span class="mono">Pages analysées</span><strong id="spages">0</strong></div>
-          <div class="gauge"><span class="mono">Temps</span><strong id="stime">0,00 s</strong></div>
-          <div class="minimap" id="minimap" aria-hidden="true"></div>
-          <span class="mono">Chaque case représente un lot de pièces. En or : les pièces pertinentes.</span>
-        </aside>
-        <div class="sa-results" id="sres" aria-live="polite"></div>
-      </div>
-      <p class="note">Démonstration · 12 pièces fictives · Aucune donnée réelle, aucun envoi de données.</p>
+    <div class="grid6">
+      <article class="cap reveal"><div class="viz v-fmt"><span>PDF</span><span>Image</span><span>.docx</span><span>.eml</span><span>.msg</span></div><h3>Lecture directe</h3><p>Le PDF, l'image, le .docx, le .eml et le .msg d'Outlook sont lus tels quels.</p></article>
+      <article class="cap reveal"><div class="viz v-conv"><div><span>.doc</span><i>→</i><b>texte</b></div><div><span>.rtf</span><i>→</i><b>texte</b></div><div><span>.numbers</span><i>→</i><b>tableau</b></div></div><h3>Conversion sur place</h3><p>Vieux .doc, .rtf, tableurs et fichiers iWork sont convertis sans aucune dépendance externe.</p></article>
+      <article class="cap reveal"><div class="viz v-ocr2"><div class="bad"><span class="mono">Autre moteur</span><s>jμmvam</s></div><div class="good"><span class="mono">Qwen3-VL · local</span><b>janvier</b></div></div><h3>Pages scannées</h3><p>L'OCR tourne en local sur Qwen3-VL, retenu après un banc d'essai contre PaddleOCR, qui lisait « jμmvam » pour « janvier » sur des pages dégradées.</p></article>
+      <article class="cap reveal"><div class="viz v-inv"><div><b>Vol. 12</b><span>Transcription · 2023-03-08</span><i>215 p.</i></div><div><b>P-40</b><span>Rapport · 2021-11-02</span><i>14 p.</i></div><div><b>REC-3</b><span>Audio · 2023-03-08</span><i>7 h 42</i></div></div><h3>Inventaire</h3><p>Ce qu'il y a dans le dossier, pièce par pièce, avec sa nature, sa date et son volume.</p></article>
+      <article class="cap reveal"><div class="viz v-est"><span class="mono">Analyse complète estimée</span><strong>3 h 40</strong><i></i></div><h3>Estimation</h3><p>Avant de lancer l'analyse complète, l'outil dit combien de temps elle prendrait. Vous décidez ensuite.</p></article>
+      <article class="cap reveal"><div class="viz v-lang"><span>« Réception provisoire »</span><span>“Provisional acceptance”</span></div><h3>Français et anglais</h3><p>Posez la question dans une langue, trouvez la preuve dans l'autre. Traductions de travail incluses.</p></article>
     </div>
   </div>
 </section>
 
-<!-- ================= TRANSCRIPTION ================= -->
+<!-- ================= AUDIO ET VIDÉO ================= -->
 <section class="sec" id="transcription" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-3</span><span class="eyebrow">Transcription</span></div>
-        <h2>Sept heures d'interrogatoire. <em>Lisibles en une minute.</em></h2>
+        <div class="tab"><span class="cote">L&amp;M-3</span><span class="eyebrow">Audio et vidéo</span></div>
+        <h2>Des heures d'enregistrement. <em>Chaque segment horodaté.</em></h2>
       </div>
-      <p class="lede">Audio ou vidéo de n'importe quelle longueur, en français, en anglais ou dans les deux à la fois. Chaque intervenant est identifié, chaque mot est horodaté, et chaque citation vous ramène à la seconde exacte de l'enregistrement.</p>
+      <p class="lede">L'audio et la vidéo passent par Whisper, en local, qui rend des segments horodatés. L'horodatage sert de provenance&nbsp;: une piste qui ne cite pas un intervalle réel de l'enregistrement est rejetée par le code.</p>
     </div>
 
     <div class="tx reveal">
       <div class="panel">
-        <div class="panel-h"><strong>Interrogatoire préalable — M. Tremblay</strong><span class="mono">REC_2023-03-08.wav</span></div>
+        <div class="panel-h"><strong>Enregistrement d'exemple</strong><span class="mono">REC_2023-03-08.wav</span></div>
         <div class="wave-box">
           <canvas id="wave" aria-hidden="true"></canvas>
           <div class="timeline mono"><span>00:00:00</span><span>01:55:30</span><span>03:51:00</span><span>05:46:30</span><span>07:42:00</span></div>
@@ -627,96 +669,24 @@ footer p{font-size:.85rem}
         <div class="transport">
           <button class="play" id="play" type="button" aria-label="Pause"><svg id="pico" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="3.5" height="12"/><rect x="9.5" y="2" width="3.5" height="12"/></svg></button>
           <span class="mono" id="clock">04:12:08</span>
-          <div class="speakers"><span class="spk a">ME BOUCHARD</span><span class="spk b">M. TREMBLAY</span><span class="spk">ME ROY</span></div>
+          <div class="speakers"><span class="spk a">WHISPER · LOCAL</span></div>
         </div>
         <div class="stats">
           <div><strong>7 h 42</strong><span>Durée</span></div>
-          <div><strong>3</strong><span>Intervenants</span></div>
-          <div><strong>61 204</strong><span>Mots horodatés</span></div>
+          <div><strong>3 118</strong><span>Segments horodatés</span></div>
+          <div><strong>0</strong><span>Piste sans intervalle réel</span></div>
         </div>
       </div>
       <div class="panel">
-        <div class="panel-h"><strong>Transcription en direct</strong><span class="mono">FR · EN</span></div>
+        <div class="panel-h"><strong>Segments</strong><span class="mono">début → fin</span></div>
         <div class="script"><div class="script-inner" id="script"></div></div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ================= RÉSUMÉ ================= -->
-<section class="sec" id="resume" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div>
-        <div class="tab"><span class="cote">L&amp;M-4</span><span class="eyebrow">Résumés ciblés</span></div>
-        <h2>L'essentiel d'un passage, <em>sans perdre la source.</em></h2>
-      </div>
-      <p class="lede">Sélectionnez un passage, une pièce ou un témoignage entier. L'outil en extrait les faits déterminants et relie chaque point du résumé à la ligne d'origine. Vous vérifiez en un clic.</p>
-    </div>
-
-    <div class="sum reveal" id="sumbox">
-      <article class="doc" id="doc">
-        <div class="doc-h"><span>Pièce P-15 · Rapport d'expertise</span><span>p. 14</span></div>
-        <p id="docp"></p>
-      </article>
-      <div class="sum-arrow" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
-      <aside class="summary">
-        <span class="eyebrow">Résumé généré</span>
-        <h3>Ce que l'expert conclut</h3>
-        <ol id="sumlist">
-          <li><span>Les fissures de la fondation proviennent d'un drainage absent, et non du gel.</span><span class="mono">P-15, p. 14, l. 3–6</span></li>
-          <li><span>Le drain français prévu à l'article 7.2 du contrat n'a jamais été installé.</span><span class="mono">P-15, p. 14, l. 8–10 · renvoi P-1</span></li>
-          <li><span>Correctifs estimés à 38 500 $ avant taxes.</span><span class="mono">P-15, p. 14, l. 14–15</span></li>
-        </ol>
-        <div class="ratio"><strong>− 82 %</strong><span class="mono">de texte · 0 fait sans source</span></div>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<!-- ================= LISTES ================= -->
-<section class="sec" id="listes" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div>
-        <div class="tab"><span class="cote">L&amp;M-5</span><span class="eyebrow">Listes à la demande</span></div>
-        <h2>Une question. <em>Un tableau prêt à déposer.</em></h2>
-      </div>
-      <p class="lede">Listes de témoins, chronologies, listes de communications, inventaires de pièces, tableaux de montants réclamés. Demandez-les en une phrase ; l'outil les construit, les trie et cite chaque source.</p>
-    </div>
-
-    <div class="panel reveal" id="listbox">
-      <div class="ltabs" role="tablist" aria-label="Exemples de listes">
-        <button class="ltab on" type="button" role="tab" aria-selected="true" data-tab="0">Communications</button>
-        <button class="ltab" type="button" role="tab" aria-selected="false" data-tab="1">Témoins</button>
-      </div>
-      <div class="prompt"><span class="avatar">M</span><p id="lprompt">Dresse la liste de toutes les communications entre M. Tremblay et Mme Gagnon au sujet du retard, en ordre chronologique.</p></div>
-      <div class="tbl-wrap lpane" data-prompt="Dresse la liste de toutes les communications entre M. Tremblay et Mme Gagnon au sujet du retard, en ordre chronologique.">
-        <table>
-          <thead><tr><th>Date</th><th>De → À</th><th>Objet</th><th>Source</th><th>Note</th></tr></thead>
-          <tbody id="ltbody">
-            <tr><td>2021-03-12</td><td>Tremblay → Gagnon</td><td>Retard de trois semaines constaté sur le chantier</td><td><span class="cote">P-4</span></td><td></td></tr>
-            <tr><td>2021-03-19</td><td>Tremblay → Gagnon</td><td>Mise en demeure : pénalité de 2 500 $ par jour</td><td><span class="cote">P-7</span></td><td></td></tr>
-            <tr><td>2021-04-02</td><td>Gagnon → Tremblay</td><td>Conteste le retard, invoque la pluie</td><td><span class="cote">D-2</span></td><td><span class="tag">Réponse à P-7</span></td></tr>
-            <tr><td>2021-05-04</td><td>Tremblay → Gagnon</td><td>Procès-verbal : infiltration d'eau au sous-sol</td><td><span class="cote">P-12</span></td><td></td></tr>
-            <tr><td>2021-06-02</td><td>Gagnon → Tremblay</td><td>Texto : « on finit la semaine prochaine »</td><td><span class="cote">P-21</span></td><td></td></tr>
-            <tr><td>2021-07-14</td><td>Roy → Tremblay, Gagnon</td><td>Réception provisoire avec réserves</td><td><span class="cote">P-40</span></td><td><span class="tag">Tiers en copie</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="tbl-wrap lpane" hidden data-prompt="Fais la liste des témoins potentiels : rôle, pièces où chacun apparaît et sujets sur lesquels l'interroger.">
-        <table>
-          <thead><tr><th>Témoin</th><th>Rôle</th><th>Apparaît dans</th><th>Sujets à couvrir</th><th>Mentions</th></tr></thead>
-          <tbody>
-            <tr><td>M. Tremblay</td><td>Représentant de la demanderesse</td><td><span class="cote">P-4</span> <span class="cote">P-7</span> <span class="cote">P-33</span></td><td>Mise en demeure, date de l'infiltration, drain français</td><td>14 pièces</td></tr>
-            <tr><td>Mme Gagnon</td><td>Représentante de la défenderesse</td><td><span class="cote">D-2</span> <span class="cote">P-21</span> <span class="cote">D-9</span></td><td>Causes du retard, échéancier promis</td><td>9 pièces</td></tr>
-            <tr><td>Me Roy</td><td>Signataire de la réception provisoire</td><td><span class="cote">P-40</span></td><td>Réserves à la réception, date de signature</td><td>4 pièces</td></tr>
-            <tr><td>Ingénieur expert</td><td>Auteur du rapport d'expertise</td><td><span class="cote">P-15</span></td><td>Cause des fissures, coût des correctifs</td><td>3 pièces</td></tr>
-            <tr><td>Surintendant de chantier</td><td>Cité au procès-verbal</td><td><span class="cote">P-12</span> <span class="cote">P-33</span></td><td>Constat de l'eau au sous-sol</td><td>2 pièces</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="tbl-foot"><span class="mono" id="lfoot">6 communications · 4 pièces de la demande, 1 de la défense, 1 transcription</span><div class="fmt"><span>Tableau Word</span><span>Excel</span><span>PDF</span></div></div>
+    <div class="reject reveal">
+      <span class="tag warn">Rejetée</span>
+      <p><strong>Piste proposée&nbsp;:</strong> « le témoin reconnaît le retard », citant <span class="mono">08:14:02 → 08:14:09</span>.</p>
+      <p class="mono">L'enregistrement dure 07:42:00. Cet intervalle n'existe pas : la piste est écartée par le code.</p>
     </div>
   </div>
 </section>
@@ -726,54 +696,282 @@ footer p{font-size:.85rem}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Classement et renommage</span></div>
-        <h2>Des centaines de fichiers en vrac. <em>Classés à votre façon.</em></h2>
+        <div class="tab"><span class="cote">L&amp;M-4</span><span class="eyebrow">Classement et renommage</span></div>
+        <h2>Des fichiers en vrac. <em>En ordre, et réversible.</em></h2>
       </div>
-      <p class="lede">« scan_0042.pdf », « RE_ RE_ retard (2).msg », « MED_final_FINAL.docx »… Décrivez comment vous voulez nommer et ranger vos PDF et documents ; l'outil lit chaque fichier, le renomme et le classe dans vos dossiers, selon vos propres règles.</p>
+      <p class="lede">Le classement met les pièces en ordre et les renomme selon quatre modes&nbsp;: date, nom, type ou taille. Il est réversible&nbsp;: <span class="mono">defaire_classement</span> remet les noms d'avant.</p>
     </div>
 
     <div class="panel reveal" id="sorter">
-      <div class="prompt"><span class="avatar">M</span><p id="sprompt">Renomme chaque document par cote, date et description, et classe-les par partie.</p></div>
-      <div class="rules" role="group" aria-label="Choisir une règle de classement">
-        <span class="mono">Votre règle :</span>
-        <button class="chip on" type="button" data-rule="0">Par cote</button>
-        <button class="chip" type="button" data-rule="1">Par date</button>
-        <button class="chip" type="button" data-rule="2">Par personne</button>
+      <div class="rules" role="group" aria-label="Choisir un mode de classement">
+        <span class="mono">Mode :</span>
+        <button class="chip on" type="button" data-rule="0">Date</button>
+        <button class="chip" type="button" data-rule="1">Nom</button>
+        <button class="chip" type="button" data-rule="2">Type</button>
+        <button class="chip" type="button" data-rule="3">Taille</button>
+        <button class="chip undo" type="button" id="undo">↺ defaire_classement</button>
       </div>
       <div class="sort-grid">
         <div class="sort-col">
-          <div class="sort-h"><span class="eyebrow">Avant</span><span class="mono">Téléchargements/</span></div>
+          <div class="sort-h"><span class="eyebrow">Avant</span><span class="mono">Divulgation/</span></div>
           <ul class="raw" id="raw"></ul>
         </div>
         <div class="sort-arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
         <div class="sort-col">
-          <div class="sort-h"><span class="eyebrow">Après</span><span class="mono">Dossier 500-17-000000-241/</span></div>
+          <div class="sort-h"><span class="eyebrow" id="after-label">Après</span><span class="mono" id="sort-note">mode : date</span></div>
           <div class="tree" id="tree"></div>
         </div>
       </div>
-      <div class="tbl-foot"><span class="mono">Exemple fictif · 8 fichiers · vos règles peuvent combiner cote, date, partie, personne, type ou tout autre critère</span></div>
+      <div class="tbl-foot"><span class="mono">Exemple fictif · 8 fichiers</span></div>
     </div>
   </div>
 </section>
 
-<!-- ================= PLUS ================= -->
-<section class="sec" id="plus" style="padding-top:0">
+<!-- ================= RETROUVER ================= -->
+<section class="sec" id="recherche" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-7</span><span class="eyebrow">Et plus encore</span></div>
-        <h2>Tout ce qu'un dossier exige, <em>au même endroit.</em></h2>
+        <div class="tab"><span class="cote">L&amp;M-5</span><span class="eyebrow">Retrouver un détail précis</span></div>
+        <h2>Le détail précis. <em>Avec son volume et sa page.</em></h2>
       </div>
-      <p class="lede">Le travail de fond qui prenait des semaines à une équipe se fait maintenant pendant que vous préparez votre plaidoirie.</p>
+      <p class="lede">C'est la partie sur laquelle nous avons travaillé en dernier, et celle qui marche le mieux. Chaque résultat porte un lien cliquable vers la page exacte du PDF d'origine, à l'écran seulement&nbsp;: les livrables remis au cabinet n'en contiennent jamais.</p>
     </div>
-    <div class="grid6">
-      <article class="cap reveal"><div class="viz v-time"><i style="left:12%"></i><i style="left:27%;animation-delay:.3s"></i><i style="left:41%;animation-delay:.6s"></i><i style="left:58%;animation-delay:.9s"></i><i style="left:73%;animation-delay:1.2s"></i><i style="left:88%;animation-delay:1.5s"></i></div><h3>Chronologie automatique</h3><p>Chaque date de chaque pièce, replacée sur une seule ligne du temps, avec la source de chaque événement.</p></article>
-      <article class="cap reveal"><div class="viz v-wit"><div><i></i>M. Tremblay<b>14 pièces</b></div><div><i></i>Mme Gagnon<b>9 pièces</b></div><div><i></i>Me Roy<b>4 pièces</b></div></div><h3>Listes de témoins</h3><p>Chaque personne nommée au dossier, son rôle et toutes les pièces où elle apparaît, prêtes pour préparer vos interrogatoires.</p></article>
-      <article class="cap reveal"><div class="viz v-ocr"><span>Livraison le 15 juin</span></div><h3>Lecture des numérisations</h3><p>PDF numérisés, télécopies, photos et notes manuscrites deviennent du texte interrogeable.</p></article>
-      <article class="cap reveal"><div class="viz v-inv"><div><b>P-1</b><span>Contrat d'entreprise</span><i>18 p.</i></div><div><b>P-4</b><span>Courriel sur le retard</span><i>1 p.</i></div><div><b>P-7</b><span>Mise en demeure</span><i>2 p.</i></div></div><h3>Inventaire des pièces</h3><p>La liste complète des pièces du dossier, avec cote, date, description et nombre de pages, générée en une demande.</p></article>
-      <article class="cap reveal"><div class="viz v-lang"><span>« Réception provisoire »</span><span>“Provisional acceptance”</span></div><h3>Français et anglais</h3><p>Posez la question dans une langue, trouvez la preuve dans l'autre. Traductions de travail incluses.</p></article>
-      <article class="cap reveal"><div class="viz v-cite"><i></i><i></i><i></i><i></i></div><h3>Citations vérifiables</h3><p>Zéro hallucination : aucune réponse sans source. Chaque réponse indique la pièce, la page et la ligne d'où elle provient.</p></article>
+
+    <div class="cmds reveal">
+      <div><span class="mono">question</span><p>Cherche une information dans les pièces et rend le passage avec son volume et sa page.</p></div>
+      <div><span class="mono">mentions</span><p>Quelles pièces parlent de ça, et combien de fois. La question qui n'appelle pas de rédaction.</p></div>
+      <div><span class="mono">partout</span><p>La même chose, à travers tous les dossiers en base d'un coup.</p></div>
+      <div><span class="mono">chronologie</span><p>Les moments datés tels qu'énoncés dans la preuve, sans aucun modèle.</p></div>
     </div>
+
+    <div class="fixes reveal">
+      <div><span class="eyebrow">Accents repliés</span><strong>123</strong><p>passages retrouvés pour « harcelement » tapé sans accent, qui n'en ramenait aucun.</p></div>
+      <div><span class="eyebrow">Pluriels indexés</span><strong>banderoles</strong><p>trouvé à partir de « banderole ». Le singulier ratait le pluriel.</p></div>
+      <div><span class="eyebrow">Index inversé</span><strong>3,6 s → 7 ms</strong><p>pour <span class="mono">mentions</span>, sur tout le dossier.</p></div>
+    </div>
+
+    <div class="search-app reveal">
+      <div class="sa-bar">
+        <form id="sform" role="search">
+          <label for="sq" class="mono" style="position:absolute;left:-9999px">Rechercher les mentions</label>
+          <span class="qmode mono">mentions</span>
+          <input id="sq" class="sa-input" type="search" autocomplete="off" value="drain francais" placeholder="Ex. : mise en demeure">
+          <button class="btn btn-amber" type="submit">Chercher</button>
+        </form>
+      </div>
+      <div class="chips" id="chips">
+        <button class="chip" type="button">mise en demeure</button>
+        <button class="chip" type="button">penalite</button>
+        <button class="chip" type="button">fissure</button>
+        <button class="chip" type="button">paiement final</button>
+        <button class="chip" type="button">réception des travaux</button>
+        <button class="chip" type="button">pluie</button>
+      </div>
+      <div class="sa-body">
+        <aside class="sa-side">
+          <div class="gauge"><span class="mono">Pages lues</span><strong id="spages">0</strong></div>
+          <div class="gauge"><span class="mono">Temps</span><strong id="stime">0 ms</strong></div>
+          <div class="minimap" id="minimap" aria-hidden="true"></div>
+          <span class="mono">Chaque case représente un lot de pièces. En or : les pièces qui en parlent.</span>
+        </aside>
+        <div class="sa-results" id="sres" aria-live="polite"></div>
+      </div>
+      <p class="note">Démonstration · 12 pièces fictives · Accents et pluriels repliés · Aucune donnée réelle, aucun envoi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INDEX LIMINAIRES ================= -->
+<section class="sec" id="index" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Index des pages liminaires</span></div>
+        <h2>Les index du sténographe, <em>lus tels qu'imprimés.</em></h2>
+      </div>
+      <p class="lede">En tête de chaque volume, le sténographe compose à la main la table des matières, la liste des cotes, celle des objections et celle des engagements. L'outil les lit telles qu'imprimées, sans modèle&nbsp;: rien ne peut être inventé.</p>
+    </div>
+
+    <div class="lim reveal" id="lim">
+      <article class="doc lim-page">
+        <div class="doc-h"><span>Volume 12 · pages liminaires</span><span>p. i</span></div>
+        <div class="lim-block"><b>Table des matières</b>
+          <p data-k="0"><span>Interrogatoire principal du témoin B</span><i>3</i></p>
+          <p data-k="1"><span>Contre-interrogatoire</span><i>89</i></p>
+          <p data-k="2"><span>Réinterrogatoire</span><i>202</i></p>
+        </div>
+        <div class="lim-block"><b>Liste des pièces</b>
+          <p data-k="3"><span>P-40 Rapport d'enquête interne</span><i>47</i></p>
+          <p data-k="4"><span>D-7 Politique de prévention</span><i>131</i></p>
+        </div>
+        <div class="lim-block"><b>Objections</b>
+          <p data-k="5"><span>O-31 Pertinence</span><i>97</i></p>
+          <p data-k="6"><span>O-32 Ouï-dire</span><i>160</i></p>
+        </div>
+        <div class="lim-block"><b>Engagements</b>
+          <p data-k="7"><span>E-12 Produire le registre des plaintes</span><i>118</i></p>
+        </div>
+      </article>
+      <div class="lim-arrow" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="lim-out">
+        <div class="lim-card"><span class="eyebrow">Où commence chaque interrogatoire</span>
+          <div data-k="0"><b>Témoin B · principal</b><span class="mono">Vol. 12, p. 3</span></div>
+          <div data-k="1"><b>Témoin B · contre</b><span class="mono">Vol. 12, p. 89</span></div>
+          <div data-k="2"><b>Témoin B · réinterrogatoire</b><span class="mono">Vol. 12, p. 202</span></div>
+        </div>
+        <div class="lim-card"><span class="eyebrow">Ce que porte chaque cote, et où elle a été déposée</span>
+          <div data-k="3"><b>P-40 · Rapport d'enquête interne</b><span class="mono">Vol. 12, p. 47</span></div>
+          <div data-k="4"><b>D-7 · Politique de prévention</b><span class="mono">Vol. 12, p. 131</span></div>
+        </div>
+        <div class="lim-card"><span class="eyebrow">Objections et engagements</span>
+          <div data-k="5"><b>O-31 · Pertinence</b><span class="mono">Vol. 12, p. 97</span></div>
+          <div data-k="6"><b>O-32 · Ouï-dire</b><span class="mono">Vol. 12, p. 160</span></div>
+          <div data-k="7"><b>E-12 · Registre des plaintes</b><span class="mono">Vol. 12, p. 118</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lim-stats reveal">
+      <span class="eyebrow">Sur un dossier réel</span>
+      <div><strong>45</strong><span>volumes</span></div>
+      <div><strong>8 622</strong><span>pages</span></div>
+      <div><strong>50</strong><span>interrogatoires</span></div>
+      <div><strong>349</strong><span>pièces cotées</span></div>
+      <div><strong>84</strong><span>objections</span></div>
+      <div><strong>98</strong><span>engagements</span></div>
+      <div class="hl"><strong>0,1 s</strong><span>pour tout extraire</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ASSEMBLAGES ================= -->
+<section class="sec" id="assemblages" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="tab"><span class="cote">L&amp;M-7</span><span class="eyebrow">Les quatre assemblages</span></div>
+        <h2>Ce que vous montiez à la main <em>la veille de l'audience.</em></h2>
+      </div>
+      <p class="lede">Quatre documents qu'un avocat assemble à la main avant une audience. Aucun modèle n'intervient dans le fichier qui les produit&nbsp;: chaque ligne vient des index et des pages du dossier.</p>
+    </div>
+
+    <div class="panel reveal" id="listbox">
+      <div class="ltabs" role="tablist" aria-label="Les quatre assemblages">
+        <button class="ltab on" type="button" role="tab" aria-selected="true" data-tab="0">Cahier de contre-interrogatoire</button>
+        <button class="ltab" type="button" role="tab" aria-selected="false" data-tab="1">Dossier d'une cote</button>
+        <button class="ltab" type="button" role="tab" aria-selected="false" data-tab="2">Suivi des engagements</button>
+        <button class="ltab" type="button" role="tab" aria-selected="false" data-tab="3">Cotes jamais déclarées</button>
+      </div>
+      <div class="prompt"><span class="cote">Assemblage</span><p id="lprompt">Réunit les volumes du témoin, ses phases, ses non-réponses chiffrées, et les cotes et objections de son témoignage.</p></div>
+      <div class="tbl-wrap lpane" data-prompt="Réunit les volumes du témoin, ses phases, ses non-réponses chiffrées, et les cotes et objections de son témoignage.">
+        <table>
+          <thead><tr><th>Rubrique</th><th>Témoin B</th><th>Où</th></tr></thead>
+          <tbody>
+            <tr><td>Volumes</td><td>3 volumes de transcription</td><td>Vol. 12 à 14</td></tr>
+            <tr><td>Phases</td><td>Principal, contre-interrogatoire, réinterrogatoire</td><td>Vol. 12, p. 3 · p. 89 · p. 202</td></tr>
+            <tr><td>Non-réponses</td><td>6 au principal, 19 au contre</td><td>Détail page par page</td></tr>
+            <tr><td>Cotes</td><td><span class="cote">P-40</span> <span class="cote">D-7</span> <span class="cote">P-52</span></td><td>Vol. 12, p. 47 · p. 131 · Vol. 13, p. 22</td></tr>
+            <tr><td>Objections</td><td>4 objections</td><td>Vol. 12, p. 97 · p. 160 · Vol. 13, p. 58 · p. 141</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tbl-wrap lpane" hidden data-prompt="Rassemble ce que la pièce porte et chaque fois qu'on en parle, dans tous les volumes.">
+        <table>
+          <thead><tr><th>Où</th><th>P-40 · Rapport d'enquête interne</th><th>Contexte</th></tr></thead>
+          <tbody>
+            <tr><td>Vol. 12, p. 47</td><td>Dépôt de la pièce, 14 pages</td><td>Interrogatoire principal, témoin B</td></tr>
+            <tr><td>Vol. 12, p. 52</td><td>Questions sur les conclusions du rapport</td><td>Interrogatoire principal, témoin B</td></tr>
+            <tr><td>Vol. 13, p. 8</td><td>Retour sur la date de l'enquête</td><td>Contre-interrogatoire, témoin B</td></tr>
+            <tr><td>Vol. 21, p. 310</td><td>Le témoin dit ne pas avoir lu le rapport</td><td>Interrogatoire principal, témoin D</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tbl-wrap lpane" hidden data-prompt="Dit lesquels des engagements ont été repris, et lesquels ne l'ont jamais été.">
+        <table>
+          <thead><tr><th>Engagement</th><th>Objet</th><th>Pris à</th><th>Statut</th></tr></thead>
+          <tbody>
+            <tr><td>E-9</td><td>Transmettre les courriels de mars</td><td>Vol. 11, p. 204</td><td><span class="tag">Repris · Vol. 15, p. 4</span></td></tr>
+            <tr><td>E-12</td><td>Produire le registre des plaintes</td><td>Vol. 12, p. 118</td><td><span class="tag warn">Jamais repris</span></td></tr>
+            <tr><td>E-13</td><td>Fournir l'organigramme</td><td>Vol. 12, p. 176</td><td><span class="tag">Repris · Vol. 16, p. 2</span></td></tr>
+            <tr><td>E-17</td><td>Vérifier les feuilles de temps</td><td>Vol. 14, p. 63</td><td><span class="tag warn">Jamais repris</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tbl-wrap lpane" hidden data-prompt="Relève les pièces discutées à l'audience qu'aucune liste ne déclare : l'oubli qu'on ne trouve qu'en relisant tout.">
+        <table>
+          <thead><tr><th>Cote</th><th>Discutée à</th><th>Contexte</th><th>Déclarée dans une liste</th></tr></thead>
+          <tbody>
+            <tr><td>P-58</td><td>Vol. 19, p. 233</td><td>Courriel montré au témoin C</td><td><span class="tag warn">Aucune</span></td></tr>
+            <tr><td>D-14</td><td>Vol. 27, p. 61</td><td>Extrait de politique lu à voix haute</td><td><span class="tag warn">Aucune</span></td></tr>
+            <tr><td>P-61</td><td>Vol. 40, p. 12</td><td>Photo commentée par le témoin F</td><td><span class="tag warn">Aucune</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tbl-foot"><span class="mono" id="lfoot">Exemple fictif · aucun modèle dans l'assemblage</span><span class="mono">Livrables sans lien cliquable</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TÉMOINS ================= -->
+<section class="sec" id="temoins" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="tab"><span class="cote">L&amp;M-8</span><span class="eyebrow">Les témoins</span></div>
+        <h2>Le changement d'attitude, <em>mesuré plutôt que deviné.</em></h2>
+      </div>
+      <p class="lede"><span class="mono">temoins</span> liste chaque témoin avec le nombre de fois où il a répondu qu'il ne savait pas, et mesure son changement d'attitude entre l'interrogatoire principal et le contre. Le seuil est un test statistique, le z de deux proportions, et non un écart arbitraire.</p>
+    </div>
+
+    <div class="wit-stats reveal">
+      <div><strong>2 → 5</strong><p>témoins repérés sur un dossier de 45 volumes, une fois le seuil statistique en place.</p></div>
+      <div><strong>14 pts</strong><p>d'écart pour le premier d'entre eux, entre le principal et le contre.</p></div>
+      <div><strong>6 → 17</strong><p>témoins couverts après l'élargissement de la reconnaissance des en-têtes de phase.</p></div>
+    </div>
+
+    <div class="panel reveal" id="witbox">
+      <div class="panel-h"><strong>« Je ne sais pas », au principal et au contre</strong><span class="mono">Exemple fictif · seuil |z| ≥ 1,96</span></div>
+      <div class="tbl-wrap">
+        <table class="wit">
+          <thead><tr><th>Témoin</th><th>Principal</th><th>Contre</th><th>Écart</th><th>z</th><th>Résultat</th></tr></thead>
+          <tbody id="witbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="wit-notes reveal">
+      <div><span class="eyebrow">Identification</span><p>Le témoin est identifié par l'en-tête imprimé en haut de chaque page de transcription, la seule source qui ne ment pas.</p></div>
+      <div><span class="eyebrow mono">credibilite</span><p>Sort ce qui permet d'attaquer un témoin&nbsp;: ses non-réponses chiffrées et les passages qui s'y prêtent, avec un penchant délibéré pour l'exclusion plutôt que pour le volume.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DROIT DU TRAVAIL ================= -->
+<section class="sec" id="travail" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="tab"><span class="cote">L&amp;M-9</span><span class="eyebrow">Droit du travail</span></div>
+        <h2>L'échéance d'un recours, <em>calculée, jamais devinée.</em></h2>
+      </div>
+      <p class="lede">Le calcul d'échéance d'un recours, comme les 45 jours de l'article 123 LNT, est de l'arithmétique pure et répétable. Une date inconnue est traitée comme inconnue au lieu d'être devinée. S'y ajoutent la concomitance de l'article 123.4 et les seuils.</p>
+    </div>
+
+    <div class="calc panel reveal">
+      <form class="calc-in" id="calc" novalidate>
+        <label for="lnt-date">Date de l'événement</label>
+        <input id="lnt-date" type="date" value="2026-08-17">
+        <label class="chk"><input id="lnt-unknown" type="checkbox"> Date inconnue</label>
+        <span class="mono">Délai : 45 jours · art. 123 LNT</span>
+      </form>
+      <div class="calc-out" aria-live="polite">
+        <span class="eyebrow">Échéance</span>
+        <strong id="lnt-res">1<sup>er</sup> octobre 2026</strong>
+        <p class="mono" id="lnt-sub">17 août 2026 + 45 jours</p>
+      </div>
+    </div>
+    <p class="note-sm reveal">Exemple de calcul, à titre d'illustration.</p>
   </div>
 </section>
 
@@ -782,14 +980,14 @@ footer p{font-size:.85rem}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-8</span><span class="eyebrow">Zéro hallucination</span></div>
+        <div class="tab"><span class="cote">L&amp;M-10</span><span class="eyebrow">Zéro hallucination</span></div>
         <h2>Zéro hallucination. <em>Seulement votre dossier.</em></h2>
       </div>
-      <p class="lede">Les IA générales en ligne répondent de mémoire et peuvent inventer une citation, une date ou une pièce qui semble plausible. Le modèle de Lavoie&amp;Maher fonctionne en local, sans Internet, et se base seulement sur les documents que vous lui confiez. Il ne peut rien tirer d'ailleurs : chaque affirmation pointe vers un passage réel, et quand la preuve n'existe pas, il le dit.</p>
+      <p class="lede">Les IA générales en ligne répondent de mémoire et peuvent inventer une citation, une date ou une pièce. Ici, tout fonctionne en local, sans Internet, sur les seuls documents que vous confiez. Les index sont lus tels qu'imprimés, la chronologie et les assemblages sont produits sans modèle, et une piste audio qui ne cite pas un intervalle réel est rejetée par le code.</p>
     </div>
 
     <div class="versus reveal" id="versus">
-      <div class="vs-q"><span class="avatar">M</span><p>Mme Gagnon a-t-elle admis le retard par écrit&nbsp;?</p></div>
+      <div class="vs-q"><span class="qmode mono">question</span><p>Mme Gagnon a-t-elle admis le retard par écrit&nbsp;?</p></div>
       <div class="vs-cols">
         <div class="vs-col other">
           <span class="eyebrow">IA générale en ligne</span>
@@ -798,8 +996,8 @@ footer p{font-size:.85rem}
         </div>
         <div class="vs-col ours">
           <span class="eyebrow">Lavoie&amp;Maher</span>
-          <p class="vs-a">Aucune pièce du dossier ne contient d'admission écrite du retard par Mme Gagnon. Le passage le plus proche va dans le sens contraire&nbsp;: elle attribue le retard «&nbsp;<mark>exclusivement à la pluie</mark>&nbsp;».</p>
-          <div class="vs-flag"><span class="cote">D-2</span><span class="mono">Courriel · 2021-04-02 · l. 1–2 · vérifié dans le dossier</span></div>
+          <p class="vs-a">Aucune pièce du dossier ne contient d'admission écrite du retard par Mme Gagnon. Le passage le plus proche va dans le sens contraire&nbsp;: elle attribue le retard « exclusivement à la pluie ».</p>
+          <div class="vs-flag"><span class="cote">D-2</span><span class="mono">Vol. 2 · p. 31 · vérifié dans le dossier</span></div>
         </div>
       </div>
       <div class="vs-rows">
@@ -819,14 +1017,14 @@ footer p{font-size:.85rem}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <span class="eyebrow">Mise en service</span>
-        <h2 style="margin-top:18px">De la boîte de documents à la <em>première réponse.</em></h2>
+        <span class="eyebrow">Du dossier à l'audience</span>
+        <h2 style="margin-top:18px">De la divulgation en vrac au <em>cahier d'audience.</em></h2>
       </div>
     </div>
     <div class="steps" id="steps">
-      <div class="step"><h3>Versement</h3><p>Glissez le dossier complet&nbsp;: pièces, courriels, enregistrements, numérisations. Aucun tri préalable.</p></div>
-      <div class="step"><h3>Indexation</h3><p>L'outil lit, transcrit et relie chaque document. Des milliers de fichiers sont prêts en quelques heures.</p></div>
-      <div class="step"><h3>Interrogation</h3><p>Votre équipe pose ses questions, obtient ses listes et ses résumés, tous rattachés à leur source.</p></div>
+      <div class="step"><h3>Faire entrer</h3><p>Déposez la divulgation telle qu'elle arrive. L'inventaire dit ce qu'elle contient, l'estimation dit combien de temps prendra l'analyse.</p></div>
+      <div class="step"><h3>Retrouver</h3><p><span class="mono">question</span>, <span class="mono">mentions</span>, <span class="mono">partout</span> et <span class="mono">chronologie</span>, avec le volume et la page de chaque passage.</p></div>
+      <div class="step"><h3>Assembler</h3><p>Cahiers de contre-interrogatoire, dossiers de cotes, suivi des engagements et cotes jamais déclarées.</p></div>
     </div>
   </div>
 </section>
@@ -917,22 +1115,22 @@ if (!RM) {
    HERO — tunnel d'archives
    ========================================================= */
 const QUERIES = [
-  { q: "Quand la mise en demeure a-t-elle été envoyée ?", hits: [
-    ["P-7", "La présente constitue une <mark>mise en demeure</mark> formelle de livrer l'ouvrage…", "Pièce P-7 · p. 1 · l. 4 · 19 mars 2021"],
-    ["P-4", "…je vous <mark>mettrai en demeure</mark> si le retard persiste.", "Pièce P-4 · courriel · 12 mars 2021"],
-    ["P-33", "Q. La <mark>mise en demeure</mark>, vous l'avez envoyée le 19 ? R. Oui.", "Interrogatoire · 04:12:31"]] },
-  { q: "Qui a signé la réception provisoire des travaux ?", hits: [
-    ["P-40", "<mark>Réception provisoire</mark> acceptée avec réserves, signée par Me Roy…", "Pièce P-40 · p. 2 · l. 11 · 14 juillet 2021"],
-    ["P-1", "…la <mark>réception</mark> de l'ouvrage sera constatée par écrit (art. 9.1).", "Pièce P-1 · contrat · p. 6"],
-    ["D-5", "Facture finale émise à la suite de la <mark>réception</mark> du 14 juillet.", "Pièce D-5 · p. 1 · l. 2"]] },
-  { q: "Montant total de la pénalité de retard réclamée", hits: [
-    ["P-1", "…une <mark>pénalité de 2 500 $ par jour</mark> de retard (art. 7.4).", "Pièce P-1 · contrat · p. 5 · l. 22"],
-    ["P-7", "…soit 29 jours, pour un total de <mark>72 500 $</mark>.", "Pièce P-7 · p. 2 · l. 3"],
-    ["P-47", "Retenue de <mark>72 500,00 $</mark> sur le paiement final.", "Pièce P-47 · relevé · l. 18"]] }
+  { mode: "question", q: "Quand la mise en demeure a-t-elle été envoyée ?", stat: "3 passages · volume et page", hits: [
+    ["P-7", "La présente constitue une <mark>mise en demeure</mark> formelle de livrer l'ouvrage…", "Vol. 2 · p. 14"],
+    ["P-4", "…je vous <mark>mettrai en demeure</mark> si le retard persiste.", "Vol. 2 · p. 9"],
+    ["Vol. 7", "Q. La <mark>mise en demeure</mark>, vous l'avez envoyée le 19 ? R. Oui.", "Interrogatoire · Vol. 7 · p. 212"]] },
+  { mode: "mentions", q: "drain français", stat: "3 pièces · 10 mentions · 7 ms", hits: [
+    ["P-15", "5 mentions", "Rapport d'expertise · Vol. 3"],
+    ["P-1", "3 mentions", "Contrat d'entreprise · Vol. 1"],
+    ["P-12", "2 mentions", "Procès-verbal de chantier · Vol. 2"]] },
+  { mode: "partout", q: "harcèlement", stat: "123 passages · 3 dossiers", hits: [
+    ["Dossier A", "61 passages", "12 volumes"],
+    ["Dossier B", "38 passages", "7 volumes"],
+    ["Dossier C", "24 passages", "3 volumes"]] }
 ];
 (function hero() {
   const cv = $("#field"), ctx = cv.getContext("2d");
-  const hitsEl = $("#hits"), qtext = $("#qtext"), qstat = $("#qstat"), qbar = $("#qbar"), qcount = $("#qcount");
+  const hitsEl = $("#hits"), qmode = $("#qmode"), qtext = $("#qtext"), qstat = $("#qstat"), qbar = $("#qbar"), qcount = $("#qcount");
   let W = 0, H = 0, DPR = 1, F = 520;
   const DEPTH = 3200, NEAR = -F * .55;
   const N = innerWidth < 700 ? 900 : 2200;
@@ -946,7 +1144,7 @@ const QUERIES = [
   let mx = 0, my = 0, tmx = 0, tmy = 0;
   addEventListener("pointermove", e => { tmx = (e.clientX / innerWidth - .5); tmy = (e.clientY / innerHeight - .5); }, { passive: true });
 
-  let roll = 0, scanZ = -1e9, matched = [], phase = "idle", pt = 0, qi = 0, cardRows = [];
+  let roll = 0, scanZ = -1e9, matched = [], phase = "idle", pt = 0, qi = 0, cardRows = [], curQ = QUERIES[0];
   const cxF = () => (W > 980 ? W * .56 : W * .5), cyF = () => H * .46;
   function proj(p) {
     const ang = p.a + roll, x = Math.cos(ang) * p.r + mx * 220, y = Math.sin(ang) * p.r * .72 + my * 160;
@@ -963,10 +1161,10 @@ const QUERIES = [
     if (show) cardRows.forEach(r => r.classList.add("on"));
   }
   function cycle() {
-    const q = QUERIES[qi++ % QUERIES.length];
-    renderHits(q, false); qbar.style.width = "0"; qstat.textContent = "Saisie de la question…";
+    const q = curQ = QUERIES[qi++ % QUERIES.length];
+    qmode.textContent = q.mode; renderHits(q, false); qbar.style.width = "0"; qstat.textContent = "Saisie de la question…";
     typeTo(q.q, () => {
-      phase = "scan"; pt = 0; qstat.textContent = "Lecture du dossier…"; scanZ = DEPTH;
+      phase = "scan"; pt = 0; qstat.textContent = "Lecture de l'index…"; scanZ = DEPTH;
     });
   }
   function startMatch() {
@@ -978,7 +1176,7 @@ const QUERIES = [
       p.m = { sx: s.x, sy: s.y, tx: row.left - cb.left + 8 + (i / cardRows.length | 0) * 10, ty: row.top - cb.top + row.height / 2 + ((i / cardRows.length | 0) - 1) * 6, row: i % cardRows.length };
       return p;
     });
-    qstat.textContent = `${cardRows.length} passages pertinents · 0,8 s`;
+    qstat.textContent = curQ.stat;
   }
   let last = performance.now(), running = true, raf = 0;
   function frame(now) {
@@ -990,7 +1188,7 @@ const QUERIES = [
     if (phase === "scan") {
       pt += dt; scanZ -= dt * 2600;
       qbar.style.width = Math.min(100, pt / 1.3 * 100) + "%";
-      qcount.textContent = fmt(Math.min(12480, Math.round(pt / 1.3 * 12480)));
+      qcount.textContent = fmt(Math.min(8622, Math.round(pt / 1.3 * 8622)));
       if (pt > 1.3) startMatch();
     } else if (phase === "match") {
       pt += dt;
@@ -1034,7 +1232,7 @@ const QUERIES = [
     }
     if (running) raf = requestAnimationFrame(frame);
   }
-  if (RM) { renderHits(QUERIES[0], true); qtext.textContent = QUERIES[0].q; qstat.textContent = "3 passages pertinents · 0,8 s"; qbar.style.width = "100%";
+  if (RM) { renderHits(QUERIES[0], true); qtext.textContent = QUERIES[0].q; qstat.textContent = QUERIES[0].stat; qbar.style.width = "100%";
     running = false; frame(performance.now()); return; }
   renderHits(QUERIES[0], false);
   raf = requestAnimationFrame(frame);
@@ -1066,37 +1264,45 @@ const DOCS = [
   const cells = $$("i", mm);
   const cellOf = DOCS.map((_, i) => Math.floor((i + .5) / DOCS.length * CELLS));
   let run = 0;
-  const terms = q => norm(q).split(/[^a-z0-9$]+/).filter(t => t.length > 2 && !STOP.has(t)).map(t => t.length > 5 ? t.slice(0, t.length - 1) : t);
-  function highlight(text, ts) {
-    const n = norm(text); const marks = new Array(text.length).fill(false);
-    ts.forEach(t => { let i = n.indexOf(t); while (i !== -1) { let j = i + t.length; while (j < n.length && /[a-z]/.test(n[j])) j++; for (let k = i; k < j; k++) marks[k] = true; i = n.indexOf(t, j); } });
+  const terms = q => norm(q).split(/[^a-z0-9$]+/).filter(t => t.length > 2 && !STOP.has(t)).map(t => t.replace(/(s|x)$/, ""));
+  // Une mention = l'expression entière (accents repliés, pluriels tolérés, un ou deux petits mots entre les termes permis)
+  const phraseRe = ts => new RegExp("\\b" + ts.map(t => t + "(?:e?s|x)?").join("(?:[\\s']+[a-z]{1,3})?[\\s']+") + "\\b", "g");
+  const termRe = t => new RegExp("\\b" + t + "(?:e?s|x)?\\b", "g");
+  const spans = (n, re) => { const out = []; let m; re.lastIndex = 0; while ((m = re.exec(n))) { out.push([m.index, m.index + m[0].length]); if (!m[0].length) re.lastIndex++; } return out; };
+  function highlight(text, hits) {
+    const marks = new Array(text.length).fill(false);
+    hits.forEach(([a, b]) => { for (let k = a; k < b; k++) marks[k] = true; });
     let out = "", open = false;
     for (let i = 0; i < text.length; i++) { if (marks[i] && !open) { out += "<mark>"; open = true; } if (!marks[i] && open) { out += "</mark>"; open = false; } out += esc(text[i]); }
     return out + (open ? "</mark>" : "");
   }
   function go(q) {
     const id = ++run, ts = terms(q);
-    const scored = DOCS.map((d, i) => { const n = norm(d.t + " " + d.x); let s = 0; ts.forEach(t => { let k = n.indexOf(t); while (k !== -1) { s++; k = n.indexOf(t, k + 1); } }); return { d, i, s }; }).filter(r => r.s > 0).sort((a, b) => b.s - a.s);
-    const max = scored[0]?.s || 1, total = 38412, dur = RM ? 0 : 1100, t0 = performance.now();
-    res.innerHTML = `<p class="empty mono">Lecture de ${fmt(DOCS.length)} pièces…</p>`;
+    const pr = ts.length ? phraseRe(ts) : null;
+    let scored = !pr ? [] : DOCS.map((d, i) => { const h = spans(norm(d.x), pr), t = spans(norm(d.t), pr); return { d, i, s: h.length + t.length, h }; }).filter(r => r.s > 0);
+    if (ts.length > 1 && !scored.length) // aucune expression exacte : pièces où tous les termes apparaissent
+      scored = DOCS.map((d, i) => { const n = norm(d.x), per = ts.map(t => spans(n, termRe(t))); return { d, i, s: per.every(x => x.length) ? per.reduce((a, x) => a + x.length, 0) : 0, h: per.flat() }; }).filter(r => r.s > 0);
+    scored.sort((a, b) => b.s - a.s);
+    const max = scored[0]?.s || 1, total = 8622, dur = RM ? 0 : 1100, t0 = performance.now();
+    res.innerHTML = `<p class="empty mono">Lecture de l'index…</p>`;
     cells.forEach(c => c.className = "");
     const hitCells = new Set(scored.map(r => cellOf[r.i]));
     const step = now => {
       if (id !== run) return;
       const k = dur ? Math.min(1, (now - t0) / dur) : 1;
       pagesEl.textContent = fmt(Math.round(total * k));
-      timeEl.textContent = (k * .84).toFixed(2).replace(".", ",") + " s";
+      timeEl.textContent = Math.round(k * 7) + " ms";
       const upto = Math.floor(k * CELLS);
       for (let i = 0; i < upto; i++) cells[i].className = hitCells.has(i) ? "hit" : (i > upto - 10 ? "scan" : "");
       if (k < 1) return requestAnimationFrame(step);
       cells.forEach((c, i) => c.className = hitCells.has(i) ? "hit" : "");
       if (!ts.length || !scored.length) { res.innerHTML = `<p class="empty">Aucun passage dans ce dossier d'exemple ne correspond à « ${esc(q)} ». Essayez une des suggestions ci-dessus.</p>`; return; }
-      res.innerHTML = scored.slice(0, 5).map((r, j) => `<article class="res" style="animation-delay:${j * .09}s"><div class="res-head"><span class="cote">${r.d.c}</span><strong>${esc(r.d.t)}</strong><span class="mono">${r.d.d} · ${r.d.p} p.</span></div><p>${highlight(r.d.x, ts)}</p><div class="score" title="Pertinence"><i style="width:${Math.round(40 + 60 * r.s / max)}%"></i></div></article>`).join("");
+      res.innerHTML = scored.slice(0, 5).map((r, j) => `<article class="res" style="animation-delay:${j * .09}s"><div class="res-head"><span class="cote">${r.d.c}</span><strong>${esc(r.d.t)}</strong><span class="mcount">${r.s} mention${r.s > 1 ? "s" : ""}</span><span class="mono">${r.d.d} · ${r.d.p} p.</span></div><p>${highlight(r.d.x, r.h)}</p><div class="score" title="Pertinence"><i style="width:${Math.round(40 + 60 * r.s / max)}%"></i></div></article>`).join("");
     };
     requestAnimationFrame(step);
   }
   $("#sform").addEventListener("submit", e => { e.preventDefault(); go(inp.value); });
-  $$(".chip").forEach(c => c.addEventListener("click", () => { inp.value = c.textContent; go(inp.value); }));
+  $$("#chips .chip").forEach(c => c.addEventListener("click", () => { inp.value = c.textContent; go(inp.value); }));
   let started = false;
   onView($("#recherche"), v => { if (v && !started) { started = true; go(inp.value); } }, { threshold: .2 });
 })();
@@ -1106,24 +1312,23 @@ const DOCS = [
    ========================================================= */
 (function transcript() {
   const U = [
-    ["04:11:52", "a", "Me Bouchard", "Monsieur Tremblay, je vous montre la pièce P-7. Vous la reconnaissez ?"],
-    ["04:11:58", "b", "M. Tremblay", "Oui. C'est la mise en demeure que j'ai envoyée à Mme Gagnon."],
-    ["04:12:08", "a", "Me Bouchard", "À quelle date l'avez-vous envoyée ?"],
-    ["04:12:11", "b", "M. Tremblay", "Le 19 mars 2021, par courriel et par huissier le lendemain."],
-    ["04:12:20", "c", "Me Roy", "Objection, la signification par huissier n'est pas en preuve."],
-    ["04:12:26", "a", "Me Bouchard", "Je reformule. Qu'est-ce qui vous a poussé à l'envoyer à ce moment-là ?"],
-    ["04:12:33", "b", "M. Tremblay", "L'eau au sous-sol. On l'a vue dès la mi-mars, juste après les fissures."],
-    ["04:12:44", "a", "Me Bouchard", "Donc avant le mois de mai ?"],
-    ["04:12:47", "b", "M. Tremblay", "Bien avant. Le procès-verbal de mai ne faisait que le confirmer."],
-    ["04:12:55", "a", "Me Bouchard", "Et le drain français, l'avez-vous vu installé ?"],
-    ["04:13:01", "b", "M. Tremblay", "Jamais. Ni moi, ni le surintendant."]
+    ["04:11:52", "04:11:58", "Q. Je vous montre la pièce P-7. Vous la reconnaissez ?"],
+    ["04:11:58", "04:12:08", "R. Oui. C'est la mise en demeure envoyée à Mme Gagnon."],
+    ["04:12:08", "04:12:11", "Q. À quelle date l'avez-vous envoyée ?"],
+    ["04:12:11", "04:12:20", "R. Le 19 mars 2021, par courriel."],
+    ["04:12:20", "04:12:26", "Objection, la signification n'est pas en preuve."],
+    ["04:12:26", "04:12:33", "Q. Qu'est-ce qui vous a poussé à l'envoyer à ce moment-là ?"],
+    ["04:12:33", "04:12:44", "R. L'eau au sous-sol. On l'a vue dès la mi-mars."],
+    ["04:12:44", "04:12:47", "Q. Donc avant le mois de mai ?"],
+    ["04:12:47", "04:12:55", "R. Bien avant. Le procès-verbal de mai ne faisait que le confirmer."],
+    ["04:12:55", "04:13:01", "Q. Et le drain français, l'avez-vous vu installé ?"],
+    ["04:13:01", "04:13:04", "R. Jamais."]
   ];
   const box = $("#script");
-  box.innerHTML = U.map(u => `<div class="utt"><span class="t">${u[0]}</span><span class="who ${u[1]}">${u[2]}</span><p>${u[3].split(" ").map(w => `<w>${esc(w)}</w>`).join(" ")}</p></div>`).join("");
+  box.innerHTML = U.map(u => `<div class="utt"><span class="t">${u[0]}</span><span class="who seg">→ ${u[1]}</span><p>${u[2].split(" ").map(w => `<w>${esc(w)}</w>`).join(" ")}</p></div>`).join("");
   const utts = $$(".utt", box), clock = $("#clock");
   const toS = t => { const [h, m, s] = t.split(":").map(Number); return h * 3600 + m * 60 + s; };
   const pad = n => String(n).padStart(2, "0");
-  const T0 = toS(U[0][0]);
 
   const cv = $("#wave"), ctx = cv.getContext("2d");
   const BARS = 220, amp = [];
@@ -1160,8 +1365,6 @@ const DOCS = [
     }
     ctx.fillStyle = "#ECE7DC"; ctx.fillRect(ph - 1, 0, 2, H);
     ctx.beginPath(); ctx.arc(ph, 4, 4, 0, 7); ctx.fill();
-    // markers for speakers
-    [[.12, "#7C92FF"], [.31, "#F4C24D"], [.52, "#6FD3A4"], [.74, "#7C92FF"]].forEach(([p, c]) => { ctx.fillStyle = c; ctx.fillRect(p * W, H - 3, 18, 3); });
     if (visible) requestAnimationFrame(draw); else last = 0;
   }
   setUtt(0);
@@ -1174,39 +1377,26 @@ const DOCS = [
 })();
 
 /* =========================================================
-   L&M-3 — distillation du passage
+   Index liminaires — lecture ligne par ligne
    ========================================================= */
-(function summary() {
-  const SRC = [
-    "1 À la suite de nos visites des 12 et 19 novembre, nous avons examiné la fondation côté nord.",
-    "2 Nous y avons relevé trois fissures verticales d'une largeur variant de 2 à 6 mm.",
-    "3 [[Selon nos constatations, ces fissures résultent d'un drainage périphérique absent,]]",
-    "4 [[et non de l'action du gel]] comme le suggère la lettre de la défenderesse.",
-    "5 Les sondages effectués à trois endroits n'ont révélé aucune trace de membrane de drainage.",
-    "6 L'eau s'accumule contre le mur de fondation lors de chaque épisode de pluie.",
-    "7 Nous avons comparé ces constats avec le devis joint au contrat, à l'article 7.2.",
-    "8 [[Le drain français prévu à l'article 7.2 n'a jamais été installé,]]",
-    "9 bien que la facture finale D-5 en fasse mention comme travail exécuté.",
-    "10 [[Cette omission suffit à expliquer l'infiltration constatée au procès-verbal P-12.]]",
-    "11 D'autres causes ont été envisagées, notamment un défaut de remblai, puis écartées.",
-    "12 Les correctifs requièrent l'excavation du périmètre et la pose d'un drain conforme.",
-    "13 Nous estimons le coût des travaux correctifs, incluant la remise en état du terrain,",
-    "14 [[à 38 500 $ avant taxes,]] selon trois soumissions obtenues en décembre."
-  ];
-  $("#docp").innerHTML = SRC.map(l => { const [n, ...r] = l.split(" "); const t = r.join(" ").replace(/\[\[(.+?)\]\]/g, (_, m) => `</s><s class="k">${m}</s><s>`); return `<span class="ln">${n.padStart(2, "0")}</span><s>${t}</s>`; }).join("<br>");
-  const doc = $("#doc"), lis = $$("#sumlist li");
-  let timers = [];
-  const run = () => {
-    timers.forEach(clearTimeout); timers = [];
-    doc.classList.remove("distill"); lis.forEach(l => l.classList.remove("on"));
-    timers.push(setTimeout(() => doc.classList.add("distill"), 700));
-    lis.forEach((l, i) => timers.push(setTimeout(() => l.classList.add("on"), 1500 + i * 550)));
-    timers.push(setTimeout(run, 9000));
-  };
-  doc.classList.add("distill"); lis.forEach(l => l.classList.add("on"));
+(function lim() {
+  const box = $("#lim"), src = $$(".lim-page p[data-k]", box), out = $$(".lim-card [data-k]", box);
+  const all = () => { src.forEach(p => p.classList.remove("read")); out.forEach(o => o.classList.add("on")); };
+  all();
   if (RM) return;
+  let t = [];
+  const run = () => {
+    t.forEach(clearTimeout); t = [];
+    out.forEach(o => o.classList.remove("on"));
+    for (let k = 0; k < 8; k++) t.push(setTimeout(() => {
+      src.forEach(p => p.classList.toggle("read", +p.dataset.k === k));
+      out.filter(o => +o.dataset.k === k).forEach(o => o.classList.add("on"));
+    }, 500 + k * 450));
+    t.push(setTimeout(() => src.forEach(p => p.classList.remove("read")), 500 + 8 * 450));
+    t.push(setTimeout(run, 9000));
+  };
   let on = false;
-  onView($("#sumbox"), v => { if (v && !on) { on = true; run(); } else if (!v && on) { on = false; timers.forEach(clearTimeout); doc.classList.add("distill"); lis.forEach(l => l.classList.add("on")); } }, { threshold: .3 });
+  onView(box, v => { if (v && !on) { on = true; run(); } else if (!v && on) { on = false; t.forEach(clearTimeout); all(); } }, { threshold: .3 });
 })();
 
 /* =========================================================
@@ -1214,7 +1404,7 @@ const DOCS = [
    ========================================================= */
 (function lists() {
   const pr = $("#lprompt"), panes = $$(".lpane"), tabs = $$(".ltab"), foot = $("#lfoot");
-  const FOOT = ["6 communications · 4 pièces de la demande, 1 de la défense, 1 transcription", "5 témoins · 32 pièces analysées · triés par nombre de mentions"];
+  const FOOT = ["Témoin B · 3 volumes · exemple fictif", "P-40 · 4 passages dans 3 volumes · exemple fictif", "4 engagements · 2 jamais repris · exemple fictif", "3 cotes discutées qu'aucune liste ne déclare · exemple fictif"];
   let t = [], cur = 0;
   const clear = () => { t.forEach(clearTimeout); t = []; };
   const show = (k, animate) => {
@@ -1276,28 +1466,29 @@ const DOCS = [
   document.fonts?.ready.then(() => requestAnimationFrame(draw));
 })();
 
-/* ---------- classement ---------- */
+/* ---------- classement : 4 modes, réversible ---------- */
 (function sorter() {
   const F = [
-    ["scan_0042.pdf", "pdf", "P-01", "2021-02-03", "Contrat d'entreprise", "Pièces de la demande", "M. Tremblay"],
-    ["RE_ RE_ retard (2).msg", "msg", "P-04", "2021-03-12", "Courriel sur le retard", "Pièces de la demande", "M. Tremblay"],
-    ["MED_final_FINAL.docx", "docx", "P-07", "2021-03-19", "Mise en demeure", "Pièces de la demande", "M. Tremblay"],
-    ["Document (3).pdf", "pdf", "D-02", "2021-04-02", "Courriel de réponse", "Pièces de la défense", "Mme Gagnon"],
-    ["IMG_2231.jpg", "jpg", "D-09", "2021-04-20", "Photo de chantier", "Pièces de la défense", "Mme Gagnon"],
-    ["pv chantier mai.pdf", "pdf", "P-12", "2021-05-04", "Procès-verbal de chantier", "Pièces de la demande", "Me Roy"],
-    ["rapport ing v4.pdf", "pdf", "P-15", "2022-01-20", "Rapport d'expertise", "Pièces de la demande", "Ingénieur expert"],
-    ["REC_2023-03-08.wav", "wav", "P-33", "2023-03-08", "Interrogatoire de M. Tremblay", "Enregistrements", "M. Tremblay"]
+    ["scan_0042.pdf", "pdf", "2021-02-03", 2480],
+    ["RE_ RE_ retard (2).msg", "msg", "2021-03-12", 86],
+    ["MED_final_FINAL.docx", "docx", "2021-03-19", 142],
+    ["Document (3).pdf", "pdf", "2021-04-02", 310],
+    ["IMG_2231.jpg", "jpg", "2021-04-20", 3920],
+    ["pv chantier mai.rtf", "rtf", "2021-05-04", 64],
+    ["rapport ing v4.pdf", "pdf", "2022-01-20", 5210],
+    ["REC_2023-03-08.wav", "wav", "2023-03-08", 812000]
   ];
-  const slug = x => x.replace(/'/g, "-").replace(/ /g, "-");
-  const RULES = [
-    { p: "Renomme chaque document par cote, date et description, et classe-les par partie.",
-      folder: f => f[5], name: f => `${f[2]}_${f[3]}_${slug(f[4])}.${f[1]}` },
-    { p: "Classe tout par année, et nomme chaque fichier : date, partie, description.",
-      folder: f => f[3].slice(0, 4), name: f => `${f[3]} – ${f[5].includes("défense") ? "Défense" : f[5].includes("demande") ? "Demande" : "Audio"} – ${f[4]}.${f[1]}` },
-    { p: "Fais un dossier par personne et nomme chaque fichier : personne, description, date.",
-      folder: f => f[6], name: f => `${f[6].replace(/^(M\.|Mme|Me) /, "")} – ${f[4]} – ${f[3]}.${f[1]}` }
+  const TYPES = { pdf: "PDF", msg: "Courriels", docx: "Documents", rtf: "Documents", jpg: "Images", wav: "Audio" };
+  const size = kb => kb >= 1024 ? (kb / 1024).toFixed(kb >= 10240 ? 0 : 1).replace(".", ",") + " Mo" : kb + " Ko";
+  const nn = i => String(i + 1).padStart(3, "0");
+  const byName = (a, b) => F[a][0].localeCompare(F[b][0], "fr", { sensitivity: "base" });
+  const MODES = [
+    { key: "date", order: (a, b) => F[a][2].localeCompare(F[b][2]), name: (f, n) => `${f[2]}_${f[0]}` },
+    { key: "nom", order: byName, name: (f, n) => `${nn(n)}_${f[0]}` },
+    { key: "type", group: f => TYPES[f[1]], order: byName, name: (f, n) => `${nn(n)}_${f[0]}` },
+    { key: "taille", order: (a, b) => F[b][3] - F[a][3], name: (f, n) => `${nn(n)}_${f[0]}`, showSize: true }
   ];
-  const raw = $("#raw"), tree = $("#tree"), pr = $("#sprompt"), chips = $$("#sorter .chip");
+  const raw = $("#raw"), tree = $("#tree"), chips = $$("#sorter .chip[data-rule]"), undo = $("#undo"), label = $("#after-label"), note = $("#sort-note");
   raw.innerHTML = F.map(f => `<li><span class="ext">${f[1].toUpperCase()}</span><span>${esc(f[0])}</span></li>`).join("");
   const rawLis = $$("li", raw);
   const GL = "abcdefghijklmnopqrstuvwxyz0123456789_-";
@@ -1305,7 +1496,7 @@ const DOCS = [
   const clear = () => { timers.forEach(clearTimeout); timers = []; };
   function scramble(el, text) {
     if (RM) { el.textContent = text; return; }
-    let f = 0; const N = 14;
+    let f = 0; const N = 12;
     const it = setInterval(() => {
       f++; const k = Math.floor(text.length * f / N);
       el.textContent = text.slice(0, k) + Array.from(text.slice(k), c => c === " " ? " " : GL[Math.random() * GL.length | 0]).join("");
@@ -1313,27 +1504,92 @@ const DOCS = [
     }, 40);
     timers.push(it);
   }
+  const row = (i, show) => `<div class="f" data-i="${i}"><span class="ext">${F[i][1].toUpperCase()}</span><span></span>${show ? `<span class="size mono">${size(F[i][3])}</span>` : ""}</div>`;
+  function render(groups, names, animate, showSize) {
+    tree.innerHTML = groups.map(([g, ids]) => `<div class="folder"><b>${esc(g)}</b>${ids.map(i => row(i, showSize)).join("")}</div>`).join("");
+    const rows = $$(".f", tree);
+    if (!animate || RM) { rows.forEach(el => { el.classList.add("on"); $("span:nth-child(2)", el).textContent = names[+el.dataset.i]; }); return; }
+    rows.forEach((el, n) => timers.push(setTimeout(() => {
+      const i = +el.dataset.i; rawLis[i].classList.add("gone"); el.classList.add("on");
+      scramble($("span:nth-child(2)", el), names[i]);
+    }, 350 + n * 260)));
+  }
   function build(r, animate) {
     clear(); cur = r;
+    const M = MODES[r];
     chips.forEach((c, i) => c.classList.toggle("on", i === r));
-    const R = RULES[r]; pr.textContent = R.p;
-    const groups = new Map();
-    F.forEach((f, i) => { const g = R.folder(f); if (!groups.has(g)) groups.set(g, []); groups.get(g).push(i); });
-    const keys = [...groups.keys()].sort((a, b) => a.localeCompare(b, "fr"));
-    tree.innerHTML = keys.map(k => `<div class="folder"><b>${esc(k)}</b>${groups.get(k).map(i => `<div class="f" data-i="${i}"><span class="ext">${F[i][1].toUpperCase()}</span><span></span></div>`).join("")}</div>`).join("");
-    const rows = $$(".f", tree);
-    if (!animate || RM) { rows.forEach(el => { el.classList.add("on"); $("span:last-child", el).textContent = R.name(F[+el.dataset.i]); }); rawLis.forEach(l => l.classList.add("gone")); return; }
+    label.textContent = "Après"; note.textContent = "mode : " + M.key;
+    rawLis.forEach(l => l.classList.toggle("gone", !animate || RM));
+    const ids = F.map((_, i) => i);
+    let groups;
+    if (M.group) {
+      const m = new Map();
+      ids.forEach(i => { const g = M.group(F[i]); if (!m.has(g)) m.set(g, []); m.get(g).push(i); });
+      groups = [...m.entries()].sort((a, b) => a[0].localeCompare(b[0], "fr")).map(([g, v]) => [g + "/", v.sort(M.order)]);
+    } else groups = [["Classé/", ids.sort(M.order)]];
+    const names = {};
+    groups.forEach(([, v]) => v.forEach((i, n) => names[i] = M.name(F[i], n)));
+    render(groups, names, animate, M.showSize);
+  }
+  function restore() {
+    clear();
+    chips.forEach(c => c.classList.remove("on"));
+    label.textContent = "Après defaire_classement"; note.textContent = "noms d'avant rétablis";
     rawLis.forEach(l => l.classList.remove("gone"));
-    F.forEach((f, i) => timers.push(setTimeout(() => {
-      rawLis[i].classList.add("gone");
-      const el = tree.querySelector(`.f[data-i="${i}"]`); el.classList.add("on");
-      scramble($("span:last-child", el), R.name(f));
-    }, 400 + i * 320)));
+    const names = {}; F.forEach((f, i) => names[i] = f[0]);
+    render([["Divulgation/", F.map((_, i) => i)]], names, true, false);
   }
   chips.forEach((c, i) => c.addEventListener("click", () => build(i, true)));
+  undo.addEventListener("click", restore);
   build(0, false);
   let seen = false;
   onView($("#sorter"), v => { if (v && !seen) { seen = true; build(cur, true); } }, { threshold: .3 });
+})();
+
+/* ---------- témoins : z de deux proportions ---------- */
+(function witnesses() {
+  const W = [["Témoin A", 4, 120, 31, 180], ["Témoin B", 6, 150, 22, 160], ["Témoin C", 3, 90, 15, 110], ["Témoin D", 8, 200, 24, 210], ["Témoin E", 5, 80, 16, 95], ["Témoin F", 7, 140, 9, 150], ["Témoin G", 10, 160, 12, 170]];
+  const pct = p => (p * 100).toFixed(1).replace(".", ",") + " %";
+  const rows = W.map(([n, x1, n1, x2, n2]) => {
+    const p1 = x1 / n1, p2 = x2 / n2, pp = (x1 + x2) / (n1 + n2);
+    const z = (p2 - p1) / Math.sqrt(pp * (1 - pp) * (1 / n1 + 1 / n2));
+    return { n, x1, n1, x2, n2, p1, p2, d: (p2 - p1) * 100, z };
+  }).sort((a, b) => b.d - a.d);
+  const body = $("#witbody");
+  body.innerHTML = rows.map(r => `<tr><td>${r.n}</td>
+    <td><span class="pbar"><i data-w="${Math.min(100, r.p1 * 500)}"></i></span>${r.x1}/${r.n1} · ${pct(r.p1)}</td>
+    <td><span class="pbar c"><i data-w="${Math.min(100, r.p2 * 500)}"></i></span>${r.x2}/${r.n2} · ${pct(r.p2)}</td>
+    <td>${r.d.toFixed(1).replace(".", ",")} pts</td><td>${r.z.toFixed(2).replace(".", ",")}</td>
+    <td>${Math.abs(r.z) >= 1.96 ? '<span class="tag hit">Changement significatif</span>' : '<span class="tag">Dans la marge</span>'}</td></tr>`).join("");
+  const bars = $$("i[data-w]", body);
+  const fill = () => bars.forEach(b => b.style.width = b.dataset.w + "%");
+  fill();
+  if (RM) return;
+  let done = false;
+  onView($("#witbox"), v => { if (v && !done) { done = true; bars.forEach(b => b.style.width = "0"); requestAnimationFrame(() => requestAnimationFrame(fill)); } }, { threshold: .3 });
+})();
+
+/* ---------- droit du travail : échéance art. 123 LNT ---------- */
+(function lnt() {
+  const MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+  const d = $("#lnt-date"), u = $("#lnt-unknown"), res = $("#lnt-res"), sub = $("#lnt-sub");
+  const txt = (dt, sup) => { const j = dt.getUTCDate(); return `${j === 1 ? (sup ? "1<sup>er</sup>" : "1er") : j} ${MOIS[dt.getUTCMonth()]} ${dt.getUTCFullYear()}`; };
+  function calc() {
+    d.disabled = u.checked;
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d.value);
+    if (u.checked || !m) {
+      res.textContent = "Inconnue"; res.classList.add("unk");
+      sub.textContent = "Date de l'événement inconnue : aucune échéance n'est calculée.";
+      return;
+    }
+    const start = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3]));
+    const end = new Date(start.getTime() + 45 * 86400000);
+    res.classList.remove("unk"); res.innerHTML = txt(end, true);
+    sub.textContent = `${txt(start, false)} + 45 jours`;
+  }
+  d.addEventListener("input", calc); u.addEventListener("change", calc);
+  $("#calc").addEventListener("submit", e => e.preventDefault());
+  calc();
 })();
 
 /* ---------- versus ---------- */

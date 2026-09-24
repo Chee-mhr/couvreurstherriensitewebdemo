@@ -18,23 +18,17 @@ git checkout claude/determined-mendel-or8lrt
 
 Lire `lavoie-maher/LISEZMOI.md`, puis ouvrir `lavoie-maher/index.html` dans le navigateur.
 
-## Étape 2 — Trancher les points de contenu en suspens
+## Étape 2 — Contenu : ne rien ajouter
 
-Demander à l'utilisateur, puis appliquer dans `index.html` :
+Le contenu du site décrit exactement ce que fait le produit (texte fourni par l'entreprise) :
+faire entrer un dossier (formats, OCR Qwen3-VL, Whisper, inventaire, estimation),
+classement en quatre modes réversible, `question` / `mentions` / `partout` / `chronologie`,
+index des pages liminaires, les quatre assemblages, `temoins` et `credibilite`,
+calcul d'échéance en droit du travail, plus la carte « Français et anglais » gardée à la demande.
 
-1. **Jaune dans les démos.** Les mots trouvés (recherche, `<mark>`) et les phrases clés
-   du résumé (`.doc.distill .k`) sont colorés en jaune. L'entreprise ne promet pas le
-   surlignage : faut-il retirer cette mise en couleur ?
-2. **Trois cartes de la section « Et plus encore » (L&M-7) non confirmées.** L'outil
-   fait-il vraiment :
-   - « Chronologie automatique » ;
-   - « Lecture des numérisations » (PDF scannés, notes manuscrites) ;
-   - « Français et anglais » ?
-   Retirer celles qui ne s'appliquent pas. Garder un nombre de cartes qui remplit la
-   grille (3 colonnes) ou ajuster la grille.
-
-Déjà retirés à la demande de l'entreprise, à ne pas réintroduire : détection de
-contradictions, caviardage, repérage de renseignements personnels, surlignage.
+Ne réintroduire aucune fonction absente de cette liste (notamment : résumés, détection de
+contradictions, caviardage, repérage de renseignements personnels, surlignage).
+Les exemples des démos sont fictifs et anonymisés (témoins A à G, dossiers A à C).
 
 ## Étape 3 — Compléter les informations manquantes
 
