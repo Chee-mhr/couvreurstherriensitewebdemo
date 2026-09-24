@@ -1,0 +1,1072 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lavoie&amp;Maher</title>
+<meta name="description" content="Lavoie&amp;Maher, inc. — plateforme d'intelligence artificielle pour la preuve juridique : recherche dans des milliers de pièces, transcription d'audio de longue durée, résumés et listes sourcés.">
+<meta name="theme-color" content="#0A0F1E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Hanken+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* =========================================================================
+   LAVOIE&MAHER, INC. — Intelligence de preuve
+   Direction : encre juridique & surligneur — un dossier qui s'éclaire
+   Thème     : sombre assumé (monde unique), couleurs toutes explicites
+   ========================================================================= */
+:root{
+  color-scheme: dark;
+  --ink:#0A0F1E;
+  --ink-2:#0F1529;
+  --panel:#121A33;
+  --panel-2:#18213F;
+  --line:rgba(150,168,230,.14);
+  --line-2:rgba(150,168,230,.26);
+  --paper:#ECE7DC;
+  --paper-dim:#B9B6B0;
+  --muted:#8A92AB;
+  --amber:#F4C24D;
+  --amber-soft:rgba(244,194,77,.16);
+  --azure:#7C92FF;
+  --azure-soft:rgba(124,146,255,.16);
+  --ok:#6FD3A4;
+  --danger:#FF7A6B;
+
+  --f-display:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --f-body:"Hanken Grotesk", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --gutter:clamp(16px, 4vw, 48px);
+  --max:1240px;
+  --r:14px;
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--ink)}
+body{
+  margin:0;background:var(--ink);color:var(--paper);
+  font-family:var(--f-body);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+::selection{background:var(--amber);color:var(--ink)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.mono{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.04em}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(2.2rem, 5vw, 4.2rem);line-height:1.02}
+h3{font-size:1.5rem;line-height:1.15}
+h2 em,h1 em{font-style:italic;color:var(--amber)}
+p{margin:0}
+.lede{color:var(--paper-dim);font-size:1.12rem;max-width:58ch}
+
+/* ---------- grain + spotlight ---------- */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.spot{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:1;
+  background:radial-gradient(circle, rgba(124,146,255,.10), transparent 62%);
+  transform:translate(-50%,-50%);left:-600px;top:-600px;transition:opacity .4s}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);
+  transition:background .4s, border-color .4s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(10,15,30,.78);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
+.brand{display:flex;align-items:baseline;gap:.15em;text-decoration:none;font-family:var(--f-display);font-size:1.45rem;font-weight:500;letter-spacing:-.01em;white-space:nowrap}
+.brand .amp{font-style:italic;color:var(--amber);font-weight:400;padding-inline:.04em}
+.brand small{font-family:var(--f-mono);font-size:.62rem;color:var(--muted);letter-spacing:.1em;margin-left:.5em}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;color:var(--paper-dim);font-size:.92rem;transition:color .2s}
+.nav ul a:hover{color:var(--paper)}
+@media (max-width:900px){.nav ul{display:none}}
+
+.btn{--bx:0px;--by:0px;display:inline-flex;align-items:center;gap:.6em;border:0;cursor:pointer;
+  font:600 .95rem/1 var(--f-body);padding:15px 22px;border-radius:999px;text-decoration:none;
+  transform:translate(var(--bx),var(--by));transition:transform .25s var(--ease), background .25s, box-shadow .25s}
+.btn-amber{background:var(--amber);color:var(--ink);box-shadow:0 0 0 0 rgba(244,194,77,.5)}
+.btn-amber:hover{box-shadow:0 10px 40px -8px rgba(244,194,77,.6)}
+.btn-ghost{background:transparent;color:var(--paper);border:1px solid var(--line-2)}
+.btn-ghost:hover{background:rgba(255,255,255,.04)}
+.btn .arr{transition:transform .25s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-block:clamp(120px,16vh,170px) 72px;overflow:hidden;isolation:isolate}
+#field{position:absolute;inset:0;width:100%;height:100%;z-index:-1;display:block}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(120% 80% at 20% 40%, rgba(10,15,30,.86) 0%, rgba(10,15,30,.35) 55%, rgba(10,15,30,.1) 100%),
+             linear-gradient(to bottom, transparent 70%, var(--ink) 100%)}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(32px,5vw,72px);align-items:center}
+@media (max-width:980px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(3.1rem, 8.4vw, 7.6rem);line-height:.92;letter-spacing:-.025em;font-weight:500}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .line > span{display:inline-block;animation:rise 1.2s var(--ease) both}
+.hero h1 .line:nth-child(2) > span{animation-delay:.12s}
+.hero h1 .line:nth-child(3) > span{animation-delay:.24s}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+.hero .lede{margin-top:28px;animation:fadeup 1s .45s var(--ease) both}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px;animation:fadeup 1s .6s var(--ease) both}
+@keyframes fadeup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:26px;animation:fadeup 1s var(--ease) both}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(111,211,164,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(111,211,164,0)}100%{box-shadow:0 0 0 0 rgba(111,211,164,0)}}
+
+/* console */
+.console{position:relative;background:linear-gradient(180deg, rgba(24,33,63,.82), rgba(15,21,41,.9));
+  border:1px solid var(--line-2);border-radius:18px;padding:18px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 40px 120px -30px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.06);animation:fadeup 1.2s .5s var(--ease) both}
+.console-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;color:var(--muted)}
+.dots{display:flex;gap:6px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--line-2)}
+.q{display:flex;align-items:center;gap:12px;background:rgba(10,15,30,.7);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-height:54px}
+.q svg{flex:none;color:var(--amber)}
+.q-text{font-size:1rem;color:var(--paper);min-width:0;overflow-wrap:anywhere}
+.caret{display:inline-block;width:2px;height:1.1em;background:var(--amber);vertical-align:-.18em;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.status{display:flex;justify-content:space-between;gap:12px;margin:14px 2px 10px;color:var(--muted);font-variant-numeric:tabular-nums}
+.status b{color:var(--azure);font-weight:500}
+.bar{height:2px;background:var(--line);border-radius:2px;overflow:hidden;margin-bottom:14px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--azure),var(--amber));transition:width .15s linear}
+.hits{display:grid;gap:8px;min-height:236px}
+.hits .hit{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:12px 14px;border-radius:10px;background:rgba(244,194,77,.05);border:1px solid rgba(244,194,77,.18);
+  opacity:0;transform:translateX(-12px);transition:opacity .5s var(--ease), transform .5s var(--ease)}
+.hits .hit.on{opacity:1;transform:none}
+.cote{font-family:var(--f-mono);font-size:.72rem;color:var(--ink);background:var(--amber);padding:3px 7px;border-radius:5px;height:fit-content;letter-spacing:.04em;white-space:nowrap}
+.hits .hit p{font-size:.9rem;line-height:1.45;color:var(--paper-dim)}
+.hits .hit .loc{grid-column:2;font-family:var(--f-mono);font-size:.68rem;color:var(--muted)}
+mark{background:var(--amber-soft);color:var(--amber);padding:0 .15em;border-radius:3px;box-shadow:inset 0 -2px 0 rgba(244,194,77,.55)}
+
+.hero-meta{display:flex;flex-wrap:wrap;gap:12px 36px;margin-top:64px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted)}
+.hero-meta div{display:flex;flex-direction:column;gap:2px}
+.hero-meta strong{font-family:var(--f-display);font-weight:500;font-size:2rem;color:var(--paper);font-variant-numeric:tabular-nums;line-height:1.1}
+.hero-meta span{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+
+/* ---------- marquee ---------- */
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding-block:18px;background:var(--ink-2);
+  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;gap:48px;width:max-content;animation:scroll 42s linear infinite}
+.track span{font-family:var(--f-mono);font-size:.82rem;letter-spacing:.1em;color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:48px}
+.track span::after{content:"◆";color:var(--amber);font-size:.5rem}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+section{position:relative;z-index:2}
+.sec{padding-block:clamp(90px,12vw,150px)}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px 64px;align-items:end;margin-bottom:56px}
+@media (max-width:860px){.sec-head{grid-template-columns:1fr}}
+.tab{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px}
+.tab .cote{font-size:.74rem}
+.reveal.pending{opacity:0;transform:translateY(40px)}
+.reveal{transition:opacity 1s var(--ease), transform 1s var(--ease)}
+
+/* ---------- L&M-1 search ---------- */
+.search-app{border:1px solid var(--line-2);border-radius:20px;background:var(--ink-2);overflow:hidden;box-shadow:0 50px 120px -40px rgba(0,0,0,.7)}
+.sa-bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:18px;border-bottom:1px solid var(--line);background:var(--panel)}
+.sa-bar form{flex:1 1 380px;display:flex;gap:10px;min-width:0}
+.sa-input{flex:1;min-width:0;background:var(--ink);border:1px solid var(--line-2);color:var(--paper);border-radius:12px;padding:14px 16px;font:1rem var(--f-body)}
+.sa-input:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 4px var(--amber-soft)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.chip{font:500 .8rem var(--f-body);color:var(--paper-dim);background:transparent;border:1px solid var(--line-2);border-radius:999px;padding:7px 13px;cursor:pointer;transition:all .2s}
+.chip:hover{border-color:var(--amber);color:var(--amber)}
+.sa-body{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:440px}
+@media (max-width:820px){.sa-body{grid-template-columns:1fr}.sa-side{border-right:0!important;border-bottom:1px solid var(--line)}}
+.sa-side{border-right:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:16px}
+.sa-side .mono{color:var(--muted)}
+.gauge{display:flex;flex-direction:column;gap:4px}
+.gauge strong{font-family:var(--f-display);font-weight:500;font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums}
+.minimap{display:grid;grid-template-columns:repeat(24,1fr);gap:3px}
+.minimap i{aspect-ratio:3/4;background:var(--line);border-radius:1.5px;transition:background .3s}
+.minimap i.scan{background:var(--azure)}
+.minimap i.hit{background:var(--amber);box-shadow:0 0 8px var(--amber)}
+.sa-results{padding:18px;display:flex;flex-direction:column;gap:12px}
+.res{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--panel);display:grid;gap:8px;animation:resin .6s var(--ease) both}
+@keyframes resin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.res-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.res-head strong{font-weight:600;font-size:.98rem}
+.res-head .mono{color:var(--muted);margin-left:auto}
+.res p{color:var(--paper-dim);font-size:.94rem;line-height:1.55}
+.score{height:3px;background:var(--line);border-radius:3px;overflow:hidden}
+.score i{display:block;height:100%;background:linear-gradient(90deg,var(--azure),var(--amber))}
+.empty{color:var(--muted);padding:30px 4px;font-size:.95rem}
+.note{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);letter-spacing:.05em;padding:12px 18px;border-top:1px solid var(--line)}
+
+/* ---------- L&M-2 transcription ---------- */
+.tx{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:24px}
+@media (max-width:900px){.tx{grid-template-columns:1fr}}
+.panel{border:1px solid var(--line-2);border-radius:20px;background:var(--ink-2);overflow:hidden}
+.panel-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);background:var(--panel)}
+.panel-h .mono{color:var(--muted)}
+.wave-box{position:relative;padding:22px 20px 16px}
+#wave{width:100%;height:150px;display:block}
+.timeline{display:flex;justify-content:space-between;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:10px}
+.play{width:46px;height:46px;border-radius:50%;border:1px solid var(--line-2);background:var(--amber);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none}
+.transport{display:flex;align-items:center;gap:16px;padding:0 20px 20px}
+.transport .mono{color:var(--paper-dim);font-size:.9rem;font-variant-numeric:tabular-nums}
+.speakers{display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}
+.spk{font-family:var(--f-mono);font-size:.68rem;padding:4px 9px;border-radius:999px;border:1px solid var(--line-2);color:var(--paper-dim)}
+.spk.a{border-color:rgba(244,194,77,.5);color:var(--amber)}
+.spk.b{border-color:rgba(124,146,255,.5);color:var(--azure)}
+.script{height:430px;overflow:hidden;position:relative;padding:8px 20px;
+  mask-image:linear-gradient(transparent,#000 14%,#000 80%,transparent);-webkit-mask-image:linear-gradient(transparent,#000 14%,#000 80%,transparent)}
+.script-inner{transition:transform .8s var(--ease)}
+.utt{display:grid;grid-template-columns:74px 1fr;gap:4px 14px;padding:14px 0;border-bottom:1px dashed var(--line);opacity:.42;transition:opacity .5s}
+.utt.live{opacity:1}
+.utt .t{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+.utt .who{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+.utt .who.a{color:var(--amber)}.utt .who.b{color:var(--azure)}.utt .who.c{color:var(--ok)}
+.utt p{grid-column:2;font-size:.98rem;line-height:1.55}
+.utt p w{transition:color .2s, background .2s;border-radius:3px}
+.utt p w.said{color:var(--paper)}
+.utt p w.now{background:var(--amber-soft);color:var(--amber)}
+.utt.live p{color:rgba(236,231,220,.35)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.stats div{padding:18px 20px;border-right:1px solid var(--line)}
+.stats div:last-child{border-right:0}
+.stats strong{display:block;font-family:var(--f-display);font-weight:500;font-size:1.7rem;font-variant-numeric:tabular-nums}
+.stats span{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- L&M-3 résumé ---------- */
+.sum{display:grid;grid-template-columns:minmax(0,1.15fr) auto minmax(0,.85fr);gap:24px;align-items:stretch}
+@media (max-width:900px){.sum{grid-template-columns:1fr}.sum-arrow{transform:rotate(90deg);justify-self:center}}
+.doc{background:#F3EFE6;color:#23263A;border-radius:6px;padding:34px clamp(20px,3vw,40px);position:relative;
+  box-shadow:0 50px 100px -40px rgba(0,0,0,.8), 0 0 0 1px rgba(0,0,0,.2);font-family:var(--f-display);font-size:1.02rem;line-height:1.75}
+.doc::before{content:"";position:absolute;left:clamp(10px,1.5vw,20px);top:0;bottom:0;width:1px;background:rgba(200,60,60,.25)}
+.doc-h{display:flex;justify-content:space-between;gap:12px;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.08em;color:#6B6E80;margin-bottom:18px;text-transform:uppercase}
+.doc p s{text-decoration:none;transition:opacity .5s, filter .5s}
+.doc.distill p s{opacity:.16;filter:blur(.4px)}
+.doc p s.k{transition:background .6s, color .6s, opacity .5s}
+.doc.distill p s.k{opacity:1;filter:none;background:rgba(244,194,77,.55);color:#15182A;border-radius:2px;box-shadow:0 0 0 2px rgba(244,194,77,.55)}
+.ln{font-family:var(--f-mono);font-size:.62rem;color:#9A9CA8;margin-right:.6em;user-select:none}
+.sum-arrow{display:grid;place-items:center;color:var(--amber)}
+.sum-arrow svg{animation:nudge 2s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(6px)}}
+.summary{border:1px solid rgba(244,194,77,.3);border-radius:20px;background:linear-gradient(180deg,rgba(244,194,77,.06),transparent 60%), var(--ink-2);padding:26px;display:flex;flex-direction:column;gap:16px}
+.summary h3{font-size:1.35rem}
+.summary ol{margin:0;padding:0;list-style:none;display:grid;gap:14px;counter-reset:s}
+.summary li{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;opacity:.15;transform:translateY(8px);transition:opacity .6s var(--ease), transform .6s var(--ease)}
+.summary li.on{opacity:1;transform:none}
+.summary li::before{counter-increment:s;content:counter(s);font-family:var(--f-display);font-style:italic;color:var(--amber);font-size:1.3rem;line-height:1.2}
+.summary li span{font-size:.97rem;line-height:1.5}
+.summary li .mono{grid-column:2;color:var(--muted);font-size:.68rem}
+.ratio{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line);color:var(--muted)}
+.ratio strong{color:var(--amber);font-family:var(--f-display);font-size:1.6rem;font-weight:500}
+
+/* ---------- L&M-4 listes ---------- */
+.prompt{display:flex;align-items:flex-start;gap:14px;padding:20px;border-bottom:1px solid var(--line);background:var(--panel)}
+.avatar{width:32px;height:32px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:var(--f-display);font-style:italic;background:var(--azure-soft);color:var(--azure);border:1px solid rgba(124,146,255,.4)}
+.prompt p{font-size:1.02rem;padding-top:4px}
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:720px}
+th{text-align:left;font-family:var(--f-mono);font-weight:500;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:14px 20px;border-bottom:1px solid var(--line)}
+td{padding:14px 20px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--paper-dim)}
+td:first-child{font-family:var(--f-mono);font-size:.8rem;color:var(--paper);white-space:nowrap;font-variant-numeric:tabular-nums}
+tbody tr{opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease), transform .5s var(--ease), background .3s}
+tbody tr.on{opacity:1;transform:none}
+tbody tr:hover{background:rgba(124,146,255,.05)}
+.tag{font-family:var(--f-mono);font-size:.66rem;padding:3px 8px;border-radius:999px;border:1px solid var(--line-2);white-space:nowrap}
+.tag.warn{border-color:rgba(255,122,107,.5);color:var(--danger)}
+.tbl-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:16px 20px;color:var(--muted)}
+.fmt{display:flex;gap:8px;flex-wrap:wrap}
+.fmt span{font-family:var(--f-mono);font-size:.68rem;padding:5px 10px;border-radius:6px;background:var(--panel);border:1px solid var(--line)}
+
+/* ---------- L&M-5 plus ---------- */
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:960px){.grid6{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.grid6{grid-template-columns:1fr}}
+.cap{--rx:0deg;--ry:0deg;position:relative;border:1px solid var(--line);border-radius:18px;padding:24px;background:var(--ink-2);
+  display:flex;flex-direction:column;gap:12px;transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .3s var(--ease), border-color .3s;overflow:hidden}
+.cap:hover{border-color:var(--line-2)}
+.cap::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%), rgba(244,194,77,.09), transparent 45%)}
+.cap:hover::after{opacity:1}
+.cap p{color:var(--paper-dim);font-size:.95rem}
+.viz{height:92px;border-radius:10px;background:var(--panel);border:1px solid var(--line);position:relative;overflow:hidden;margin-bottom:6px}
+/* timeline viz */
+.v-time::before{content:"";position:absolute;left:14px;right:14px;top:50%;height:1px;background:var(--line-2)}
+.v-time i{position:absolute;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--azure);animation:pop 4s infinite}
+.v-time i:nth-child(2n){background:var(--amber)}
+@keyframes pop{0%,10%{transform:scale(0)}20%,80%{transform:scale(1)}100%{transform:scale(0)}}
+/* contradiction viz */
+.v-contra{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px}
+.v-contra div{border-radius:6px;background:var(--ink);padding:8px;font-family:var(--f-mono);font-size:.6rem;color:var(--muted);line-height:1.5}
+.v-contra b{font-weight:500;color:var(--danger);animation:flash 2.4s infinite}
+@keyframes flash{50%{background:rgba(255,122,107,.18)}}
+/* redact viz */
+.v-redact{padding:14px;font-size:.78rem;line-height:1.9;color:var(--paper-dim)}
+.v-redact em{font-style:normal;position:relative;display:inline-block}
+.v-redact em::after{content:"";position:absolute;inset:2px -2px;background:var(--paper);border-radius:2px;transform-origin:left;animation:redact 3.2s infinite}
+@keyframes redact{0%,15%{transform:scaleX(0)}40%,85%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+/* ocr viz */
+.v-ocr{display:grid;place-items:center}
+.v-ocr span{font-family:"Brush Script MT", "Segoe Script", cursive;font-size:1.5rem;color:var(--paper-dim);position:relative}
+.v-ocr::after{content:"";position:absolute;top:0;bottom:0;width:40%;background:linear-gradient(90deg,transparent,rgba(124,146,255,.35),transparent);animation:sweep 2.6s infinite linear}
+@keyframes sweep{from{left:-40%}to{left:100%}}
+/* bilingual viz */
+.v-lang{display:grid;place-items:center;font-family:var(--f-display);font-size:1.25rem}
+.v-lang span{position:absolute;transition:opacity .6s;animation:swap 5s infinite}
+.v-lang span:nth-child(2){animation-delay:-2.5s}
+@keyframes swap{0%,45%{opacity:1}50%,95%{opacity:0}100%{opacity:1}}
+/* cite viz */
+.v-cite{padding:14px;display:flex;flex-direction:column;gap:7px}
+.v-cite i{height:6px;border-radius:3px;background:var(--line-2)}
+.v-cite i:nth-child(1){width:92%}.v-cite i:nth-child(2){width:78%;background:var(--amber);animation:glow 2.2s infinite}.v-cite i:nth-child(3){width:86%}.v-cite i:nth-child(4){width:54%}
+@keyframes glow{50%{box-shadow:0 0 14px var(--amber)}}
+
+/* ---------- confidentialité ---------- */
+.vault{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,90px);align-items:center}
+@media (max-width:900px){.vault{grid-template-columns:1fr}}
+#seal{width:100%;max-width:440px;aspect-ratio:1;display:block;margin-inline:auto}
+.guar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+@media (max-width:560px){.guar{grid-template-columns:1fr}}
+.guar div{padding:22px 20px 22px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.guar strong{font-weight:600}
+.guar p{color:var(--paper-dim);font-size:.93rem}
+
+/* ---------- process ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;counter-reset:st;position:relative}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+.step{padding:28px 28px 28px 0;border-top:1px solid var(--line-2);position:relative;display:flex;flex-direction:column;gap:12px}
+.step::before{counter-increment:st;content:"0" counter(st);font-family:var(--f-display);font-style:italic;font-size:3.4rem;line-height:1;color:var(--amber)}
+.step::after{content:"";position:absolute;top:-1px;left:0;height:1px;width:0;background:var(--amber);transition:width 1.4s var(--ease)}
+.steps.go .step::after{width:100%}
+.steps.go .step:nth-child(2)::after{transition-delay:.4s}
+.steps.go .step:nth-child(3)::after{transition-delay:.8s}
+.step p{color:var(--paper-dim);font-size:.96rem;max-width:36ch}
+
+/* ---------- CTA ---------- */
+.cta{border:1px solid var(--line-2);border-radius:28px;overflow:hidden;position:relative;isolation:isolate;
+  background:radial-gradient(90% 120% at 100% 0%, rgba(124,146,255,.16), transparent 60%), radial-gradient(70% 90% at 0% 100%, rgba(244,194,77,.12), transparent 60%), var(--ink-2);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);padding:clamp(28px,5vw,64px)}
+@media (max-width:900px){.cta{grid-template-columns:1fr}}
+.cta h2{font-size:clamp(2.2rem,4.6vw,3.8rem)}
+form.demo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:520px){form.demo{grid-template-columns:1fr}}
+form.demo label{display:flex;flex-direction:column;gap:6px;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+form.demo .full{grid-column:1/-1}
+form.demo input, form.demo select, form.demo textarea{font:1rem var(--f-body);color:var(--paper);background:rgba(10,15,30,.7);border:1px solid var(--line-2);border-radius:10px;padding:12px 14px;text-transform:none;letter-spacing:0}
+form.demo textarea{resize:vertical;min-height:90px}
+form.demo input:focus, form.demo select:focus, form.demo textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 4px var(--amber-soft)}
+.form-msg{grid-column:1/-1;font-size:.92rem;color:var(--ok);min-height:1.4em}
+
+footer{border-top:1px solid var(--line);padding-block:48px calc(40px + env(safe-area-inset-bottom,0px));color:var(--muted);position:relative;z-index:2}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-end}
+footer .brand{font-size:2.2rem}
+footer p{font-size:.85rem}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .track{animation:none}
+  .reveal.pending{opacity:1;transform:none}
+}
+</style>
+
+<div class="spot" id="spot"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Lavoie&amp;Maher, inc. — accueil">Lavoie<span class="amp">&amp;</span>Maher<small>INC.</small></a>
+    <nav aria-label="Principale">
+      <ul>
+        <li><a href="#recherche">Recherche</a></li>
+        <li><a href="#transcription">Transcription</a></li>
+        <li><a href="#resume">Résumés</a></li>
+        <li><a href="#listes">Listes</a></li>
+        <li><a href="#confidentialite">Confidentialité</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-amber magnet" href="#demo">Demander une démo <span class="arr">→</span></a>
+  </div>
+</header>
+
+<main id="top">
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow"><span class="pulse"></span> Intelligence de preuve · Conçu au Québec</p>
+        <h1>
+          <span class="line"><span>Chaque preuve.</span></span>
+          <span class="line"><span>Chaque page.</span></span>
+          <span class="line"><span><em>Retrouvée.</em></span></span>
+        </h1>
+        <p class="lede">L'outil d'intelligence artificielle de Lavoie&amp;Maher fouille des milliers de pièces juridiques, transcrit des heures d'audience et répond toujours avec sa source&nbsp;: la pièce, la page, la ligne.</p>
+        <div class="hero-cta">
+          <a class="btn btn-amber magnet" href="#demo">Voir l'outil sur vos dossiers <span class="arr">→</span></a>
+          <a class="btn btn-ghost magnet" href="#recherche">Essayer la recherche</a>
+        </div>
+      </div>
+
+      <div class="console" id="console" aria-label="Démonstration animée d'une recherche">
+        <div class="console-top">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <span class="mono">Dossier 500-17-000000-241 · exemple</span>
+        </div>
+        <div class="q">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <span class="q-text"><span id="qtext">Quand la mise en demeure a-t-elle été envoyée&nbsp;?</span><span class="caret"></span></span>
+        </div>
+        <div class="status mono"><span id="qstat">Prêt</span><span><b id="qcount">12 480</b> fichiers</span></div>
+        <div class="bar"><i id="qbar"></i></div>
+        <div class="hits" id="hits"></div>
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <div><strong data-count="12480">12 480</strong><span>fichiers dans ce dossier d'exemple</span></div>
+      <div><strong>7 h 42</strong><span>d'audio transcrit en une passe</span></div>
+      <div><strong>100 %</strong><span>des réponses citent leur source</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>PDF NUMÉRISÉS</span><span>COURRIELS .MSG / .EML</span><span>DOCX</span><span>AUDIO .WAV .MP3 .M4A</span><span>VIDÉOS D'INTERROGATOIRE</span><span>TEXTOS</span><span>XLSX</span><span>PHOTOS DE CHANTIER</span><span>NOTES MANUSCRITES</span><span>JUGEMENTS</span><span>PROCÈS-VERBAUX</span>
+    <span>PDF NUMÉRISÉS</span><span>COURRIELS .MSG / .EML</span><span>DOCX</span><span>AUDIO .WAV .MP3 .M4A</span><span>VIDÉOS D'INTERROGATOIRE</span><span>TEXTOS</span><span>XLSX</span><span>PHOTOS DE CHANTIER</span><span>NOTES MANUSCRITES</span><span>JUGEMENTS</span><span>PROCÈS-VERBAUX</span>
+  </div>
+</div>
+
+<!-- ================= L&M-1 RECHERCHE ================= -->
+<section class="sec" id="recherche">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="tab"><span class="cote">L&amp;M-1</span><span class="eyebrow">Recherche de preuve</span></div>
+        <h2>Posez la question comme à un collègue. <em>Obtenez la pièce.</em></h2>
+      </div>
+      <p class="lede">Pas de mots-clés exacts, pas d'opérateurs booléens. L'outil comprend le sens de votre question, parcourt tout le dossier, et classe chaque passage selon sa pertinence. Essayez-le ci-dessous sur un petit dossier fictif.</p>
+    </div>
+
+    <div class="search-app reveal">
+      <div class="sa-bar">
+        <form id="sform" role="search">
+          <label for="sq" class="mono" style="position:absolute;left:-9999px">Question</label>
+          <input id="sq" class="sa-input" type="search" autocomplete="off" value="infiltration d'eau" placeholder="Ex. : qui a approuvé la réception des travaux ?">
+          <button class="btn btn-amber" type="submit">Chercher</button>
+        </form>
+      </div>
+      <div class="chips" id="chips">
+        <button class="chip" type="button">mise en demeure</button>
+        <button class="chip" type="button">pénalité de retard</button>
+        <button class="chip" type="button">fissures fondation</button>
+        <button class="chip" type="button">paiement retenu</button>
+        <button class="chip" type="button">réception des travaux</button>
+        <button class="chip" type="button">pluie</button>
+      </div>
+      <div class="sa-body">
+        <aside class="sa-side">
+          <div class="gauge"><span class="mono">Pages analysées</span><strong id="spages">0</strong></div>
+          <div class="gauge"><span class="mono">Temps</span><strong id="stime">0,00 s</strong></div>
+          <div class="minimap" id="minimap" aria-hidden="true"></div>
+          <span class="mono">Chaque case représente un lot de pièces. En or : les pièces pertinentes.</span>
+        </aside>
+        <div class="sa-results" id="sres" aria-live="polite"></div>
+      </div>
+      <p class="note">Démonstration · 12 pièces fictives · Aucune donnée réelle, aucun envoi de données.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= L&M-2 TRANSCRIPTION ================= -->
+<section class="sec" id="transcription" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="tab"><span class="cote">L&amp;M-2</span><span class="eyebrow">Transcription</span></div>
+        <h2>Sept heures d'interrogatoire. <em>Lisibles en une minute.</em></h2>
+      </div>
+      <p class="lede">Audio ou vidéo de n'importe quelle longueur, en français, en anglais ou dans les deux à la fois. Chaque intervenant est identifié, chaque mot est horodaté, et chaque citation vous ramène à la seconde exacte de l'enregistrement.</p>
+    </div>
+
+    <div class="tx reveal">
+      <div class="panel">
+        <div class="panel-h"><strong>Interrogatoire préalable — M. Tremblay</strong><span class="mono">REC_2023-03-08.wav</span></div>
+        <div class="wave-box">
+          <canvas id="wave" aria-hidden="true"></canvas>
+          <div class="timeline mono"><span>00:00:00</span><span>01:55:30</span><span>03:51:00</span><span>05:46:30</span><span>07:42:00</span></div>
+        </div>
+        <div class="transport">
+          <button class="play" id="play" type="button" aria-label="Pause"><svg id="pico" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="3.5" height="12"/><rect x="9.5" y="2" width="3.5" height="12"/></svg></button>
+          <span class="mono" id="clock">04:12:08</span>
+          <div class="speakers"><span class="spk a">ME BOUCHARD</span><span class="spk b">M. TREMBLAY</span><span class="spk">ME ROY</span></div>
+        </div>
+        <div class="stats">
+          <div><strong>7 h 42</strong><span>Durée</span></div>
+          <div><strong>3</strong><span>Intervenants</span></div>
+          <div><strong>61 204</strong><span>Mots horodatés</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-h"><strong>Transcription en direct</strong><span class="mono">FR · EN</span></div>
+        <div class="script"><div class="script-inner" id="script"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= L&M-3 RÉSUMÉ ================= -->
+<section class="sec" id="resume" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="tab"><span class="cote">L&amp;M-3</span><span class="eyebrow">Résumés ciblés</span></div>
+        <h2>L'essentiel d'un passage, <em>sans perdre la source.</em></h2>
+      </div>
+      <p class="lede">Sélectionnez un passage, une pièce ou un témoignage entier. L'outil en extrait les faits déterminants et relie chaque point du résumé à la ligne d'origine. Vous vérifiez en un clic.</p>
+    </div>
+
+    <div class="sum reveal" id="sumbox">
+      <article class="doc" id="doc">
+        <div class="doc-h"><span>Pièce P-15 · Rapport d'expertise</span><span>p. 14</span></div>
+        <p id="docp"></p>
+      </article>
+      <div class="sum-arrow" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <aside class="summary">
+        <span class="eyebrow">Résumé généré</span>
+        <h3>Ce que l'expert conclut</h3>
+        <ol id="sumlist">
+          <li><span>Les fissures de la fondation proviennent d'un drainage absent, et non du gel.</span><span class="mono">P-15, p. 14, l. 3–6</span></li>
+          <li><span>Le drain français prévu à l'article 7.2 du contrat n'a jamais été installé.</span><span class="mono">P-15, p. 14, l. 8–10 · renvoi P-1</span></li>
+          <li><span>Correctifs estimés à 38 500 $ avant taxes.</span><span class="mono">P-15, p. 14, l. 14–15</span></li>
+        </ol>
+        <div class="ratio"><strong>− 82 %</strong><span class="mono">de texte · 0 fait sans source</span></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= L&M-4 LISTES ================= -->
+<section class="sec" id="listes" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="tab"><span class="cote">L&amp;M-4</span><span class="eyebrow">Listes à la demande</span></div>
+        <h2>Une question. <em>Un tableau prêt à déposer.</em></h2>
+      </div>
+      <p class="lede">Chronologies, listes de communications, inventaires de pièces, tableaux de montants réclamés. Demandez-les en une phrase ; l'outil les construit, les trie et signale les incohérences.</p>
+    </div>
+
+    <div class="panel reveal" id="listbox">
+      <div class="prompt"><span class="avatar">M</span><p id="lprompt">Dresse la liste de toutes les communications entre M. Tremblay et Mme Gagnon au sujet du retard, en ordre chronologique.</p></div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Date</th><th>De → À</th><th>Objet</th><th>Source</th><th>Note</th></tr></thead>
+          <tbody id="ltbody">
+            <tr><td>2021-03-12</td><td>Tremblay → Gagnon</td><td>Retard de trois semaines constaté sur le chantier</td><td><span class="cote">P-4</span></td><td></td></tr>
+            <tr><td>2021-03-19</td><td>Tremblay → Gagnon</td><td>Mise en demeure : pénalité de 2 500 $ par jour</td><td><span class="cote">P-7</span></td><td></td></tr>
+            <tr><td>2021-04-02</td><td>Gagnon → Tremblay</td><td>Conteste le retard, invoque la pluie</td><td><span class="cote">D-2</span></td><td><span class="tag warn">Contredit P-12</span></td></tr>
+            <tr><td>2021-05-04</td><td>Tremblay → Gagnon</td><td>Procès-verbal : infiltration d'eau au sous-sol</td><td><span class="cote">P-12</span></td><td></td></tr>
+            <tr><td>2021-06-02</td><td>Gagnon → Tremblay</td><td>Texto : « on finit la semaine prochaine »</td><td><span class="cote">P-21</span></td><td></td></tr>
+            <tr><td>2021-07-14</td><td>Roy → Tremblay, Gagnon</td><td>Réception provisoire avec réserves</td><td><span class="cote">P-40</span></td><td><span class="tag">Tiers en copie</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tbl-foot"><span class="mono">6 communications · 4 pièces de la demande, 1 de la défense, 1 transcription</span><div class="fmt"><span>Tableau Word</span><span>Excel</span><span>PDF</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= L&M-5 PLUS ================= -->
+<section class="sec" id="plus" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="tab"><span class="cote">L&amp;M-5</span><span class="eyebrow">Et plus encore</span></div>
+        <h2>Tout ce qu'un dossier exige, <em>au même endroit.</em></h2>
+      </div>
+      <p class="lede">Le travail de fond qui prenait des semaines à une équipe se fait maintenant pendant que vous préparez votre plaidoirie.</p>
+    </div>
+    <div class="grid6">
+      <article class="cap reveal"><div class="viz v-time"><i style="left:12%"></i><i style="left:27%;animation-delay:.3s"></i><i style="left:41%;animation-delay:.6s"></i><i style="left:58%;animation-delay:.9s"></i><i style="left:73%;animation-delay:1.2s"></i><i style="left:88%;animation-delay:1.5s"></i></div><h3>Chronologie automatique</h3><p>Chaque date de chaque pièce, replacée sur une seule ligne du temps, avec la source de chaque événement.</p></article>
+      <article class="cap reveal"><div class="viz v-contra"><div>P-12 · 04/05 : « eau au sous-sol <b>depuis mars</b> »</div><div>D-2 · 02/04 : « aucune infiltration <b>avant mai</b> »</div></div><h3>Détection de contradictions</h3><p>Les versions qui ne concordent pas entre témoins, courriels et pièces sont signalées avant l'audience.</p></article>
+      <article class="cap reveal"><div class="viz v-ocr"><span>Livraison le 15 juin</span></div><h3>Lecture des numérisations</h3><p>PDF numérisés, télécopies, photos et notes manuscrites deviennent du texte interrogeable.</p></article>
+      <article class="cap reveal"><div class="viz v-redact">Témoin : <em>Jean Tremblay</em>, né le <em>12/04/1968</em>, domicilié au <em>1234, rue Fictive</em>.</div><h3>Caviardage assisté</h3><p>Renseignements personnels repérés et masqués sur l'ensemble d'un lot avant communication.</p></article>
+      <article class="cap reveal"><div class="viz v-lang"><span>« Réception provisoire »</span><span>“Provisional acceptance”</span></div><h3>Français et anglais</h3><p>Posez la question dans une langue, trouvez la preuve dans l'autre. Traductions de travail incluses.</p></article>
+      <article class="cap reveal"><div class="viz v-cite"><i></i><i></i><i></i><i></i></div><h3>Citations vérifiables</h3><p>Aucune réponse sans source. Un clic ouvre la pièce, surlignée à la ligne citée.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONFIDENTIALITÉ ================= -->
+<section class="sec" id="confidentialite" style="padding-top:0">
+  <div class="wrap vault">
+    <canvas id="seal" class="reveal" aria-hidden="true"></canvas>
+    <div class="reveal">
+      <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Confidentialité</span></div>
+      <h2>Le secret professionnel <em>n'est pas négociable.</em></h2>
+      <p class="lede" style="margin-block:22px 34px">Vos dossiers contiennent ce que vos clients ont de plus sensible. L'outil a été pensé pour les exigences des cabinets québécois dès la première ligne de code.</p>
+      <div class="guar">
+        <div><strong>Loi 25</strong><p>Traitement des renseignements personnels encadré, journalisé et limité à la finalité du mandat.</p></div>
+        <div><strong>Cloisonnement par dossier</strong><p>Chaque mandat est isolé. Un utilisateur ne voit que les dossiers auxquels il a accès.</p></div>
+        <div><strong>Chiffrement</strong><p>Données chiffrées au repos et en transit, du téléversement à l'archivage.</p></div>
+        <div><strong>Journal d'audit</strong><p>Qui a consulté quoi, quand. Chaque recherche et chaque export sont tracés.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">Mise en service</span>
+        <h2 style="margin-top:18px">De la boîte de documents à la <em>première réponse.</em></h2>
+      </div>
+    </div>
+    <div class="steps" id="steps">
+      <div class="step"><h3>Versement</h3><p>Glissez le dossier complet&nbsp;: pièces, courriels, enregistrements, numérisations. Aucun tri préalable.</p></div>
+      <div class="step"><h3>Indexation</h3><p>L'outil lit, transcrit et relie chaque document. Des milliers de fichiers sont prêts en quelques heures.</p></div>
+      <div class="step"><h3>Interrogation</h3><p>Votre équipe pose ses questions, obtient ses listes et ses résumés, tous rattachés à leur source.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="sec" id="demo" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div>
+        <span class="eyebrow">Démonstration privée</span>
+        <h2 style="margin-block:18px 22px">Montrez-nous un vrai dossier. <em>On vous montre sa preuve.</em></h2>
+        <p class="lede">Une rencontre de 30 minutes avec l'équipe de Lavoie&amp;Maher, sur un dossier fermé ou anonymisé de votre choix.</p>
+      </div>
+      <form class="demo" id="dform" novalidate>
+        <label>Nom<input id="f-nom" name="nom" required autocomplete="name"></label>
+        <label>Cabinet<input id="f-cab" name="cabinet" autocomplete="organization"></label>
+        <label class="full">Courriel<input id="f-mail" name="courriel" type="email" required autocomplete="email"></label>
+        <label class="full">Type de dossiers
+          <select id="f-type" name="type"><option>Litige civil et commercial</option><option>Construction</option><option>Droit de la famille</option><option>Droit criminel et pénal</option><option>Droit du travail</option><option>Autre</option></select>
+        </label>
+        <label class="full">Volume approximatif<textarea id="f-msg" name="message" placeholder="Ex. : 8 000 pièces, 40 heures d'enregistrements"></textarea></label>
+        <button class="btn btn-amber full magnet" type="submit" style="justify-content:center">Planifier la démonstration <span class="arr">→</span></button>
+        <p class="form-msg" id="fmsg" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#top">Lavoie<span class="amp">&amp;</span>Maher<small>INC.</small></a>
+      <p style="margin-top:10px">Intelligence de preuve pour les professionnels du droit · Québec</p>
+    </div>
+    <p class="mono">© 2026 Lavoie&amp;Maher, inc. · Tous droits réservés</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+"use strict";
+const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const fmt = n => n.toLocaleString("fr-CA");
+const norm = s => { let o = ""; for (const c of s.toLowerCase()) { const d = c.normalize("NFD").replace(/[̀-ͯ]/g, ""); o += d.length === 1 ? d : c; } return o; };
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const onView = (el, fn, opts = { threshold: .25 }) => {
+  const io = new IntersectionObserver(es => es.forEach(e => fn(e.isIntersecting, e)), opts);
+  io.observe(el); return io;
+};
+
+/* ---------- nav, spotlight, magnet ---------- */
+const nav = $("#nav");
+const onScroll = () => nav.classList.toggle("solid", scrollY > 30);
+addEventListener("scroll", onScroll, { passive: true }); onScroll();
+const spot = $("#spot");
+if (!RM && matchMedia("(pointer:fine)").matches) {
+  addEventListener("pointermove", e => { spot.style.left = e.clientX + "px"; spot.style.top = e.clientY + "px"; }, { passive: true });
+  $$(".magnet").forEach(b => {
+    b.addEventListener("pointermove", e => { const r = b.getBoundingClientRect(); b.style.setProperty("--bx", (e.clientX - r.left - r.width / 2) * .22 + "px"); b.style.setProperty("--by", (e.clientY - r.top - r.height / 2) * .3 + "px"); });
+    b.addEventListener("pointerleave", () => { b.style.setProperty("--bx", "0px"); b.style.setProperty("--by", "0px"); });
+  });
+  $$(".cap").forEach(c => {
+    c.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      c.style.setProperty("--ry", (x - .5) * 10 + "deg"); c.style.setProperty("--rx", (.5 - y) * 10 + "deg");
+      c.style.setProperty("--mx", x * 100 + "%"); c.style.setProperty("--my", y * 100 + "%"); });
+    c.addEventListener("pointerleave", () => { c.style.setProperty("--rx", "0deg"); c.style.setProperty("--ry", "0deg"); });
+  });
+}
+
+/* ---------- reveals (only below-the-fold elements start hidden) ---------- */
+if (!RM) {
+  const vh = innerHeight;
+  $$(".reveal").forEach((el, i) => {
+    if (el.getBoundingClientRect().top < vh * .95) return;
+    el.classList.add("pending");
+    const io = onView(el, v => { if (v) { el.style.transitionDelay = (el.classList.contains("cap") ? (i % 3) * .08 : 0) + "s"; el.classList.remove("pending"); io.disconnect(); } }, { threshold: .12 });
+  });
+}
+
+/* =========================================================
+   HERO — tunnel d'archives
+   ========================================================= */
+const QUERIES = [
+  { q: "Quand la mise en demeure a-t-elle été envoyée ?", hits: [
+    ["P-7", "La présente constitue une <mark>mise en demeure</mark> formelle de livrer l'ouvrage…", "Pièce P-7 · p. 1 · l. 4 · 19 mars 2021"],
+    ["P-4", "…je vous <mark>mettrai en demeure</mark> si le retard persiste.", "Pièce P-4 · courriel · 12 mars 2021"],
+    ["P-33", "Q. La <mark>mise en demeure</mark>, vous l'avez envoyée le 19 ? R. Oui.", "Interrogatoire · 04:12:31"]] },
+  { q: "Qui a signé la réception provisoire des travaux ?", hits: [
+    ["P-40", "<mark>Réception provisoire</mark> acceptée avec réserves, signée par Me Roy…", "Pièce P-40 · p. 2 · l. 11 · 14 juillet 2021"],
+    ["P-1", "…la <mark>réception</mark> de l'ouvrage sera constatée par écrit (art. 9.1).", "Pièce P-1 · contrat · p. 6"],
+    ["D-5", "Facture finale émise à la suite de la <mark>réception</mark> du 14 juillet.", "Pièce D-5 · p. 1 · l. 2"]] },
+  { q: "Montant total de la pénalité de retard réclamée", hits: [
+    ["P-1", "…une <mark>pénalité de 2 500 $ par jour</mark> de retard (art. 7.4).", "Pièce P-1 · contrat · p. 5 · l. 22"],
+    ["P-7", "…soit 29 jours, pour un total de <mark>72 500 $</mark>.", "Pièce P-7 · p. 2 · l. 3"],
+    ["P-47", "Retenue de <mark>72 500,00 $</mark> sur le paiement final.", "Pièce P-47 · relevé · l. 18"]] }
+];
+(function hero() {
+  const cv = $("#field"), ctx = cv.getContext("2d");
+  const hitsEl = $("#hits"), qtext = $("#qtext"), qstat = $("#qstat"), qbar = $("#qbar"), qcount = $("#qcount");
+  let W = 0, H = 0, DPR = 1, F = 520;
+  const DEPTH = 3200, NEAR = -F * .55;
+  const N = innerWidth < 700 ? 900 : 2200;
+  const P = [];
+  for (let i = 0; i < N; i++) {
+    const a = Math.random() * Math.PI * 2, r = 380 + Math.random() * 900;
+    P.push({ a, r, z: NEAR + Math.random() * (DEPTH - NEAR), w: 10 + Math.random() * 8, tw: Math.random() * 6.28, lit: 0, m: null });
+  }
+  const resize = () => { const b = cv.getBoundingClientRect(); DPR = Math.min(devicePixelRatio || 1, 2); W = b.width; H = b.height; cv.width = W * DPR; cv.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0); F = Math.max(380, W * .42); };
+  resize(); addEventListener("resize", resize);
+  let mx = 0, my = 0, tmx = 0, tmy = 0;
+  addEventListener("pointermove", e => { tmx = (e.clientX / innerWidth - .5); tmy = (e.clientY / innerHeight - .5); }, { passive: true });
+
+  let roll = 0, scanZ = -1e9, matched = [], phase = "idle", pt = 0, qi = 0, cardRows = [];
+  const cxF = () => (W > 980 ? W * .56 : W * .5), cyF = () => H * .46;
+  function proj(p) {
+    const ang = p.a + roll, x = Math.cos(ang) * p.r + mx * 220, y = Math.sin(ang) * p.r * .72 + my * 160;
+    const s = F / (F + p.z); return { x: cxF() + x * s, y: cyF() + y * s, s };
+  }
+  const typeTo = (txt, done) => {
+    if (RM) { qtext.textContent = txt; return done(); }
+    let i = 0; qtext.textContent = "";
+    const t = setInterval(() => { qtext.textContent = txt.slice(0, ++i); if (i >= txt.length) { clearInterval(t); done(); } }, 34);
+  };
+  function renderHits(q, show) {
+    hitsEl.innerHTML = q.hits.map(h => `<div class="hit"><span class="cote">${h[0]}</span><p>${h[1]}</p><span class="loc">${h[2]}</span></div>`).join("");
+    cardRows = $$(".hit", hitsEl);
+    if (show) cardRows.forEach(r => r.classList.add("on"));
+  }
+  function cycle() {
+    const q = QUERIES[qi++ % QUERIES.length];
+    renderHits(q, false); qbar.style.width = "0"; qstat.textContent = "Saisie de la question…";
+    typeTo(q.q, () => {
+      phase = "scan"; pt = 0; qstat.textContent = "Lecture du dossier…"; scanZ = DEPTH;
+    });
+  }
+  function startMatch() {
+    phase = "match"; pt = 0;
+    const cand = P.filter(p => p.z > 300 && p.z < 1600).sort(() => Math.random() - .5).slice(0, cardRows.length * 3);
+    const cb = cv.getBoundingClientRect();
+    matched = cand.map((p, i) => {
+      const s = proj(p); const row = cardRows[i % cardRows.length].getBoundingClientRect();
+      p.m = { sx: s.x, sy: s.y, tx: row.left - cb.left + 8 + (i / cardRows.length | 0) * 10, ty: row.top - cb.top + row.height / 2 + ((i / cardRows.length | 0) - 1) * 6, row: i % cardRows.length };
+      return p;
+    });
+    qstat.textContent = `${cardRows.length} passages pertinents · 0,8 s`;
+  }
+  let last = performance.now(), running = true, raf = 0;
+  function frame(now) {
+    const dt = Math.min(.05, (now - last) / 1000); last = now;
+    mx += (tmx - mx) * .04; my += (tmy - my) * .04;
+    roll += dt * .045;
+    ctx.clearRect(0, 0, W, H);
+    const speed = phase === "scan" ? 520 : 140;
+    if (phase === "scan") {
+      pt += dt; scanZ -= dt * 2600;
+      qbar.style.width = Math.min(100, pt / 1.3 * 100) + "%";
+      qcount.textContent = fmt(Math.min(12480, Math.round(pt / 1.3 * 12480)));
+      if (pt > 1.3) startMatch();
+    } else if (phase === "match") {
+      pt += dt;
+      cardRows.forEach((r, i) => { if (pt > .55 + i * .18) r.classList.add("on"); });
+      if (pt > 5.2) { phase = "release"; pt = 0; }
+    } else if (phase === "release") {
+      pt += dt; cardRows.forEach(r => r.classList.remove("on"));
+      if (pt > .6) { matched.forEach(p => p.m = null); matched = []; phase = "idle"; pt = 0; }
+    } else if (phase === "idle") { pt += dt; if (pt > .6) { phase = "typing"; cycle(); } }
+
+    // draw field
+    for (const p of P) {
+      if (p.m) continue;
+      p.z -= speed * dt;
+      if (p.z < NEAR) p.z += DEPTH - NEAR;
+      const s = proj(p);
+      if (s.x < -40 || s.x > W + 40 || s.y < -40 || s.y > H + 40) continue;
+      const depthA = Math.min(1, (DEPTH - p.z) / DEPTH * 1.4) * Math.min(1, (p.z - NEAR) / 220);
+      if (Math.abs(p.z - scanZ) < 160) p.lit = 1;
+      p.lit *= .94;
+      const w = p.w * s.s, h = w * 1.3;
+      const tw = .55 + .45 * Math.sin(now / 900 + p.tw);
+      if (p.lit > .05) { ctx.fillStyle = `rgba(124,146,255,${(.25 + .75 * p.lit) * depthA})`; }
+      else ctx.fillStyle = `rgba(185,190,215,${.16 * depthA * tw})`;
+      ctx.fillRect(s.x - w / 2, s.y - h / 2, w, h);
+      if (w > 9 && p.lit < .05) { ctx.fillStyle = `rgba(10,15,30,${.5 * depthA})`; for (let l = 0; l < 3; l++) ctx.fillRect(s.x - w * .32, s.y - h * .28 + l * h * .2, w * .64 * (l === 2 ? .6 : 1), Math.max(.6, h * .05)); }
+    }
+    // matched docs fly to the console
+    if (matched.length) {
+      const k = phase === "release" ? 1 : Math.min(1, pt / 1.1), e = 1 - Math.pow(1 - k, 3);
+      const fade = phase === "release" ? 1 - pt / .6 : 1;
+      ctx.lineWidth = 1;
+      matched.forEach((p, i) => {
+        const m = p.m, x = m.sx + (m.tx - m.sx) * e, y = m.sy + (m.ty - m.sy) * e - Math.sin(e * Math.PI) * 60;
+        ctx.strokeStyle = `rgba(244,194,77,${.35 * fade * (1 - e * .5)})`;
+        ctx.beginPath(); ctx.moveTo(m.sx, m.sy); ctx.quadraticCurveTo((m.sx + x) / 2, Math.min(m.sy, y) - 80, x, y); ctx.stroke();
+        const w = 14 - e * 6, h = w * 1.3;
+        ctx.shadowColor = "rgba(244,194,77,.9)"; ctx.shadowBlur = 18 * fade;
+        ctx.fillStyle = `rgba(244,194,77,${fade})`; ctx.fillRect(x - w / 2, y - h / 2, w, h); ctx.shadowBlur = 0;
+      });
+    }
+    if (running) raf = requestAnimationFrame(frame);
+  }
+  if (RM) { renderHits(QUERIES[0], true); qtext.textContent = QUERIES[0].q; qstat.textContent = "3 passages pertinents · 0,8 s"; qbar.style.width = "100%";
+    running = false; frame(performance.now()); return; }
+  renderHits(QUERIES[0], false);
+  raf = requestAnimationFrame(frame);
+  onView($(".hero"), v => { if (v && !running) { running = true; last = performance.now(); raf = requestAnimationFrame(frame); } else if (!v) { running = false; cancelAnimationFrame(raf); } }, { threshold: 0 });
+})();
+
+/* =========================================================
+   L&M-1 — recherche sur dossier fictif
+   ========================================================= */
+const DOCS = [
+  { c: "P-1", t: "Contrat d'entreprise", d: "2021-02-03", p: 18, x: "Les parties conviennent que l'Entrepreneur livrera l'ouvrage au plus tard le 15 juin 2021. À défaut, une pénalité de retard de 2 500 $ par jour sera exigible (art. 7.4). Le drain français est inclus au devis (art. 7.2). La réception des travaux sera constatée par écrit (art. 9.1)." },
+  { c: "P-4", t: "Courriel de M. Tremblay à Mme Gagnon", d: "2021-03-12", p: 1, x: "Madame Gagnon, nous constatons un retard d'environ trois semaines sur le chantier. Sans plan de rattrapage d'ici vendredi, je vous mettrai en demeure de respecter l'échéancier." },
+  { c: "P-7", t: "Mise en demeure", d: "2021-03-19", p: 2, x: "La présente constitue une mise en demeure formelle de livrer l'ouvrage conformément au contrat. Nous réclamerons la pénalité de retard prévue, soit 29 jours, pour un total de 72 500 $." },
+  { c: "D-2", t: "Courriel de Mme Gagnon", d: "2021-04-02", p: 1, x: "Le retard résulte exclusivement de la pluie exceptionnelle du mois de mars. Nous n'avons constaté aucune infiltration d'eau avant le mois de mai. Aucune pénalité n'est justifiée." },
+  { c: "P-12", t: "Procès-verbal de chantier", d: "2021-05-04", p: 4, x: "Constat d'une infiltration d'eau au sous-sol, présente selon le surintendant depuis la mi-mars. Le drain français n'est pas visible à l'excavation. Photos annexées." },
+  { c: "P-15", t: "Rapport d'expertise, ing.", d: "2022-01-20", p: 31, x: "Les fissures observées à la fondation résultent d'un drainage périphérique absent, et non de l'action du gel. Le drain français prévu n'a pas été installé. Correctifs estimés à 38 500 $." },
+  { c: "P-21", t: "Texto de Mme Gagnon", d: "2021-06-02", p: 1, x: "On finit la semaine prochaine, promis. Il reste la finition et le terrassement. La pluie nous a encore retardés." },
+  { c: "D-5", t: "Facture finale", d: "2021-06-30", p: 2, x: "Facture finale pour les travaux exécutés : 84 350,00 $ taxes incluses, payable sur réception des travaux." },
+  { c: "D-9", t: "Photos de chantier (lecture automatique)", d: "2021-04-20", p: 22, x: "Photo 14 : tranchée ouverte côté nord, eau stagnante. Photo 15 : membrane posée, aucun drain visible. Note manuscrite : « pluie, arrêt 2 jours »." },
+  { c: "P-33", t: "Interrogatoire préalable de M. Tremblay", d: "2023-03-08", p: 212, x: "Q. La mise en demeure, vous l'avez envoyée le 19 mars ? R. Oui. Q. L'infiltration d'eau, vous l'avez vue quand ? R. Dès la mi-mars, au sous-sol, après les fissures." },
+  { c: "P-40", t: "Courriel de Me Roy", d: "2021-07-14", p: 2, x: "Réception provisoire acceptée avec réserves : drainage, fissures de fondation et terrassement incomplet. Signée ce jour par les parties." },
+  { c: "P-47", t: "Relevé bancaire", d: "2021-08-02", p: 3, x: "Paiement final à l'Entrepreneur : 11 850,00 $. Retenue de 72 500,00 $ sur le paiement final, au titre de la pénalité de retard." }
+];
+(function search() {
+  const STOP = new Set("les des une un la le de du et en au aux a qui que quoi quand est sur par pour dans avec son ses ce cette ont ete d l qu il elle nous vous".split(" "));
+  const mm = $("#minimap"), res = $("#sres"), inp = $("#sq"), pagesEl = $("#spages"), timeEl = $("#stime");
+  const CELLS = 24 * 6;
+  mm.innerHTML = "<i></i>".repeat(CELLS);
+  const cells = $$("i", mm);
+  const cellOf = DOCS.map((_, i) => Math.floor((i + .5) / DOCS.length * CELLS));
+  let run = 0;
+  const terms = q => norm(q).split(/[^a-z0-9$]+/).filter(t => t.length > 2 && !STOP.has(t)).map(t => t.length > 5 ? t.slice(0, t.length - 1) : t);
+  function highlight(text, ts) {
+    const n = norm(text); const marks = new Array(text.length).fill(false);
+    ts.forEach(t => { let i = n.indexOf(t); while (i !== -1) { let j = i + t.length; while (j < n.length && /[a-z]/.test(n[j])) j++; for (let k = i; k < j; k++) marks[k] = true; i = n.indexOf(t, j); } });
+    let out = "", open = false;
+    for (let i = 0; i < text.length; i++) { if (marks[i] && !open) { out += "<mark>"; open = true; } if (!marks[i] && open) { out += "</mark>"; open = false; } out += esc(text[i]); }
+    return out + (open ? "</mark>" : "");
+  }
+  function go(q) {
+    const id = ++run, ts = terms(q);
+    const scored = DOCS.map((d, i) => { const n = norm(d.t + " " + d.x); let s = 0; ts.forEach(t => { let k = n.indexOf(t); while (k !== -1) { s++; k = n.indexOf(t, k + 1); } }); return { d, i, s }; }).filter(r => r.s > 0).sort((a, b) => b.s - a.s);
+    const max = scored[0]?.s || 1, total = 38412, dur = RM ? 0 : 1100, t0 = performance.now();
+    res.innerHTML = `<p class="empty mono">Lecture de ${fmt(DOCS.length)} pièces…</p>`;
+    cells.forEach(c => c.className = "");
+    const hitCells = new Set(scored.map(r => cellOf[r.i]));
+    const step = now => {
+      if (id !== run) return;
+      const k = dur ? Math.min(1, (now - t0) / dur) : 1;
+      pagesEl.textContent = fmt(Math.round(total * k));
+      timeEl.textContent = (k * .84).toFixed(2).replace(".", ",") + " s";
+      const upto = Math.floor(k * CELLS);
+      for (let i = 0; i < upto; i++) cells[i].className = hitCells.has(i) ? "hit" : (i > upto - 10 ? "scan" : "");
+      if (k < 1) return requestAnimationFrame(step);
+      cells.forEach((c, i) => c.className = hitCells.has(i) ? "hit" : "");
+      if (!ts.length || !scored.length) { res.innerHTML = `<p class="empty">Aucun passage dans ce dossier d'exemple ne correspond à « ${esc(q)} ». Essayez une des suggestions ci-dessus.</p>`; return; }
+      res.innerHTML = scored.slice(0, 5).map((r, j) => `<article class="res" style="animation-delay:${j * .09}s"><div class="res-head"><span class="cote">${r.d.c}</span><strong>${esc(r.d.t)}</strong><span class="mono">${r.d.d} · ${r.d.p} p.</span></div><p>${highlight(r.d.x, ts)}</p><div class="score" title="Pertinence"><i style="width:${Math.round(40 + 60 * r.s / max)}%"></i></div></article>`).join("");
+    };
+    requestAnimationFrame(step);
+  }
+  $("#sform").addEventListener("submit", e => { e.preventDefault(); go(inp.value); });
+  $$(".chip").forEach(c => c.addEventListener("click", () => { inp.value = c.textContent; go(inp.value); }));
+  let started = false;
+  onView($("#recherche"), v => { if (v && !started) { started = true; go(inp.value); } }, { threshold: .2 });
+})();
+
+/* =========================================================
+   L&M-2 — transcription synchronisée
+   ========================================================= */
+(function transcript() {
+  const U = [
+    ["04:11:52", "a", "Me Bouchard", "Monsieur Tremblay, je vous montre la pièce P-7. Vous la reconnaissez ?"],
+    ["04:11:58", "b", "M. Tremblay", "Oui. C'est la mise en demeure que j'ai envoyée à Mme Gagnon."],
+    ["04:12:08", "a", "Me Bouchard", "À quelle date l'avez-vous envoyée ?"],
+    ["04:12:11", "b", "M. Tremblay", "Le 19 mars 2021, par courriel et par huissier le lendemain."],
+    ["04:12:20", "c", "Me Roy", "Objection, la signification par huissier n'est pas en preuve."],
+    ["04:12:26", "a", "Me Bouchard", "Je reformule. Qu'est-ce qui vous a poussé à l'envoyer à ce moment-là ?"],
+    ["04:12:33", "b", "M. Tremblay", "L'eau au sous-sol. On l'a vue dès la mi-mars, juste après les fissures."],
+    ["04:12:44", "a", "Me Bouchard", "Donc avant le mois de mai ?"],
+    ["04:12:47", "b", "M. Tremblay", "Bien avant. Le procès-verbal de mai ne faisait que le confirmer."],
+    ["04:12:55", "a", "Me Bouchard", "Et le drain français, l'avez-vous vu installé ?"],
+    ["04:13:01", "b", "M. Tremblay", "Jamais. Ni moi, ni le surintendant."]
+  ];
+  const box = $("#script");
+  box.innerHTML = U.map(u => `<div class="utt"><span class="t">${u[0]}</span><span class="who ${u[1]}">${u[2]}</span><p>${u[3].split(" ").map(w => `<w>${esc(w)}</w>`).join(" ")}</p></div>`).join("");
+  const utts = $$(".utt", box), clock = $("#clock");
+  const toS = t => { const [h, m, s] = t.split(":").map(Number); return h * 3600 + m * 60 + s; };
+  const pad = n => String(n).padStart(2, "0");
+  const T0 = toS(U[0][0]);
+
+  const cv = $("#wave"), ctx = cv.getContext("2d");
+  const BARS = 220, amp = [];
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < BARS; i++) { const env = .35 + .65 * Math.abs(Math.sin(i * .045) * Math.cos(i * .013)); amp.push(Math.max(.06, env * (.35 + rnd() * .65))); }
+  let W = 0, H = 0;
+  const size = () => { const b = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); W = b.width; H = b.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); };
+  size(); addEventListener("resize", size);
+
+  let ui = 0, wi = 0, playing = !RM, visible = false, acc = 0, prog = .545, last = 0;
+  function setUtt(i) {
+    utts.forEach((u, k) => { u.classList.toggle("live", k <= i); if (k < i) $$("w", u).forEach(w => { w.className = "said"; }); if (k > i) $$("w", u).forEach(w => w.className = ""); });
+    const off = Math.max(0, utts[i].offsetTop - 150);
+    box.style.transform = `translateY(${-off}px)`;
+  }
+  function tick() {
+    const words = $$("w", utts[ui]);
+    if (wi < words.length) { words.forEach((w, k) => w.className = k < wi ? "said" : k === wi ? "now" : ""); wi++; }
+    else { words.forEach(w => w.className = "said"); ui = (ui + 1) % utts.length; wi = 0; if (ui === 0) utts.forEach(u => { u.classList.remove("live"); $$("w", u).forEach(w => w.className = ""); }); setUtt(ui); }
+    const s = toS(U[ui][0]) + wi * .45; const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), sec = Math.floor(s % 60);
+    clock.textContent = `${pad(h)}:${pad(m)}:${pad(sec)}`;
+    prog = s / (7 * 3600 + 42 * 60);
+  }
+  function draw(now) {
+    const dt = last ? (now - last) / 1000 : 0; last = now;
+    if (playing) { acc += dt; while (acc > .19) { acc -= .19; tick(); } }
+    ctx.clearRect(0, 0, W, H);
+    const bw = W / BARS, mid = H / 2, ph = prog * W;
+    for (let i = 0; i < BARS; i++) {
+      const x = i * bw, live = playing && Math.abs(x - ph) < 30 ? 1 + .35 * Math.sin(now / 90 + i) : 1;
+      const a = amp[i] * (H * .46) * live;
+      ctx.fillStyle = x < ph ? "rgba(244,194,77,.9)" : "rgba(150,168,230,.28)";
+      ctx.fillRect(x + bw * .2, mid - a, Math.max(1, bw * .6), a * 2);
+    }
+    ctx.fillStyle = "#ECE7DC"; ctx.fillRect(ph - 1, 0, 2, H);
+    ctx.beginPath(); ctx.arc(ph, 4, 4, 0, 7); ctx.fill();
+    // markers for speakers
+    [[.12, "#7C92FF"], [.31, "#F4C24D"], [.52, "#6FD3A4"], [.74, "#7C92FF"]].forEach(([p, c]) => { ctx.fillStyle = c; ctx.fillRect(p * W, H - 3, 18, 3); });
+    if (visible) requestAnimationFrame(draw); else last = 0;
+  }
+  setUtt(0);
+  const btn = $("#play"), ico = $("#pico");
+  const setIcon = () => { ico.innerHTML = playing ? '<rect x="3" y="2" width="3.5" height="12"/><rect x="9.5" y="2" width="3.5" height="12"/>' : '<path d="M4 2l10 6-10 6z"/>'; btn.setAttribute("aria-label", playing ? "Pause" : "Lecture"); };
+  setIcon();
+  btn.addEventListener("click", () => { playing = !playing; setIcon(); });
+  onView($("#transcription"), v => { const was = visible; visible = v; if (v && !was) requestAnimationFrame(draw); }, { threshold: .05 });
+  requestAnimationFrame(draw);
+})();
+
+/* =========================================================
+   L&M-3 — distillation du passage
+   ========================================================= */
+(function summary() {
+  const SRC = [
+    "1 À la suite de nos visites des 12 et 19 novembre, nous avons examiné la fondation côté nord.",
+    "2 Nous y avons relevé trois fissures verticales d'une largeur variant de 2 à 6 mm.",
+    "3 [[Selon nos constatations, ces fissures résultent d'un drainage périphérique absent,]]",
+    "4 [[et non de l'action du gel]] comme le suggère la lettre de la défenderesse.",
+    "5 Les sondages effectués à trois endroits n'ont révélé aucune trace de membrane de drainage.",
+    "6 L'eau s'accumule contre le mur de fondation lors de chaque épisode de pluie.",
+    "7 Nous avons comparé ces constats avec le devis joint au contrat, à l'article 7.2.",
+    "8 [[Le drain français prévu à l'article 7.2 n'a jamais été installé,]]",
+    "9 bien que la facture finale D-5 en fasse mention comme travail exécuté.",
+    "10 [[Cette omission suffit à expliquer l'infiltration constatée au procès-verbal P-12.]]",
+    "11 D'autres causes ont été envisagées, notamment un défaut de remblai, puis écartées.",
+    "12 Les correctifs requièrent l'excavation du périmètre et la pose d'un drain conforme.",
+    "13 Nous estimons le coût des travaux correctifs, incluant la remise en état du terrain,",
+    "14 [[à 38 500 $ avant taxes,]] selon trois soumissions obtenues en décembre."
+  ];
+  $("#docp").innerHTML = SRC.map(l => { const [n, ...r] = l.split(" "); const t = r.join(" ").replace(/\[\[(.+?)\]\]/g, (_, m) => `</s><s class="k">${m}</s><s>`); return `<span class="ln">${n.padStart(2, "0")}</span><s>${t}</s>`; }).join("<br>");
+  const doc = $("#doc"), lis = $$("#sumlist li");
+  let timers = [];
+  const run = () => {
+    timers.forEach(clearTimeout); timers = [];
+    doc.classList.remove("distill"); lis.forEach(l => l.classList.remove("on"));
+    timers.push(setTimeout(() => doc.classList.add("distill"), 700));
+    lis.forEach((l, i) => timers.push(setTimeout(() => l.classList.add("on"), 1500 + i * 550)));
+    timers.push(setTimeout(run, 9000));
+  };
+  doc.classList.add("distill"); lis.forEach(l => l.classList.add("on"));
+  if (RM) return;
+  let on = false;
+  onView($("#sumbox"), v => { if (v && !on) { on = true; run(); } else if (!v && on) { on = false; timers.forEach(clearTimeout); doc.classList.add("distill"); lis.forEach(l => l.classList.add("on")); } }, { threshold: .3 });
+})();
+
+/* =========================================================
+   L&M-4 — construction du tableau
+   ========================================================= */
+(function lists() {
+  const rows = $$("#ltbody tr"), pr = $("#lprompt"), full = pr.textContent;
+  if (RM) { rows.forEach(r => r.classList.add("on")); return; }
+  let t = [];
+  const run = () => {
+    t.forEach(clearTimeout); t = []; rows.forEach(r => r.classList.remove("on"));
+    let i = 0; pr.textContent = "";
+    const ty = setInterval(() => { pr.textContent = full.slice(0, i += 2); if (i >= full.length) { clearInterval(ty); rows.forEach((r, k) => t.push(setTimeout(() => r.classList.add("on"), 300 + k * 260))); } }, 22);
+    t.push(ty);
+  };
+  let done = false;
+  onView($("#listbox"), v => { if (v && !done) { done = true; run(); } }, { threshold: .3 });
+  // rows visible if never scrolled into view (thumbnail / no-JS state stays readable)
+  rows.forEach(r => r.classList.add("on"));
+})();
+
+/* =========================================================
+   Sceau — anneau de chiffrement
+   ========================================================= */
+(function seal() {
+  const cv = $("#seal"), ctx = cv.getContext("2d");
+  let S = 0; const size = () => { const b = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); S = b.width; cv.width = S * d; cv.height = S * d; ctx.setTransform(d, 0, 0, d, 0, 0); };
+  size(); addEventListener("resize", size);
+  const CH = "0123456789ABCDEF";
+  const rings = [{ r: .44, n: 64, sp: .05 }, { r: .36, n: 48, sp: -.08 }, { r: .28, n: 34, sp: .12 }];
+  const glyphs = rings.map(g => Array.from({ length: g.n }, () => CH[Math.random() * 16 | 0]));
+  let vis = false;
+  function draw(now) {
+    const t = now / 1000, c = S / 2;
+    ctx.clearRect(0, 0, S, S);
+    rings.forEach((g, gi) => {
+      ctx.strokeStyle = "rgba(150,168,230,.18)"; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(c, c, g.r * S + 12, 0, 7); ctx.stroke();
+      ctx.font = `${Math.max(9, S * .026)}px "JetBrains Mono", monospace`; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      for (let i = 0; i < g.n; i++) {
+        if (Math.random() < .02) glyphs[gi][i] = CH[Math.random() * 16 | 0];
+        const a = i / g.n * Math.PI * 2 + t * g.sp, x = c + Math.cos(a) * g.r * S, y = c + Math.sin(a) * g.r * S;
+        const hot = Math.abs(Math.sin(a * 3 - t * 1.5)) > .97;
+        ctx.fillStyle = hot ? "#F4C24D" : `rgba(185,190,215,${.25 + .2 * gi})`;
+        ctx.save(); ctx.translate(x, y); ctx.rotate(a + Math.PI / 2); ctx.fillText(glyphs[gi][i], 0, 0); ctx.restore();
+      }
+    });
+    // core seal
+    const g = ctx.createRadialGradient(c, c, 0, c, c, S * .2);
+    g.addColorStop(0, "rgba(244,194,77,.25)"); g.addColorStop(1, "rgba(244,194,77,0)");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(c, c, S * .2, 0, 7); ctx.fill();
+    ctx.strokeStyle = "#F4C24D"; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(c, c, S * .15, 0, 7); ctx.stroke();
+    ctx.fillStyle = "#ECE7DC"; ctx.font = `italic 500 ${S * .11}px "Bodoni Moda", Georgia, serif`; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.fillText("L&M", c, c + S * .005);
+    if (vis && !RM) requestAnimationFrame(draw);
+  }
+  onView(cv, v => { const was = vis; vis = v; if (v && !was) requestAnimationFrame(draw); }, { threshold: 0 });
+  requestAnimationFrame(draw);
+  document.fonts?.ready.then(() => requestAnimationFrame(draw));
+})();
+
+/* ---------- steps ---------- */
+onView($("#steps"), v => { if (v) $("#steps").classList.add("go"); }, { threshold: .4 });
+
+/* ---------- form (démo : aucun envoi) ---------- */
+$("#dform").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target, msg = $("#fmsg");
+  if (!f.nom.value.trim() || !f.courriel.checkValidity() || !f.courriel.value) { msg.style.color = "var(--danger)"; msg.textContent = "Indiquez votre nom et un courriel valide pour continuer."; return; }
+  msg.style.color = "var(--ok)";
+  msg.textContent = `Merci, ${f.nom.value.trim()}. Formulaire de démonstration : aucune donnée n'a été transmise. Branchez ici votre service d'envoi.`;
+});
+})();
+</script>
