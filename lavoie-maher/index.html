@@ -368,11 +368,13 @@ tbody tr:hover{background:rgba(124,146,255,.05)}
 .v-wit b{margin-left:auto;font-weight:500;color:var(--amber)}
 @keyframes witin{0%{opacity:0;transform:translateX(-8px)}12%,85%{opacity:1;transform:none}100%{opacity:0}}
 @keyframes flash{50%{background:rgba(255,122,107,.18)}}
-/* redact viz */
-.v-redact{padding:14px;font-size:.78rem;line-height:1.9;color:var(--paper-dim)}
-.v-redact em{font-style:normal;position:relative;display:inline-block}
-.v-redact em::after{content:"";position:absolute;inset:2px -2px;background:var(--paper);border-radius:2px;transform-origin:left;animation:redact 3.2s infinite}
-@keyframes redact{0%,15%{transform:scaleX(0)}40%,85%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+/* inventory viz */
+.v-inv{padding:10px 12px;display:flex;flex-direction:column;gap:5px}
+.v-inv div{display:grid;grid-template-columns:34px 1fr auto;gap:8px;align-items:center;font-family:var(--f-mono);font-size:.62rem;color:var(--paper-dim);padding:3px 6px;border-radius:5px;background:var(--ink);animation:witin 4.5s infinite both}
+.v-inv div:nth-child(2){animation-delay:.25s}.v-inv div:nth-child(3){animation-delay:.5s}
+.v-inv b{font-weight:500;color:var(--amber)}
+.v-inv span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v-inv i{font-style:normal;color:var(--muted)}
 /* ocr viz */
 .v-ocr{display:grid;place-items:center}
 .v-ocr span{font-family:"Brush Script MT", "Segoe Script", cursive;font-size:1.5rem;color:var(--paper-dim);position:relative}
@@ -768,9 +770,9 @@ footer p{font-size:.85rem}
       <article class="cap reveal"><div class="viz v-time"><i style="left:12%"></i><i style="left:27%;animation-delay:.3s"></i><i style="left:41%;animation-delay:.6s"></i><i style="left:58%;animation-delay:.9s"></i><i style="left:73%;animation-delay:1.2s"></i><i style="left:88%;animation-delay:1.5s"></i></div><h3>Chronologie automatique</h3><p>Chaque date de chaque pièce, replacée sur une seule ligne du temps, avec la source de chaque événement.</p></article>
       <article class="cap reveal"><div class="viz v-wit"><div><i></i>M. Tremblay<b>14 pièces</b></div><div><i></i>Mme Gagnon<b>9 pièces</b></div><div><i></i>Me Roy<b>4 pièces</b></div></div><h3>Listes de témoins</h3><p>Chaque personne nommée au dossier, son rôle et toutes les pièces où elle apparaît, prêtes pour préparer vos interrogatoires.</p></article>
       <article class="cap reveal"><div class="viz v-ocr"><span>Livraison le 15 juin</span></div><h3>Lecture des numérisations</h3><p>PDF numérisés, télécopies, photos et notes manuscrites deviennent du texte interrogeable.</p></article>
-      <article class="cap reveal"><div class="viz v-redact">Témoin : <em>Jean Tremblay</em>, né le <em>12/04/1968</em>, domicilié au <em>1234, rue Fictive</em>.</div><h3>Caviardage assisté</h3><p>Renseignements personnels repérés et masqués sur l'ensemble d'un lot avant communication.</p></article>
+      <article class="cap reveal"><div class="viz v-inv"><div><b>P-1</b><span>Contrat d'entreprise</span><i>18 p.</i></div><div><b>P-4</b><span>Courriel sur le retard</span><i>1 p.</i></div><div><b>P-7</b><span>Mise en demeure</span><i>2 p.</i></div></div><h3>Inventaire des pièces</h3><p>La liste complète des pièces du dossier, avec cote, date, description et nombre de pages, générée en une demande.</p></article>
       <article class="cap reveal"><div class="viz v-lang"><span>« Réception provisoire »</span><span>“Provisional acceptance”</span></div><h3>Français et anglais</h3><p>Posez la question dans une langue, trouvez la preuve dans l'autre. Traductions de travail incluses.</p></article>
-      <article class="cap reveal"><div class="viz v-cite"><i></i><i></i><i></i><i></i></div><h3>Citations vérifiables</h3><p>Zéro hallucination : aucune réponse sans source. Un clic ouvre la pièce, surlignée à la ligne citée.</p></article>
+      <article class="cap reveal"><div class="viz v-cite"><i></i><i></i><i></i><i></i></div><h3>Citations vérifiables</h3><p>Zéro hallucination : aucune réponse sans source. Chaque réponse indique la pièce, la page et la ligne d'où elle provient.</p></article>
     </div>
   </div>
 </section>
