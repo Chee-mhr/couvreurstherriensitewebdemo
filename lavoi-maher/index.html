@@ -1,14 +1,31 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Lavoie&amp;Maher</title>
-<meta name="description" content="Lavoie&amp;Maher, inc. — plateforme d'intelligence artificielle pour la preuve juridique : recherche dans des milliers de pièces, transcription d'audio de longue durée, résumés et listes sourcés.">
+<title>Lavoi&amp;Maher | IA juridique locale, respectueuse de la Loi 25</title>
+<meta name="description" content="Lavoi&amp;Maher, inc. : intelligence artificielle 100 % locale pour la preuve juridique, qui respecte la Loi 25. Recherche dans des milliers de pièces, transcription d'audio de longue durée, résumés et listes sourcés. Zéro hallucination, aucune donnée envoyée en ligne.">
+<!-- DÉPLOIEMENT : remplacez VOTRE-DOMAINE.ca par votre domaine (voir LISEZMOI.md) -->
+<link rel="canonical" href="https://VOTRE-DOMAINE.ca/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_CA">
+<meta property="og:site_name" content="Lavoi&amp;Maher, inc.">
+<meta property="og:title" content="Lavoi&amp;Maher | Chaque preuve. Retrouvée.">
+<meta property="og:description" content="IA 100 % locale pour la preuve juridique : recherche, transcription, résumés et listes, toujours avec la source exacte.">
+<meta property="og:url" content="https://VOTRE-DOMAINE.ca/">
+<meta property="og:image" content="https://VOTRE-DOMAINE.ca/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Lavoi&Maher, inc.","url":"https://VOTRE-DOMAINE.ca/","logo":"https://VOTRE-DOMAINE.ca/apple-touch-icon.png","areaServed":"CA-QC","description":"Intelligence artificielle locale pour la recherche de preuve juridique."}</script>
 <meta name="theme-color" content="#0A0F1E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Hanken+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap">
+<!-- Polices auto-hébergées : le site n'envoie aucune requête à un tiers -->
+<link rel="stylesheet" href="fonts.css">
 <style>
 /* =========================================================================
-   LAVOIE&MAHER, INC. — Intelligence de preuve
+   LAVOI&MAHER, INC. — Intelligence de preuve
    Direction : encre juridique & surligneur — un dossier qui s'éclaire
    Thème     : sombre assumé (monde unique), couleurs toutes explicites
    ========================================================================= */
@@ -79,7 +96,6 @@ body::before{
 .nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
 .nav ul a{text-decoration:none;color:var(--paper-dim);font-size:.92rem;transition:color .2s}
 .nav ul a:hover{color:var(--paper)}
-@media (max-width:900px){.nav ul{display:none}}
 
 .btn{--bx:0px;--by:0px;display:inline-flex;align-items:center;gap:.6em;border:0;cursor:pointer;
   font:600 .95rem/1 var(--f-body);padding:15px 22px;border-radius:999px;text-decoration:none;
@@ -90,6 +106,30 @@ body::before{
 .btn-ghost:hover{background:rgba(255,255,255,.04)}
 .btn .arr{transition:transform .25s var(--ease)}
 .btn:hover .arr{transform:translateX(4px)}
+
+.skip{position:fixed;left:16px;top:-60px;z-index:200;background:var(--amber);color:var(--ink);padding:10px 14px;border-radius:8px;font-weight:600;text-decoration:none;transition:top .2s}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+.burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line-2);background:transparent;color:var(--paper);cursor:pointer;place-items:center;flex:none}
+.burger span,.burger span::before,.burger span::after{display:block;width:18px;height:1.5px;background:currentColor;position:relative;transition:transform .3s var(--ease), background .3s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.nav.open .burger span{background:transparent}
+.nav.open .burger span::before{transform:translateY(6px) rotate(45deg)}
+.nav.open .burger span::after{transform:translateY(-6px) rotate(-45deg)}
+.nav .menu-cta{display:none}
+@media (max-width:900px){
+  .burger{display:grid}
+  .nav-right{display:flex;align-items:center;gap:10px}
+  .nav ul{display:flex;flex-direction:column;gap:0;position:fixed;left:0;right:0;top:calc(72px + env(safe-area-inset-top,0px));
+    background:rgba(10,15,30,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);
+    padding:8px var(--gutter) 24px;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .3s, transform .3s var(--ease), visibility .3s}
+  .nav.open ul{opacity:1;transform:none;visibility:visible}
+  .nav.open{background:rgba(10,15,30,.97);border-color:var(--line)}
+  .nav ul li a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font-size:1.05rem}
+  .nav .menu-cta{display:block;margin-top:18px}
+  .nav .menu-cta a{border:0;justify-content:center;width:100%;color:var(--ink)}
+}
+@media (max-width:560px){.nav-right > .btn{display:none}}
 
 /* ---------- hero ---------- */
 .hero{position:relative;padding-block:clamp(120px,16vh,170px) 72px;overflow:hidden;isolation:isolate}
@@ -148,6 +188,13 @@ mark{background:var(--amber-soft);color:var(--amber);padding:0 .15em;border-radi
 .track span{font-family:var(--f-mono);font-size:.82rem;letter-spacing:.1em;color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:48px}
 .track span::after{content:"◆";color:var(--amber);font-size:.5rem}
 @keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- Loi 25 ---------- */
+.law-sec{border-bottom:1px solid var(--line);background:radial-gradient(50% 70% at 10% 40%, rgba(244,194,77,.07), transparent 70%), var(--ink)}
+.law-points{list-style:none;margin:0 0 30px;padding:0;display:flex;flex-wrap:wrap;gap:12px}
+.law-points li{display:flex;flex-direction:column;gap:2px;padding:14px 18px;border:1px solid var(--line-2);border-radius:12px;background:var(--ink-2);min-width:130px}
+.law-points b{font-family:var(--f-display);font-weight:500;font-size:1.8rem;line-height:1;color:var(--ok)}
+.law-points span{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 
 /* ---------- sections ---------- */
 section{position:relative;z-index:2}
@@ -380,23 +427,30 @@ footer p{font-size:.85rem}
   .reveal.pending{opacity:1;transform:none}
 }
 </style>
+</head>
+<body>
+<a class="skip" href="#loi25">Aller au contenu</a>
 
 <div class="spot" id="spot"></div>
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Lavoie&amp;Maher, inc. — accueil">Lavoie<span class="amp">&amp;</span>Maher<small>INC.</small></a>
+    <a class="brand" href="#top" aria-label="Lavoi&amp;Maher, inc. — accueil">Lavoi<span class="amp">&amp;</span>Maher<small>INC.</small></a>
     <nav aria-label="Principale">
-      <ul>
+      <ul id="menu">
+        <li><a href="#loi25">Loi 25</a></li>
         <li><a href="#recherche">Recherche</a></li>
         <li><a href="#transcription">Transcription</a></li>
         <li><a href="#resume">Résumés</a></li>
         <li><a href="#listes">Listes</a></li>
         <li><a href="#fiabilite">Fiabilité</a></li>
-        <li><a href="#confidentialite">Traitement local</a></li>
+                <li class="menu-cta"><a class="btn btn-amber" href="#demo">Demander une démo <span class="arr">→</span></a></li>
       </ul>
     </nav>
-    <a class="btn btn-amber magnet" href="#demo">Demander une démo <span class="arr">→</span></a>
+    <div class="nav-right">
+      <a class="btn btn-amber magnet" href="#demo">Demander une démo <span class="arr">→</span></a>
+      <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -407,16 +461,16 @@ footer p{font-size:.85rem}
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <p class="eyebrow"><span class="pulse"></span> Traitement 100 % local · Conçu au Québec</p>
+        <p class="eyebrow"><span class="pulse"></span> IA 100 % locale · Respect de la Loi 25 · Zéro hallucination</p>
         <h1>
           <span class="line"><span>Chaque preuve.</span></span>
           <span class="line"><span>Chaque page.</span></span>
           <span class="line"><span><em>Retrouvée.</em></span></span>
         </h1>
-        <p class="lede">L'outil d'intelligence artificielle de Lavoie&amp;Maher fouille des milliers de pièces juridiques, transcrit des heures d'audience et répond toujours avec sa source&nbsp;: la pièce, la page, la ligne. Le tout sur vos propres serveurs&nbsp;: aucun document ne quitte votre cabinet.</p>
+        <p class="lede">L'outil d'intelligence artificielle de Lavoi&amp;Maher fouille des milliers de pièces juridiques, transcrit des heures d'audience et répond toujours avec sa source&nbsp;: la pièce, la page, la ligne. Le tout sur vos propres serveurs&nbsp;: aucun document ne quitte votre cabinet.</p>
         <div class="hero-cta">
           <a class="btn btn-amber magnet" href="#demo">Voir l'outil sur vos dossiers <span class="arr">→</span></a>
-          <a class="btn btn-ghost magnet" href="#recherche">Essayer la recherche</a>
+          <a class="btn btn-ghost magnet" href="#loi25">Loi 25 : comment on la respecte</a>
         </div>
       </div>
 
@@ -436,9 +490,9 @@ footer p{font-size:.85rem}
     </div>
 
     <div class="hero-meta">
-      <div><strong data-count="12480">12 480</strong><span>fichiers dans ce dossier d'exemple</span></div>
       <div><strong>7 h 42</strong><span>d'audio transcrit en une passe</span></div>
       <div><strong>100 %</strong><span>des réponses citent leur source</span></div>
+      <div><strong>0</strong><span>hallucination</span></div>
       <div><strong>0 octet</strong><span>de vos dossiers envoyé en ligne</span></div>
     </div>
   </div>
@@ -451,12 +505,36 @@ footer p{font-size:.85rem}
   </div>
 </div>
 
-<!-- ================= L&M-1 RECHERCHE ================= -->
+
+<!-- ================= L&M-1 LOI 25 / TRAITEMENT LOCAL ================= -->
+<section class="sec law-sec" id="loi25">
+  <div class="wrap vault">
+    <canvas id="seal" class="reveal" aria-hidden="true"></canvas>
+    <div class="reveal">
+      <div class="tab"><span class="cote">L&amp;M-1</span><span class="eyebrow">Loi 25 · Traitement 100 % local</span></div>
+      <h2>La Loi 25, respectée <em>par conception.</em></h2>
+      <p class="lede" style="margin-block:22px 26px">Votre plus grand risque avec l'IA, c'est d'envoyer les renseignements personnels de vos clients sur les serveurs d'un tiers. Ici, c'est impossible. L'intelligence artificielle fonctionne entièrement sur l'infrastructure de votre cabinet. Aucun document, aucune question, aucune transcription n'est envoyé à un service infonuagique externe. Le secret professionnel reste là où il doit être.</p>
+      <ul class="law-points">
+      <li><b>0</b><span>transfert hors Québec</span></li>
+      <li><b>0</b><span>fournisseur infonuagique</span></li>
+      <li><b>0</b><span>connexion requise</span></li>
+    </ul>
+      <div class="guar">
+        <div><strong>Traitement 100 % local</strong><p>Le modèle d'IA tourne sur vos serveurs et fonctionne sans connexion Internet. Rien ne transite en ligne, même pas vos questions.</p></div>
+        <div><strong>Loi 25</strong><p>Aucune communication de renseignements personnels à un tiers ni à l'extérieur du Québec : le traitement reste sous votre contrôle, journalisé et limité à la finalité du mandat.</p></div>
+        <div><strong>Cloisonnement par dossier</strong><p>Chaque mandat est isolé et chiffré. Un utilisateur ne voit que les dossiers auxquels il a accès.</p></div>
+        <div><strong>Journal d'audit</strong><p>Qui a consulté quoi, quand. Chaque recherche et chaque export sont tracés.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RECHERCHE ================= -->
 <section class="sec" id="recherche">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-1</span><span class="eyebrow">Recherche de preuve</span></div>
+        <div class="tab"><span class="cote">L&amp;M-2</span><span class="eyebrow">Recherche de preuve</span></div>
         <h2>Posez la question comme à un collègue. <em>Obtenez la pièce.</em></h2>
       </div>
       <p class="lede">Pas de mots-clés exacts, pas d'opérateurs booléens. L'outil comprend le sens de votre question, parcourt tout le dossier, et classe chaque passage selon sa pertinence. Essayez-le ci-dessous sur un petit dossier fictif.</p>
@@ -492,12 +570,12 @@ footer p{font-size:.85rem}
   </div>
 </section>
 
-<!-- ================= L&M-2 TRANSCRIPTION ================= -->
+<!-- ================= TRANSCRIPTION ================= -->
 <section class="sec" id="transcription" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-2</span><span class="eyebrow">Transcription</span></div>
+        <div class="tab"><span class="cote">L&amp;M-3</span><span class="eyebrow">Transcription</span></div>
         <h2>Sept heures d'interrogatoire. <em>Lisibles en une minute.</em></h2>
       </div>
       <p class="lede">Audio ou vidéo de n'importe quelle longueur, en français, en anglais ou dans les deux à la fois. Chaque intervenant est identifié, chaque mot est horodaté, et chaque citation vous ramène à la seconde exacte de l'enregistrement.</p>
@@ -529,12 +607,12 @@ footer p{font-size:.85rem}
   </div>
 </section>
 
-<!-- ================= L&M-3 RÉSUMÉ ================= -->
+<!-- ================= RÉSUMÉ ================= -->
 <section class="sec" id="resume" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-3</span><span class="eyebrow">Résumés ciblés</span></div>
+        <div class="tab"><span class="cote">L&amp;M-4</span><span class="eyebrow">Résumés ciblés</span></div>
         <h2>L'essentiel d'un passage, <em>sans perdre la source.</em></h2>
       </div>
       <p class="lede">Sélectionnez un passage, une pièce ou un témoignage entier. L'outil en extrait les faits déterminants et relie chaque point du résumé à la ligne d'origine. Vous vérifiez en un clic.</p>
@@ -560,12 +638,12 @@ footer p{font-size:.85rem}
   </div>
 </section>
 
-<!-- ================= L&M-4 LISTES ================= -->
+<!-- ================= LISTES ================= -->
 <section class="sec" id="listes" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-4</span><span class="eyebrow">Listes à la demande</span></div>
+        <div class="tab"><span class="cote">L&amp;M-5</span><span class="eyebrow">Listes à la demande</span></div>
         <h2>Une question. <em>Un tableau prêt à déposer.</em></h2>
       </div>
       <p class="lede">Chronologies, listes de communications, inventaires de pièces, tableaux de montants réclamés. Demandez-les en une phrase ; l'outil les construit, les trie et signale les incohérences.</p>
@@ -591,12 +669,12 @@ footer p{font-size:.85rem}
   </div>
 </section>
 
-<!-- ================= L&M-5 PLUS ================= -->
+<!-- ================= PLUS ================= -->
 <section class="sec" id="plus" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-5</span><span class="eyebrow">Et plus encore</span></div>
+        <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Et plus encore</span></div>
         <h2>Tout ce qu'un dossier exige, <em>au même endroit.</em></h2>
       </div>
       <p class="lede">Le travail de fond qui prenait des semaines à une équipe se fait maintenant pendant que vous préparez votre plaidoirie.</p>
@@ -607,20 +685,20 @@ footer p{font-size:.85rem}
       <article class="cap reveal"><div class="viz v-ocr"><span>Livraison le 15 juin</span></div><h3>Lecture des numérisations</h3><p>PDF numérisés, télécopies, photos et notes manuscrites deviennent du texte interrogeable.</p></article>
       <article class="cap reveal"><div class="viz v-redact">Témoin : <em>Jean Tremblay</em>, né le <em>12/04/1968</em>, domicilié au <em>1234, rue Fictive</em>.</div><h3>Caviardage assisté</h3><p>Renseignements personnels repérés et masqués sur l'ensemble d'un lot avant communication.</p></article>
       <article class="cap reveal"><div class="viz v-lang"><span>« Réception provisoire »</span><span>“Provisional acceptance”</span></div><h3>Français et anglais</h3><p>Posez la question dans une langue, trouvez la preuve dans l'autre. Traductions de travail incluses.</p></article>
-      <article class="cap reveal"><div class="viz v-cite"><i></i><i></i><i></i><i></i></div><h3>Citations vérifiables</h3><p>Aucune réponse sans source. Un clic ouvre la pièce, surlignée à la ligne citée.</p></article>
+      <article class="cap reveal"><div class="viz v-cite"><i></i><i></i><i></i><i></i></div><h3>Citations vérifiables</h3><p>Zéro hallucination : aucune réponse sans source. Un clic ouvre la pièce, surlignée à la ligne citée.</p></article>
     </div>
   </div>
 </section>
 
-<!-- ================= L&M-6 FIABILITÉ ================= -->
+<!-- ================= FIABILITÉ ================= -->
 <section class="sec" id="fiabilite" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Fiabilité des réponses</span></div>
-        <h2>Si ce n'est pas dans le dossier, <em>l'outil vous le dit.</em></h2>
+        <div class="tab"><span class="cote">L&amp;M-7</span><span class="eyebrow">Zéro hallucination</span></div>
+        <h2>Zéro hallucination. <em>Seulement votre dossier.</em></h2>
       </div>
-      <p class="lede">Les IA générales en ligne répondent de mémoire et peuvent inventer une citation, une date ou une pièce qui semble plausible. L'outil de Lavoie&amp;Maher ne répond qu'à partir des documents de votre dossier. Chaque affirmation est rattachée à un passage réel, et quand la preuve n'existe pas, il le dit au lieu de combler le vide.</p>
+      <p class="lede">Les IA générales en ligne répondent de mémoire et peuvent inventer une citation, une date ou une pièce qui semble plausible. Le modèle de Lavoi&amp;Maher fonctionne en local, sans Internet, et se base seulement sur les documents que vous lui confiez. Il ne peut rien tirer d'ailleurs : chaque affirmation pointe vers un passage réel, et quand la preuve n'existe pas, il le dit.</p>
     </div>
 
     <div class="versus reveal" id="versus">
@@ -632,7 +710,7 @@ footer p{font-size:.85rem}
           <div class="vs-flag"><span class="tag warn">Pièce introuvable</span><span class="mono">Aucun courriel du 5 avril au dossier. Citation inventée.</span></div>
         </div>
         <div class="vs-col ours">
-          <span class="eyebrow">Lavoie&amp;Maher</span>
+          <span class="eyebrow">Lavoi&amp;Maher</span>
           <p class="vs-a">Aucune pièce du dossier ne contient d'admission écrite du retard par Mme Gagnon. Le passage le plus proche va dans le sens contraire&nbsp;: elle attribue le retard «&nbsp;<mark>exclusivement à la pluie</mark>&nbsp;».</p>
           <div class="vs-flag"><span class="cote">D-2</span><span class="mono">Courriel · 2021-04-02 · l. 1–2 · vérifié dans le dossier</span></div>
         </div>
@@ -641,29 +719,13 @@ footer p{font-size:.85rem}
         <div><span class="mono">Source des réponses</span><span>Mémoire d'un modèle entraîné sur Internet</span><span>Uniquement les pièces de votre dossier</span></div>
         <div><span class="mono">Réponse sans source</span><span>Possible</span><span>Refusée</span></div>
         <div><span class="mono">Preuve absente</span><span>Risque d'une réponse inventée</span><span>« Aucune pièce ne l'établit »</span></div>
+        <div><span class="mono">Besoin d'Internet</span><span>Oui, en permanence</span><span>Non, fonctionne hors ligne</span></div>
         <div><span class="mono">Où vont vos données</span><span>Serveurs d'un tiers, souvent hors Québec</span><span>Restent sur vos serveurs</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= CONFIDENTIALITÉ ================= -->
-<section class="sec" id="confidentialite" style="padding-top:0">
-  <div class="wrap vault">
-    <canvas id="seal" class="reveal" aria-hidden="true"></canvas>
-    <div class="reveal">
-      <div class="tab"><span class="cote">L&amp;M-7</span><span class="eyebrow">Traitement local</span></div>
-      <h2>Vos dossiers ne quittent <em>jamais vos murs.</em></h2>
-      <p class="lede" style="margin-block:22px 34px">L'intelligence artificielle fonctionne entièrement sur l'infrastructure de votre cabinet. Aucun document, aucune question, aucune transcription n'est envoyé à un service infonuagique externe. Le secret professionnel reste là où il doit être.</p>
-      <div class="guar">
-        <div><strong>Traitement 100 % local</strong><p>Le modèle d'IA tourne sur vos serveurs. Rien ne transite par Internet, même pas vos questions.</p></div>
-        <div><strong>Loi 25</strong><p>Aucune communication de renseignements personnels à l'extérieur du Québec ni à un tiers. Le traitement reste encadré, journalisé et limité au mandat.</p></div>
-        <div><strong>Cloisonnement par dossier</strong><p>Chaque mandat est isolé et chiffré. Un utilisateur ne voit que les dossiers auxquels il a accès.</p></div>
-        <div><strong>Journal d'audit</strong><p>Qui a consulté quoi, quand. Chaque recherche et chaque export sont tracés.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ================= PROCESS ================= -->
 <section class="sec" style="padding-top:0">
@@ -689,9 +751,10 @@ footer p{font-size:.85rem}
       <div>
         <span class="eyebrow">Démonstration privée</span>
         <h2 style="margin-block:18px 22px">Montrez-nous un vrai dossier. <em>On vous montre sa preuve.</em></h2>
-        <p class="lede">Une rencontre de 30 minutes avec l'équipe de Lavoie&amp;Maher, sur un dossier fermé ou anonymisé de votre choix.</p>
+        <p class="lede">Une rencontre de 30 minutes avec l'équipe de Lavoi&amp;Maher, sur un dossier fermé ou anonymisé de votre choix.</p>
       </div>
-      <form class="demo" id="dform" novalidate>
+      <!-- DÉPLOIEMENT : collez l'adresse de votre service de formulaire dans data-endpoint (ex. https://formspree.io/f/xxxxxxx). Vide = mode démo. -->
+      <form class="demo" id="dform" novalidate data-endpoint="">
         <label>Nom<input id="f-nom" name="nom" required autocomplete="name"></label>
         <label>Cabinet<input id="f-cab" name="cabinet" autocomplete="organization"></label>
         <label class="full">Courriel<input id="f-mail" name="courriel" type="email" required autocomplete="email"></label>
@@ -710,10 +773,11 @@ footer p{font-size:.85rem}
 <footer>
   <div class="wrap">
     <div>
-      <a class="brand" href="#top">Lavoie<span class="amp">&amp;</span>Maher<small>INC.</small></a>
+      <a class="brand" href="#top">Lavoi<span class="amp">&amp;</span>Maher<small>INC.</small></a>
       <p style="margin-top:10px">Intelligence de preuve pour les professionnels du droit · Québec</p>
+      <p style="margin-top:6px">Ce site n'utilise aucun témoin (cookie) et ne charge aucune ressource externe.</p>
     </div>
-    <p class="mono">© 2026 Lavoie&amp;Maher, inc. · Tous droits réservés</p>
+    <p class="mono">© 2026 Lavoi&amp;Maher, inc. · Tous droits réservés</p>
   </div>
 </footer>
 
@@ -1106,8 +1170,9 @@ const DOCS = [
     g.addColorStop(0, "rgba(244,194,77,.25)"); g.addColorStop(1, "rgba(244,194,77,0)");
     ctx.fillStyle = g; ctx.beginPath(); ctx.arc(c, c, S * .2, 0, 7); ctx.fill();
     ctx.strokeStyle = "#F4C24D"; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(c, c, S * .15, 0, 7); ctx.stroke();
-    ctx.fillStyle = "#ECE7DC"; ctx.font = `italic 500 ${S * .11}px "Bodoni Moda", Georgia, serif`; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-    ctx.fillText("L&M", c, c + S * .005);
+    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.fillStyle = "#F4C24D"; ctx.font = `500 ${S * .028}px "JetBrains Mono", monospace`; ctx.fillText("L O I", c, c - S * .06);
+    ctx.fillStyle = "#ECE7DC"; ctx.font = `italic 500 ${S * .12}px "Bodoni Moda", Georgia, serif`; ctx.fillText("25", c, c + S * .02);
     if (vis && !RM) requestAnimationFrame(draw);
   }
   onView(cv, v => { const was = vis; vis = v; if (v && !was) requestAnimationFrame(draw); }, { threshold: 0 });
@@ -1123,12 +1188,29 @@ else onView($("#versus"), v => { if (v) $("#versus").classList.add("go"); }, { t
 onView($("#steps"), v => { if (v) $("#steps").classList.add("go"); }, { threshold: .4 });
 
 /* ---------- form (démo : aucun envoi) ---------- */
-$("#dform").addEventListener("submit", e => {
+/* ---------- menu mobile ---------- */
+const burger = $("#burger");
+const setMenu = open => { nav.classList.toggle("open", open); burger.setAttribute("aria-expanded", open); burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu"); };
+burger.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
+$$("#menu a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
+
+/* ---------- formulaire : envoi réel si data-endpoint est rempli ---------- */
+$("#dform").addEventListener("submit", async e => {
   e.preventDefault();
-  const f = e.target, msg = $("#fmsg");
-  if (!f.nom.value.trim() || !f.courriel.checkValidity() || !f.courriel.value) { msg.style.color = "var(--danger)"; msg.textContent = "Indiquez votre nom et un courriel valide pour continuer."; return; }
-  msg.style.color = "var(--ok)";
-  msg.textContent = `Merci, ${f.nom.value.trim()}. Formulaire de démonstration : aucune donnée n'a été transmise. Branchez ici votre service d'envoi.`;
+  const f = e.target, msg = $("#fmsg"), btn = f.querySelector("button[type=submit]"), url = f.dataset.endpoint.trim();
+  const say = (t, ok) => { msg.style.color = ok ? "var(--ok)" : "var(--danger)"; msg.textContent = t; };
+  if (!f.nom.value.trim() || !f.courriel.value || !f.courriel.checkValidity()) return say("Indiquez votre nom et un courriel valide pour continuer.", false);
+  if (!url) return say(`Merci, ${f.nom.value.trim()}. Ce formulaire est en mode démonstration : aucune donnée n'a été transmise.`, true);
+  btn.disabled = true; say("Envoi en cours…", true);
+  try {
+    const r = await fetch(url, { method: "POST", body: new FormData(f), headers: { Accept: "application/json" } });
+    if (!r.ok) throw new Error(r.status);
+    f.reset(); say("Merci. Votre demande a bien été reçue ; nous vous écrirons sous peu pour fixer la rencontre.", true);
+  } catch { say("L'envoi n'a pas fonctionné. Réessayez dans un instant ou écrivez-nous directement.", false); }
+  finally { btn.disabled = false; }
 });
 })();
 </script>
+</body>
+</html>
