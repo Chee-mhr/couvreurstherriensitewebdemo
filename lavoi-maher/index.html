@@ -94,7 +94,7 @@ body::before{
 .brand .amp{font-style:italic;color:var(--amber);font-weight:400;padding-inline:.04em}
 .brand small{font-family:var(--f-mono);font-size:.62rem;color:var(--muted);letter-spacing:.1em;margin-left:.5em}
 .nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
-.nav ul a{text-decoration:none;color:var(--paper-dim);font-size:.92rem;transition:color .2s}
+.nav ul a{white-space:nowrap;text-decoration:none;color:var(--paper-dim);font-size:.92rem;transition:color .2s}
 .nav ul a:hover{color:var(--paper)}
 
 .btn{--bx:0px;--by:0px;display:inline-flex;align-items:center;gap:.6em;border:0;cursor:pointer;
@@ -117,7 +117,7 @@ body::before{
 .nav.open .burger span::before{transform:translateY(6px) rotate(45deg)}
 .nav.open .burger span::after{transform:translateY(-6px) rotate(-45deg)}
 .nav .menu-cta{display:none}
-@media (max-width:900px){
+@media (max-width:1100px){
   .burger{display:grid}
   .nav-right{display:flex;align-items:center;gap:10px}
   .nav ul{display:flex;flex-direction:column;gap:0;position:fixed;left:0;right:0;top:calc(72px + env(safe-area-inset-top,0px));
@@ -312,9 +312,36 @@ tbody tr.on{opacity:1;transform:none}
 tbody tr:hover{background:rgba(124,146,255,.05)}
 .tag{font-family:var(--f-mono);font-size:.66rem;padding:3px 8px;border-radius:999px;border:1px solid var(--line-2);white-space:nowrap}
 .tag.warn{border-color:rgba(255,122,107,.5);color:var(--danger)}
+.ltabs{display:flex;gap:4px;padding:10px 12px 0;background:var(--panel)}
+.ltab{font:500 .88rem var(--f-body);color:var(--muted);background:transparent;border:0;border-bottom:2px solid transparent;padding:10px 14px;cursor:pointer;transition:color .2s,border-color .2s}
+.ltab:hover{color:var(--paper)}
+.ltab.on{color:var(--paper);border-color:var(--amber)}
 .tbl-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:16px 20px;color:var(--muted)}
 .fmt{display:flex;gap:8px;flex-wrap:wrap}
 .fmt span{font-family:var(--f-mono);font-size:.68rem;padding:5px 10px;border-radius:6px;background:var(--panel);border:1px solid var(--line)}
+
+/* ---------- classement ---------- */
+.rules{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:14px 20px;border-bottom:1px solid var(--line)}
+.rules .mono{color:var(--muted);margin-right:4px}
+.chip.on{border-color:var(--amber);color:var(--ink);background:var(--amber)}
+.sort-grid{display:grid;grid-template-columns:minmax(0,.8fr) auto minmax(0,1.2fr);gap:0;align-items:stretch}
+@media (max-width:860px){.sort-grid{grid-template-columns:minmax(0,1fr)}.sort-arrow{transform:rotate(90deg);padding-block:4px!important}}
+.sort-col{padding:18px 20px;min-width:0}
+.sort-h{display:flex;justify-content:space-between;gap:10px;margin-bottom:12px}
+.sort-h .mono{color:var(--muted)}
+.sort-arrow{display:grid;place-items:center;color:var(--amber);padding-inline:4px}
+.raw{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.raw li,.tree .f{display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:.78rem;padding:8px 10px;border-radius:8px;min-width:0}
+.raw li{background:var(--panel);border:1px solid var(--line);color:var(--paper-dim);transition:opacity .5s,transform .5s var(--ease)}
+.raw li.gone{opacity:.25;transform:translateX(10px)}
+.raw li span,.tree .f span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ext{flex:none;font-size:.6rem;letter-spacing:.06em;padding:2px 5px;border-radius:4px;background:var(--line-2);color:var(--paper)}
+.tree{display:grid;gap:12px}
+.folder{display:grid;gap:4px}
+.folder > b{display:flex;align-items:center;gap:8px;font-weight:600;font-size:.9rem;color:var(--paper)}
+.folder > b::before{content:"";width:16px;height:12px;border-radius:2px 3px 3px 3px;background:var(--amber);opacity:.85;flex:none}
+.tree .f{margin-left:22px;background:rgba(244,194,77,.05);border:1px solid rgba(244,194,77,.18);color:var(--paper);opacity:0;transform:translateY(6px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.tree .f.on{opacity:1;transform:none}
 
 /* ---------- L&M-5 plus ---------- */
 .grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
@@ -333,10 +360,13 @@ tbody tr:hover{background:rgba(124,146,255,.05)}
 .v-time i{position:absolute;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--azure);animation:pop 4s infinite}
 .v-time i:nth-child(2n){background:var(--amber)}
 @keyframes pop{0%,10%{transform:scale(0)}20%,80%{transform:scale(1)}100%{transform:scale(0)}}
-/* contradiction viz */
-.v-contra{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px}
-.v-contra div{border-radius:6px;background:var(--ink);padding:8px;font-family:var(--f-mono);font-size:.6rem;color:var(--muted);line-height:1.5}
-.v-contra b{font-weight:500;color:var(--danger);animation:flash 2.4s infinite}
+/* witness viz */
+.v-wit{padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.v-wit div{display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:.62rem;color:var(--paper-dim);animation:witin 4.5s infinite both}
+.v-wit div:nth-child(2){animation-delay:.25s}.v-wit div:nth-child(3){animation-delay:.5s}
+.v-wit i{flex:none;width:16px;height:16px;border-radius:50%;background:var(--azure-soft);border:1px solid rgba(124,146,255,.5)}
+.v-wit b{margin-left:auto;font-weight:500;color:var(--amber)}
+@keyframes witin{0%{opacity:0;transform:translateX(-8px)}12%,85%{opacity:1;transform:none}100%{opacity:0}}
 @keyframes flash{50%{background:rgba(255,122,107,.18)}}
 /* redact viz */
 .v-redact{padding:14px;font-size:.78rem;line-height:1.9;color:var(--paper-dim)}
@@ -446,6 +476,7 @@ footer p{font-size:.85rem}
         <li><a href="#transcription">Transcription</a></li>
         <li><a href="#resume">Résumés</a></li>
         <li><a href="#listes">Listes</a></li>
+        <li><a href="#classement">Classement</a></li>
         <li><a href="#fiabilite">Fiabilité</a></li>
                 <li class="menu-cta"><a class="btn btn-amber" href="#demo">Demander une démo <span class="arr">→</span></a></li>
       </ul>
@@ -649,25 +680,76 @@ footer p{font-size:.85rem}
         <div class="tab"><span class="cote">L&amp;M-5</span><span class="eyebrow">Listes à la demande</span></div>
         <h2>Une question. <em>Un tableau prêt à déposer.</em></h2>
       </div>
-      <p class="lede">Chronologies, listes de communications, inventaires de pièces, tableaux de montants réclamés. Demandez-les en une phrase ; l'outil les construit, les trie et signale les incohérences.</p>
+      <p class="lede">Listes de témoins, chronologies, listes de communications, inventaires de pièces, tableaux de montants réclamés. Demandez-les en une phrase ; l'outil les construit, les trie et cite chaque source.</p>
     </div>
 
     <div class="panel reveal" id="listbox">
+      <div class="ltabs" role="tablist" aria-label="Exemples de listes">
+        <button class="ltab on" type="button" role="tab" aria-selected="true" data-tab="0">Communications</button>
+        <button class="ltab" type="button" role="tab" aria-selected="false" data-tab="1">Témoins</button>
+      </div>
       <div class="prompt"><span class="avatar">M</span><p id="lprompt">Dresse la liste de toutes les communications entre M. Tremblay et Mme Gagnon au sujet du retard, en ordre chronologique.</p></div>
-      <div class="tbl-wrap">
+      <div class="tbl-wrap lpane" data-prompt="Dresse la liste de toutes les communications entre M. Tremblay et Mme Gagnon au sujet du retard, en ordre chronologique.">
         <table>
           <thead><tr><th>Date</th><th>De → À</th><th>Objet</th><th>Source</th><th>Note</th></tr></thead>
           <tbody id="ltbody">
             <tr><td>2021-03-12</td><td>Tremblay → Gagnon</td><td>Retard de trois semaines constaté sur le chantier</td><td><span class="cote">P-4</span></td><td></td></tr>
             <tr><td>2021-03-19</td><td>Tremblay → Gagnon</td><td>Mise en demeure : pénalité de 2 500 $ par jour</td><td><span class="cote">P-7</span></td><td></td></tr>
-            <tr><td>2021-04-02</td><td>Gagnon → Tremblay</td><td>Conteste le retard, invoque la pluie</td><td><span class="cote">D-2</span></td><td><span class="tag warn">Contredit P-12</span></td></tr>
+            <tr><td>2021-04-02</td><td>Gagnon → Tremblay</td><td>Conteste le retard, invoque la pluie</td><td><span class="cote">D-2</span></td><td><span class="tag">Réponse à P-7</span></td></tr>
             <tr><td>2021-05-04</td><td>Tremblay → Gagnon</td><td>Procès-verbal : infiltration d'eau au sous-sol</td><td><span class="cote">P-12</span></td><td></td></tr>
             <tr><td>2021-06-02</td><td>Gagnon → Tremblay</td><td>Texto : « on finit la semaine prochaine »</td><td><span class="cote">P-21</span></td><td></td></tr>
             <tr><td>2021-07-14</td><td>Roy → Tremblay, Gagnon</td><td>Réception provisoire avec réserves</td><td><span class="cote">P-40</span></td><td><span class="tag">Tiers en copie</span></td></tr>
           </tbody>
         </table>
       </div>
-      <div class="tbl-foot"><span class="mono">6 communications · 4 pièces de la demande, 1 de la défense, 1 transcription</span><div class="fmt"><span>Tableau Word</span><span>Excel</span><span>PDF</span></div></div>
+      <div class="tbl-wrap lpane" hidden data-prompt="Fais la liste des témoins potentiels : rôle, pièces où chacun apparaît et sujets sur lesquels l'interroger.">
+        <table>
+          <thead><tr><th>Témoin</th><th>Rôle</th><th>Apparaît dans</th><th>Sujets à couvrir</th><th>Mentions</th></tr></thead>
+          <tbody>
+            <tr><td>M. Tremblay</td><td>Représentant de la demanderesse</td><td><span class="cote">P-4</span> <span class="cote">P-7</span> <span class="cote">P-33</span></td><td>Mise en demeure, date de l'infiltration, drain français</td><td>14 pièces</td></tr>
+            <tr><td>Mme Gagnon</td><td>Représentante de la défenderesse</td><td><span class="cote">D-2</span> <span class="cote">P-21</span> <span class="cote">D-9</span></td><td>Causes du retard, échéancier promis</td><td>9 pièces</td></tr>
+            <tr><td>Me Roy</td><td>Signataire de la réception provisoire</td><td><span class="cote">P-40</span></td><td>Réserves à la réception, date de signature</td><td>4 pièces</td></tr>
+            <tr><td>Ingénieur expert</td><td>Auteur du rapport d'expertise</td><td><span class="cote">P-15</span></td><td>Cause des fissures, coût des correctifs</td><td>3 pièces</td></tr>
+            <tr><td>Surintendant de chantier</td><td>Cité au procès-verbal</td><td><span class="cote">P-12</span> <span class="cote">P-33</span></td><td>Constat de l'eau au sous-sol</td><td>2 pièces</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tbl-foot"><span class="mono" id="lfoot">6 communications · 4 pièces de la demande, 1 de la défense, 1 transcription</span><div class="fmt"><span>Tableau Word</span><span>Excel</span><span>PDF</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLASSEMENT ================= -->
+<section class="sec" id="classement" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Classement et renommage</span></div>
+        <h2>Des centaines de fichiers en vrac. <em>Classés à votre façon.</em></h2>
+      </div>
+      <p class="lede">« scan_0042.pdf », « RE_ RE_ retard (2).msg », « MED_final_FINAL.docx »… Décrivez comment vous voulez nommer et ranger vos PDF et documents ; l'outil lit chaque fichier, le renomme et le classe dans vos dossiers, selon vos propres règles.</p>
+    </div>
+
+    <div class="panel reveal" id="sorter">
+      <div class="prompt"><span class="avatar">M</span><p id="sprompt">Renomme chaque document par cote, date et description, et classe-les par partie.</p></div>
+      <div class="rules" role="group" aria-label="Choisir une règle de classement">
+        <span class="mono">Votre règle :</span>
+        <button class="chip on" type="button" data-rule="0">Par cote</button>
+        <button class="chip" type="button" data-rule="1">Par date</button>
+        <button class="chip" type="button" data-rule="2">Par personne</button>
+      </div>
+      <div class="sort-grid">
+        <div class="sort-col">
+          <div class="sort-h"><span class="eyebrow">Avant</span><span class="mono">Téléchargements/</span></div>
+          <ul class="raw" id="raw"></ul>
+        </div>
+        <div class="sort-arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+        <div class="sort-col">
+          <div class="sort-h"><span class="eyebrow">Après</span><span class="mono">Dossier 500-17-000000-241/</span></div>
+          <div class="tree" id="tree"></div>
+        </div>
+      </div>
+      <div class="tbl-foot"><span class="mono">Exemple fictif · 8 fichiers · vos règles peuvent combiner cote, date, partie, personne, type ou tout autre critère</span></div>
     </div>
   </div>
 </section>
@@ -677,14 +759,14 @@ footer p{font-size:.85rem}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Et plus encore</span></div>
+        <div class="tab"><span class="cote">L&amp;M-7</span><span class="eyebrow">Et plus encore</span></div>
         <h2>Tout ce qu'un dossier exige, <em>au même endroit.</em></h2>
       </div>
       <p class="lede">Le travail de fond qui prenait des semaines à une équipe se fait maintenant pendant que vous préparez votre plaidoirie.</p>
     </div>
     <div class="grid6">
       <article class="cap reveal"><div class="viz v-time"><i style="left:12%"></i><i style="left:27%;animation-delay:.3s"></i><i style="left:41%;animation-delay:.6s"></i><i style="left:58%;animation-delay:.9s"></i><i style="left:73%;animation-delay:1.2s"></i><i style="left:88%;animation-delay:1.5s"></i></div><h3>Chronologie automatique</h3><p>Chaque date de chaque pièce, replacée sur une seule ligne du temps, avec la source de chaque événement.</p></article>
-      <article class="cap reveal"><div class="viz v-contra"><div>P-12 · 04/05 : « eau au sous-sol <b>depuis mars</b> »</div><div>D-2 · 02/04 : « aucune infiltration <b>avant mai</b> »</div></div><h3>Détection de contradictions</h3><p>Les versions qui ne concordent pas entre témoins, courriels et pièces sont signalées avant l'audience.</p></article>
+      <article class="cap reveal"><div class="viz v-wit"><div><i></i>M. Tremblay<b>14 pièces</b></div><div><i></i>Mme Gagnon<b>9 pièces</b></div><div><i></i>Me Roy<b>4 pièces</b></div></div><h3>Listes de témoins</h3><p>Chaque personne nommée au dossier, son rôle et toutes les pièces où elle apparaît, prêtes pour préparer vos interrogatoires.</p></article>
       <article class="cap reveal"><div class="viz v-ocr"><span>Livraison le 15 juin</span></div><h3>Lecture des numérisations</h3><p>PDF numérisés, télécopies, photos et notes manuscrites deviennent du texte interrogeable.</p></article>
       <article class="cap reveal"><div class="viz v-redact">Témoin : <em>Jean Tremblay</em>, né le <em>12/04/1968</em>, domicilié au <em>1234, rue Fictive</em>.</div><h3>Caviardage assisté</h3><p>Renseignements personnels repérés et masqués sur l'ensemble d'un lot avant communication.</p></article>
       <article class="cap reveal"><div class="viz v-lang"><span>« Réception provisoire »</span><span>“Provisional acceptance”</span></div><h3>Français et anglais</h3><p>Posez la question dans une langue, trouvez la preuve dans l'autre. Traductions de travail incluses.</p></article>
@@ -698,7 +780,7 @@ footer p{font-size:.85rem}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-7</span><span class="eyebrow">Zéro hallucination</span></div>
+        <div class="tab"><span class="cote">L&amp;M-8</span><span class="eyebrow">Zéro hallucination</span></div>
         <h2>Zéro hallucination. <em>Seulement votre dossier.</em></h2>
       </div>
       <p class="lede">Les IA générales en ligne répondent de mémoire et peuvent inventer une citation, une date ou une pièce qui semble plausible. Le modèle de Lavoi&amp;Maher fonctionne en local, sans Internet, et se base seulement sur les documents que vous lui confiez. Il ne peut rien tirer d'ailleurs : chaque affirmation pointe vers un passage réel, et quand la preuve n'existe pas, il le dit.</p>
@@ -1129,19 +1211,26 @@ const DOCS = [
    L&M-4 — construction du tableau
    ========================================================= */
 (function lists() {
-  const rows = $$("#ltbody tr"), pr = $("#lprompt"), full = pr.textContent;
-  if (RM) { rows.forEach(r => r.classList.add("on")); return; }
-  let t = [];
-  const run = () => {
-    t.forEach(clearTimeout); t = []; rows.forEach(r => r.classList.remove("on"));
+  const pr = $("#lprompt"), panes = $$(".lpane"), tabs = $$(".ltab"), foot = $("#lfoot");
+  const FOOT = ["6 communications · 4 pièces de la demande, 1 de la défense, 1 transcription", "5 témoins · 32 pièces analysées · triés par nombre de mentions"];
+  let t = [], cur = 0;
+  const clear = () => { t.forEach(clearTimeout); t = []; };
+  const show = (k, animate) => {
+    clear(); cur = k;
+    tabs.forEach((b, i) => { b.classList.toggle("on", i === k); b.setAttribute("aria-selected", i === k); });
+    panes.forEach((p, i) => p.hidden = i !== k);
+    foot.textContent = FOOT[k];
+    const rows = $$("tbody tr", panes[k]), full = panes[k].dataset.prompt;
+    if (!animate || RM) { pr.textContent = full; rows.forEach(r => r.classList.add("on")); return; }
+    rows.forEach(r => r.classList.remove("on"));
     let i = 0; pr.textContent = "";
-    const ty = setInterval(() => { pr.textContent = full.slice(0, i += 2); if (i >= full.length) { clearInterval(ty); rows.forEach((r, k) => t.push(setTimeout(() => r.classList.add("on"), 300 + k * 260))); } }, 22);
+    const ty = setInterval(() => { pr.textContent = full.slice(0, i += 2); if (i >= full.length) { clearInterval(ty); rows.forEach((r, n) => t.push(setTimeout(() => r.classList.add("on"), 300 + n * 260))); } }, 22);
     t.push(ty);
   };
+  tabs.forEach((b, i) => b.addEventListener("click", () => show(i, true)));
+  show(0, false);
   let done = false;
-  onView($("#listbox"), v => { if (v && !done) { done = true; run(); } }, { threshold: .3 });
-  // rows visible if never scrolled into view (thumbnail / no-JS state stays readable)
-  rows.forEach(r => r.classList.add("on"));
+  onView($("#listbox"), v => { if (v && !done) { done = true; show(cur, true); } }, { threshold: .3 });
 })();
 
 /* =========================================================
@@ -1183,6 +1272,66 @@ const DOCS = [
   onView(cv, v => { const was = vis; vis = v; if (v && !was) requestAnimationFrame(draw); }, { threshold: 0 });
   requestAnimationFrame(draw);
   document.fonts?.ready.then(() => requestAnimationFrame(draw));
+})();
+
+/* ---------- classement ---------- */
+(function sorter() {
+  const F = [
+    ["scan_0042.pdf", "pdf", "P-01", "2021-02-03", "Contrat d'entreprise", "Pièces de la demande", "M. Tremblay"],
+    ["RE_ RE_ retard (2).msg", "msg", "P-04", "2021-03-12", "Courriel sur le retard", "Pièces de la demande", "M. Tremblay"],
+    ["MED_final_FINAL.docx", "docx", "P-07", "2021-03-19", "Mise en demeure", "Pièces de la demande", "M. Tremblay"],
+    ["Document (3).pdf", "pdf", "D-02", "2021-04-02", "Courriel de réponse", "Pièces de la défense", "Mme Gagnon"],
+    ["IMG_2231.jpg", "jpg", "D-09", "2021-04-20", "Photo de chantier", "Pièces de la défense", "Mme Gagnon"],
+    ["pv chantier mai.pdf", "pdf", "P-12", "2021-05-04", "Procès-verbal de chantier", "Pièces de la demande", "Me Roy"],
+    ["rapport ing v4.pdf", "pdf", "P-15", "2022-01-20", "Rapport d'expertise", "Pièces de la demande", "Ingénieur expert"],
+    ["REC_2023-03-08.wav", "wav", "P-33", "2023-03-08", "Interrogatoire de M. Tremblay", "Enregistrements", "M. Tremblay"]
+  ];
+  const slug = x => x.replace(/'/g, "-").replace(/ /g, "-");
+  const RULES = [
+    { p: "Renomme chaque document par cote, date et description, et classe-les par partie.",
+      folder: f => f[5], name: f => `${f[2]}_${f[3]}_${slug(f[4])}.${f[1]}` },
+    { p: "Classe tout par année, et nomme chaque fichier : date, partie, description.",
+      folder: f => f[3].slice(0, 4), name: f => `${f[3]} – ${f[5].includes("défense") ? "Défense" : f[5].includes("demande") ? "Demande" : "Audio"} – ${f[4]}.${f[1]}` },
+    { p: "Fais un dossier par personne et nomme chaque fichier : personne, description, date.",
+      folder: f => f[6], name: f => `${f[6].replace(/^(M\.|Mme|Me) /, "")} – ${f[4]} – ${f[3]}.${f[1]}` }
+  ];
+  const raw = $("#raw"), tree = $("#tree"), pr = $("#sprompt"), chips = $$("#sorter .chip");
+  raw.innerHTML = F.map(f => `<li><span class="ext">${f[1].toUpperCase()}</span><span>${esc(f[0])}</span></li>`).join("");
+  const rawLis = $$("li", raw);
+  const GL = "abcdefghijklmnopqrstuvwxyz0123456789_-";
+  let timers = [], cur = 0;
+  const clear = () => { timers.forEach(clearTimeout); timers = []; };
+  function scramble(el, text) {
+    if (RM) { el.textContent = text; return; }
+    let f = 0; const N = 14;
+    const it = setInterval(() => {
+      f++; const k = Math.floor(text.length * f / N);
+      el.textContent = text.slice(0, k) + Array.from(text.slice(k), c => c === " " ? " " : GL[Math.random() * GL.length | 0]).join("");
+      if (f >= N) { clearInterval(it); el.textContent = text; }
+    }, 40);
+    timers.push(it);
+  }
+  function build(r, animate) {
+    clear(); cur = r;
+    chips.forEach((c, i) => c.classList.toggle("on", i === r));
+    const R = RULES[r]; pr.textContent = R.p;
+    const groups = new Map();
+    F.forEach((f, i) => { const g = R.folder(f); if (!groups.has(g)) groups.set(g, []); groups.get(g).push(i); });
+    const keys = [...groups.keys()].sort((a, b) => a.localeCompare(b, "fr"));
+    tree.innerHTML = keys.map(k => `<div class="folder"><b>${esc(k)}</b>${groups.get(k).map(i => `<div class="f" data-i="${i}"><span class="ext">${F[i][1].toUpperCase()}</span><span></span></div>`).join("")}</div>`).join("");
+    const rows = $$(".f", tree);
+    if (!animate || RM) { rows.forEach(el => { el.classList.add("on"); $("span:last-child", el).textContent = R.name(F[+el.dataset.i]); }); rawLis.forEach(l => l.classList.add("gone")); return; }
+    rawLis.forEach(l => l.classList.remove("gone"));
+    F.forEach((f, i) => timers.push(setTimeout(() => {
+      rawLis[i].classList.add("gone");
+      const el = tree.querySelector(`.f[data-i="${i}"]`); el.classList.add("on");
+      scramble($("span:last-child", el), R.name(f));
+    }, 400 + i * 320)));
+  }
+  chips.forEach((c, i) => c.addEventListener("click", () => build(i, true)));
+  build(0, false);
+  let seen = false;
+  onView($("#sorter"), v => { if (v && !seen) { seen = true; build(cur, true); } }, { threshold: .3 });
 })();
 
 /* ---------- versus ---------- */
