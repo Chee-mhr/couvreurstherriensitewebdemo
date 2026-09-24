@@ -11,11 +11,12 @@ Il fonctionne sur n'importe quel hébergeur web.
 | `fonts.css` + `fonts/` | Polices auto-hébergées (aucun appel à Google) |
 | `favicon.svg`, `apple-touch-icon.png` | Icônes d'onglet et d'écran d'accueil |
 | `og-image.png` | Aperçu affiché quand le lien est partagé (LinkedIn, Facebook, Teams, courriel) |
+| `politique-de-confidentialite.html` | Politique de confidentialité (Loi 25) |
 | `robots.txt` | Autorise l'indexation par les moteurs de recherche |
 
 ## Mise en ligne sur votre domaine
 
-1. **Remplacez `VOTRE-DOMAINE.ca`** dans `index.html` (5 occurrences, dans l'en-tête) par votre vrai domaine, ex. `lavoimaher.ca`.
+1. **Remplacez `VOTRE-DOMAINE.ca`** dans `index.html` (5 occurrences) et `politique-de-confidentialite.html` (1 occurrence) par votre vrai domaine, ex. `lavoimaher.ca`.
 2. **Téléversez tout le contenu de ce dossier** (pas le dossier lui-même) à la racine de votre site :
    - *Hébergeur classique (cPanel, FTP)* : dans `public_html/`.
    - *Netlify* : glissez le dossier sur app.netlify.com/drop, puis reliez votre domaine dans « Domain settings ».
@@ -41,6 +42,8 @@ Le site envoie les champs `nom`, `cabinet`, `courriel`, `type` et `message`.
 
 - **Allégations** : « zéro hallucination », « 100 % local », « Loi 25 », chiffrement, journal d'audit.
   Faites-les confirmer par votre équipe technique et, idéalement, par un avocat (publicité trompeuse, LPC).
-- **Politique de confidentialité** : la Loi 25 exige qu'elle soit publiée sur votre site dès que vous
-  recueillez des renseignements personnels (le formulaire en recueille). Ajoutez une page et un lien au pied de page.
+- **Politique de confidentialité** : complétez chaque passage marqué `À COMPLÉTER` dans
+  `politique-de-confidentialite.html` (responsable, dates, fournisseurs, durées), retirez l'encadré
+  « Note interne », puis faites valider le texte. Le courriel du responsable est aussi à compléter
+  au pied de page de `index.html` (la Loi 25 exige qu'il soit publié sur le site).
 - **Données d'exemple** : les pièces, noms, montants et durées de la démo sont fictifs et annoncés comme tels.

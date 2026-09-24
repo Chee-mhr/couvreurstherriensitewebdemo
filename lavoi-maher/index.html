@@ -414,12 +414,15 @@ form.demo .full{grid-column:1/-1}
 form.demo input, form.demo select, form.demo textarea{font:1rem var(--f-body);color:var(--paper);background:rgba(10,15,30,.7);border:1px solid var(--line-2);border-radius:10px;padding:12px 14px;text-transform:none;letter-spacing:0}
 form.demo textarea{resize:vertical;min-height:90px}
 form.demo input:focus, form.demo select:focus, form.demo textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 4px var(--amber-soft)}
+.form-legal{grid-column:1/-1;font-size:.8rem;line-height:1.55;color:var(--muted);margin:0}
+.form-legal a{color:var(--paper-dim);text-underline-offset:3px}
 .form-msg{grid-column:1/-1;font-size:.92rem;color:var(--ok);min-height:1.4em}
 
 footer{border-top:1px solid var(--line);padding-block:48px calc(40px + env(safe-area-inset-bottom,0px));color:var(--muted);position:relative;z-index:2}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-end}
 footer .brand{font-size:2.2rem}
 footer p{font-size:.85rem}
+.todo-inline{color:var(--amber);border:1px dashed rgba(244,194,77,.6);border-radius:4px;padding:0 .3em;font-family:var(--f-mono);font-size:.9em}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
@@ -764,6 +767,7 @@ footer p{font-size:.85rem}
         <label class="full">Volume approximatif<textarea id="f-msg" name="message" placeholder="Ex. : 8 000 pièces, 40 heures d'enregistrements"></textarea></label>
         <button class="btn btn-amber full magnet" type="submit" style="justify-content:center">Planifier la démonstration <span class="arr">→</span></button>
         <p class="form-msg" id="fmsg" role="status"></p>
+        <p class="form-legal">Vos renseignements servent uniquement à répondre à votre demande et à planifier la démonstration. Ils ne sont jamais vendus ni communiqués à des fins commerciales. Vous pouvez y accéder, les faire corriger ou retirer votre consentement en tout temps. Détails dans notre <a href="politique-de-confidentialite.html">politique de confidentialité</a>.</p>
       </form>
     </div>
   </div>
@@ -776,6 +780,7 @@ footer p{font-size:.85rem}
       <a class="brand" href="#top">Lavoi<span class="amp">&amp;</span>Maher<small>INC.</small></a>
       <p style="margin-top:10px">Intelligence de preuve pour les professionnels du droit · Québec</p>
       <p style="margin-top:6px">Ce site n'utilise aucun témoin (cookie) et ne charge aucune ressource externe.</p>
+      <p style="margin-top:6px"><a href="politique-de-confidentialite.html" style="color:var(--paper-dim)">Politique de confidentialité</a> · Responsable de la protection des renseignements personnels : <span class="todo-inline">[À COMPLÉTER : courriel]</span></p>
     </div>
     <p class="mono">© 2026 Lavoi&amp;Maher, inc. · Tous droits réservés</p>
   </div>
