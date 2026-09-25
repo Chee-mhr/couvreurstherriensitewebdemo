@@ -22,7 +22,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Lavoie&Maher, inc.","url":"https://VOTRE-DOMAINE.ca/","logo":"https://VOTRE-DOMAINE.ca/apple-touch-icon.png","areaServed":"CA-QC","description":"Intelligence artificielle locale pour la recherche de preuve juridique."}</script>
-<meta name="theme-color" content="#FBFBFD">
+<meta name="theme-color" content="#0B0B0C">
 <!-- Polices auto-hébergées : le site n'envoie aucune requête à un tiers -->
 <link rel="stylesheet" href="fonts.css">
 <style>
@@ -32,25 +32,25 @@
    Thème     : sombre assumé (monde unique), couleurs toutes explicites
    ========================================================================= */
 :root{
-  color-scheme: light;
-  --ink:#FBFBFD;
-  --ink-2:#F5F5F7;
-  --panel:#FFFFFF;
-  --panel-2:#F0F0F2;
-  --line:rgba(0,0,0,.09);
-  --line-2:rgba(0,0,0,.16);
-  --paper:#1D1D1F;
-  --paper-dim:#424245;
-  --muted:#66666B;
-  --amber:#84632A;
-  --amber-soft:rgba(143,108,46,.1);
-  --azure:#3A3A3F;
-  --azure-soft:rgba(58,58,63,.08);
-  --ok:#1A7349;
-  --danger:#B8412F;
-  --on-accent:#FFFFFF;
-  --bg-rgb:251,251,253;
-  --shadow:0 1px 2px rgba(0,0,0,.04),0 16px 36px -22px rgba(0,0,0,.22);
+  color-scheme: dark;
+  --ink:#0B0B0C;
+  --ink-2:#111113;
+  --panel:#17171A;
+  --panel-2:#1E1E22;
+  --line:rgba(255,255,255,.1);
+  --line-2:rgba(255,255,255,.2);
+  --paper:#F5F5F7;
+  --paper-dim:#C8C8CD;
+  --muted:#9C9CA3;
+  --amber:#D2B57A;
+  --amber-soft:rgba(210,181,122,.16);
+  --azure:#B4B4BB;
+  --azure-soft:rgba(180,180,187,.16);
+  --ok:#7FC8A6;
+  --danger:#E8867A;
+  --on-accent:#0B0B0C;
+  --bg-rgb:11,11,12;
+  --shadow:inset 0 1px 0 rgba(255,255,255,.05),0 1px 2px rgba(0,0,0,.4),0 24px 48px -28px rgba(0,0,0,.85);
 
   --f-display:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
   --f-body:"Hanken Grotesk", "Helvetica Neue", Arial, system-ui, sans-serif;
@@ -314,7 +314,7 @@ td:first-child{font-family:var(--f-mono);font-size:0.9rem;color:var(--paper);whi
 /* ---------- classement ---------- */
 .rules{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:14px 20px;border-bottom:1px solid var(--line)}
 .rules .mono{color:var(--muted);margin-right:4px}
-.chip.on{border-color:var(--paper);color:var(--ink);background:var(--paper)}
+.chip.on{border-color:var(--amber);color:var(--on-accent);background:var(--amber)}
 .sort-grid{display:grid;grid-template-columns:minmax(0,.8fr) auto minmax(0,1.2fr);gap:0;align-items:stretch}
 @media (max-width:860px){.sort-grid{grid-template-columns:minmax(0,1fr)}.sort-arrow{transform:rotate(90deg);padding-block:4px!important}}
 .sort-col{padding:18px 20px;min-width:0}
@@ -533,12 +533,12 @@ footer p{font-size:0.9rem}
 
 /* ---------- finition réaliste : ombres douces, bouton principal blanc ---------- */
 .btn-amber{background:var(--paper);color:var(--ink)}
-.btn-amber:hover{box-shadow:0 10px 24px -14px rgba(0,0,0,.45);filter:brightness(1.15)}
+.btn-amber:hover{box-shadow:0 10px 28px -14px rgba(255,255,255,.35);filter:none;background:#FFFFFF}
 .lang span.on{background:var(--paper);color:var(--ink)}
 .cap,.panel,.search-app,.versus,.cmds > div,.lim-card,.console,.cta{box-shadow:var(--shadow)}
 .cap:hover{border-color:var(--line-2)}
 .doc{box-shadow:0 1px 1px rgba(0,0,0,.25),0 2px 4px rgba(0,0,0,.2),0 30px 60px -30px rgba(0,0,0,.9),inset 0 0 60px rgba(120,100,60,.06)}
-.nav.solid{background:rgba(var(--bg-rgb),.8)}
+.nav.solid{background:rgba(var(--bg-rgb),.72)}
 
 
 /* ---------- îlots sombres (fenêtre de démo, Loi 25, bloc démo, pied de page) ---------- */
@@ -554,10 +554,6 @@ footer p{font-size:0.9rem}
   background:var(--ink);color:var(--paper);
 }
 .console.dark,.cta.dark{background:linear-gradient(180deg,#1A1A1D,#111113)}
-/* étiquettes : texte sobre plutôt que police « code » en majuscules */
-th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,.calc-in label,.guar strong,
-#listbox tbody td::before,table.wit tbody td::before,.sa-side .gauge .mono,.panel-h .mono{font-family:var(--f-body)!important;font-weight:600;letter-spacing:.05em}
-.eyebrow{font-family:var(--f-body);font-weight:600;font-size:.9rem;letter-spacing:.01em;text-transform:none;color:var(--muted)}
 
 
 /* ---------- intro courte + « En savoir plus » ---------- */
@@ -587,7 +583,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
   .hero{padding-block:104px 40px}
   .hero::after{background:linear-gradient(to bottom, rgba(var(--bg-rgb),.35) 0%, rgba(var(--bg-rgb),.7) 45%, rgba(var(--bg-rgb),.92) 80%, var(--ink) 100%)}
   .hero h1{font-size:clamp(3rem,15vw,4.2rem)}
-  .hero .eyebrow{font-size:.86rem;letter-spacing:.01em}
+  .hero .eyebrow{font-size:.76rem;letter-spacing:.1em}
   .hero .lede{margin-top:20px}
   .hero-cta{margin-top:26px}
   .hero-cta .btn{flex:1 1 100%;justify-content:center}
@@ -738,7 +734,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         </div>
       </div>
 
-      <div class="console dark" id="console" aria-label="Démonstration animée d'une recherche">
+      <div class="console" id="console" aria-label="Démonstration animée d'une recherche">
         <div class="console-top">
           <div class="dots"><i></i><i></i><i></i></div>
           <span class="mono">Dossier d'exemple</span>
@@ -771,7 +767,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
 
 
 <!-- ================= L&M-1 LOI 25 / TRAITEMENT LOCAL ================= -->
-<section class="sec law-sec dark" id="loi25">
+<section class="sec law-sec" id="loi25">
   <div class="wrap vault">
     <canvas id="seal" class="reveal" aria-hidden="true"></canvas>
     <div class="reveal">
@@ -1196,7 +1192,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
 <!-- ================= CTA ================= -->
 <section class="sec" id="demo" style="padding-top:0">
   <div class="wrap">
-    <div class="cta dark reveal">
+    <div class="cta reveal">
       <div>
         <span class="eyebrow">Démonstration privée</span>
         <h2 style="margin-block:18px 22px">Montrez-nous un vrai dossier. <em>On vous montre sa preuve.</em></h2>
@@ -1223,7 +1219,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
 
 <a class="mcta btn btn-amber" href="#demo" id="mcta">Demander une démo <span class="arr">→</span></a>
 
-<footer class="dark">
+<footer>
   <div class="wrap">
     <div>
       <a class="brand" href="#top">Lavoie<span class="amp">&amp;</span>Maher<small>INC.</small></a>
