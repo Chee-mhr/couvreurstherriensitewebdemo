@@ -73,13 +73,15 @@ Commit clair en français, puis `git push origin claude/determined-mendel-or8lrt
 ## Étape 7 — Mettre en ligne (guider l'utilisateur pas à pas)
 
 Téléverser **le contenu** de `lavoie-maher/` (pas le dossier lui-même) à la racine du site,
-sauf `LISEZMOI.md` et `PLAN-SESSION-LOCALE.md` :
+sauf `LISEZMOI.md` et `PLAN-SESSION-LOCALE.md` (et en incluant `.htaccess` et `.well-known/`) :
 
 - *cPanel / FTP* : dans `public_html/` ;
 - *Netlify* : glisser le dossier sur app.netlify.com/drop, puis relier le domaine ;
 - *GitHub Pages* : Settings → Pages, puis « Custom domain ».
 
-Ensuite : activer HTTPS, et vérifier l'aperçu de partage (linkedin.com/post-inspector).
+Ensuite : activer HTTPS, vérifier l'aperçu de partage (linkedin.com/post-inspector), puis tester les en-têtes sur securityheaders.com (viser A ou A+).
+Suivre la section « Sécurité » de `LISEZMOI.md` avec l'utilisateur : 2FA sur tous ses comptes, verrou du domaine, surveillance de disponibilité.
+Ne pas oublier les fichiers cachés `.htaccess` et `.well-known/`. Si le service de formulaire n'est pas Formspree, adapter `connect-src` dans `_headers` et `.htaccess`.
 
 ## Rappel à faire une fois
 

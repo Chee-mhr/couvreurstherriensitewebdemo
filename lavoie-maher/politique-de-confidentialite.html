@@ -275,7 +275,7 @@ footer a{color:var(--paper-dim)}
     <section id="plainte">
       <h2>Plaintes</h2>
       <p>Si vous estimez que nous n'avons pas respecté vos droits, écrivez d'abord au responsable de la protection des renseignements personnels. Nous traiterons votre plainte avec diligence et vous répondrons par écrit.</p>
-      <p>Si notre réponse ne vous satisfait pas, vous pouvez vous adresser à la Commission d'accès à l'information du Québec : <a href="https://www.cai.gouv.qc.ca" rel="noopener">www.cai.gouv.qc.ca</a>.</p>
+      <p>Si notre réponse ne vous satisfait pas, vous pouvez vous adresser à la Commission d'accès à l'information du Québec : <a href="https://www.cai.gouv.qc.ca" rel="noopener noreferrer">www.cai.gouv.qc.ca</a>.</p>
     </section>
 
     <section id="modifications">
@@ -292,16 +292,6 @@ footer a{color:var(--paper-dim)}
   </div>
 </footer>
 
-<script>
-// Surligne la section en cours de lecture dans le sommaire
-(() => {
-  const links = [...document.querySelectorAll(".toc a")];
-  const map = new Map(links.map(a => [a.getAttribute("href").slice(1), a]));
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) { links.forEach(l => l.classList.remove("on")); map.get(e.target.id)?.classList.add("on"); }
-  }), { rootMargin: "-30% 0px -60% 0px" });
-  document.querySelectorAll("article section").forEach(s => io.observe(s));
-})();
-</script>
+<script src="politique.js"></script>
 </body>
 </html>

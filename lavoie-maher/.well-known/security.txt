@@ -1,0 +1,7 @@
+# Signaler une faille de sécurité sur ce site — RFC 9116
+# À COMPLÉTER : remplacez les deux lignes marquées avant la mise en ligne.
+Contact: mailto:securite@VOTRE-DOMAINE.ca
+Expires: 2027-09-25T00:00:00.000Z
+Preferred-Languages: fr, en
+Canonical: https://VOTRE-DOMAINE.ca/.well-known/security.txt
+Policy: https://VOTRE-DOMAINE.ca/politique-de-confidentialite.html
