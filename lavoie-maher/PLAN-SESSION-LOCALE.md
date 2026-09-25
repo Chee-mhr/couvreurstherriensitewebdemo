@@ -23,10 +23,11 @@ Lire `lavoie-maher/LISEZMOI.md`, puis ouvrir `lavoie-maher/index.html` dans le n
 Le contenu du site décrit exactement ce que fait le produit (texte fourni par l'entreprise) :
 faire entrer un dossier (formats, OCR Qwen3-VL, Whisper, inventaire, estimation),
 classement en quatre modes réversible, `question` / `mentions` / `partout` / `chronologie`,
+résumés de documents (points clés ou paragraphe, chaque point renvoie à sa source),
 index des pages liminaires, les quatre assemblages, `temoins` et `credibilite`,
 calcul d'échéance en droit du travail, plus la carte « Français et anglais » gardée à la demande.
 
-Ne réintroduire aucune fonction absente de cette liste (notamment : résumés, détection de
+Ne réintroduire aucune fonction absente de cette liste (notamment : détection de
 contradictions, caviardage, repérage de renseignements personnels, surlignage).
 Les exemples des démos sont fictifs et anonymisés (témoins A à G, dossiers A à C).
 

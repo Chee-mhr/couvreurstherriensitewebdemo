@@ -635,6 +635,32 @@ table.wit .tag{white-space:nowrap}
   table.wit .pbar{display:block;width:100%;margin:4px 0 6px}
 }
 
+
+/* ---------- résumés de documents ---------- */
+.sumx{display:grid;grid-template-columns:minmax(0,1.05fr) auto minmax(0,.95fr);gap:24px;align-items:stretch}
+@media (max-width:900px){.sumx{grid-template-columns:minmax(0,1fr)}.sumx .lim-arrow{transform:rotate(90deg);justify-self:center}}
+.sx-doc{font-family:var(--f-display);font-size:1.02rem;line-height:1.55}
+.sx-line{display:grid;grid-template-columns:30px 1fr;gap:4px;padding:4px 10px 4px 8px;border-left:2px solid transparent;transition:opacity .5s var(--ease),border-color .5s var(--ease),filter .5s}
+.sx-line i{font-style:normal;font-family:var(--f-mono);font-size:.8rem;color:#8A8A90;padding-top:3px}
+.sumx.run .sx-line{opacity:.32;filter:blur(.3px)}
+.sumx.run .sx-line.src{opacity:1;filter:none;border-left-color:#B08D46}
+.sx-card{border:1px solid var(--line-2);border-radius:18px;background:var(--ink-2);padding:22px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow,none)}
+.sx-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px}
+.sx-head h3{font-size:1.35rem}
+.sx-modes{display:flex;gap:6px}
+.sx-pts{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:sx}
+.sx-pts li{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;opacity:.18;transform:translateY(8px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.sx-pts li.on{opacity:1;transform:none}
+.sx-pts li::before{counter-increment:sx;content:counter(sx);font-family:var(--f-display);font-style:italic;color:var(--amber);font-size:1.3rem;line-height:1.2}
+.sx-pts li span{color:var(--paper)}
+.sx-pts li .mono,.sx-para .cite{color:var(--amber);font-family:var(--f-mono);font-size:.84rem}
+.sx-pts li .mono{grid-column:2}
+.sx-para{display:none;color:var(--paper);line-height:1.7;margin:0}
+.sx-para .cite{white-space:nowrap;border:1px solid rgba(210,181,122,.4);border-radius:999px;padding:1px 8px;margin-left:4px}
+.sumx[data-mode="para"] .sx-pts{display:none}
+.sumx[data-mode="para"] .sx-para{display:block;animation:fadein .6s var(--ease) both}
+.sx-foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+
 /* =========================================================
    TÉLÉPHONE — mise en page dédiée
    ========================================================= */
@@ -968,7 +994,7 @@ table.wit .tag{white-space:nowrap}
   </div>
 </section>
 
-<div class="chapter" id="ch-recherche"><div class="wrap"><span class="ch-num" aria-hidden="true">III</span><p class="ch-title"><span class="eyebrow">Chapitre III</span><b>Retrouver</b></p></div></div>
+<div class="chapter" id="ch-recherche"><div class="wrap"><span class="ch-num" aria-hidden="true">III</span><p class="ch-title"><span class="eyebrow">Chapitre III</span><b>Retrouver et résumer</b></p></div></div>
 <!-- ================= RETROUVER ================= -->
 <section class="sec" id="recherche" style="padding-top:0">
   <div class="wrap">
@@ -1024,12 +1050,41 @@ table.wit .tag{white-space:nowrap}
   </div>
 </section>
 
+<!-- ================= RÉSUMÉS ================= -->
+<section class="sec" id="resumes" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Résumés de documents</span></div>
+        <h2>Des pages de témoignage. <em>L'essentiel en trois points.</em></h2>
+      </div>
+      <div class="sec-lede"><p class="lede">Un passage, une pièce ou un témoignage entier, résumé en quelques points.</p><details class="more"><summary>En savoir plus</summary><p>Chaque point du résumé renvoie à ses lignes d'origine&nbsp;: vous vérifiez d'un coup d'œil. Choisissez des points clés ou un paragraphe.</p></details></div>
+    </div>
+
+    <div class="sumx reveal" id="sumx" data-mode="pts">
+      <article class="doc sx-doc">
+        <div class="doc-h"><span>Vol. 12 · contre-interrogatoire, témoin B</span><span>p. 97</span></div>
+        <p class="sx-line" data-n="1"><i>01</i><span>Q. Madame, vous avez reçu la plainte le 3 mars ?</span></p><p class="sx-line" data-n="2"><i>02</i><span>R. Oui, par courriel, en fin de journée.</span></p><p class="sx-line" data-n="3"><i>03</i><span>Q. Qu'avez-vous fait ensuite ?</span></p><p class="sx-line" data-n="4"><i>04</i><span>R. Je l'ai transmise aux ressources humaines le lendemain.</span></p><p class="sx-line" data-n="5"><i>05</i><span>Q. L'enquête a commencé quand ?</span></p><p class="sx-line" data-n="6"><i>06</i><span>R. Quelques semaines plus tard, je crois.</span></p><p class="sx-line" data-n="7"><i>07</i><span>Q. Avez-vous lu le rapport d'enquête, la pièce P-40 ?</span></p><p class="sx-line" data-n="8"><i>08</i><span>R. Non, je ne l'ai jamais lu.</span></p><p class="sx-line" data-n="9"><i>09</i><span>Q. Le registre des plaintes existait-il en mars ?</span></p><p class="sx-line" data-n="10"><i>10</i><span>R. Je ne sais pas.</span></p><p class="sx-line" data-n="11"><i>11</i><span>Q. Qui en était responsable ?</span></p><p class="sx-line" data-n="12"><i>12</i><span>R. Les ressources humaines, je crois.</span></p>
+      </article>
+      <div class="lim-arrow" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <aside class="sx-card">
+        <div class="sx-head"><h3>Résumé</h3>
+          <div class="sx-modes" role="group" aria-label="Choisir le format du résumé"><button class="chip on" type="button" data-mode="pts" aria-pressed="true">Points clés</button><button class="chip" type="button" data-mode="para" aria-pressed="false">Paragraphe</button></div>
+        </div>
+        <ol class="sx-pts"><li><span>La témoin a reçu la plainte le 3 mars et l'a transmise aux ressources humaines le lendemain.</span><span class="mono">Vol. 12, p. 97, l. 1–4</span></li><li><span>Elle dit n'avoir jamais lu le rapport d'enquête (P-40).</span><span class="mono">Vol. 12, p. 97, l. 7–8</span></li><li><span>Elle ignore si le registre des plaintes existait en mars; selon elle, les ressources humaines en étaient responsables.</span><span class="mono">Vol. 12, p. 97, l. 9–12</span></li></ol>
+        <p class="sx-para">Au contre-interrogatoire, la témoin confirme avoir reçu la plainte le 3 mars et l'avoir transmise aux ressources humaines le lendemain <span class="cite">l. 1–4</span>. Elle affirme n'avoir jamais lu le rapport d'enquête P-40 <span class="cite">l. 7–8</span> et ignore si le registre des plaintes existait à cette date, qu'elle attribue aux ressources humaines <span class="cite">l. 9–12</span>.</p>
+        <p class="sx-foot">12 lignes → 3 points · chaque point renvoie à sa source</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
 <!-- ================= INDEX LIMINAIRES ================= -->
 <section class="sec" id="index" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Index des pages liminaires</span></div>
+        <div class="tab"><span class="cote">L&amp;M-7</span><span class="eyebrow">Index des pages liminaires</span></div>
         <h2>Les index du sténographe, <em>lus tels qu'imprimés.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Table des matières, cotes, objections et engagements, lus tels qu'imprimés.</p><details class="more"><summary>En savoir plus</summary><p>En tête de chaque volume, le sténographe compose ces listes à la main. L'outil les lit sans modèle : rien ne peut être inventé.</p></details></div>
@@ -1093,7 +1148,7 @@ table.wit .tag{white-space:nowrap}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-7</span><span class="eyebrow">Les quatre assemblages</span></div>
+        <div class="tab"><span class="cote">L&amp;M-8</span><span class="eyebrow">Les quatre assemblages</span></div>
         <h2>Ce que vous montiez à la main <em>la veille de l'audience.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Quatre documents d'audience, produits sans aucun modèle.</p><details class="more"><summary>En savoir plus</summary><p>Ce sont les documents qu'un avocat assemble à la main avant une audience. Chaque ligne vient des index et des pages du dossier.</p></details></div>
@@ -1161,7 +1216,7 @@ table.wit .tag{white-space:nowrap}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-8</span><span class="eyebrow">Les témoins</span></div>
+        <div class="tab"><span class="cote">L&amp;M-9</span><span class="eyebrow">Les témoins</span></div>
         <h2>Le changement d'attitude, <em>mesuré plutôt que deviné.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Les « je ne sais pas » et la longueur des réponses de chaque témoin, mesurés au principal et au contre.</p><details class="more"><summary>En savoir plus</summary><p><span class="mono">temoins</span> mesure le changement d'attitude entre les deux : le nombre de non-réponses et la longueur des réponses. Pour les non-réponses, le seuil est un test statistique, le z de deux proportions, et non un écart arbitraire.</p></details></div>
@@ -1196,7 +1251,7 @@ table.wit .tag{white-space:nowrap}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-9</span><span class="eyebrow">Droit du travail</span></div>
+        <div class="tab"><span class="cote">L&amp;M-10</span><span class="eyebrow">Droit du travail</span></div>
         <h2>L'échéance d'un recours, <em>calculée, jamais devinée.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Les 45 jours de l'article 123 LNT, calculés au jour près.</p><details class="more"><summary>En savoir plus</summary><p>C'est de l'arithmétique pure et répétable. Une date inconnue est traitée comme inconnue au lieu d'être devinée. S'y ajoutent la concomitance de l'article 123.4 et les seuils.</p></details></div>
@@ -1225,7 +1280,7 @@ table.wit .tag{white-space:nowrap}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-10</span><span class="eyebrow">Zéro hallucination</span></div>
+        <div class="tab"><span class="cote">L&amp;M-11</span><span class="eyebrow">Zéro hallucination</span></div>
         <h2>Zéro hallucination. <em>Seulement votre dossier.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">L'outil ne répond qu'à partir de vos documents. Sans source, pas de réponse.</p><details class="more"><summary>En savoir plus</summary><p>Les IA générales en ligne répondent de mémoire et peuvent inventer une citation, une date ou une pièce. Ici, tout fonctionne en local, sans Internet. Les index sont lus tels qu'imprimés, la chronologie et les assemblages sont produits sans modèle, et une piste audio qui ne cite pas un intervalle réel est rejetée par le code.</p></details></div>

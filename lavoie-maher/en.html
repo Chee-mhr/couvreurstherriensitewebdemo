@@ -635,6 +635,32 @@ table.wit .tag{white-space:nowrap}
   table.wit .pbar{display:block;width:100%;margin:4px 0 6px}
 }
 
+
+/* ---------- résumés de documents ---------- */
+.sumx{display:grid;grid-template-columns:minmax(0,1.05fr) auto minmax(0,.95fr);gap:24px;align-items:stretch}
+@media (max-width:900px){.sumx{grid-template-columns:minmax(0,1fr)}.sumx .lim-arrow{transform:rotate(90deg);justify-self:center}}
+.sx-doc{font-family:var(--f-display);font-size:1.02rem;line-height:1.55}
+.sx-line{display:grid;grid-template-columns:30px 1fr;gap:4px;padding:4px 10px 4px 8px;border-left:2px solid transparent;transition:opacity .5s var(--ease),border-color .5s var(--ease),filter .5s}
+.sx-line i{font-style:normal;font-family:var(--f-mono);font-size:.8rem;color:#8A8A90;padding-top:3px}
+.sumx.run .sx-line{opacity:.32;filter:blur(.3px)}
+.sumx.run .sx-line.src{opacity:1;filter:none;border-left-color:#B08D46}
+.sx-card{border:1px solid var(--line-2);border-radius:18px;background:var(--ink-2);padding:22px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow,none)}
+.sx-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px}
+.sx-head h3{font-size:1.35rem}
+.sx-modes{display:flex;gap:6px}
+.sx-pts{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:sx}
+.sx-pts li{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;opacity:.18;transform:translateY(8px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.sx-pts li.on{opacity:1;transform:none}
+.sx-pts li::before{counter-increment:sx;content:counter(sx);font-family:var(--f-display);font-style:italic;color:var(--amber);font-size:1.3rem;line-height:1.2}
+.sx-pts li span{color:var(--paper)}
+.sx-pts li .mono,.sx-para .cite{color:var(--amber);font-family:var(--f-mono);font-size:.84rem}
+.sx-pts li .mono{grid-column:2}
+.sx-para{display:none;color:var(--paper);line-height:1.7;margin:0}
+.sx-para .cite{white-space:nowrap;border:1px solid rgba(210,181,122,.4);border-radius:999px;padding:1px 8px;margin-left:4px}
+.sumx[data-mode="para"] .sx-pts{display:none}
+.sumx[data-mode="para"] .sx-para{display:block;animation:fadein .6s var(--ease) both}
+.sx-foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+
 /* =========================================================
    TÉLÉPHONE — mise en page dédiée
    ========================================================= */
@@ -759,7 +785,7 @@ table.wit .tag{white-space:nowrap}
 </style>
 </head>
 <body>
-<a class="skip" href="#ch-loi25">Aller au contenu</a>
+<a class="skip" href="#ch-loi25">Skip to content</a>
 
 
 <header class="nav" id="nav">
@@ -968,7 +994,7 @@ table.wit .tag{white-space:nowrap}
   </div>
 </section>
 
-<div class="chapter" id="ch-recherche"><div class="wrap"><span class="ch-num" aria-hidden="true">III</span><p class="ch-title"><span class="eyebrow">Chapter III</span><b>Finding</b></p></div></div>
+<div class="chapter" id="ch-recherche"><div class="wrap"><span class="ch-num" aria-hidden="true">III</span><p class="ch-title"><span class="eyebrow">Chapter III</span><b>Finding and summarizing</b></p></div></div>
 <!-- ================= FINDING ================= -->
 <section class="sec" id="recherche" style="padding-top:0">
   <div class="wrap">
@@ -1024,12 +1050,41 @@ table.wit .tag{white-space:nowrap}
   </div>
 </section>
 
+<!-- ================= RÉSUMÉS ================= -->
+<section class="sec" id="resumes" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Document summaries</span></div>
+        <h2>Pages of testimony. <em>The gist in three points.</em></h2>
+      </div>
+      <div class="sec-lede"><p class="lede">A passage, an exhibit or an entire testimony, summarized in a few points.</p><details class="more"><summary>Learn more</summary><p>Every point in the summary refers back to its original lines: you check at a glance. Choose key points or a paragraph.</p></details></div>
+    </div>
+
+    <div class="sumx reveal" id="sumx" data-mode="pts">
+      <article class="doc sx-doc">
+        <div class="doc-h"><span>Vol. 12 · cross-examination, witness B</span><span>p. 97</span></div>
+        <p class="sx-line" data-n="1"><i>01</i><span>Q. Ma'am, you received the complaint on March 3?</span></p><p class="sx-line" data-n="2"><i>02</i><span>A. Yes, by email, late in the day.</span></p><p class="sx-line" data-n="3"><i>03</i><span>Q. What did you do next?</span></p><p class="sx-line" data-n="4"><i>04</i><span>A. I forwarded it to human resources the next day.</span></p><p class="sx-line" data-n="5"><i>05</i><span>Q. When did the investigation begin?</span></p><p class="sx-line" data-n="6"><i>06</i><span>A. A few weeks later, I believe.</span></p><p class="sx-line" data-n="7"><i>07</i><span>Q. Did you read the investigation report, exhibit P-40?</span></p><p class="sx-line" data-n="8"><i>08</i><span>A. No, I never read it.</span></p><p class="sx-line" data-n="9"><i>09</i><span>Q. Did the complaints register exist in March?</span></p><p class="sx-line" data-n="10"><i>10</i><span>A. I don't know.</span></p><p class="sx-line" data-n="11"><i>11</i><span>Q. Who was responsible for it?</span></p><p class="sx-line" data-n="12"><i>12</i><span>A. Human resources, I believe.</span></p>
+      </article>
+      <div class="lim-arrow" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <aside class="sx-card">
+        <div class="sx-head"><h3>Summary</h3>
+          <div class="sx-modes" role="group" aria-label="Choose the summary format"><button class="chip on" type="button" data-mode="pts" aria-pressed="true">Key points</button><button class="chip" type="button" data-mode="para" aria-pressed="false">Paragraph</button></div>
+        </div>
+        <ol class="sx-pts"><li><span>The witness received the complaint on March 3 and forwarded it to human resources the next day.</span><span class="mono">Vol. 12, p. 97, l. 1–4</span></li><li><span>She says she never read the investigation report (P-40).</span><span class="mono">Vol. 12, p. 97, l. 7–8</span></li><li><span>She does not know whether the complaints register existed in March; she believes human resources was responsible for it.</span><span class="mono">Vol. 12, p. 97, l. 9–12</span></li></ol>
+        <p class="sx-para">In cross-examination, the witness confirms she received the complaint on March 3 and forwarded it to human resources the next day <span class="cite">l. 1–4</span>. She states she never read investigation report P-40 <span class="cite">l. 7–8</span> and does not know whether the complaints register existed at that date, attributing it to human resources <span class="cite">l. 9–12</span>.</p>
+        <p class="sx-foot">12 lines → 3 points · every point cites its source</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
 <!-- ================= FRONT-MATTER INDEXES ================= -->
 <section class="sec" id="index" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Indexes from the front matter</span></div>
+        <div class="tab"><span class="cote">L&amp;M-7</span><span class="eyebrow">Indexes from the front matter</span></div>
         <h2>The court reporter's indexes, <em>read exactly as printed.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Table of contents, exhibits, objections and undertakings, read exactly as printed.</p><details class="more"><summary>Learn more</summary><p>At the start of every volume, the court reporter compiles these lists by hand. The tool reads them with no model: nothing can be invented.</p></details></div>
@@ -1093,7 +1148,7 @@ table.wit .tag{white-space:nowrap}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-7</span><span class="eyebrow">The four assemblies</span></div>
+        <div class="tab"><span class="cote">L&amp;M-8</span><span class="eyebrow">The four assemblies</span></div>
         <h2>What you used to build by hand <em>the night before the hearing.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Four hearing documents, produced with no model at all.</p><details class="more"><summary>Learn more</summary><p>These are the documents a lawyer assembles by hand before a hearing. Every line comes from the indexes and pages of the file.</p></details></div>
@@ -1161,7 +1216,7 @@ table.wit .tag{white-space:nowrap}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-8</span><span class="eyebrow">Witnesses</span></div>
+        <div class="tab"><span class="cote">L&amp;M-9</span><span class="eyebrow">Witnesses</span></div>
         <h2>A change in demeanour, <em>measured rather than guessed.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Each witness's “I don't know” answers and answer length, measured in chief and in cross.</p><details class="more"><summary>Learn more</summary><p><span class="mono">temoins</span> measures the change in demeanour between the two: the number of non-answers and the length of the answers. For non-answers, the threshold is a statistical test, the two-proportion z-test, not an arbitrary gap.</p></details></div>
@@ -1196,7 +1251,7 @@ table.wit .tag{white-space:nowrap}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-9</span><span class="eyebrow">Employment law</span></div>
+        <div class="tab"><span class="cote">L&amp;M-10</span><span class="eyebrow">Employment law</span></div>
         <h2>A recourse deadline, <em>calculated, never guessed.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">The 45 days under section 123 ALS, calculated to the day.</p><details class="more"><summary>Learn more</summary><p>It is pure, repeatable arithmetic. An unknown date is treated as unknown instead of being guessed. The concurrency rules of section 123.4 and the thresholds come on top.</p></details></div>
@@ -1225,7 +1280,7 @@ table.wit .tag{white-space:nowrap}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-10</span><span class="eyebrow">Zero hallucination</span></div>
+        <div class="tab"><span class="cote">L&amp;M-11</span><span class="eyebrow">Zero hallucination</span></div>
         <h2>Zero hallucination. <em>Only your file.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">The tool answers only from your documents. No source, no answer.</p><details class="more"><summary>Learn more</summary><p>General-purpose online AI answers from memory and can invent a quote, a date or an exhibit. Here, everything runs locally, without internet. The indexes are read exactly as printed, the timeline and assemblies are produced with no model, and an audio lead that does not cite a real interval is rejected by the code.</p></details></div>

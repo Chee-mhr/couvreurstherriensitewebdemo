@@ -553,6 +553,32 @@ $("#lang").addEventListener("click", e => { const a = e.currentTarget; a.href = 
   addEventListener("scroll", upd, { passive: true }); addEventListener("resize", upd); upd();
 })();
 
+
+/* ---------- résumés : les lignes d'origine s'allument point par point ---------- */
+(function summaries() {
+  const box = $("#sumx"); if (!box) return;
+  const lines = $$(".sx-line", box), pts = $$(".sx-pts li", box), chips = $$(".sx-modes .chip", box);
+  const SRC = [[1, 4], [7, 8], [9, 12]];
+  const inR = (n, r) => n >= r[0] && n <= r[1];
+  const light = f => lines.forEach(l => l.classList.toggle("src", f(+l.dataset.n)));
+  let t = [];
+  const clear = () => { t.forEach(clearTimeout); t = []; };
+  function show(mode, animate) {
+    clear(); box.dataset.mode = mode;
+    chips.forEach(c => { const on = c.dataset.mode === mode; c.classList.toggle("on", on); c.setAttribute("aria-pressed", on); });
+    if (!animate || RM) { box.classList.remove("run"); pts.forEach(p => p.classList.add("on")); return; }
+    box.classList.add("run");
+    if (mode === "para") { light(n => SRC.some(r => inR(n, r))); return; }
+    pts.forEach(p => p.classList.remove("on")); light(() => false);
+    SRC.forEach((r, k) => t.push(setTimeout(() => { light(n => inR(n, r)); pts[k].classList.add("on"); }, 500 + k * 1500)));
+    t.push(setTimeout(() => light(n => SRC.some(r => inR(n, r))), 500 + SRC.length * 1500));
+  }
+  chips.forEach(c => c.addEventListener("click", () => show(c.dataset.mode, true)));
+  show("pts", false);
+  let seen = false;
+  onView(box, v => { if (v && !seen) { seen = true; show("pts", true); } }, { threshold: .35 });
+})();
+
 /* ---------- menu mobile ---------- */
 const burger = $("#burger");
 const setMenu = open => { nav.classList.toggle("open", open); burger.setAttribute("aria-expanded", open); burger.setAttribute("aria-label", open ? "Close menu" : "Open menu"); };
