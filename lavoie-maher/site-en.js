@@ -14,24 +14,10 @@ const onView = (el, fn, opts = { threshold: .25 }) => {
   io.observe(el); return io;
 };
 
-/* ---------- nav, spotlight, magnet ---------- */
+/* ---------- barre de navigation ---------- */
 const nav = $("#nav");
 const onScroll = () => nav.classList.toggle("solid", scrollY > 30);
 addEventListener("scroll", onScroll, { passive: true }); onScroll();
-const spot = $("#spot");
-if (!RM && matchMedia("(pointer:fine)").matches) {
-  addEventListener("pointermove", e => { spot.style.left = e.clientX + "px"; spot.style.top = e.clientY + "px"; }, { passive: true });
-  $$(".magnet").forEach(b => {
-    b.addEventListener("pointermove", e => { const r = b.getBoundingClientRect(); b.style.setProperty("--bx", (e.clientX - r.left - r.width / 2) * .22 + "px"); b.style.setProperty("--by", (e.clientY - r.top - r.height / 2) * .3 + "px"); });
-    b.addEventListener("pointerleave", () => { b.style.setProperty("--bx", "0px"); b.style.setProperty("--by", "0px"); });
-  });
-  $$(".cap").forEach(c => {
-    c.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-      c.style.setProperty("--ry", (x - .5) * 10 + "deg"); c.style.setProperty("--rx", (.5 - y) * 10 + "deg");
-      c.style.setProperty("--mx", x * 100 + "%"); c.style.setProperty("--my", y * 100 + "%"); });
-    c.addEventListener("pointerleave", () => { c.style.setProperty("--rx", "0deg"); c.style.setProperty("--ry", "0deg"); });
-  });
-}
 
 /* ---------- reveals (only below-the-fold elements start hidden) ---------- */
 if (!RM) {
@@ -65,7 +51,7 @@ const QUERIES = [
   const hitsEl = $("#hits"), qmode = $("#qmode"), qtext = $("#qtext"), qstat = $("#qstat"), qbar = $("#qbar"), qcount = $("#qcount");
   let W = 0, H = 0, DPR = 1, F = 520;
   const DEPTH = 3200, NEAR = -F * .55;
-  const N = innerWidth < 700 ? 900 : 2200;
+  const N = innerWidth < 700 ? 500 : 1100;
   const P = [];
   for (let i = 0; i < N; i++) {
     const a = Math.random() * Math.PI * 2, r = 380 + Math.random() * 900;
@@ -79,7 +65,7 @@ const QUERIES = [
   let roll = 0, scanZ = -1e9, matched = [], phase = "idle", pt = 0, qi = 0, cardRows = [], curQ = QUERIES[0];
   const cxF = () => (W > 980 ? W * .56 : W * .5), cyF = () => H * .46;
   function proj(p) {
-    const ang = p.a + roll, x = Math.cos(ang) * p.r + mx * 220, y = Math.sin(ang) * p.r * .72 + my * 160;
+    const ang = p.a + roll, x = Math.cos(ang) * p.r + mx * 70, y = Math.sin(ang) * p.r * .72 + my * 50;
     const s = F / (F + p.z); return { x: cxF() + x * s, y: cyF() + y * s, s };
   }
   const typeTo = (txt, done) => {
@@ -114,9 +100,9 @@ const QUERIES = [
   function frame(now) {
     const dt = Math.min(.05, (now - last) / 1000); last = now;
     mx += (tmx - mx) * .04; my += (tmy - my) * .04;
-    roll += dt * .045;
+    roll += dt * .015;
     ctx.clearRect(0, 0, W, H);
-    const speed = phase === "scan" ? 520 : 140;
+    const speed = phase === "scan" ? 190 : 55;
     if (phase === "scan") {
       pt += dt; scanZ -= dt * 2600;
       qbar.style.width = Math.min(100, pt / 1.3 * 100) + "%";
@@ -143,7 +129,7 @@ const QUERIES = [
       p.lit *= .94;
       const w = p.w * s.s, h = w * 1.3;
       const tw = .55 + .45 * Math.sin(now / 900 + p.tw);
-      if (p.lit > .05) { ctx.fillStyle = `rgba(124,146,255,${(.25 + .75 * p.lit) * depthA})`; }
+      if (p.lit > .05) { ctx.fillStyle = `rgba(138,155,216,${(.18 + .32 * p.lit) * depthA})`; }
       else ctx.fillStyle = `rgba(185,190,215,${.16 * depthA * tw})`;
       ctx.fillRect(s.x - w / 2, s.y - h / 2, w, h);
       if (w > 9 && p.lit < .05) { ctx.fillStyle = `rgba(10,15,30,${.5 * depthA})`; for (let l = 0; l < 3; l++) ctx.fillRect(s.x - w * .32, s.y - h * .28 + l * h * .2, w * .64 * (l === 2 ? .6 : 1), Math.max(.6, h * .05)); }
@@ -155,11 +141,10 @@ const QUERIES = [
       ctx.lineWidth = 1;
       matched.forEach((p, i) => {
         const m = p.m, x = m.sx + (m.tx - m.sx) * e, y = m.sy + (m.ty - m.sy) * e - Math.sin(e * Math.PI) * 60;
-        ctx.strokeStyle = `rgba(244,194,77,${.35 * fade * (1 - e * .5)})`;
+        ctx.strokeStyle = `rgba(224,189,106,${.18 * fade * (1 - e * .5)})`;
         ctx.beginPath(); ctx.moveTo(m.sx, m.sy); ctx.quadraticCurveTo((m.sx + x) / 2, Math.min(m.sy, y) - 80, x, y); ctx.stroke();
         const w = 14 - e * 6, h = w * 1.3;
-        ctx.shadowColor = "rgba(244,194,77,.9)"; ctx.shadowBlur = 18 * fade;
-        ctx.fillStyle = `rgba(244,194,77,${fade})`; ctx.fillRect(x - w / 2, y - h / 2, w, h); ctx.shadowBlur = 0;
+        ctx.fillStyle = `rgba(224,189,106,${.85 * fade})`; ctx.fillRect(x - w / 2, y - h / 2, w, h);
       });
     }
     if (running) raf = requestAnimationFrame(frame);
@@ -292,7 +277,7 @@ const DOCS = [
     for (let i = 0; i < BARS; i++) {
       const x = i * bw, live = playing && Math.abs(x - ph) < 30 ? 1 + .35 * Math.sin(now / 90 + i) : 1;
       const a = amp[i] * (H * .46) * live;
-      ctx.fillStyle = x < ph ? "rgba(244,194,77,.9)" : "rgba(150,168,230,.28)";
+      ctx.fillStyle = x < ph ? "rgba(224,189,106,.9)" : "rgba(150,168,230,.28)";
       ctx.fillRect(x + bw * .2, mid - a, Math.max(1, bw * .6), a * 2);
     }
     ctx.fillStyle = "#ECE7DC"; ctx.fillRect(ph - 1, 0, 2, H);
@@ -325,7 +310,6 @@ const DOCS = [
       out.filter(o => +o.dataset.k === k).forEach(o => o.classList.add("on"));
     }, 500 + k * 450));
     t.push(setTimeout(() => src.forEach(p => p.classList.remove("read")), 500 + 8 * 450));
-    t.push(setTimeout(run, 9000));
   };
   let on = false;
   onView(box, v => { if (v && !on) { on = true; run(); } else if (!v && on) { on = false; t.forEach(clearTimeout); all(); } }, { threshold: .3 });
@@ -364,33 +348,22 @@ const DOCS = [
   const cv = $("#seal"), ctx = cv.getContext("2d");
   let S = 0; const size = () => { const b = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); S = b.width; cv.width = S * d; cv.height = S * d; ctx.setTransform(d, 0, 0, d, 0, 0); };
   size(); addEventListener("resize", size);
-  const CH = "0123456789ABCDEF";
-  const rings = [{ r: .44, n: 64, sp: .05 }, { r: .36, n: 48, sp: -.08 }, { r: .28, n: 34, sp: .12 }];
-  const glyphs = rings.map(g => Array.from({ length: g.n }, () => CH[Math.random() * 16 | 0]));
+  const RING = "LAW 25 · 100% LOCAL PROCESSING · QUÉBEC · PROFESSIONAL SECRECY · ";
   let vis = false;
   function draw(now) {
-    const t = now / 1000, c = S / 2;
+    const c = S / 2, rot = RM ? 0 : now / 1000 * .03;
     ctx.clearRect(0, 0, S, S);
-    rings.forEach((g, gi) => {
-      ctx.strokeStyle = "rgba(150,168,230,.18)"; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.arc(c, c, g.r * S + 12, 0, 7); ctx.stroke();
-      ctx.font = `${Math.max(9, S * .026)}px "JetBrains Mono", monospace`; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-      for (let i = 0; i < g.n; i++) {
-        if (Math.random() < .02) glyphs[gi][i] = CH[Math.random() * 16 | 0];
-        const a = i / g.n * Math.PI * 2 + t * g.sp, x = c + Math.cos(a) * g.r * S, y = c + Math.sin(a) * g.r * S;
-        const hot = Math.abs(Math.sin(a * 3 - t * 1.5)) > .97;
-        ctx.fillStyle = hot ? "#F4C24D" : `rgba(185,190,215,${.25 + .2 * gi})`;
-        ctx.save(); ctx.translate(x, y); ctx.rotate(a + Math.PI / 2); ctx.fillText(glyphs[gi][i], 0, 0); ctx.restore();
-      }
-    });
-    // core seal
-    const g = ctx.createRadialGradient(c, c, 0, c, c, S * .2);
-    g.addColorStop(0, "rgba(244,194,77,.25)"); g.addColorStop(1, "rgba(244,194,77,0)");
-    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(c, c, S * .2, 0, 7); ctx.fill();
-    ctx.strokeStyle = "#F4C24D"; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(c, c, S * .15, 0, 7); ctx.stroke();
-    ctx.textAlign = "center"; ctx.textBaseline = "middle";
-    ctx.fillStyle = "#F4C24D"; ctx.font = `500 ${S * .028}px "JetBrains Mono", monospace`; ctx.fillText("L A W", c, c - S * .06);
-    ctx.fillStyle = "#ECE7DC"; ctx.font = `italic 500 ${S * .12}px "Bodoni Moda", Georgia, serif`; ctx.fillText("25", c, c + S * .02);
+    ctx.strokeStyle = "rgba(224,189,106,.55)"; ctx.lineWidth = 1.2;
+    [.47, .36].forEach(r => { ctx.beginPath(); ctx.arc(c, c, r * S, 0, 7); ctx.stroke(); });
+    ctx.strokeStyle = "rgba(224,189,106,.22)"; ctx.lineWidth = 1;
+    [.455, .375].forEach(r => { ctx.beginPath(); ctx.arc(c, c, r * S, 0, 7); ctx.stroke(); });
+    ctx.fillStyle = "rgba(244,240,232,.78)"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.font = `500 ${Math.max(10, S * .032)}px "JetBrains Mono", monospace`;
+    const chars = [...RING], step = Math.PI * 2 / chars.length, rr = .415 * S;
+    chars.forEach((ch, i) => { const a = i * step + rot - Math.PI / 2; ctx.save(); ctx.translate(c + Math.cos(a) * rr, c + Math.sin(a) * rr); ctx.rotate(a + Math.PI / 2); ctx.fillText(ch, 0, 0); ctx.restore(); });
+    ctx.strokeStyle = "#E0BD6A"; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(c, c, S * .2, 0, 7); ctx.stroke();
+    ctx.fillStyle = "#E0BD6A"; ctx.font = `500 ${S * .034}px "JetBrains Mono", monospace`; ctx.fillText("LAW", c, c - S * .075);
+    ctx.fillStyle = "#F4F0E8"; ctx.font = `italic 500 ${S * .14}px "Bodoni Moda", Georgia, serif`; ctx.fillText("25", c, c + S * .02);
     if (vis && !RM) requestAnimationFrame(draw);
   }
   onView(cv, v => { const was = vis; vis = v; if (v && !was) requestAnimationFrame(draw); }, { threshold: 0 });
