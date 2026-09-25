@@ -84,8 +84,15 @@ Ensuite : activer HTTPS, vérifier l'aperçu de partage (linkedin.com/post-inspe
 Suivre la section « Sécurité » de `LISEZMOI.md` avec l'utilisateur : 2FA sur tous ses comptes, verrou du domaine, surveillance de disponibilité.
 Ne pas oublier les fichiers cachés `.htaccess` et `.well-known/`. Si le service de formulaire n'est pas Formspree, adapter `connect-src` dans `_headers` et `.htaccess`.
 
-## Rappel à faire une fois
+## Rappel à faire une fois (conformité avant la mise en ligne)
 
-Les allégations « zéro hallucination » et « respect de la Loi 25 » doivent être validées
-par un avocat avant la mise en ligne (publicité trompeuse, Loi sur la protection du
-consommateur).
+- Les allégations « zéro hallucination » et « respect de la Loi 25 » doivent être validées
+  par un avocat (Loi sur la protection du consommateur, art. 219 ; Loi sur la concurrence,
+  art. 74.01 : une allégation de performance doit reposer sur des tests faits *avant* de la publier).
+- Conserver les preuves des chiffres affichés (7 ms, 0,1 s, 45 volumes, 17 témoins, banc d'essai
+  Qwen3-VL contre PaddleOCR) : le pied de page dit qu'ils viennent de tests internes.
+- Loi 25 pour le site lui-même : publier la politique complète et le courriel du responsable
+  (art. 3.2 et 8.2). Si le service de formulaire est hors Québec (Formspree : États-Unis),
+  faire l'évaluation des facteurs relatifs à la vie privée avant (art. 17), ou choisir un service au Canada.
+- Vérifier que la raison sociale « Lavoie&Maher, inc. » est bien celle immatriculée au Registraire des entreprises.
+- Les polices sont sous licence OFL 1.1 : garder `fonts/OFL.txt` avec les fichiers.
