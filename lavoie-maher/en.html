@@ -604,6 +604,37 @@ section[id],.chapter{scroll-margin-top:72px}
 .cap:hover{transform:translateY(-3px)}
 .chip,.ltab,.more summary{transition:color .2s,border-color .2s,background .2s}
 
+
+/* ---------- tableau des témoins : lecture guidée ---------- */
+.wit-howto{padding:16px 20px;border-bottom:1px solid var(--line);color:var(--paper-dim);font-size:1rem;line-height:1.6;max-width:none}
+.wit-howto strong{color:var(--paper)}
+table.wit th small{font-size:.8rem;letter-spacing:.04em;text-transform:none;color:var(--muted)}
+table.wit td.v{white-space:normal}
+table.wit td.v small{display:block;margin-top:6px;font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+table.wit td.up{color:var(--paper);font-weight:600}
+table.wit td.up::before{font-weight:400}
+table.wit th,table.wit td{padding-inline:14px}
+table.wit th{white-space:normal;vertical-align:bottom}
+table.wit .pbar{width:56px}
+table.wit .tag{white-space:nowrap}
+
+
+/* ---------- témoins en fiches sur tablette ---------- */
+@media (min-width:701px) and (max-width:1180px){
+  table.wit{min-width:0}
+  table.wit thead{display:none}
+  table.wit tbody{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  table.wit tbody tr{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;padding:18px 20px;border-bottom:1px solid var(--line)}
+  table.wit tbody tr:nth-child(odd){border-right:1px solid var(--line)}
+  table.wit tbody td{display:block;padding:0;border:0;white-space:normal;min-width:0}
+  table.wit tbody td::before{content:attr(data-label);display:block;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  table.wit tbody td:first-child{grid-column:1;grid-row:1;align-self:center;font-family:var(--f-display);font-size:1.1rem;color:var(--amber)}
+  table.wit tbody td:first-child::before,table.wit tbody td:last-child::before{display:none}
+  table.wit tbody td:last-child{grid-column:2;grid-row:1;justify-self:end;text-align:right}
+  table.wit tbody td:nth-child(5){grid-column:1/-1}
+  table.wit .pbar{display:block;width:100%;margin:4px 0 6px}
+}
+
 /* =========================================================
    TÉLÉPHONE — mise en page dédiée
    ========================================================= */
@@ -701,7 +732,7 @@ section[id],.chapter{scroll-margin-top:72px}
   table.wit tbody td:first-child{grid-column:1;grid-row:1;align-self:center}
   table.wit tbody td:last-child{grid-column:2;grid-row:1;justify-self:end;align-self:center}
   table.wit tbody td:last-child::before{display:none}
-  table.wit tbody td:nth-child(4){grid-column:1/-1}
+  table.wit tbody td:nth-child(5){grid-column:1/-1}
   table.wit tbody tr{gap:8px 14px;padding:14px 16px}
   .pbar{display:block;width:100%;margin:4px 0 6px}
   .prompt{padding:16px}
@@ -1144,9 +1175,10 @@ section[id],.chapter{scroll-margin-top:72px}
 
     <div class="panel reveal" id="witbox">
       <div class="panel-h"><strong>Non-answers and answer length, in chief and in cross</strong><span class="mono">Fictional example · threshold |z| ≥ 1.96</span></div>
+      <p class="wit-howto"><strong>How to read it:</strong> a witness who answers “I don't know” far more often in cross-examination than in chief, and whose answers get shorter, has changed demeanour. The statistical test tells you whether the increase is too large to be chance.</p>
       <div class="tbl-wrap">
         <table class="wit">
-          <thead><tr><th>Witness</th><th>In chief</th><th>Cross</th><th>Words per answer</th><th>Gap</th><th>z</th><th>Result</th></tr></thead>
+          <thead><tr><th>Witness</th><th>“I don't know” in chief</th><th>“I don't know” in cross</th><th>Increase</th><th>Answer length<br><small>chief → cross</small></th><th>Verdict</th></tr></thead>
           <tbody id="witbody"></tbody>
         </table>
       </div>

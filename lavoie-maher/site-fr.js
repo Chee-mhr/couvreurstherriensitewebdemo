@@ -467,11 +467,11 @@ const DOCS = [
   }).sort((a, b) => b.d - a.d);
   const body = $("#witbody");
   body.innerHTML = rows.map(r => `<tr><td>${r.n}</td>
-    <td><span class="pbar"><i data-w="${Math.min(100, r.p1 * 500)}"></i></span>${r.x1}/${r.n1} · ${pct(r.p1)}</td>
-    <td><span class="pbar c"><i data-w="${Math.min(100, r.p2 * 500)}"></i></span>${r.x2}/${r.n2} · ${pct(r.p2)}</td>
-    <td>${r.l1} · ${r.l2} mots</td>
-    <td>${r.d.toFixed(1).replace(".", ",")} pts</td><td>${r.z.toFixed(2).replace(".", ",")}</td>
-    <td>${Math.abs(r.z) >= 1.96 ? '<span class="tag hit">Changement significatif</span>' : '<span class="tag">Dans la marge</span>'}</td></tr>`).join("");
+    <td><span class="pbar"><i data-w="${Math.min(100, r.p1 * 500)}"></i></span>${r.x1} sur ${r.n1} (${pct(r.p1)})</td>
+    <td><span class="pbar c"><i data-w="${Math.min(100, r.p2 * 500)}"></i></span>${r.x2} sur ${r.n2} (${pct(r.p2)})</td>
+    <td class="up">+${r.d.toFixed(1).replace(".", ",")} pts</td>
+    <td>${r.l1} → ${r.l2} mots</td>
+    <td class="v">${Math.abs(r.z) >= 1.96 ? '<span class="tag hit">Changement d\'attitude</span>' : '<span class="tag">Attitude stable</span>'}<small>z = ${r.z.toFixed(2).replace(".", ",")} (seuil 1,96)</small></td></tr>`).join("");
   const bars = $$("i[data-w]", body);
   const fill = () => bars.forEach(b => b.style.width = b.dataset.w + "%");
   fill();
@@ -514,7 +514,7 @@ onView($("#steps"), v => { if (v) $("#steps").classList.add("go"); }, { threshol
 
 /* ---------- téléphone : fiches, carrousels, bouton démo ---------- */
 $$("table").forEach(t => {
-  const hs = $$("thead th", t).map(th => th.textContent);
+  const hs = $$("thead th", t).map(th => th.childNodes[0].textContent.trim());
   $$("tbody tr", t).forEach(tr => [...tr.children].forEach((td, i) => td.dataset.label = hs[i] || ""));
 });
 $$(".swipe").forEach(sw => {
