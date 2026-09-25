@@ -24,6 +24,8 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Lavoie&Maher, inc.","url":"https://VOTRE-DOMAINE.ca/","logo":"https://VOTRE-DOMAINE.ca/apple-touch-icon.png","areaServed":"CA-QC","description":"Intelligence artificielle locale pour la recherche de preuve juridique."}</script>
 <meta name="theme-color" content="#0B0B0C">
 <!-- Polices auto-hébergées : le site n'envoie aucune requête à un tiers -->
+<link rel="preload" href="fonts/bodoni-moda-normal-latin-3.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/hanken-grotesk-normal-latin-5.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
 <style>
 /* =========================================================================
@@ -125,7 +127,7 @@ body::before{content:none}
 .lang span.on{background:var(--amber);color:var(--ink)}
 .lang:hover{border-color:var(--amber)}
 .lang:hover span:not(.on){color:var(--paper)}
-@media (max-width:1320px){
+@media (max-width:1100px){
   .burger{display:grid}
   .nav-right{display:flex;align-items:center;gap:10px}
   .nav ul{display:flex;flex-direction:column;gap:0;position:fixed;left:0;right:0;top:calc(72px + env(safe-area-inset-top,0px));
@@ -566,6 +568,42 @@ footer p{font-size:0.9rem}
 .more summary:hover::before{border-color:var(--amber)}
 .more p{margin-top:12px;color:var(--paper-dim);font-size:1.04rem;line-height:1.65;max-width:58ch}
 
+
+/* ---------- vitrine du logiciel ---------- */
+.showcase{position:relative;z-index:2;padding-block:8px 72px}
+.device{--tilt:9deg;--sc:.95;margin:0;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:#0E1426;
+  transform:perspective(2000px) rotateX(var(--tilt)) scale(var(--sc));transform-origin:50% 0;will-change:transform;
+  box-shadow:0 0 0 1px rgba(0,0,0,.5),0 2px 4px rgba(0,0,0,.4),0 30px 60px -20px rgba(0,0,0,.7),0 80px 140px -40px rgba(0,0,0,.9)}
+.device::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.06),transparent 28%)}
+.device-bar{position:relative;height:32px;display:flex;align-items:center;gap:7px;padding:0 14px;background:#1B1B1F;border-bottom:1px solid rgba(255,255,255,.06)}
+.device-bar i{width:11px;height:11px;border-radius:50%;background:#3A3A40}
+.device-bar span{position:absolute;left:50%;transform:translateX(-50%);font-size:.8rem;color:var(--muted)}
+.device img{display:block;width:100%;height:auto}
+.device-cap{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:6px 14px;margin-top:26px;color:var(--paper-dim);text-align:center}
+@media (max-width:700px){.marquee{display:none}.device{--tilt:0deg!important;--sc:1!important;border-radius:10px}.device-bar{height:24px}.device-bar i{width:8px;height:8px}.showcase{padding-bottom:48px}}
+
+/* ---------- chapitres ---------- */
+.chapter{position:relative;z-index:2;padding-block:clamp(56px,7vw,96px) 0}
+.chapter .wrap{display:flex;align-items:center;gap:22px}
+.chapter .wrap::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line-2),transparent)}
+.ch-num{font-family:var(--f-display);font-style:italic;font-size:clamp(2.6rem,5vw,3.6rem);line-height:1;color:var(--amber)}
+.ch-title{display:flex;flex-direction:column;gap:2px;margin:0}
+.ch-title b{font-family:var(--f-display);font-weight:500;font-size:clamp(1.3rem,2.2vw,1.7rem);color:var(--paper)}
+.law-sec.after-ch{border-top:0}
+.sec{padding-block:clamp(56px,7vw,104px)}
+section[id],.chapter{scroll-margin-top:72px}
+.chapter + section.sec{padding-top:clamp(36px,4vw,56px)!important}
+
+/* ---------- finitions : survols ---------- */
+@media (min-width:1101px){
+  .nav ul a{position:relative}
+  .nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+  .nav ul a:hover::after{transform:scaleX(1)}
+}
+.cap{transition:border-color .3s,transform .4s var(--ease)}
+.cap:hover{transform:translateY(-3px)}
+.chip,.ltab,.more summary{transition:color .2s,border-color .2s,background .2s}
+
 /* =========================================================
    TÉLÉPHONE — mise en page dédiée
    ========================================================= */
@@ -688,7 +726,7 @@ footer p{font-size:0.9rem}
 </style>
 </head>
 <body>
-<a class="skip" href="#loi25">Aller au contenu</a>
+<a class="skip" href="#ch-loi25">Aller au contenu</a>
 
 
 <header class="nav" id="nav">
@@ -696,13 +734,11 @@ footer p{font-size:0.9rem}
     <a class="brand" href="#top" aria-label="Lavoie&amp;Maher, inc. — home">Lavoie<span class="amp">&amp;</span>Maher<small>INC.</small></a>
     <nav aria-label="Main">
       <ul id="menu">
-        <li><a href="#loi25">Law 25</a></li>
-        <li><a href="#dossier">Files</a></li>
-        <li><a href="#recherche">Search</a></li>
-        <li><a href="#index">Indexes</a></li>
-        <li><a href="#assemblages">Assemblies</a></li>
-        <li><a href="#temoins">Witnesses</a></li>
-        <li><a href="#travail">Employment law</a></li>
+        <li><a href="#ch-loi25">Law 25</a></li>
+        <li><a href="#ch-dossier">Files</a></li>
+        <li><a href="#ch-recherche">Search</a></li>
+        <li><a href="#ch-audience">Hearing</a></li>
+        <li><a href="#ch-fiabilite">Reliability</a></li>
         <li class="menu-cta"><a class="btn btn-amber" href="#demo">Request a demo <span class="arr">→</span></a></li>
       </ul>
     </nav>
@@ -730,7 +766,7 @@ footer p{font-size:0.9rem}
         <p class="lede">Lavoie&amp;Maher reads all the evidence in a file, finds every detail with its volume and page, and assembles your hearing documents. All on your own servers.</p>
         <div class="hero-cta">
           <a class="btn btn-amber magnet" href="#demo">See it on your files <span class="arr">→</span></a>
-          <a class="btn btn-ghost magnet" href="#loi25">Law 25: how we comply</a>
+          <a class="btn btn-ghost magnet" href="#ch-loi25">Law 25: how we comply</a>
         </div>
       </div>
 
@@ -758,6 +794,16 @@ footer p{font-size:0.9rem}
   </div>
 </section>
 
+<section class="showcase" aria-label="The Projecteur interface">
+  <div class="wrap">
+    <figure class="device reveal" id="device">
+      <div class="device-bar" aria-hidden="true"><i></i><i></i><i></i><span>Projecteur</span></div>
+      <img src="projecteur.webp" width="2000" height="1153" alt="The Projecteur software: an open file, six shortcuts (find, target, binder, undertakings, witnesses, inventory) and a box to ask a question in one sentence. Top right: “Offline · nothing leaves this machine”." loading="lazy" decoding="async">
+    </figure>
+    <p class="device-cap"><span class="eyebrow">The software</span><span>Projecteur, installed on your workstation. Offline: nothing leaves this machine.</span></p>
+  </div>
+</section>
+
 <div class="marquee" aria-hidden="true">
   <div class="track">
     <span>PDF</span><span>IMAGES</span><span>DOCX</span><span>.EML EMAILS</span><span>OUTLOOK .MSG</span><span>LEGACY .DOC</span><span>.RTF</span><span>SPREADSHEETS</span><span>IWORK</span><span>SCANNED PAGES</span><span>AUDIO</span><span>VIDEO</span>
@@ -766,6 +812,7 @@ footer p{font-size:0.9rem}
 </div>
 
 
+<div class="chapter" id="ch-loi25"><div class="wrap"><span class="ch-num" aria-hidden="true">I</span><p class="ch-title"><span class="eyebrow">Chapter I</span><b>Confidentiality</b></p></div></div>
 <!-- ================= L&M-1 LAW 25 / LOCAL PROCESSING ================= -->
 <section class="sec law-sec" id="loi25">
   <div class="wrap vault">
@@ -787,6 +834,7 @@ footer p{font-size:0.9rem}
   </div>
 </section>
 
+<div class="chapter" id="ch-dossier"><div class="wrap"><span class="ch-num" aria-hidden="true">II</span><p class="ch-title"><span class="eyebrow">Chapter II</span><b>Bringing in a file</b></p></div></div>
 <!-- ================= BRINGING IN A FILE ================= -->
 <section class="sec" id="dossier">
   <div class="wrap">
@@ -887,6 +935,7 @@ footer p{font-size:0.9rem}
   </div>
 </section>
 
+<div class="chapter" id="ch-recherche"><div class="wrap"><span class="ch-num" aria-hidden="true">III</span><p class="ch-title"><span class="eyebrow">Chapter III</span><b>Finding</b></p></div></div>
 <!-- ================= FINDING ================= -->
 <section class="sec" id="recherche" style="padding-top:0">
   <div class="wrap">
@@ -1005,6 +1054,7 @@ footer p{font-size:0.9rem}
   </div>
 </section>
 
+<div class="chapter" id="ch-audience"><div class="wrap"><span class="ch-num" aria-hidden="true">IV</span><p class="ch-title"><span class="eyebrow">Chapter IV</span><b>Preparing for the hearing</b></p></div></div>
 <!-- ================= ASSEMBLIES ================= -->
 <section class="sec" id="assemblages" style="padding-top:0">
   <div class="wrap">
@@ -1135,6 +1185,7 @@ footer p{font-size:0.9rem}
   </div>
 </section>
 
+<div class="chapter" id="ch-fiabilite"><div class="wrap"><span class="ch-num" aria-hidden="true">V</span><p class="ch-title"><span class="eyebrow">Chapter V</span><b>Reliability</b></p></div></div>
 <!-- ================= RELIABILITY ================= -->
 <section class="sec" id="fiabilite" style="padding-top:0">
   <div class="wrap">

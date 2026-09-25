@@ -539,6 +539,19 @@ $$(".swipe").forEach(sw => {
 /* ---------- langue : l'autre version s'ouvre toujours en haut de page ---------- */
 $("#lang").addEventListener("click", e => { const a = e.currentTarget; a.href = a.getAttribute("href").split("#")[0]; });
 
+
+/* ---------- vitrine : l'écran se redresse au défilement ---------- */
+(() => {
+  const d = $("#device"); if (!d || RM) return;
+  const upd = () => {
+    const r = d.getBoundingClientRect(), vh = innerHeight;
+    const p = Math.max(0, Math.min(1, (vh - r.top) / (vh * .85)));
+    d.style.setProperty("--tilt", (9 * (1 - p)).toFixed(2) + "deg");
+    d.style.setProperty("--sc", (.95 + .05 * p).toFixed(3));
+  };
+  addEventListener("scroll", upd, { passive: true }); addEventListener("resize", upd); upd();
+})();
+
 /* ---------- menu mobile ---------- */
 const burger = $("#burger");
 const setMenu = open => { nav.classList.toggle("open", open); burger.setAttribute("aria-expanded", open); burger.setAttribute("aria-label", open ? "Close menu" : "Open menu"); };
