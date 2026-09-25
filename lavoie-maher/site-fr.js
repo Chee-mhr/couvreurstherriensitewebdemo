@@ -428,7 +428,7 @@ const DOCS = [
     clear(); cur = r;
     const M = MODES[r];
     chips.forEach((c, i) => c.classList.toggle("on", i === r));
-    label.textContent = "Après"; note.textContent = "mode : " + M.key;
+    label.textContent = "Classés et renommés"; note.textContent = "mode : " + M.key;
     rawLis.forEach(l => l.classList.toggle("gone", !animate || RM));
     const ids = F.map((_, i) => i);
     let groups;
