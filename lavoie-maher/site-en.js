@@ -458,17 +458,18 @@ const DOCS = [
 
 /* ---------- témoins : z de deux proportions ---------- */
 (function witnesses() {
-  const W = [["Witness A", 4, 120, 31, 180], ["Witness B", 6, 150, 22, 160], ["Witness C", 3, 90, 15, 110], ["Witness D", 8, 200, 24, 210], ["Witness E", 5, 80, 16, 95], ["Witness F", 7, 140, 9, 150], ["Witness G", 10, 160, 12, 170]];
+  const W = [["Witness A", 4, 120, 31, 180, 24, 9], ["Witness B", 6, 150, 22, 160, 19, 12], ["Witness C", 3, 90, 15, 110, 21, 10], ["Witness D", 8, 200, 24, 210, 22, 15], ["Witness E", 5, 80, 16, 95, 18, 11], ["Witness F", 7, 140, 9, 150, 17, 16], ["Witness G", 10, 160, 12, 170, 20, 19]];
   const pct = p => (p * 100).toFixed(1) + "%";
-  const rows = W.map(([n, x1, n1, x2, n2]) => {
+  const rows = W.map(([n, x1, n1, x2, n2, l1, l2]) => {
     const p1 = x1 / n1, p2 = x2 / n2, pp = (x1 + x2) / (n1 + n2);
     const z = (p2 - p1) / Math.sqrt(pp * (1 - pp) * (1 / n1 + 1 / n2));
-    return { n, x1, n1, x2, n2, p1, p2, d: (p2 - p1) * 100, z };
+    return { n, x1, n1, x2, n2, l1, l2, p1, p2, d: (p2 - p1) * 100, z };
   }).sort((a, b) => b.d - a.d);
   const body = $("#witbody");
   body.innerHTML = rows.map(r => `<tr><td>${r.n}</td>
     <td><span class="pbar"><i data-w="${Math.min(100, r.p1 * 500)}"></i></span>${r.x1}/${r.n1} · ${pct(r.p1)}</td>
     <td><span class="pbar c"><i data-w="${Math.min(100, r.p2 * 500)}"></i></span>${r.x2}/${r.n2} · ${pct(r.p2)}</td>
+    <td>${r.l1} · ${r.l2} words</td>
     <td>${r.d.toFixed(1)} pts</td><td>${r.z.toFixed(2)}</td>
     <td>${Math.abs(r.z) >= 1.96 ? '<span class="tag hit">Significant change</span>' : '<span class="tag">Within margin</span>'}</td></tr>`).join("");
   const bars = $$("i[data-w]", body);

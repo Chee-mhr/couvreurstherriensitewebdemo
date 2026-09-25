@@ -700,6 +700,7 @@ section[id],.chapter{scroll-margin-top:72px}
   table.wit tbody td:first-child{grid-column:1;grid-row:1;align-self:center}
   table.wit tbody td:last-child{grid-column:2;grid-row:1;justify-self:end;align-self:center}
   table.wit tbody td:last-child::before{display:none}
+  table.wit tbody td:nth-child(4){grid-column:1/-1}
   table.wit tbody tr{gap:8px 14px;padding:14px 16px}
   .pbar{display:block;width:100%;margin:4px 0 6px}
   .prompt{padding:16px}
@@ -1131,7 +1132,7 @@ section[id],.chapter{scroll-margin-top:72px}
         <div class="tab"><span class="cote">L&amp;M-8</span><span class="eyebrow">Les témoins</span></div>
         <h2>Le changement d'attitude, <em>mesuré plutôt que deviné.</em></h2>
       </div>
-      <div class="sec-lede"><p class="lede">Les « je ne sais pas » de chaque témoin, comptés au principal et au contre.</p><details class="more"><summary>En savoir plus</summary><p><span class="mono">temoins</span> mesure le changement d'attitude entre les deux. Le seuil est un test statistique, le z de deux proportions, et non un écart arbitraire.</p></details></div>
+      <div class="sec-lede"><p class="lede">Les « je ne sais pas » et la longueur des réponses de chaque témoin, mesurés au principal et au contre.</p><details class="more"><summary>En savoir plus</summary><p><span class="mono">temoins</span> mesure le changement d'attitude entre les deux : le nombre de non-réponses et la longueur des réponses. Pour les non-réponses, le seuil est un test statistique, le z de deux proportions, et non un écart arbitraire.</p></details></div>
     </div>
 
     <div class="swipe wit-stats reveal">
@@ -1141,10 +1142,10 @@ section[id],.chapter{scroll-margin-top:72px}
     </div>
 
     <div class="panel reveal" id="witbox">
-      <div class="panel-h"><strong>« Je ne sais pas », au principal et au contre</strong><span class="mono">Exemple fictif · seuil |z| ≥ 1,96</span></div>
+      <div class="panel-h"><strong>Non-réponses et longueur des réponses, au principal et au contre</strong><span class="mono">Exemple fictif · seuil |z| ≥ 1,96</span></div>
       <div class="tbl-wrap">
         <table class="wit">
-          <thead><tr><th>Témoin</th><th>Principal</th><th>Contre</th><th>Écart</th><th>z</th><th>Résultat</th></tr></thead>
+          <thead><tr><th>Témoin</th><th>Principal</th><th>Contre</th><th>Mots par réponse</th><th>Écart</th><th>z</th><th>Résultat</th></tr></thead>
           <tbody id="witbody"></tbody>
         </table>
       </div>
