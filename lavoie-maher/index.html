@@ -559,6 +559,17 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
 #listbox tbody td::before,table.wit tbody td::before,.sa-side .gauge .mono,.panel-h .mono{font-family:var(--f-body)!important;font-weight:600;letter-spacing:.05em}
 .eyebrow{font-family:var(--f-body);font-weight:600;font-size:.9rem;letter-spacing:.01em;text-transform:none;color:var(--muted)}
 
+
+/* ---------- intro courte + « En savoir plus » ---------- */
+.sec-lede{display:flex;flex-direction:column;gap:14px}
+.more summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem;color:var(--paper);width:fit-content}
+.more summary::-webkit-details-marker{display:none}
+.more summary::before{content:"+";display:grid;place-items:center;width:24px;height:24px;border-radius:50%;border:1px solid var(--line-2);font-weight:500;line-height:1;transition:transform .3s var(--ease),border-color .3s}
+.more[open] summary::before{transform:rotate(45deg)}
+.more summary:hover{color:var(--amber)}
+.more summary:hover::before{border-color:var(--amber)}
+.more p{margin-top:12px;color:var(--paper-dim);font-size:1.04rem;line-height:1.65;max-width:58ch}
+
 /* =========================================================
    TÉLÉPHONE — mise en page dédiée
    ========================================================= */
@@ -720,7 +731,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
           <span class="line"><span>Chaque page.</span></span>
           <span class="line"><span><em>Retrouvée.</em></span></span>
         </h1>
-        <p class="lede">Lavoie&amp;Maher lit toute la preuve d'un dossier, qu'elle arrive en PDF, en courriels Outlook, en pages scannées ou en enregistrements. L'outil retrouve chaque détail avec son volume et sa page, et monte les documents que vous prépariez à la main la veille de l'audience. Le tout sur vos serveurs.</p>
+        <p class="lede">Lavoie&amp;Maher lit toute la preuve d'un dossier, retrouve chaque détail avec son volume et sa page, et monte vos documents d'audience. Le tout sur vos serveurs.</p>
         <div class="hero-cta">
           <a class="btn btn-amber magnet" href="#demo">Voir l'outil sur vos dossiers <span class="arr">→</span></a>
           <a class="btn btn-ghost magnet" href="#loi25">Loi 25 : comment on la respecte</a>
@@ -766,7 +777,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
     <div class="reveal">
       <div class="tab"><span class="cote">L&amp;M-1</span><span class="eyebrow">Loi 25 · Traitement 100 % local</span></div>
       <h2>La Loi 25, respectée <em>par conception.</em></h2>
-      <p class="lede" style="margin-block:22px 26px">Votre plus grand risque avec l'IA, c'est d'envoyer les renseignements personnels de vos clients sur les serveurs d'un tiers. Ici, c'est impossible. L'outil fonctionne entièrement sur l'infrastructure de votre cabinet. Aucun document, aucune question, aucune transcription n'est envoyé à un service infonuagique externe. Le secret professionnel reste là où il doit être.</p>
+      <div class="sec-lede" style="margin-block:22px 26px"><p class="lede">Aucun document, aucune question, aucune transcription ne quitte votre cabinet.</p><details class="more"><summary>En savoir plus</summary><p>Votre plus grand risque avec l'IA, c'est d'envoyer les renseignements personnels de vos clients sur les serveurs d'un tiers. Ici, c'est impossible : l'outil fonctionne entièrement sur l'infrastructure de votre cabinet, sans service infonuagique externe. Le secret professionnel reste là où il doit être.</p></details></div>
       <ul class="law-points">
         <li><b>0</b><span>transfert hors Québec</span></li>
         <li><b>0</b><span>fournisseur infonuagique</span></li>
@@ -788,7 +799,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-2</span><span class="eyebrow">Faire entrer un dossier</span></div>
         <h2>Une divulgation en vrac, quinze formats. <em>Un seul dossier.</em></h2>
       </div>
-      <p class="lede">La divulgation arrive rarement propre. L'outil lit directement le PDF, l'image, le .docx, le .eml et le .msg d'Outlook, et convertit le reste sur place, sans dépendance externe. Avant de lancer l'analyse, il vous dit ce que contient le dossier et combien de temps elle prendra.</p>
+      <div class="sec-lede"><p class="lede">L'outil lit tous les formats d'une divulgation et vous dit, avant de commencer, ce qu'elle contient et combien de temps prendra l'analyse.</p><details class="more"><summary>En savoir plus</summary><p>La divulgation arrive rarement propre. L'outil lit directement le PDF, l'image, le .docx, le .eml et le .msg d'Outlook, et convertit le reste sur place (vieux .doc, .rtf, tableurs, iWork), sans dépendance externe.</p></details></div>
     </div>
     <div class="swipe grid6">
       <article class="cap reveal"><div class="viz v-fmt"><span>PDF</span><span>Image</span><span>.docx</span><span>.eml</span><span>.msg</span></div><h3>Lecture directe</h3><p>Le PDF, l'image, le .docx, le .eml et le .msg d'Outlook sont lus tels quels.</p></article>
@@ -809,7 +820,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-3</span><span class="eyebrow">Audio et vidéo</span></div>
         <h2>Des heures d'enregistrement. <em>Chaque segment horodaté.</em></h2>
       </div>
-      <p class="lede">L'audio et la vidéo passent par Whisper, en local, qui rend des segments horodatés. L'horodatage sert de provenance&nbsp;: une piste qui ne cite pas un intervalle réel de l'enregistrement est rejetée par le code.</p>
+      <div class="sec-lede"><p class="lede">Whisper transcrit en local et horodate chaque segment.</p><details class="more"><summary>En savoir plus</summary><p>L'audio et la vidéo passent par Whisper, sur vos serveurs. L'horodatage sert de provenance : une piste qui ne cite pas un intervalle réel de l'enregistrement est rejetée par le code.</p></details></div>
     </div>
 
     <div class="tx reveal">
@@ -852,7 +863,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-4</span><span class="eyebrow">Classement et renommage</span></div>
         <h2>Des fichiers en vrac. <em>En ordre, et réversible.</em></h2>
       </div>
-      <p class="lede">Le classement met les pièces en ordre et les renomme selon quatre modes&nbsp;: date, nom, type ou taille. Il est réversible&nbsp;: <span class="mono">defaire_classement</span> remet les noms d'avant.</p>
+      <div class="sec-lede"><p class="lede">Quatre modes de classement : date, nom, type ou taille. Et on peut toujours revenir en arrière.</p><details class="more"><summary>En savoir plus</summary><p>Le classement met les pièces en ordre et les renomme selon le mode choisi. Il est réversible : <span class="mono">defaire_classement</span> remet les noms d'avant.</p></details></div>
     </div>
 
     <div class="panel reveal" id="sorter">
@@ -888,7 +899,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-5</span><span class="eyebrow">Retrouver un détail précis</span></div>
         <h2>Le détail précis. <em>Avec son volume et sa page.</em></h2>
       </div>
-      <p class="lede">C'est la partie sur laquelle nous avons travaillé en dernier, et celle qui marche le mieux. Chaque résultat porte un lien cliquable vers la page exacte du PDF d'origine, à l'écran seulement&nbsp;: les livrables remis au cabinet n'en contiennent jamais.</p>
+      <div class="sec-lede"><p class="lede">Chaque résultat mène à la page exacte du PDF d'origine.</p><details class="more"><summary>En savoir plus</summary><p>C'est la partie sur laquelle nous avons travaillé en dernier, et celle qui marche le mieux. Le lien vers la page s'affiche à l'écran seulement : les livrables remis au cabinet n'en contiennent jamais.</p></details></div>
     </div>
 
     <div class="swipe cmds reveal">
@@ -943,7 +954,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Index des pages liminaires</span></div>
         <h2>Les index du sténographe, <em>lus tels qu'imprimés.</em></h2>
       </div>
-      <p class="lede">En tête de chaque volume, le sténographe compose à la main la table des matières, la liste des cotes, celle des objections et celle des engagements. L'outil les lit telles qu'imprimées, sans modèle&nbsp;: rien ne peut être inventé.</p>
+      <div class="sec-lede"><p class="lede">Table des matières, cotes, objections et engagements, lus tels qu'imprimés.</p><details class="more"><summary>En savoir plus</summary><p>En tête de chaque volume, le sténographe compose ces listes à la main. L'outil les lit sans modèle : rien ne peut être inventé.</p></details></div>
     </div>
 
     <div class="lim reveal" id="lim">
@@ -1006,7 +1017,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-7</span><span class="eyebrow">Les quatre assemblages</span></div>
         <h2>Ce que vous montiez à la main <em>la veille de l'audience.</em></h2>
       </div>
-      <p class="lede">Quatre documents qu'un avocat assemble à la main avant une audience. Aucun modèle n'intervient dans le fichier qui les produit&nbsp;: chaque ligne vient des index et des pages du dossier.</p>
+      <div class="sec-lede"><p class="lede">Quatre documents d'audience, produits sans aucun modèle.</p><details class="more"><summary>En savoir plus</summary><p>Ce sont les documents qu'un avocat assemble à la main avant une audience. Chaque ligne vient des index et des pages du dossier.</p></details></div>
     </div>
 
     <div class="panel reveal" id="listbox">
@@ -1074,7 +1085,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-8</span><span class="eyebrow">Les témoins</span></div>
         <h2>Le changement d'attitude, <em>mesuré plutôt que deviné.</em></h2>
       </div>
-      <p class="lede"><span class="mono">temoins</span> liste chaque témoin avec le nombre de fois où il a répondu qu'il ne savait pas, et mesure son changement d'attitude entre l'interrogatoire principal et le contre. Le seuil est un test statistique, le z de deux proportions, et non un écart arbitraire.</p>
+      <div class="sec-lede"><p class="lede">Les « je ne sais pas » de chaque témoin, comptés au principal et au contre.</p><details class="more"><summary>En savoir plus</summary><p><span class="mono">temoins</span> mesure le changement d'attitude entre les deux. Le seuil est un test statistique, le z de deux proportions, et non un écart arbitraire.</p></details></div>
     </div>
 
     <div class="swipe wit-stats reveal">
@@ -1108,7 +1119,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-9</span><span class="eyebrow">Droit du travail</span></div>
         <h2>L'échéance d'un recours, <em>calculée, jamais devinée.</em></h2>
       </div>
-      <p class="lede">Le calcul d'échéance d'un recours, comme les 45 jours de l'article 123 LNT, est de l'arithmétique pure et répétable. Une date inconnue est traitée comme inconnue au lieu d'être devinée. S'y ajoutent la concomitance de l'article 123.4 et les seuils.</p>
+      <div class="sec-lede"><p class="lede">Les 45 jours de l'article 123 LNT, calculés au jour près.</p><details class="more"><summary>En savoir plus</summary><p>C'est de l'arithmétique pure et répétable. Une date inconnue est traitée comme inconnue au lieu d'être devinée. S'y ajoutent la concomitance de l'article 123.4 et les seuils.</p></details></div>
     </div>
 
     <div class="calc panel reveal">
@@ -1136,7 +1147,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-10</span><span class="eyebrow">Zéro hallucination</span></div>
         <h2>Zéro hallucination. <em>Seulement votre dossier.</em></h2>
       </div>
-      <p class="lede">Les IA générales en ligne répondent de mémoire et peuvent inventer une citation, une date ou une pièce. Ici, tout fonctionne en local, sans Internet, sur les seuls documents que vous confiez. Les index sont lus tels qu'imprimés, la chronologie et les assemblages sont produits sans modèle, et une piste audio qui ne cite pas un intervalle réel est rejetée par le code.</p>
+      <div class="sec-lede"><p class="lede">L'outil ne répond qu'à partir de vos documents. Sans source, pas de réponse.</p><details class="more"><summary>En savoir plus</summary><p>Les IA générales en ligne répondent de mémoire et peuvent inventer une citation, une date ou une pièce. Ici, tout fonctionne en local, sans Internet. Les index sont lus tels qu'imprimés, la chronologie et les assemblages sont produits sans modèle, et une piste audio qui ne cite pas un intervalle réel est rejetée par le code.</p></details></div>
     </div>
 
     <div class="versus reveal" id="versus">

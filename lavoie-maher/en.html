@@ -559,6 +559,17 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
 #listbox tbody td::before,table.wit tbody td::before,.sa-side .gauge .mono,.panel-h .mono{font-family:var(--f-body)!important;font-weight:600;letter-spacing:.05em}
 .eyebrow{font-family:var(--f-body);font-weight:600;font-size:.9rem;letter-spacing:.01em;text-transform:none;color:var(--muted)}
 
+
+/* ---------- intro courte + « En savoir plus » ---------- */
+.sec-lede{display:flex;flex-direction:column;gap:14px}
+.more summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem;color:var(--paper);width:fit-content}
+.more summary::-webkit-details-marker{display:none}
+.more summary::before{content:"+";display:grid;place-items:center;width:24px;height:24px;border-radius:50%;border:1px solid var(--line-2);font-weight:500;line-height:1;transition:transform .3s var(--ease),border-color .3s}
+.more[open] summary::before{transform:rotate(45deg)}
+.more summary:hover{color:var(--amber)}
+.more summary:hover::before{border-color:var(--amber)}
+.more p{margin-top:12px;color:var(--paper-dim);font-size:1.04rem;line-height:1.65;max-width:58ch}
+
 /* =========================================================
    TÉLÉPHONE — mise en page dédiée
    ========================================================= */
@@ -720,7 +731,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
           <span class="line"><span>Every page.</span></span>
           <span class="line"><span><em>Found.</em></span></span>
         </h1>
-        <p class="lede">Lavoie&amp;Maher reads all the evidence in a file, whether it arrives as PDFs, Outlook emails, scanned pages or recordings. It finds every detail with its volume and page, and assembles the documents you used to build by hand the night before a hearing. All on your own servers.</p>
+        <p class="lede">Lavoie&amp;Maher reads all the evidence in a file, finds every detail with its volume and page, and assembles your hearing documents. All on your own servers.</p>
         <div class="hero-cta">
           <a class="btn btn-amber magnet" href="#demo">See it on your files <span class="arr">→</span></a>
           <a class="btn btn-ghost magnet" href="#loi25">Law 25: how we comply</a>
@@ -766,7 +777,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
     <div class="reveal">
       <div class="tab"><span class="cote">L&amp;M-1</span><span class="eyebrow">Law 25 · 100% local processing</span></div>
       <h2>Law 25, respected <em>by design.</em></h2>
-      <p class="lede" style="margin-block:22px 26px">Your biggest risk with AI is sending your clients' personal information to someone else's servers. Here, that cannot happen. The tool runs entirely on your firm's own infrastructure. No document, no question and no transcript is ever sent to an outside cloud service. Professional secrecy stays where it belongs.</p>
+      <div class="sec-lede" style="margin-block:22px 26px"><p class="lede">No document, no question and no transcript ever leaves your firm.</p><details class="more"><summary>Learn more</summary><p>Your biggest risk with AI is sending your clients' personal information to someone else's servers. Here, that cannot happen: the tool runs entirely on your firm's own infrastructure, with no outside cloud service. Professional secrecy stays where it belongs.</p></details></div>
       <ul class="law-points">
         <li><b>0</b><span>transfers outside Québec</span></li>
         <li><b>0</b><span>cloud providers</span></li>
@@ -788,7 +799,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-2</span><span class="eyebrow">Bringing in a file</span></div>
         <h2>A messy disclosure, fifteen formats. <em>One file.</em></h2>
       </div>
-      <p class="lede">Disclosure rarely arrives clean. The tool reads PDFs, images, .docx, .eml and Outlook .msg files directly, and converts everything else on site, with no outside dependency. Before you launch the analysis, it tells you what the file contains and how long the analysis will take.</p>
+      <div class="sec-lede"><p class="lede">The tool reads every format in a disclosure and tells you, before you start, what it contains and how long the analysis will take.</p><details class="more"><summary>Learn more</summary><p>Disclosure rarely arrives clean. The tool reads PDFs, images, .docx, .eml and Outlook .msg files directly, and converts everything else on site (legacy .doc, .rtf, spreadsheets, iWork), with no outside dependency.</p></details></div>
     </div>
     <div class="swipe grid6">
       <article class="cap reveal"><div class="viz v-fmt"><span>PDF</span><span>Image</span><span>.docx</span><span>.eml</span><span>.msg</span></div><h3>Read directly</h3><p>PDFs, images, .docx, .eml and Outlook .msg files are read as they are.</p></article>
@@ -809,7 +820,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-3</span><span class="eyebrow">Audio and video</span></div>
         <h2>Hours of recordings. <em>Every segment timestamped.</em></h2>
       </div>
-      <p class="lede">Audio and video go through Whisper, locally, which returns timestamped segments. The timestamp is the provenance: a lead that does not cite a real interval of the recording is rejected by the code.</p>
+      <div class="sec-lede"><p class="lede">Whisper transcribes locally and timestamps every segment.</p><details class="more"><summary>Learn more</summary><p>Audio and video go through Whisper, on your servers. The timestamp is the provenance: a lead that does not cite a real interval of the recording is rejected by the code.</p></details></div>
     </div>
 
     <div class="tx reveal">
@@ -852,7 +863,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-4</span><span class="eyebrow">Sorting and renaming</span></div>
         <h2>Files in a heap. <em>Put in order, and reversible.</em></h2>
       </div>
-      <p class="lede">Sorting puts the exhibits in order and renames them using one of four modes: date, name, type or size. It is reversible: <span class="mono">defaire_classement</span> restores the original names.</p>
+      <div class="sec-lede"><p class="lede">Four sorting modes: date, name, type or size. And you can always go back.</p><details class="more"><summary>Learn more</summary><p>Sorting puts the exhibits in order and renames them using the chosen mode. It is reversible: <span class="mono">defaire_classement</span> restores the original names.</p></details></div>
     </div>
 
     <div class="panel reveal" id="sorter">
@@ -888,7 +899,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-5</span><span class="eyebrow">Finding a precise detail</span></div>
         <h2>The precise detail. <em>With its volume and page.</em></h2>
       </div>
-      <p class="lede">This is the part we worked on last, and the part that works best. Every result carries a clickable link to the exact page of the original PDF, on screen only: the deliverables handed to the firm never contain one.</p>
+      <div class="sec-lede"><p class="lede">Every result leads to the exact page of the original PDF.</p><details class="more"><summary>Learn more</summary><p>This is the part we worked on last, and the part that works best. The link to the page appears on screen only: the deliverables handed to the firm never contain one.</p></details></div>
     </div>
 
     <div class="swipe cmds reveal">
@@ -943,7 +954,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Indexes from the front matter</span></div>
         <h2>The court reporter's indexes, <em>read exactly as printed.</em></h2>
       </div>
-      <p class="lede">At the start of every volume, the court reporter compiles by hand the table of contents, the list of exhibits, the list of objections and the list of undertakings. The tool reads them exactly as printed, with no model: nothing can be invented.</p>
+      <div class="sec-lede"><p class="lede">Table of contents, exhibits, objections and undertakings, read exactly as printed.</p><details class="more"><summary>Learn more</summary><p>At the start of every volume, the court reporter compiles these lists by hand. The tool reads them with no model: nothing can be invented.</p></details></div>
     </div>
 
     <div class="lim reveal" id="lim">
@@ -1006,7 +1017,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-7</span><span class="eyebrow">The four assemblies</span></div>
         <h2>What you used to build by hand <em>the night before the hearing.</em></h2>
       </div>
-      <p class="lede">Four documents a lawyer assembles by hand before a hearing. No model is involved in the file that produces them: every line comes from the indexes and pages of the file.</p>
+      <div class="sec-lede"><p class="lede">Four hearing documents, produced with no model at all.</p><details class="more"><summary>Learn more</summary><p>These are the documents a lawyer assembles by hand before a hearing. Every line comes from the indexes and pages of the file.</p></details></div>
     </div>
 
     <div class="panel reveal" id="listbox">
@@ -1074,7 +1085,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-8</span><span class="eyebrow">Witnesses</span></div>
         <h2>A change in demeanour, <em>measured rather than guessed.</em></h2>
       </div>
-      <p class="lede"><span class="mono">temoins</span> lists each witness with the number of times they answered that they did not know, and measures their change in demeanour between examination-in-chief and cross. The threshold is a statistical test, the two-proportion z-test, not an arbitrary gap.</p>
+      <div class="sec-lede"><p class="lede">Each witness's “I don't know” answers, counted in chief and in cross.</p><details class="more"><summary>Learn more</summary><p><span class="mono">temoins</span> measures the change in demeanour between the two. The threshold is a statistical test, the two-proportion z-test, not an arbitrary gap.</p></details></div>
     </div>
 
     <div class="swipe wit-stats reveal">
@@ -1108,7 +1119,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-9</span><span class="eyebrow">Employment law</span></div>
         <h2>A recourse deadline, <em>calculated, never guessed.</em></h2>
       </div>
-      <p class="lede">Calculating a recourse deadline, such as the 45 days under section 123 of the Act respecting labour standards, is pure, repeatable arithmetic. An unknown date is treated as unknown instead of being guessed. The concurrency rules of section 123.4 and the thresholds come on top.</p>
+      <div class="sec-lede"><p class="lede">The 45 days under section 123 ALS, calculated to the day.</p><details class="more"><summary>Learn more</summary><p>It is pure, repeatable arithmetic. An unknown date is treated as unknown instead of being guessed. The concurrency rules of section 123.4 and the thresholds come on top.</p></details></div>
     </div>
 
     <div class="calc panel reveal">
@@ -1136,7 +1147,7 @@ th,.stats span,.hero-meta span,.law-points span,.lim-stats span,form.demo label,
         <div class="tab"><span class="cote">L&amp;M-10</span><span class="eyebrow">Zero hallucination</span></div>
         <h2>Zero hallucination. <em>Only your file.</em></h2>
       </div>
-      <p class="lede">General-purpose online AI answers from memory and can invent a quote, a date or an exhibit. Here, everything runs locally, without internet, on the documents you provide and nothing else. The indexes are read exactly as printed, the timeline and assemblies are produced with no model, and an audio lead that does not cite a real interval is rejected by the code.</p>
+      <div class="sec-lede"><p class="lede">The tool answers only from your documents. No source, no answer.</p><details class="more"><summary>Learn more</summary><p>General-purpose online AI answers from memory and can invent a quote, a date or an exhibit. Here, everything runs locally, without internet. The indexes are read exactly as printed, the timeline and assemblies are produced with no model, and an audio lead that does not cite a real interval is rejected by the code.</p></details></div>
     </div>
 
     <div class="versus reveal" id="versus">
