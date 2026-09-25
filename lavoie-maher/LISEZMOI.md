@@ -7,7 +7,8 @@ Il fonctionne sur n'importe quel hébergeur web.
 
 | Fichier | Rôle |
 |---|---|
-| `index.html` | La page (HTML, CSS et JavaScript intégrés) |
+| `index.html` | La page en français (HTML, CSS et JavaScript intégrés) |
+| `en.html` | La page en anglais (bouton FR/EN en haut à droite) |
 | `fonts.css` + `fonts/` | Polices auto-hébergées (aucun appel à Google) |
 | `favicon.svg`, `apple-touch-icon.png` | Icônes d'onglet et d'écran d'accueil |
 | `og-image.png` | Aperçu affiché quand le lien est partagé (LinkedIn, Facebook, Teams, courriel) |
@@ -16,7 +17,7 @@ Il fonctionne sur n'importe quel hébergeur web.
 
 ## Mise en ligne sur votre domaine
 
-1. **Remplacez `VOTRE-DOMAINE.ca`** dans `index.html` (5 occurrences) et `politique-de-confidentialite.html` (1 occurrence) par votre vrai domaine, ex. `lavoimaher.ca`.
+1. **Remplacez `VOTRE-DOMAINE.ca`** par votre vrai domaine, ex. `lavoiemaher.ca`, dans `index.html`, `en.html` et `politique-de-confidentialite.html` (commande pour les trouver : `grep -rn VOTRE-DOMAINE .`).
 2. **Téléversez tout le contenu de ce dossier** (pas le dossier lui-même) à la racine de votre site :
    - *Hébergeur classique (cPanel, FTP)* : dans `public_html/`.
    - *Netlify* : glissez le dossier sur app.netlify.com/drop, puis reliez votre domaine dans « Domain settings ».

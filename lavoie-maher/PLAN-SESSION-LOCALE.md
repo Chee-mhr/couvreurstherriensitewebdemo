@@ -30,6 +30,8 @@ Ne réintroduire aucune fonction absente de cette liste (notamment : résumés, 
 contradictions, caviardage, repérage de renseignements personnels, surlignage).
 Les exemples des démos sont fictifs et anonymisés (témoins A à G, dossiers A à C).
 
+Toute modification de contenu faite dans `index.html` doit aussi être faite dans `en.html` (version anglaise).
+
 ## Étape 3 — Compléter les informations manquantes
 
 Trouver tous les passages : `grep -rn "À COMPLÉTER" lavoie-maher/`
@@ -52,7 +54,7 @@ Puis retirer l'encadré « Note interne » (`<p class="todo-note">…</p>`) de
 ## Étape 4 — Domaine et formulaire
 
 - Demander le nom de domaine ; remplacer `VOTRE-DOMAINE.ca` partout
-  (5 fois dans `index.html`, 1 fois dans `politique-de-confidentialite.html`).
+  (dans `index.html`, `en.html` et `politique-de-confidentialite.html` ; `grep -rn VOTRE-DOMAINE lavoie-maher/`).
 - Si l'utilisateur a une adresse de service de formulaire (ex. Formspree), la coller dans
   `data-endpoint=""` sur `<form class="demo" …>` dans `index.html`. Sinon, le formulaire
   reste en mode démonstration (aucun envoi).
@@ -62,7 +64,7 @@ Puis retirer l'encadré « Note interne » (`<p class="todo-note">…</p>`) de
 - Ouvrir les deux pages sur ordinateur et en largeur mobile (~390 px) : pas de
   défilement horizontal, menu mobile fonctionnel, aucune erreur dans la console.
 - Vérifier qu'aucune requête ne part vers un site externe (onglet Réseau).
-- `grep -rn "À COMPLÉTER\|VOTRE-DOMAINE" lavoie-maher/` ne doit rien retourner.
+- `grep -rn "À COMPLÉTER\|TO COMPLETE\|VOTRE-DOMAINE" lavoie-maher/` ne doit rien retourner (le courriel du responsable apparaît aussi au pied de `en.html`).
 
 ## Étape 6 — Enregistrer
 
