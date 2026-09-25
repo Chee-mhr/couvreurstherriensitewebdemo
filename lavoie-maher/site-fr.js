@@ -1,5 +1,8 @@
 (() => {
 "use strict";
+// Ouvrir en haut de page (sauf lien direct vers une section), sans restaurer l'ancienne position
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+if (!location.hash) scrollTo(0, 0);
 const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -555,8 +558,8 @@ $$(".swipe").forEach(sw => {
   addEventListener("scroll", upd, { passive: true }); upd();
 })();
 
-/* ---------- langue : garder la section en cours ---------- */
-$("#lang").addEventListener("click", e => { const a = e.currentTarget; a.href = a.getAttribute("href").split("#")[0] + location.hash; });
+/* ---------- langue : l'autre version s'ouvre toujours en haut de page ---------- */
+$("#lang").addEventListener("click", e => { const a = e.currentTarget; a.href = a.getAttribute("href").split("#")[0]; });
 
 /* ---------- menu mobile ---------- */
 const burger = $("#burger");
