@@ -9,16 +9,16 @@
 <link rel="canonical" href="https://VOTRE-DOMAINE.ca/politique-de-confidentialite.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="theme-color" content="#0B0B0C">
+<meta name="theme-color" content="#FBFBFD">
 <link rel="stylesheet" href="fonts.css">
 <style>
 /* Même système que index.html : encre juridique & surligneur */
 :root{
-  color-scheme: dark;
-  --ink:#0B0B0C; --ink-2:#111113; --panel:#17171A;
-  --line:rgba(255,255,255,.1); --line-2:rgba(255,255,255,.2);
-  --paper:#F5F5F7; --paper-dim:#C8C8CD; --muted:#9C9CA3;
-  --amber:#D2B57A; --amber-soft:rgba(210,181,122,.16); --ok:#8CC7A6;
+  color-scheme: light;
+  --ink:#FBFBFD; --ink-2:#F5F5F7; --panel:#FFFFFF;
+  --line:rgba(0,0,0,.09); --line-2:rgba(0,0,0,.16);
+  --paper:#1D1D1F; --paper-dim:#424245; --muted:#66666B;
+  --amber:#84632A; --amber-soft:rgba(132,99,42,.1); --ok:#1A7349;
   --f-display:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
   --f-body:"Hanken Grotesk", "Helvetica Neue", Arial, system-ui, sans-serif;
   --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
@@ -27,14 +27,14 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--ink)}
 body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--f-body);font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased}
-::selection{background:var(--amber);color:var(--ink)}
+::selection{background:var(--amber);color:#fff}
 a{color:var(--amber);text-underline-offset:3px}
 :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
 .wrap{max-width:1180px;margin-inline:auto;padding-inline:var(--gutter)}
-.skip{position:fixed;left:16px;top:-60px;z-index:200;background:var(--amber);color:var(--ink);padding:10px 14px;border-radius:8px;font-weight:600;text-decoration:none;transition:top .2s}
+.skip{position:fixed;left:16px;top:-60px;z-index:200;background:var(--amber);color:#fff;padding:10px 14px;border-radius:8px;font-weight:600;text-decoration:none;transition:top .2s}
 .skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
 
-.nav{position:sticky;top:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:rgba(11,11,12,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{position:sticky;top:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:rgba(251,251,253,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
 .brand{display:flex;align-items:baseline;text-decoration:none;color:var(--paper);font-family:var(--f-display);font-size:1.4rem;font-weight:500;white-space:nowrap}
 .brand .amp{font-style:italic;color:var(--amber);padding-inline:.04em}

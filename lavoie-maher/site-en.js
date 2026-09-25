@@ -129,10 +129,10 @@ const QUERIES = [
       p.lit *= .94;
       const w = p.w * s.s, h = w * 1.3;
       const tw = .55 + .45 * Math.sin(now / 900 + p.tw);
-      if (p.lit > .05) { ctx.fillStyle = `rgba(180,180,187,${(.18 + .32 * p.lit) * depthA})`; }
-      else ctx.fillStyle = `rgba(215,215,220,${.16 * depthA * tw})`;
+      if (p.lit > .05) { ctx.fillStyle = `rgba(143,108,46,${(.10 + .22 * p.lit) * depthA})`; }
+      else ctx.fillStyle = `rgba(29,29,31,${.075 * depthA * tw})`;
       ctx.fillRect(s.x - w / 2, s.y - h / 2, w, h);
-      if (w > 9 && p.lit < .05) { ctx.fillStyle = `rgba(11,11,12,${.5 * depthA})`; for (let l = 0; l < 3; l++) ctx.fillRect(s.x - w * .32, s.y - h * .28 + l * h * .2, w * .64 * (l === 2 ? .6 : 1), Math.max(.6, h * .05)); }
+      if (w > 9 && p.lit < .05) { ctx.fillStyle = `rgba(29,29,31,${.12 * depthA})`; for (let l = 0; l < 3; l++) ctx.fillRect(s.x - w * .32, s.y - h * .28 + l * h * .2, w * .64 * (l === 2 ? .6 : 1), Math.max(.6, h * .05)); }
     }
     // matched docs fly to the console
     if (matched.length) {
@@ -141,10 +141,10 @@ const QUERIES = [
       ctx.lineWidth = 1;
       matched.forEach((p, i) => {
         const m = p.m, x = m.sx + (m.tx - m.sx) * e, y = m.sy + (m.ty - m.sy) * e - Math.sin(e * Math.PI) * 60;
-        ctx.strokeStyle = `rgba(210,181,122,${.18 * fade * (1 - e * .5)})`;
+        ctx.strokeStyle = `rgba(143,108,46,${.22 * fade * (1 - e * .5)})`;
         ctx.beginPath(); ctx.moveTo(m.sx, m.sy); ctx.quadraticCurveTo((m.sx + x) / 2, Math.min(m.sy, y) - 80, x, y); ctx.stroke();
         const w = 14 - e * 6, h = w * 1.3;
-        ctx.fillStyle = `rgba(210,181,122,${.85 * fade})`; ctx.fillRect(x - w / 2, y - h / 2, w, h);
+        ctx.fillStyle = `rgba(143,108,46,${.85 * fade})`; ctx.fillRect(x - w / 2, y - h / 2, w, h);
       });
     }
     if (running) raf = requestAnimationFrame(frame);
@@ -277,10 +277,10 @@ const DOCS = [
     for (let i = 0; i < BARS; i++) {
       const x = i * bw, live = playing && Math.abs(x - ph) < 30 ? 1 + .35 * Math.sin(now / 90 + i) : 1;
       const a = amp[i] * (H * .46) * live;
-      ctx.fillStyle = x < ph ? "rgba(210,181,122,.9)" : "rgba(200,200,206,.28)";
+      ctx.fillStyle = x < ph ? "rgba(143,108,46,.85)" : "rgba(29,29,31,.16)";
       ctx.fillRect(x + bw * .2, mid - a, Math.max(1, bw * .6), a * 2);
     }
-    ctx.fillStyle = "#F5F5F7"; ctx.fillRect(ph - 1, 0, 2, H);
+    ctx.fillStyle = "#1D1D1F"; ctx.fillRect(ph - 1, 0, 2, H);
     ctx.beginPath(); ctx.arc(ph, 4, 4, 0, 7); ctx.fill();
     if (visible) requestAnimationFrame(draw); else last = 0;
   }
