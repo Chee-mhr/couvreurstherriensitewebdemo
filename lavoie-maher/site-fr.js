@@ -129,10 +129,10 @@ const QUERIES = [
       p.lit *= .94;
       const w = p.w * s.s, h = w * 1.3;
       const tw = .55 + .45 * Math.sin(now / 900 + p.tw);
-      if (p.lit > .05) { ctx.fillStyle = `rgba(138,155,216,${(.18 + .32 * p.lit) * depthA})`; }
-      else ctx.fillStyle = `rgba(185,190,215,${.16 * depthA * tw})`;
+      if (p.lit > .05) { ctx.fillStyle = `rgba(180,180,187,${(.18 + .32 * p.lit) * depthA})`; }
+      else ctx.fillStyle = `rgba(215,215,220,${.16 * depthA * tw})`;
       ctx.fillRect(s.x - w / 2, s.y - h / 2, w, h);
-      if (w > 9 && p.lit < .05) { ctx.fillStyle = `rgba(10,15,30,${.5 * depthA})`; for (let l = 0; l < 3; l++) ctx.fillRect(s.x - w * .32, s.y - h * .28 + l * h * .2, w * .64 * (l === 2 ? .6 : 1), Math.max(.6, h * .05)); }
+      if (w > 9 && p.lit < .05) { ctx.fillStyle = `rgba(11,11,12,${.5 * depthA})`; for (let l = 0; l < 3; l++) ctx.fillRect(s.x - w * .32, s.y - h * .28 + l * h * .2, w * .64 * (l === 2 ? .6 : 1), Math.max(.6, h * .05)); }
     }
     // matched docs fly to the console
     if (matched.length) {
@@ -141,10 +141,10 @@ const QUERIES = [
       ctx.lineWidth = 1;
       matched.forEach((p, i) => {
         const m = p.m, x = m.sx + (m.tx - m.sx) * e, y = m.sy + (m.ty - m.sy) * e - Math.sin(e * Math.PI) * 60;
-        ctx.strokeStyle = `rgba(224,189,106,${.18 * fade * (1 - e * .5)})`;
+        ctx.strokeStyle = `rgba(210,181,122,${.18 * fade * (1 - e * .5)})`;
         ctx.beginPath(); ctx.moveTo(m.sx, m.sy); ctx.quadraticCurveTo((m.sx + x) / 2, Math.min(m.sy, y) - 80, x, y); ctx.stroke();
         const w = 14 - e * 6, h = w * 1.3;
-        ctx.fillStyle = `rgba(224,189,106,${.85 * fade})`; ctx.fillRect(x - w / 2, y - h / 2, w, h);
+        ctx.fillStyle = `rgba(210,181,122,${.85 * fade})`; ctx.fillRect(x - w / 2, y - h / 2, w, h);
       });
     }
     if (running) raf = requestAnimationFrame(frame);
@@ -277,10 +277,10 @@ const DOCS = [
     for (let i = 0; i < BARS; i++) {
       const x = i * bw, live = playing && Math.abs(x - ph) < 30 ? 1 + .35 * Math.sin(now / 90 + i) : 1;
       const a = amp[i] * (H * .46) * live;
-      ctx.fillStyle = x < ph ? "rgba(224,189,106,.9)" : "rgba(150,168,230,.28)";
+      ctx.fillStyle = x < ph ? "rgba(210,181,122,.9)" : "rgba(200,200,206,.28)";
       ctx.fillRect(x + bw * .2, mid - a, Math.max(1, bw * .6), a * 2);
     }
-    ctx.fillStyle = "#ECE7DC"; ctx.fillRect(ph - 1, 0, 2, H);
+    ctx.fillStyle = "#F5F5F7"; ctx.fillRect(ph - 1, 0, 2, H);
     ctx.beginPath(); ctx.arc(ph, 4, 4, 0, 7); ctx.fill();
     if (visible) requestAnimationFrame(draw); else last = 0;
   }
@@ -353,17 +353,22 @@ const DOCS = [
   function draw(now) {
     const c = S / 2, rot = RM ? 0 : now / 1000 * .03;
     ctx.clearRect(0, 0, S, S);
-    ctx.strokeStyle = "rgba(224,189,106,.55)"; ctx.lineWidth = 1.2;
-    [.47, .36].forEach(r => { ctx.beginPath(); ctx.arc(c, c, r * S, 0, 7); ctx.stroke(); });
-    ctx.strokeStyle = "rgba(224,189,106,.22)"; ctx.lineWidth = 1;
+    // or en relief : dégradé clair-foncé, et un filet d'ombre décalé
+    const gold = ctx.createLinearGradient(0, 0, S, S);
+    gold.addColorStop(0, "#F1E2B8"); gold.addColorStop(.45, "#D2B57A"); gold.addColorStop(1, "#8C7443");
+    [.47, .36].forEach(r => {
+      ctx.strokeStyle = "rgba(0,0,0,.6)"; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(c + 1, c + 1.5, r * S, 0, 7); ctx.stroke();
+      ctx.strokeStyle = gold; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.arc(c, c, r * S, 0, 7); ctx.stroke();
+    });
+    ctx.strokeStyle = "rgba(210,181,122,.22)"; ctx.lineWidth = 1;
     [.455, .375].forEach(r => { ctx.beginPath(); ctx.arc(c, c, r * S, 0, 7); ctx.stroke(); });
-    ctx.fillStyle = "rgba(244,240,232,.78)"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.fillStyle = "rgba(245,245,247,.78)"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
     ctx.font = `500 ${Math.max(10, S * .032)}px "JetBrains Mono", monospace`;
     const chars = [...RING], step = Math.PI * 2 / chars.length, rr = .415 * S;
     chars.forEach((ch, i) => { const a = i * step + rot - Math.PI / 2; ctx.save(); ctx.translate(c + Math.cos(a) * rr, c + Math.sin(a) * rr); ctx.rotate(a + Math.PI / 2); ctx.fillText(ch, 0, 0); ctx.restore(); });
-    ctx.strokeStyle = "#E0BD6A"; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(c, c, S * .2, 0, 7); ctx.stroke();
-    ctx.fillStyle = "#E0BD6A"; ctx.font = `500 ${S * .034}px "JetBrains Mono", monospace`; ctx.fillText("LOI", c, c - S * .075);
-    ctx.fillStyle = "#F4F0E8"; ctx.font = `italic 500 ${S * .14}px "Bodoni Moda", Georgia, serif`; ctx.fillText("25", c, c + S * .02);
+    ctx.strokeStyle = gold; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(c, c, S * .2, 0, 7); ctx.stroke();
+    ctx.fillStyle = gold; ctx.font = `500 ${S * .034}px "JetBrains Mono", monospace`; ctx.fillText("LOI", c, c - S * .075);
+    ctx.fillStyle = "#F5F5F7"; ctx.font = `italic 500 ${S * .14}px "Bodoni Moda", Georgia, serif`; ctx.fillText("25", c, c + S * .02);
     if (vis && !RM) requestAnimationFrame(draw);
   }
   onView(cv, v => { const was = vis; vis = v; if (v && !was) requestAnimationFrame(draw); }, { threshold: 0 });
