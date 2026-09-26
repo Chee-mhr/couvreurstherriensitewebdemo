@@ -226,7 +226,7 @@ root.innerHTML = `
 <aside class="ap-side" aria-label="${EN ? "Sidebar" : "Barre latérale"}">
   <div class="ap-logo">Projecteur<i></i></div>
   <div class="ap-sub mono">${T.sub}</div>
-  <div class="ap-lm"><img src="logo/symbole-simple.svg" alt="" width="20" height="20">Lavoie<b>&amp;</b>Maher<small>INC.</small></div>
+  <div class="ap-lm"><img src="logo/symbole-simple.svg?v=8eda429" alt="" width="20" height="20">Lavoie<b>&amp;</b>Maher<small>INC.</small></div>
   <button class="ap-new" type="button" data-act="new">${T.newConv}</button>
   <div class="ap-lbl">${T.convs}</div>
   <ul class="ap-convs"></ul>

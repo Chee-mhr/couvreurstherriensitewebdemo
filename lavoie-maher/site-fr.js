@@ -362,11 +362,11 @@ const DOCS = [
     ctx.strokeStyle = "rgba(210,181,122,.22)"; ctx.lineWidth = 1;
     [.455, .375].forEach(r => { ctx.beginPath(); ctx.arc(c, c, r * S, 0, 7); ctx.stroke(); });
     ctx.fillStyle = "rgba(245,245,247,.78)"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-    ctx.font = `500 ${Math.max(10, S * .032)}px "JetBrains Mono", monospace`;
+    ctx.font = `600 ${Math.max(11, S * .034)}px "Bodoni Moda", Georgia, serif`;
     const chars = [...RING], step = Math.PI * 2 / chars.length, rr = .415 * S;
     chars.forEach((ch, i) => { const a = i * step + rot - Math.PI / 2; ctx.save(); ctx.translate(c + Math.cos(a) * rr, c + Math.sin(a) * rr); ctx.rotate(a + Math.PI / 2); ctx.fillText(ch, 0, 0); ctx.restore(); });
     ctx.strokeStyle = gold; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(c, c, S * .2, 0, 7); ctx.stroke();
-    ctx.fillStyle = gold; ctx.font = `500 ${S * .034}px "JetBrains Mono", monospace`; ctx.fillText("LOI", c, c - S * .075);
+    ctx.fillStyle = gold; ctx.font = `600 ${S * .04}px "Bodoni Moda", Georgia, serif`; ctx.fillText("LOI", c, c - S * .075);
     ctx.fillStyle = "#F5F5F7"; ctx.font = `italic 500 ${S * .14}px "Bodoni Moda", Georgia, serif`; ctx.fillText("25", c, c + S * .02);
     if (vis && !RM) requestAnimationFrame(draw);
   }
