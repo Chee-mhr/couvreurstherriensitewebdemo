@@ -82,7 +82,7 @@ Dans `_headers` et `.htaccess`, remplacez `https://formspree.io` (directive `con
 
 ## Le logo
 
-Un **sceau gravé** : « LAVOIE & MAHER » et « QUÉBEC » en capitales Bodoni autour de l'anneau, comme un sceau de notaire, et au centre le **monogramme L&M en italique** (L et M en or, esperluette ivoire). Lettres tirées de la Bodoni Moda du site (licence OFL).
+Un **sceau gravé** : « LAVOIE & MAHER » et « QUÉBEC » en capitales Bodoni autour de l'anneau, comme un sceau de notaire, et au centre une **balance de la justice** : le L et le M en italique dans les plateaux, l'esperluette ivoire sur le montant. Lettres tirées de la Bodoni Moda du site (licence OFL).
 
 - Sous 64 px, utiliser `symbole-simple.svg` (le texte gravé ne se lit plus) ; sous 32 px, `icone-lm.svg`.
 - Impression : `symbole-or-plat.svg` (or sans dégradé, ex. dorure à chaud), `symbole-noir.svg` (une couleur), `symbole-blanc.svg` (sur fond foncé ou photo).
