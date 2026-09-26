@@ -214,7 +214,7 @@ section{position:relative;z-index:2}
 .sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px 64px;align-items:end;margin-bottom:56px}
 @media (max-width:860px){.sec-head{grid-template-columns:1fr}}
 .tab{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px}
-.tab .cote{font-size:0.84rem}
+.tab .sec-num{font-family:var(--f-display);font-style:italic;font-size:1.15rem;color:var(--amber);letter-spacing:.02em;padding-right:12px;border-right:1px solid var(--line-2);line-height:1}
 .reveal.pending{opacity:0;transform:translateY(16px)}
 .reveal{transition:opacity .9s var(--ease), transform .9s var(--ease)}
 
@@ -855,7 +855,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
     <div class="hero-meta">
       <div><strong>7 ms</strong><span>to count mentions</span></div>
       <div><strong>0.1 s</strong><span>to read the indexes of 45 volumes</span></div>
-      <div><strong>0</strong><span>hallucinations</span></div>
+      <div><strong>100%</strong><span>of answers cite their source</span></div>
       <div><strong>0 bytes</strong><span>of your files sent online</span></div>
     </div>
   </div>
@@ -880,7 +880,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap vault">
     <canvas id="seal" class="reveal" aria-hidden="true"></canvas>
     <div class="reveal">
-      <div class="tab"><span class="cote">L&amp;M-1</span><span class="eyebrow">Law 25 · 100% local processing</span></div>
+      <div class="tab"><span class="sec-num">I.1</span><span class="eyebrow">Law 25 · 100% local processing</span></div>
       <h2>Law 25, respected <em>by design.</em></h2>
       <div class="sec-lede" style="margin-block:22px 26px"><p class="lede">No document, no question and no transcript ever leaves your firm.</p><details class="more"><summary>Learn more</summary><p>Your biggest risk with AI is sending your clients' personal information to someone else's servers. Here, that cannot happen: the tool runs entirely on your firm's own infrastructure, with no outside cloud service. Professional secrecy stays where it belongs.</p><p>The tool takes care of data transfers. Your firm's other obligations under Law 25 (privacy officer, policy, incident register) remain its own.</p></details></div>
       <ul class="law-points">
@@ -902,7 +902,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-2</span><span class="eyebrow">Bringing in a file</span></div>
+        <div class="tab"><span class="sec-num">II.1</span><span class="eyebrow">Bringing in a file</span></div>
         <h2>A messy disclosure, fifteen formats. <em>One file.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">The tool reads every format in a disclosure and tells you, before you start, what it contains and how long the analysis will take.</p><details class="more"><summary>Learn more</summary><p>Disclosure rarely arrives clean. The tool reads PDFs, images, .docx, .eml and Outlook .msg files directly, and converts everything else on site (legacy .doc, .rtf, spreadsheets, iWork), with no outside dependency.</p></details><button class="try-btn" type="button" data-try="Convert the unreadable exhibits">Try it in Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -923,7 +923,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-3</span><span class="eyebrow">Audio and video</span></div>
+        <div class="tab"><span class="sec-num">II.2</span><span class="eyebrow">Audio and video</span></div>
         <h2>Hours of recordings. <em>Every segment timestamped.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Whisper transcribes locally and timestamps every segment.</p><details class="more"><summary>Learn more</summary><p>Audio and video go through Whisper, on your servers. The timestamp is the provenance: a lead that does not cite a real interval of the recording is rejected by the code.</p></details><button class="try-btn" type="button" data-try="Search water in Mr. Tremblay&#x27;s testimony">Try it in Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -966,7 +966,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-4</span><span class="eyebrow">Sorting and renaming</span></div>
+        <div class="tab"><span class="sec-num">II.3</span><span class="eyebrow">Sorting and renaming</span></div>
         <h2>Files in a heap. <em>Sorted, renamed, reversible.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">The tool sorts your files and renames them using the mode you choose: date, name, type or size. Every sort can be undone in a single step.</p><details class="more"><summary>Learn more</summary><p>Each file is renamed using the chosen mode, for example prefixed with its date or rank. It is reversible: <span class="mono">defaire_classement</span> restores the original names.</p></details><button class="try-btn" type="button" data-try="Sort the exhibits by date">Try it in Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -1003,7 +1003,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-5</span><span class="eyebrow">Finding a precise detail</span></div>
+        <div class="tab"><span class="sec-num">III.1</span><span class="eyebrow">Finding a precise detail</span></div>
         <h2>The precise detail. <em>With its volume and page.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Every result leads to the exact page of the original PDF.</p><details class="more"><summary>Learn more</summary><p>The link to the page appears on screen only: the deliverables handed to the firm never contain one.</p></details><button class="try-btn" type="button" data-try="Where is the French drain discussed?">Try it in Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -1058,7 +1058,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Document summaries</span></div>
+        <div class="tab"><span class="sec-num">III.2</span><span class="eyebrow">Document summaries</span></div>
         <h2>Pages of testimony. <em>The gist in three points.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">A passage, an exhibit or an entire testimony, summarized in a few points.</p><details class="more"><summary>Learn more</summary><p>Every point in the summary refers back to its original lines: you check at a glance. Choose key points or a paragraph.</p></details><button class="try-btn" type="button" data-try="Summarize page 97 of volume 12">Try it in Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -1087,7 +1087,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-7</span><span class="eyebrow">Indexes from the front matter</span></div>
+        <div class="tab"><span class="sec-num">III.3</span><span class="eyebrow">Indexes from the front matter</span></div>
         <h2>The court reporter's indexes, <em>read exactly as printed.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Table of contents, exhibits, objections and undertakings, read exactly as printed.</p><details class="more"><summary>Learn more</summary><p>At the start of every volume, the court reporter compiles these lists by hand. The tool reads them with no model: nothing can be invented.</p></details><button class="try-btn" type="button" data-try="Where does each examination begin">Try it in Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -1151,7 +1151,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-8</span><span class="eyebrow">The four assemblies</span></div>
+        <div class="tab"><span class="sec-num">IV.1</span><span class="eyebrow">The four assemblies</span></div>
         <h2>What you used to build by hand <em>the night before the hearing.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Four hearing documents, produced with no model at all.</p><details class="more"><summary>Learn more</summary><p>These are the documents a lawyer assembles by hand before a hearing. Every line comes from the indexes and pages of the file.</p></details><button class="try-btn" type="button" data-try="The cross-examination binder for witness B">Try it in Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -1219,7 +1219,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-9</span><span class="eyebrow">Witnesses</span></div>
+        <div class="tab"><span class="sec-num">IV.2</span><span class="eyebrow">Witnesses</span></div>
         <h2>A change in demeanour, <em>measured rather than guessed.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Each witness's “I don't know” answers and answer length, measured in chief and in cross.</p><details class="more"><summary>Learn more</summary><p><span class="mono">temoins</span> measures the change in demeanour between the two: the number of non-answers and the length of the answers. For non-answers, the threshold is a statistical test, the two-proportion z-test, not an arbitrary gap.</p></details><button class="try-btn" type="button" data-try="The list of witnesses">Try it in Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -1254,7 +1254,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-10</span><span class="eyebrow">Employment law</span></div>
+        <div class="tab"><span class="sec-num">IV.3</span><span class="eyebrow">Employment law</span></div>
         <h2>A recourse deadline, <em>calculated, never guessed.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">The 45 days under section 123 ALS, calculated to the day.</p><details class="more"><summary>Learn more</summary><p>It is pure, repeatable arithmetic. An unknown date is treated as unknown instead of being guessed. The concurrency rules of section 123.4 and the thresholds come on top.</p></details><button class="try-btn" type="button" data-try="Deadline for a prohibited-practice complaint of January 15, 2024">Try it in Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -1283,7 +1283,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-11</span><span class="eyebrow">Zero hallucination</span></div>
+        <div class="tab"><span class="sec-num">V.1</span><span class="eyebrow">Zero hallucination</span></div>
         <h2>Zero hallucination. <em>Only your file.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">The tool answers only from your documents. No source, no answer.</p><details class="more"><summary>Learn more</summary><p>General-purpose online AI answers from memory and can invent a quote, a date or an exhibit. Here, everything runs locally, without internet. The indexes are read exactly as printed, the timeline and assemblies are produced with no model, and an audio lead that does not cite a real interval is rejected by the code.</p></details></div>

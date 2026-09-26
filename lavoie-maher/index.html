@@ -214,7 +214,7 @@ section{position:relative;z-index:2}
 .sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px 64px;align-items:end;margin-bottom:56px}
 @media (max-width:860px){.sec-head{grid-template-columns:1fr}}
 .tab{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px}
-.tab .cote{font-size:0.84rem}
+.tab .sec-num{font-family:var(--f-display);font-style:italic;font-size:1.15rem;color:var(--amber);letter-spacing:.02em;padding-right:12px;border-right:1px solid var(--line-2);line-height:1}
 .reveal.pending{opacity:0;transform:translateY(16px)}
 .reveal{transition:opacity .9s var(--ease), transform .9s var(--ease)}
 
@@ -855,7 +855,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
     <div class="hero-meta">
       <div><strong>7 ms</strong><span>pour compter les mentions</span></div>
       <div><strong>0,1 s</strong><span>pour lire les index de 45 volumes</span></div>
-      <div><strong>0</strong><span>hallucination</span></div>
+      <div><strong>100 %</strong><span>des réponses citées à leur source</span></div>
       <div><strong>0 octet</strong><span>de vos dossiers envoyé en ligne</span></div>
     </div>
   </div>
@@ -880,7 +880,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap vault">
     <canvas id="seal" class="reveal" aria-hidden="true"></canvas>
     <div class="reveal">
-      <div class="tab"><span class="cote">L&amp;M-1</span><span class="eyebrow">Loi 25 · Traitement 100 % local</span></div>
+      <div class="tab"><span class="sec-num">I.1</span><span class="eyebrow">Loi 25 · Traitement 100 % local</span></div>
       <h2>La Loi 25, respectée <em>par conception.</em></h2>
       <div class="sec-lede" style="margin-block:22px 26px"><p class="lede">Aucun document, aucune question, aucune transcription ne quitte votre cabinet.</p><details class="more"><summary>En savoir plus</summary><p>Votre plus grand risque avec l'IA, c'est d'envoyer les renseignements personnels de vos clients sur les serveurs d'un tiers. Ici, c'est impossible : l'outil fonctionne entièrement sur l'infrastructure de votre cabinet, sans service infonuagique externe. Le secret professionnel reste là où il doit être.</p><p>L'outil règle la question du transfert des données. Les autres obligations prévues par la Loi 25 (responsable de la protection, politique, registre des incidents) demeurent celles de votre cabinet.</p></details></div>
       <ul class="law-points">
@@ -902,7 +902,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-2</span><span class="eyebrow">Faire entrer un dossier</span></div>
+        <div class="tab"><span class="sec-num">II.1</span><span class="eyebrow">Faire entrer un dossier</span></div>
         <h2>Une divulgation en vrac, quinze formats. <em>Un seul dossier.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">L'outil lit tous les formats d'une divulgation et vous dit, avant de commencer, ce qu'elle contient et combien de temps prendra l'analyse.</p><details class="more"><summary>En savoir plus</summary><p>La divulgation arrive rarement propre. L'outil lit directement le PDF, l'image, le .docx, le .eml et le .msg d'Outlook, et convertit le reste sur place (vieux .doc, .rtf, tableurs, iWork), sans dépendance externe.</p></details><button class="try-btn" type="button" data-try="Convertis les pièces illisibles">Essayer dans Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -923,7 +923,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-3</span><span class="eyebrow">Audio et vidéo</span></div>
+        <div class="tab"><span class="sec-num">II.2</span><span class="eyebrow">Audio et vidéo</span></div>
         <h2>Des heures d'enregistrement. <em>Chaque segment horodaté.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Whisper transcrit en local et horodate chaque segment.</p><details class="more"><summary>En savoir plus</summary><p>L'audio et la vidéo passent par Whisper, sur vos serveurs. L'horodatage sert de provenance : une piste qui ne cite pas un intervalle réel de l'enregistrement est rejetée par le code.</p></details><button class="try-btn" type="button" data-try="Cherche eau dans le témoignage de M. Tremblay">Essayer dans Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -966,7 +966,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-4</span><span class="eyebrow">Classement et renommage</span></div>
+        <div class="tab"><span class="sec-num">II.3</span><span class="eyebrow">Classement et renommage</span></div>
         <h2>Des fichiers en vrac. <em>Classés, renommés, réversible.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">L'outil classe vos fichiers et les renomme selon le mode choisi : date, nom, type ou taille. Chaque classement se défait d'un seul geste.</p><details class="more"><summary>En savoir plus</summary><p>Chaque fichier est renommé selon le mode choisi, par exemple préfixé par sa date ou son rang. Il est réversible : <span class="mono">defaire_classement</span> remet les noms d'avant.</p></details><button class="try-btn" type="button" data-try="Classe les pièces par date">Essayer dans Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -1003,7 +1003,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-5</span><span class="eyebrow">Retrouver un détail précis</span></div>
+        <div class="tab"><span class="sec-num">III.1</span><span class="eyebrow">Retrouver un détail précis</span></div>
         <h2>Le détail précis. <em>Avec son volume et sa page.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Chaque résultat mène à la page exacte du PDF d'origine.</p><details class="more"><summary>En savoir plus</summary><p>Le lien vers la page s'affiche à l'écran seulement : les livrables remis au cabinet n'en contiennent jamais.</p></details><button class="try-btn" type="button" data-try="Où parle-t-on du drain français ?">Essayer dans Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -1058,7 +1058,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-6</span><span class="eyebrow">Résumés de documents</span></div>
+        <div class="tab"><span class="sec-num">III.2</span><span class="eyebrow">Résumés de documents</span></div>
         <h2>Des pages de témoignage. <em>L'essentiel en trois points.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Un passage, une pièce ou un témoignage entier, résumé en quelques points.</p><details class="more"><summary>En savoir plus</summary><p>Chaque point du résumé renvoie à ses lignes d'origine&nbsp;: vous vérifiez d'un coup d'œil. Choisissez des points clés ou un paragraphe.</p></details><button class="try-btn" type="button" data-try="Résume la page 97 du volume 12">Essayer dans Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -1087,7 +1087,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-7</span><span class="eyebrow">Index des pages liminaires</span></div>
+        <div class="tab"><span class="sec-num">III.3</span><span class="eyebrow">Index des pages liminaires</span></div>
         <h2>Les index du sténographe, <em>lus tels qu'imprimés.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Table des matières, cotes, objections et engagements, lus tels qu'imprimés.</p><details class="more"><summary>En savoir plus</summary><p>En tête de chaque volume, le sténographe compose ces listes à la main. L'outil les lit sans modèle : rien ne peut être inventé.</p></details><button class="try-btn" type="button" data-try="Où commence chaque interrogatoire">Essayer dans Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -1151,7 +1151,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-8</span><span class="eyebrow">Les quatre assemblages</span></div>
+        <div class="tab"><span class="sec-num">IV.1</span><span class="eyebrow">Les quatre assemblages</span></div>
         <h2>Ce que vous montiez à la main <em>la veille de l'audience.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Quatre documents d'audience, produits sans aucun modèle.</p><details class="more"><summary>En savoir plus</summary><p>Ce sont les documents qu'un avocat assemble à la main avant une audience. Chaque ligne vient des index et des pages du dossier.</p></details><button class="try-btn" type="button" data-try="Le cahier de contre-interrogatoire du témoin B">Essayer dans Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -1219,7 +1219,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-9</span><span class="eyebrow">Les témoins</span></div>
+        <div class="tab"><span class="sec-num">IV.2</span><span class="eyebrow">Les témoins</span></div>
         <h2>Le changement d'attitude, <em>mesuré plutôt que deviné.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Les « je ne sais pas » et la longueur des réponses de chaque témoin, mesurés au principal et au contre.</p><details class="more"><summary>En savoir plus</summary><p><span class="mono">temoins</span> mesure le changement d'attitude entre les deux : le nombre de non-réponses et la longueur des réponses. Pour les non-réponses, le seuil est un test statistique, le z de deux proportions, et non un écart arbitraire.</p></details><button class="try-btn" type="button" data-try="La liste des témoins">Essayer dans Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -1254,7 +1254,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-10</span><span class="eyebrow">Droit du travail</span></div>
+        <div class="tab"><span class="sec-num">IV.3</span><span class="eyebrow">Droit du travail</span></div>
         <h2>L'échéance d'un recours, <em>calculée, jamais devinée.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">Les 45 jours de l'article 123 LNT, calculés au jour près.</p><details class="more"><summary>En savoir plus</summary><p>C'est de l'arithmétique pure et répétable. Une date inconnue est traitée comme inconnue au lieu d'être devinée. S'y ajoutent la concomitance de l'article 123.4 et les seuils.</p></details><button class="try-btn" type="button" data-try="Échéance d&#x27;une plainte pour pratique interdite du 15 janvier 2024">Essayer dans Projecteur <span aria-hidden="true">↑</span></button></div>
@@ -1283,7 +1283,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="tab"><span class="cote">L&amp;M-11</span><span class="eyebrow">Zéro hallucination</span></div>
+        <div class="tab"><span class="sec-num">V.1</span><span class="eyebrow">Zéro hallucination</span></div>
         <h2>Zéro hallucination. <em>Seulement votre dossier.</em></h2>
       </div>
       <div class="sec-lede"><p class="lede">L'outil ne répond qu'à partir de vos documents. Sans source, pas de réponse.</p><details class="more"><summary>En savoir plus</summary><p>Les IA générales en ligne répondent de mémoire et peuvent inventer une citation, une date ou une pièce. Ici, tout fonctionne en local, sans Internet. Les index sont lus tels qu'imprimés, la chronologie et les assemblages sont produits sans modèle, et une piste audio qui ne cite pas un intervalle réel est rejetée par le code.</p></details></div>
