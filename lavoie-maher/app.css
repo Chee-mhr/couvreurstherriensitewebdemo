@@ -18,7 +18,8 @@
 .ap-logo{font-family:"Bodoni Moda",Georgia,serif;font-size:1.55rem;line-height:1.1;display:flex;align-items:center;gap:6px}
 .ap-logo i{width:7px;height:7px;border-radius:50%;background:var(--a-gold);margin-top:10px;box-shadow:0 0 10px var(--a-gold)}
 .ap-sub{margin:6px 0 10px;color:var(--a-mute);font-size:.74rem;line-height:1.5}
-.ap-lm{font-family:"Bodoni Moda",Georgia,serif;font-size:1rem;color:var(--a-dim);margin-bottom:14px}
+.ap-lm{display:flex;align-items:center;font-family:"Bodoni Moda",Georgia,serif;font-size:1rem;color:var(--a-dim);margin-bottom:14px}
+.device .ap-lm img{display:block;width:20px;height:20px;flex:none;margin-right:7px}
 .ap-lm b{color:var(--a-gold);font-weight:400;font-style:italic;margin:0 3px}.ap-lm small{font-family:"JetBrains Mono",monospace;font-size:.62rem;letter-spacing:.1em;margin-left:3px}
 .ap-new{width:100%;text-align:left;padding:10px 14px;border:1px solid var(--a-line-2)!important;border-radius:10px;font-weight:600;font-size:.92rem;transition:background .2s}
 .ap-new:hover{background:var(--a-card-2)!important}

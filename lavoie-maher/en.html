@@ -21,7 +21,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Lavoie&Maher, inc.","url":"https://VOTRE-DOMAINE.ca/","logo":"https://VOTRE-DOMAINE.ca/apple-touch-icon.png","areaServed":"CA-QC","description":"Intelligence artificielle locale pour la recherche de preuve juridique."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Lavoie&Maher, inc.","url":"https://VOTRE-DOMAINE.ca/","logo":"https://VOTRE-DOMAINE.ca/logo/icone-512.png","areaServed":"CA-QC","description":"Intelligence artificielle locale pour la recherche de preuve juridique."}</script>
 <meta name="theme-color" content="#0B0B0C">
 <!-- Polices auto-hébergées : le site n'envoie aucune requête à un tiers -->
 <link rel="preload" href="fonts/bodoni-moda-normal-latin-3.woff2" as="font" type="font/woff2" crossorigin>
@@ -782,6 +782,12 @@ table.wit .tag{white-space:nowrap}
   .track{animation:none}
   .reveal.pending{opacity:1;transform:none}
 }
+.brand-mark{width:1.55em;height:1.55em;flex:none;align-self:center;margin-right:.45em;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.brand:hover .brand-mark{transform:rotate(-10deg) scale(1.06)}
+.brand > span{display:flex;align-items:baseline}
+footer .brand-mark{width:1.5em;height:1.5em}
+@media (max-width:480px){footer .brand{font-size:1.65rem}}
+.cta-seal{display:block;width:84px;height:84px;margin-bottom:18px;filter:drop-shadow(0 12px 30px rgba(210,181,122,.18))}
 </style>
 <link rel="stylesheet" href="app.css">
 </head>
@@ -791,7 +797,7 @@ table.wit .tag{white-space:nowrap}
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Lavoie&amp;Maher, inc. — home">Lavoie<span class="amp">&amp;</span>Maher<small>INC.</small></a>
+    <a class="brand" href="#top" aria-label="Lavoie&amp;Maher, inc. — home"><img class="brand-mark" src="logo/symbole-simple.svg" alt="" width="34" height="34"><span>Lavoie<span class="amp">&amp;</span>Maher<small>INC.</small></span></a>
     <nav aria-label="Main">
       <ul id="menu">
         <li><a href="#ch-loi25">Law 25</a></li>
@@ -1337,6 +1343,7 @@ table.wit .tag{white-space:nowrap}
   <div class="wrap">
     <div class="cta reveal">
       <div>
+        <img class="cta-seal" src="logo/symbole.svg" alt="" width="84" height="84" loading="lazy">
         <span class="eyebrow">Private demo</span>
         <h2 style="margin-block:18px 22px">Show us a real file. <em>We'll show you its evidence.</em></h2>
         <p class="lede">A 30-minute meeting with the Lavoie&amp;Maher team, on a closed or anonymized file of your choice.</p>
@@ -1365,7 +1372,7 @@ table.wit .tag{white-space:nowrap}
 <footer>
   <div class="wrap">
     <div>
-      <a class="brand" href="#top">Lavoie<span class="amp">&amp;</span>Maher<small>INC.</small></a>
+      <a class="brand" href="#top"><img class="brand-mark" src="logo/symbole-simple.svg" alt="" width="34" height="34"><span>Lavoie<span class="amp">&amp;</span>Maher<small>INC.</small></span></a>
       <p style="margin-top:10px">Evidence intelligence for legal professionals · Québec</p>
       <p style="margin-top:6px">This site uses no cookies and loads no external resources.</p>
       <p style="margin-top:6px">The examples shown on this site are fictional. Performance figures come from our internal tests and may vary with the file and hardware.</p>
