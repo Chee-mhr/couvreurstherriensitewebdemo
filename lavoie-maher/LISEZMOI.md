@@ -15,7 +15,7 @@ Il fonctionne sur n'importe quel hébergeur web.
 | `politique-de-confidentialite.html` | Politique de confidentialité (Loi 25) |
 | `site-fr.js`, `site-en.js`, `politique.js` | Le code des animations et du formulaire (séparé du HTML pour la sécurité) |
 | `app.js`, `app.css` | La fenêtre Projecteur interactive (démo avec données fictives, en français et en anglais, calculée dans le navigateur) |
-| `logo/` | Le logo : `symbole.svg` (sceau complet), `symbole-simple.svg` (petites tailles), `symbole-clair.svg` et `logo-horizontal-clair.svg` (fonds clairs, impression), `logo-horizontal.svg` (fonds foncés), `icone-512.png` (réseaux sociaux) |
+| `logo/` | Le logo : `symbole.svg` (sceau gravé, 64 px et plus), `symbole-simple.svg` (anneau et L&M, 24 à 64 px), `icone-lm.svg` (L M seuls, sous 32 px et favicon), `logo-horizontal.svg` / `logo-horizontal-clair.svg` (sceau et nom), versions d'impression `symbole-clair.svg`, `symbole-or-plat.svg`, `symbole-noir.svg`, `symbole-blanc.svg`, et `icone-512.png` (réseaux sociaux) |
 | `_headers`, `.htaccess` | En-têtes de sécurité (Netlify / Cloudflare Pages, ou Apache / cPanel) |
 | `.well-known/security.txt` | Contact pour signaler une faille de sécurité |
 | `robots.txt` | Autorise l'indexation par les moteurs de recherche |
@@ -82,8 +82,8 @@ Dans `_headers` et `.htaccess`, remplacez `https://formspree.io` (directive `con
 
 ## Le logo
 
-Le symbole est un **monogramme L&M en italique** (L et M en or, esperluette ivoire) dans l'anneau d'un **sceau** (la loi, la confiance), dessiné dans la Bodoni Moda du site (licence OFL). Or sur graphite ; version une couleur pour les fonds clairs.
+Un **sceau gravé** : « LAVOIE & MAHER » et « QUÉBEC » en capitales Bodoni autour de l'anneau, comme un sceau de notaire, et au centre le **monogramme L&M en italique** (L et M en or, esperluette ivoire). Lettres tirées de la Bodoni Moda du site (licence OFL).
 
-- Taille minimale : 24 px pour `symbole-simple.svg`, 64 px pour `symbole.svg`.
-- Laisser autour du symbole un espace libre égal au quart de son diamètre.
-- Ne pas déformer, recolorer ni ajouter d'ombre au symbole.
+- Sous 64 px, utiliser `symbole-simple.svg` (le texte gravé ne se lit plus) ; sous 32 px, `icone-lm.svg`.
+- Impression : `symbole-or-plat.svg` (or sans dégradé, ex. dorure à chaud), `symbole-noir.svg` (une couleur), `symbole-blanc.svg` (sur fond foncé ou photo).
+- Laisser autour du symbole un espace libre égal au quart de son diamètre. Ne pas déformer, recolorer ni ajouter d'ombre.
