@@ -82,7 +82,7 @@ Dans `_headers` et `.htaccess`, remplacez `https://formspree.io` (directive `con
 
 ## Le logo
 
-Le symbole réunit trois idées : l'anneau du **sceau** (la loi, la confiance), le **faisceau d'un projecteur** (le logiciel Projecteur, la preuve mise en lumière) et le **monogramme L&M** (L et M en or, esperluette ivoire), dessiné dans la Bodoni Moda du site (licence OFL). Or sur graphite ; version une couleur pour les fonds clairs.
+Le symbole est un **monogramme L&M en italique** (L et M en or, esperluette ivoire) dans l'anneau d'un **sceau** (la loi, la confiance), dessiné dans la Bodoni Moda du site (licence OFL). Or sur graphite ; version une couleur pour les fonds clairs.
 
 - Taille minimale : 24 px pour `symbole-simple.svg`, 64 px pour `symbole.svg`.
 - Laisser autour du symbole un espace libre égal au quart de son diamètre.
