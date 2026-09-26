@@ -54,7 +54,7 @@ const DOCS_A = EN ? [
   { c: "P-12", t: "Site meeting minutes", n: "Minutes (.rtf)", d: "2021-05-04", v: 2, pg: 30, x: "Water infiltration noted in the basement, present since mid-March according to the superintendent. The French drain is not visible in the excavation. Photos attached." },
   { c: "P-21", t: "Text message from Ms. Gagnon", n: "Text message", d: "2021-06-02", v: 2, pg: 41, x: "We'll finish next week, promise. Finishing and landscaping are left. The rain held us up again." },
   { c: "D-5", t: "Final invoice", n: "Invoice (PDF)", d: "2021-06-30", v: 4, pg: 25, x: "Final invoice for work performed: $84,350.00 taxes included, payable upon acceptance of the work." },
-  { c: "P-40", t: "Email from Mtre Roy", n: "Email (.msg)", d: "2021-07-14", v: 5, pg: 3, x: "Provisional acceptance granted with reservations: drainage, foundation cracks and incomplete landscaping. Signed today by the parties." },
+  { c: "P-44", t: "Email from Mtre Roy", n: "Email (.msg)", d: "2021-07-14", v: 5, pg: 3, x: "Provisional acceptance granted with reservations: drainage, foundation cracks and incomplete landscaping. Signed today by the parties." },
   { c: "P-47", t: "Bank statement", n: "Statement (spreadsheet)", d: "2021-08-02", v: 5, pg: 9, x: "Final payment to the Contractor: $11,850.00. $72,500.00 withheld from the final payment as the late penalty." },
   { c: "P-15", t: "Expert report, eng.", n: "Report (scanned PDF)", d: "2022-01-20", v: 3, pg: 1, x: "The cracks observed in the foundation result from missing perimeter drainage, not from frost action. The planned French drain was never installed. Repairs estimated at $38,500." },
   { c: "P-33", t: "Examination on discovery of Mr. Tremblay", n: "Transcript", d: "2023-03-08", v: 7, pg: 212, x: "Q. The formal notice, you sent it on March 19? A. Yes. Q. The water infiltration, when did you see it? A. From mid-March, in the basement, after the cracks." }
@@ -67,7 +67,7 @@ const DOCS_A = EN ? [
   { c: "P-12", t: "Procès-verbal de chantier", n: "Procès-verbal (.rtf)", d: "2021-05-04", v: 2, pg: 30, x: "Constat d'une infiltration d'eau au sous-sol, présente selon le surintendant depuis la mi-mars. Le drain français n'est pas visible à l'excavation. Photos annexées." },
   { c: "P-21", t: "Texto de Mme Gagnon", n: "Texto", d: "2021-06-02", v: 2, pg: 41, x: "On finit la semaine prochaine, promis. Il reste la finition et le terrassement. La pluie nous a encore retardés." },
   { c: "D-5", t: "Facture finale", n: "Facture (PDF)", d: "2021-06-30", v: 4, pg: 25, x: "Facture finale pour les travaux exécutés : 84 350,00 $ taxes incluses, payable sur réception des travaux." },
-  { c: "P-40", t: "Courriel de Me Roy", n: "Courriel (.msg)", d: "2021-07-14", v: 5, pg: 3, x: "Réception provisoire acceptée avec réserves : drainage, fissures de fondation et terrassement incomplet. Signée ce jour par les parties." },
+  { c: "P-44", t: "Courriel de Me Roy", n: "Courriel (.msg)", d: "2021-07-14", v: 5, pg: 3, x: "Réception provisoire acceptée avec réserves : drainage, fissures de fondation et terrassement incomplet. Signée ce jour par les parties." },
   { c: "P-47", t: "Relevé bancaire", n: "Relevé (tableur)", d: "2021-08-02", v: 5, pg: 9, x: "Paiement final à l'Entrepreneur : 11 850,00 $. Retenue de 72 500,00 $ sur le paiement final, au titre de la pénalité de retard." },
   { c: "P-15", t: "Rapport d'expertise, ing.", n: "Rapport (PDF numérisé)", d: "2022-01-20", v: 3, pg: 1, x: "Les fissures observées à la fondation résultent d'un drainage périphérique absent, et non de l'action du gel. Le drain français prévu n'a pas été installé. Correctifs estimés à 38 500 $." },
   { c: "P-33", t: "Interrogatoire préalable de M. Tremblay", n: "Transcription", d: "2023-03-08", v: 7, pg: 212, x: "Q. La mise en demeure, vous l'avez envoyée le 19 mars ? R. Oui. Q. L'infiltration d'eau, vous l'avez vue quand ? R. Dès la mi-mars, au sous-sol, après les fissures." }
@@ -302,7 +302,8 @@ convList.innerHTML = `<li class="none">${T.noConv}</li>`;
    Exécution d'une demande
    --------------------------------------------------------- */
 async function ask(q, forced) {
-  q = q.trim(); if (!q || S.busy) return;
+  q = q.trim(); if (!q) return;
+  if (S.busy) { S.next = [q, forced]; return; } // une demande à la fois : la dernière attend son tour
   S.busy = true; root.classList.remove("side");
   const id = forced || route(q);
   const cmd = CMD[id];
@@ -322,6 +323,7 @@ async function ask(q, forced) {
   try { await (RUN[id] || RUN.question)(q, rb, meta); }
   catch (e) { rb.innerHTML = `<p class="ap-sum">${EN ? "The demo could not process this request." : "La démo n'a pas pu traiter cette demande."}</p>`; }
   S.busy = false; toBottom();
+  if (S.next) { const [nq, nf] = S.next; S.next = null; ask(nq, nf); }
 }
 
 // Étapes animées (« Lecture de l'index… » ✓)
@@ -382,7 +384,7 @@ const RUN = {
     await steps(rb, [EN ? `Searching “${s}” in every file…` : `Recherche de « ${s} » dans tous les dossiers…`], 380);
     const [out, ms] = timeIt(() => ["A", "B"].map(d => ({ d, r: search(s, d, { phrase: true }).res })));
     meta.textContent = msTxt(ms);
-    const rows = out.map(o => [esc(DOSSIERS[o.d].name), `<span class="num">${o.r.reduce((a, r) => a + r.hits.length, 0)}</span>`, o.r.length ? o.r.slice(0, 2).map(r => `<span class="ap-c">${esc(r.e.c)}</span> <small>${esc(r.e.where)}</small>`).join(" ") : "—"]);
+    const rows = out.map(o => [esc(DOSSIERS[o.d].name), `<span class="num">${o.r.length}</span>`, o.r.length ? o.r.slice(0, 2).map(r => `<span class="ap-c">${esc(r.e.c)}</span> <small>${esc(r.e.where)}</small>`).join(" ") : "—"]);
     rb.innerHTML = `<p class="ap-sum">${EN ? `“${esc(s)}” · all files` : `« ${esc(s)} » · tous les dossiers`}</p>` + table(EN ? ["File", "Passages", "First results"] : ["Dossier", "Passages", "Premiers résultats"], rows);
   },
   async chronologie(q, rb, meta) {
@@ -585,6 +587,14 @@ function overlay(html) {
   ov = document.createElement("div"); ov.className = "ap-ov"; ov.innerHTML = html; root.append(ov);
   ov.addEventListener("click", e => { if (e.target === ov) closeOv(); });
   const f = $("input,button", ov); f && f.focus({ preventScroll: true });
+  // Tab reste dans la boîte ouverte
+  ov.addEventListener("keydown", e => {
+    if (e.key !== "Tab") return;
+    const fs = $$("input,button", ov).filter(x => x.offsetParent !== null); if (!fs.length) return;
+    const first = fs[0], last = fs[fs.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 }
 const closeOv = () => { if (ov) { ov.remove(); ov = null; lastFocus && lastFocus.focus && lastFocus.focus({ preventScroll: true }); } };
 
@@ -635,6 +645,13 @@ root.addEventListener("keydown", e => { if (e.key === "Escape") { closeOv(); clo
 let inView = false;
 new IntersectionObserver(es => es.forEach(x => inView = x.isIntersecting), { threshold: .4 }).observe(root);
 addEventListener("keydown", e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k" && inView) { e.preventDefault(); ov ? closeOv() : palette(); } });
+
+// Boutons « Essayer dans Projecteur » des sections : remonter à la fenêtre et lancer la commande
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-try]"); if (!b) return;
+  root.scrollIntoView({ behavior: RM ? "auto" : "smooth", block: "center" });
+  setTimeout(() => ask(b.dataset.try), RM ? 0 : 700);
+});
 
 setDos("A", true); renderAn(); welcome();
 })();

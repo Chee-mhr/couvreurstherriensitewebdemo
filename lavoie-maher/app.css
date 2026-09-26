@@ -195,3 +195,11 @@
   .ap-u{max-width:92%}
 }
 @media (prefers-reduced-motion:reduce){.app *{animation:none!important;transition:none!important}}
+
+/* boutons « Essayer dans Projecteur » des sections */
+.try-btn{width:max-content;max-width:100%;justify-self:start;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:9px 16px;border-radius:999px;border:1px solid var(--amber);background:transparent;color:var(--amber);font:inherit;font-size:.92rem;font-weight:600;cursor:pointer;transition:background .2s,color .2s}
+.try-btn:hover{background:var(--amber);color:var(--on-accent)}
+.try-btn:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+/* écrans tactiles : au bout de la fenêtre, le défilement repasse à la page */
+@media (hover:none){.ap-body{overscroll-behavior:auto}}
+@media (max-width:640px){.app{height:min(600px,78svh)}}

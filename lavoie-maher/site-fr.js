@@ -37,14 +37,13 @@ const QUERIES = [
     ["P-7", "La présente constitue une <mark>mise en demeure</mark> formelle de livrer l'ouvrage…", "Vol. 2 · p. 14"],
     ["P-4", "…je vous <mark>mettrai en demeure</mark> si le retard persiste.", "Vol. 2 · p. 9"],
     ["Vol. 7", "Q. La <mark>mise en demeure</mark>, vous l'avez envoyée le 19 ? R. Oui.", "Interrogatoire · Vol. 7 · p. 212"]] },
-  { mode: "mentions", q: "drain français", stat: "3 pièces · 10 mentions · 7 ms", hits: [
-    ["P-15", "5 mentions", "Rapport d'expertise · Vol. 3"],
-    ["P-1", "3 mentions", "Contrat d'entreprise · Vol. 1"],
-    ["P-12", "2 mentions", "Procès-verbal de chantier · Vol. 2"]] },
-  { mode: "partout", q: "harcèlement", stat: "123 passages · 3 dossiers", hits: [
-    ["Dossier A", "61 passages", "12 volumes"],
-    ["Dossier B", "38 passages", "7 volumes"],
-    ["Dossier C", "24 passages", "3 volumes"]] }
+  { mode: "mentions", q: "drain français", stat: "3 pièces et 1 enregistrement · 4 mentions", hits: [
+    ["P-15", "1 mention", "Rapport d'expertise · Vol. 3"],
+    ["P-1", "1 mention", "Contrat d'entreprise · Vol. 1"],
+    ["P-12", "1 mention", "Procès-verbal de chantier · Vol. 2"]] },
+  { mode: "partout", q: "harcèlement", stat: "4 passages · 2 dossiers lus", hits: [
+    ["Audience", "4 passages", "Vol. 12 et 21"],
+    ["Chantier", "Aucun passage", "7 volumes lus"]] }
 ];
 (function hero() {
   const cv = $("#field"), ctx = cv.getContext("2d");
@@ -170,7 +169,7 @@ const DOCS = [
   { c: "D-5", t: "Facture finale", d: "2021-06-30", p: 2, x: "Facture finale pour les travaux exécutés : 84 350,00 $ taxes incluses, payable sur réception des travaux." },
   { c: "D-9", t: "Photos de chantier (lecture automatique)", d: "2021-04-20", p: 22, x: "Photo 14 : tranchée ouverte côté nord, eau stagnante. Photo 15 : membrane posée, aucun drain visible. Note manuscrite : « pluie, arrêt 2 jours »." },
   { c: "P-33", t: "Interrogatoire préalable de M. Tremblay", d: "2023-03-08", p: 212, x: "Q. La mise en demeure, vous l'avez envoyée le 19 mars ? R. Oui. Q. L'infiltration d'eau, vous l'avez vue quand ? R. Dès la mi-mars, au sous-sol, après les fissures." },
-  { c: "P-40", t: "Courriel de Me Roy", d: "2021-07-14", p: 2, x: "Réception provisoire acceptée avec réserves : drainage, fissures de fondation et terrassement incomplet. Signée ce jour par les parties." },
+  { c: "P-44", t: "Courriel de Me Roy", d: "2021-07-14", p: 2, x: "Réception provisoire acceptée avec réserves : drainage, fissures de fondation et terrassement incomplet. Signée ce jour par les parties." },
   { c: "P-47", t: "Relevé bancaire", d: "2021-08-02", p: 3, x: "Paiement final à l'Entrepreneur : 11 850,00 $. Retenue de 72 500,00 $ sur le paiement final, au titre de la pénalité de retard." }
 ];
 (function search() {

@@ -37,14 +37,13 @@ const QUERIES = [
     ["P-7", "This constitutes a <mark>formal notice</mark> to deliver the work…", "Vol. 2 · p. 14"],
     ["P-4", "…I will send you a <mark>formal notice</mark> if the delay continues.", "Vol. 2 · p. 9"],
     ["Vol. 7", "Q. The <mark>formal notice</mark>, you sent it on the 19th? A. Yes.", "Examination · Vol. 7 · p. 212"]] },
-  { mode: "mentions", q: "french drain", stat: "3 exhibits · 10 mentions · 7 ms", hits: [
-    ["P-15", "5 mentions", "Expert report · Vol. 3"],
-    ["P-1", "3 mentions", "Construction contract · Vol. 1"],
-    ["P-12", "2 mentions", "Site meeting minutes · Vol. 2"]] },
-  { mode: "partout", q: "harassment", stat: "123 passages · 3 files", hits: [
-    ["File A", "61 passages", "12 volumes"],
-    ["File B", "38 passages", "7 volumes"],
-    ["File C", "24 passages", "3 volumes"]] }
+  { mode: "mentions", q: "french drain", stat: "3 exhibits and 1 recording · 4 mentions", hits: [
+    ["P-15", "1 mention", "Expert report · Vol. 3"],
+    ["P-1", "1 mention", "Construction contract · Vol. 1"],
+    ["P-12", "1 mention", "Site meeting minutes · Vol. 2"]] },
+  { mode: "partout", q: "harassment", stat: "4 passages · 2 files read", hits: [
+    ["Hearing", "4 passages", "Vol. 12 and 21"],
+    ["Construction", "No passage", "7 volumes read"]] }
 ];
 (function hero() {
   const cv = $("#field"), ctx = cv.getContext("2d");
@@ -170,7 +169,7 @@ const DOCS = [
   { c: "D-5", t: "Final invoice", d: "2021-06-30", p: 2, x: "Final invoice for work performed: $84,350.00 taxes included, payable upon acceptance of the work." },
   { c: "D-9", t: "Site photos (automatic reading)", d: "2021-04-20", p: 22, x: "Photo 14: open trench on the north side, standing water. Photo 15: membrane installed, no drain visible. Handwritten note: “rain, 2-day stoppage”." },
   { c: "P-33", t: "Examination on discovery of Mr. Tremblay", d: "2023-03-08", p: 212, x: "Q. The formal notice, you sent it on March 19? A. Yes. Q. The water infiltration, when did you see it? A. From mid-March, in the basement, after the cracks." },
-  { c: "P-40", t: "Email from Mtre Roy", d: "2021-07-14", p: 2, x: "Provisional acceptance granted with reservations: drainage, foundation cracks and incomplete landscaping. Signed today by the parties." },
+  { c: "P-44", t: "Email from Mtre Roy", d: "2021-07-14", p: 2, x: "Provisional acceptance granted with reservations: drainage, foundation cracks and incomplete landscaping. Signed today by the parties." },
   { c: "P-47", t: "Bank statement", d: "2021-08-02", p: 3, x: "Final payment to the Contractor: $11,850.00. $72,500.00 withheld from the final payment as the late penalty." }
 ];
 (function search() {
