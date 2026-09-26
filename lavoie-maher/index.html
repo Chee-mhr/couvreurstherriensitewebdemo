@@ -571,7 +571,7 @@ footer p{font-size:0.9rem}
 
 /* ---------- vitrine du logiciel ---------- */
 .showcase{position:relative;z-index:2;padding-block:8px 72px}
-.device{--tilt:9deg;--sc:.95;margin:0;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:#0E1426;
+.device{--tilt:9deg;--sc:.95;margin:0;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:#0B0B0C;position:relative;
   transform:perspective(2000px) rotateX(var(--tilt)) scale(var(--sc));transform-origin:50% 0;will-change:transform;
   box-shadow:0 0 0 1px rgba(0,0,0,.5),0 2px 4px rgba(0,0,0,.4),0 30px 60px -20px rgba(0,0,0,.7),0 80px 140px -40px rgba(0,0,0,.9)}
 .device::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.06),transparent 28%)}
@@ -783,6 +783,7 @@ table.wit .tag{white-space:nowrap}
   .reveal.pending{opacity:1;transform:none}
 }
 </style>
+<link rel="stylesheet" href="app.css">
 </head>
 <body>
 <a class="skip" href="#ch-loi25">Aller au contenu</a>
@@ -855,9 +856,10 @@ table.wit .tag{white-space:nowrap}
 
 <section class="showcase" aria-label="L'interface de Projecteur">
   <div class="wrap">
+    <p class="try-cap reveal"><strong>Essayez-le ici.</strong><span>Cliquez une carte, tapez une question ou ouvrez les commandes. Données fictives : rien ne quitte votre navigateur.</span></p>
     <figure class="device reveal" id="device">
       <div class="device-bar" aria-hidden="true"><i></i><i></i><i></i><span>Projecteur</span></div>
-      <img src="projecteur.webp" width="2000" height="1153" alt="Interface du logiciel Projecteur : un dossier ouvert, six raccourcis (retrouver, cibler, cahier, engagements, témoins, inventaire) et une zone pour poser une question en une phrase. En haut à droite : « Hors ligne · rien ne sort d'ici »." loading="lazy" decoding="async">
+      <div class="app" id="app" role="region" aria-label="Projecteur, démonstration interactive avec des données fictives"><noscript><p style="padding:24px">Activez JavaScript pour essayer Projecteur.</p></noscript></div>
     </figure>
     <p class="device-cap"><span class="eyebrow">Le logiciel</span><span>Projecteur, installé sur votre poste. Hors ligne&nbsp;: rien ne sort d'ici.</span></p>
   </div>
@@ -1374,5 +1376,6 @@ table.wit .tag{white-space:nowrap}
 </footer>
 
 <script src="site-fr.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

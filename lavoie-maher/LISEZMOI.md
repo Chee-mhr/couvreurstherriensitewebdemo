@@ -14,6 +14,7 @@ Il fonctionne sur n'importe quel hébergeur web.
 | `og-image.png` | Aperçu affiché quand le lien est partagé (LinkedIn, Facebook, Teams, courriel) |
 | `politique-de-confidentialite.html` | Politique de confidentialité (Loi 25) |
 | `site-fr.js`, `site-en.js`, `politique.js` | Le code des animations et du formulaire (séparé du HTML pour la sécurité) |
+| `app.js`, `app.css` | La fenêtre Projecteur interactive (démo avec données fictives, en français et en anglais, calculée dans le navigateur) |
 | `_headers`, `.htaccess` | En-têtes de sécurité (Netlify / Cloudflare Pages, ou Apache / cPanel) |
 | `.well-known/security.txt` | Contact pour signaler une faille de sécurité |
 | `robots.txt` | Autorise l'indexation par les moteurs de recherche |

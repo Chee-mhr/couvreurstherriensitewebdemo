@@ -571,7 +571,7 @@ footer p{font-size:0.9rem}
 
 /* ---------- vitrine du logiciel ---------- */
 .showcase{position:relative;z-index:2;padding-block:8px 72px}
-.device{--tilt:9deg;--sc:.95;margin:0;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:#0E1426;
+.device{--tilt:9deg;--sc:.95;margin:0;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:#0B0B0C;position:relative;
   transform:perspective(2000px) rotateX(var(--tilt)) scale(var(--sc));transform-origin:50% 0;will-change:transform;
   box-shadow:0 0 0 1px rgba(0,0,0,.5),0 2px 4px rgba(0,0,0,.4),0 30px 60px -20px rgba(0,0,0,.7),0 80px 140px -40px rgba(0,0,0,.9)}
 .device::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.06),transparent 28%)}
@@ -783,6 +783,7 @@ table.wit .tag{white-space:nowrap}
   .reveal.pending{opacity:1;transform:none}
 }
 </style>
+<link rel="stylesheet" href="app.css">
 </head>
 <body>
 <a class="skip" href="#ch-loi25">Skip to content</a>
@@ -855,9 +856,10 @@ table.wit .tag{white-space:nowrap}
 
 <section class="showcase" aria-label="The Projecteur interface">
   <div class="wrap">
+    <p class="try-cap reveal"><strong>Try it here.</strong><span>Click a card, type a question or open the commands. Fictional data: nothing leaves your browser.</span></p>
     <figure class="device reveal" id="device">
       <div class="device-bar" aria-hidden="true"><i></i><i></i><i></i><span>Projecteur</span></div>
-      <img src="projecteur.webp" width="2000" height="1153" alt="The Projecteur software: an open file, six shortcuts (find, target, binder, undertakings, witnesses, inventory) and a box to ask a question in one sentence. Top right: “Offline · nothing leaves this machine”." loading="lazy" decoding="async">
+      <div class="app" id="app" role="region" aria-label="Projecteur, interactive demo with fictional data"><noscript><p style="padding:24px">Enable JavaScript to try Projecteur.</p></noscript></div>
     </figure>
     <p class="device-cap"><span class="eyebrow">The software</span><span>Projecteur, installed on your workstation. Offline: nothing leaves this machine.</span></p>
   </div>
@@ -1374,5 +1376,6 @@ table.wit .tag{white-space:nowrap}
 </footer>
 
 <script src="site-en.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

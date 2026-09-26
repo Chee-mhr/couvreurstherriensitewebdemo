@@ -33,6 +33,10 @@ Les exemples des démos sont fictifs et anonymisés (témoins A à G, dossiers A
 
 Toute modification de contenu faite dans `index.html` doit aussi être faite dans `en.html` (version anglaise).
 
+La vitrine est une fenêtre Projecteur interactive (`app.js`, `app.css`) qui reproduit le logiciel et exécute
+chaque commande sur des données fictives. Ses textes français et anglais sont tous dans `app.js`.
+Si une commande du logiciel change, la mettre à jour dans la liste `CMDS` de `app.js`.
+
 ## Étape 3 — Compléter les informations manquantes
 
 Trouver tous les passages : `grep -rn "À COMPLÉTER" lavoie-maher/`
