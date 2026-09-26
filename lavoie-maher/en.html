@@ -150,7 +150,7 @@ body::before{content:none}
              linear-gradient(to bottom, transparent 70%, var(--ink) 100%)}
 .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(32px,5vw,72px);align-items:center}
 @media (max-width:980px){.hero-grid{grid-template-columns:1fr}}
-.hero h1{font-size:clamp(3rem, 7vw, 6.4rem);line-height:.92;letter-spacing:-.025em;font-weight:500}
+.hero h1{font-size:clamp(3rem, 5.6vw, 5.5rem);line-height:.95;letter-spacing:-.025em;font-weight:500}
 .hero h1 .line{display:block;overflow:hidden;padding-bottom:.06em}
 .hero h1 .line > span{display:inline-block;animation:rise 1.2s var(--ease) both}
 .hero h1 .line:nth-child(2) > span{animation-delay:.12s}
@@ -190,7 +190,7 @@ mark{background:none;color:var(--paper);font-weight:600;padding:0}
 .hero-meta{display:flex;flex-wrap:wrap;gap:12px 36px;margin-top:64px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted)}
 .hero-meta div{display:flex;flex-direction:column;gap:2px}
 .hero-meta strong{font-family:var(--f-display);font-weight:500;font-size:2rem;color:var(--paper);font-variant-numeric:tabular-nums;line-height:1.1}
-.hero-meta span{font-family:var(--f-mono);font-size:0.8rem;letter-spacing:.1em;text-transform:uppercase}
+.hero-meta span{font-size:.95rem;color:var(--muted)}
 
 /* ---------- marquee ---------- */
 .marquee{border-block:1px solid var(--line);overflow:hidden;padding-block:18px;background:var(--ink-2);}
@@ -788,6 +788,7 @@ table.wit .tag{white-space:nowrap}
 footer .brand-mark{width:1.5em;height:1.5em}
 @media (max-width:480px){footer .brand{font-size:1.65rem}}
 .cta-seal{display:block;width:124px;height:124px;margin-bottom:18px;filter:drop-shadow(0 12px 30px rgba(210,181,122,.18))}
+.hero-rule{display:block;width:64px;height:1px;background:linear-gradient(90deg,var(--amber),transparent);margin-bottom:36px;animation:fadeup 1s var(--ease) both}
 </style>
 <link rel="stylesheet" href="app.css">
 </head>
@@ -805,12 +806,12 @@ footer .brand-mark{width:1.5em;height:1.5em}
         <li><a href="#ch-recherche">Search</a></li>
         <li><a href="#ch-audience">Hearing</a></li>
         <li><a href="#ch-fiabilite">Reliability</a></li>
-        <li class="menu-cta"><a class="btn btn-amber" href="#demo">Request a demo <span class="arr">→</span></a></li>
+        <li class="menu-cta"><a class="btn btn-amber" href="#demo">Private demonstration <span class="arr">→</span></a></li>
       </ul>
     </nav>
     <div class="nav-right">
       <a class="lang" id="lang" href="index.html" hreflang="fr" lang="fr" aria-label="Version française"><span aria-hidden="true">FR</span><span class="on" aria-hidden="true">EN</span></a>
-      <a class="btn btn-amber magnet" href="#demo">Request a demo <span class="arr">→</span></a>
+      <a class="btn btn-amber magnet" href="#demo">Private demonstration <span class="arr">→</span></a>
       <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span></button>
     </div>
   </div>
@@ -823,7 +824,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <p class="eyebrow"><span class="pulse"></span> 100% local AI · Law 25 compliant by design · Zero hallucination</p>
+        <span class="hero-rule" aria-hidden="true"></span>
         <h1>
           <span class="line"><span>Every exhibit.</span></span>
           <span class="line"><span>Every page.</span></span>
@@ -831,8 +832,8 @@ footer .brand-mark{width:1.5em;height:1.5em}
         </h1>
         <p class="lede">Lavoie&amp;Maher reads all the evidence in a file, finds every detail with its volume and page, and assembles your hearing documents. All on your own servers.</p>
         <div class="hero-cta">
-          <a class="btn btn-amber magnet" href="#demo">See it on your files <span class="arr">→</span></a>
-          <a class="btn btn-ghost magnet" href="#ch-loi25">Law 25: how we comply</a>
+          <a class="btn btn-amber magnet" href="#demo">Request a private demonstration <span class="arr">→</span></a>
+          <a class="btn btn-ghost magnet" href="#ch-loi25">Our Law 25 commitment</a>
         </div>
       </div>
 
@@ -871,12 +872,6 @@ footer .brand-mark{width:1.5em;height:1.5em}
   </div>
 </section>
 
-<div class="marquee" aria-hidden="true">
-  <div class="track">
-    <span>PDF</span><span>IMAGES</span><span>DOCX</span><span>.EML EMAILS</span><span>OUTLOOK .MSG</span><span>LEGACY .DOC</span><span>.RTF</span><span>SPREADSHEETS</span><span>IWORK</span><span>SCANNED PAGES</span><span>AUDIO</span><span>VIDEO</span>
-    <span>PDF</span><span>IMAGES</span><span>DOCX</span><span>.EML EMAILS</span><span>OUTLOOK .MSG</span><span>LEGACY .DOC</span><span>.RTF</span><span>SPREADSHEETS</span><span>IWORK</span><span>SCANNED PAGES</span><span>AUDIO</span><span>VIDEO</span>
-  </div>
-</div>
 
 
 <div class="chapter" id="ch-loi25"><div class="wrap"><span class="ch-num" aria-hidden="true">I</span><p class="ch-title"><span class="eyebrow">Chapter I</span><b>Confidentiality</b></p></div></div>
@@ -974,7 +969,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
         <div class="tab"><span class="cote">L&amp;M-4</span><span class="eyebrow">Sorting and renaming</span></div>
         <h2>Files in a heap. <em>Sorted, renamed, reversible.</em></h2>
       </div>
-      <div class="sec-lede"><p class="lede">The tool sorts your files and renames them using the mode you choose: date, name, type or size. And you can always go back.</p><details class="more"><summary>Learn more</summary><p>Each file is renamed using the chosen mode, for example prefixed with its date or rank. It is reversible: <span class="mono">defaire_classement</span> restores the original names.</p></details><button class="try-btn" type="button" data-try="Sort the exhibits by date">Try it in Projecteur <span aria-hidden="true">↑</span></button></div>
+      <div class="sec-lede"><p class="lede">The tool sorts your files and renames them using the mode you choose: date, name, type or size. Every sort can be undone in a single step.</p><details class="more"><summary>Learn more</summary><p>Each file is renamed using the chosen mode, for example prefixed with its date or rank. It is reversible: <span class="mono">defaire_classement</span> restores the original names.</p></details><button class="try-btn" type="button" data-try="Sort the exhibits by date">Try it in Projecteur <span aria-hidden="true">↑</span></button></div>
     </div>
 
     <div class="panel reveal" id="sorter">
@@ -1345,7 +1340,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
       <div>
         <img class="cta-seal" src="logo/symbole.svg?v=bal1" alt="" width="124" height="124" loading="lazy">
         <span class="eyebrow">Private demo</span>
-        <h2 style="margin-block:18px 22px">Show us a real file. <em>We'll show you its evidence.</em></h2>
+        <h2 style="margin-block:18px 22px">Entrust us with a file. <em>We will show you its evidence.</em></h2>
         <p class="lede">A 30-minute meeting with the Lavoie&amp;Maher team, on a closed or anonymized file of your choice.</p>
       </div>
       <!-- DEPLOYMENT: paste your form service URL into data-endpoint (e.g. https://formspree.io/f/xxxxxxx). Empty = demo mode. -->
@@ -1367,7 +1362,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
 </section>
 </main>
 
-<a class="mcta btn btn-amber" href="#demo" id="mcta">Request a demo <span class="arr">→</span></a>
+<a class="mcta btn btn-amber" href="#demo" id="mcta">Private demonstration <span class="arr">→</span></a>
 
 <footer>
   <div class="wrap">
