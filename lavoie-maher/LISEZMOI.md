@@ -18,17 +18,23 @@ Il fonctionne sur n'importe quel hébergeur web.
 | `logo/` | Le logo : `symbole.svg` (sceau gravé, 64 px et plus), `symbole-simple.svg` (anneau et L&M, 24 à 64 px), `icone-lm.svg` (L M seuls, sous 32 px et favicon), `logo-horizontal.svg` / `logo-horizontal-clair.svg` (sceau et nom), versions d'impression `symbole-clair.svg`, `symbole-or-plat.svg`, `symbole-noir.svg`, `symbole-blanc.svg`, et `icone-512.png` (réseaux sociaux) |
 | `_headers`, `.htaccess` | En-têtes de sécurité (Netlify / Cloudflare Pages, ou Apache / cPanel) |
 | `.well-known/security.txt` | Contact pour signaler une faille de sécurité |
-| `robots.txt` | Autorise l'indexation par les moteurs de recherche |
+| `robots.txt`, `sitemap.xml` | Indexation par les moteurs de recherche, plan du site |
+| `_redirects` | Redirections vers https://lavoiemaher.ca (Netlify) |
 
-## Mise en ligne sur votre domaine
+## Mise en ligne : lavoiemaher.ca (principal) et lavoiemaher.com
 
-1. **Remplacez `VOTRE-DOMAINE.ca`** par votre vrai domaine, ex. `lavoiemaher.ca`, dans `index.html`, `en.html` et `politique-de-confidentialite.html` (commande pour les trouver : `grep -rn VOTRE-DOMAINE .`).
-2. **Téléversez tout le contenu de ce dossier** (pas le dossier lui-même, et sans les fichiers `.md`) à la racine de votre site, y compris les fichiers cachés `.htaccess` et `.well-known/` :
-   - *Hébergeur classique (cPanel, FTP)* : dans `public_html/`.
-   - *Netlify* : glissez le dossier sur app.netlify.com/drop, puis reliez votre domaine dans « Domain settings ».
-   - *GitHub Pages* : déconseillé, car il ne permet pas d'ajouter les en-têtes de sécurité.
-3. **Activez HTTPS** chez l'hébergeur (certificat Let's Encrypt gratuit, souvent automatique).
-4. **Vérifiez l'aperçu de partage** avec l'inspecteur de LinkedIn (linkedin.com/post-inspector).
+Le site est configuré pour **https://lavoiemaher.ca** (adresses canoniques, image de partage, plan du site).
+`lavoiemaher.com`, les adresses en `www` et `http://` redirigent toutes vers `https://lavoiemaher.ca` (redirection 301), dans `.htaccess` (Apache, cPanel) et `_redirects` (Netlify).
+
+1. **Téléversez tout le contenu de ce dossier** (pas le dossier lui-même, et sans les fichiers `.md`) à la racine du site, y compris les fichiers cachés `.htaccess` et `.well-known/` :
+   - *Hébergeur classique (cPanel, FTP)* : dans `public_html/`. Ajoutez `lavoiemaher.com` comme « domaine parqué » ou « alias » du même site.
+   - *Netlify* : glissez le dossier sur app.netlify.com/drop, puis dans « Domain management » ajoutez `lavoiemaher.ca` comme domaine principal et `lavoiemaher.com` comme alias.
+   - *Cloudflare Pages* : le fichier `_redirects` ne gère pas les autres domaines ; créez une règle « Bulk Redirect » de `lavoiemaher.com` et des `www` vers `https://lavoiemaher.ca`.
+2. **Chez le registraire des deux domaines**, entrez les réglages DNS fournis par l'hébergeur (serveurs de noms, ou enregistrements A pour `@` et CNAME pour `www`), pour `.ca` **et** `.com`. Délai : de quelques minutes à 48 heures.
+3. **Activez HTTPS** pour les quatre adresses (`lavoiemaher.ca`, `www.lavoiemaher.ca`, `lavoiemaher.com`, `www.lavoiemaher.com`) avant tout : le site exige HTTPS (HSTS) dès la première visite.
+4. **Courriels** : créez `confidentialite@lavoiemaher.ca` (responsable de la protection des renseignements personnels, exigé par la Loi 25) et `securite@lavoiemaher.ca` (indiquée dans `.well-known/security.txt`), puis ajoutez les réglages SPF, DKIM et DMARC donnés par votre service de courriel.
+5. **Protégez les domaines** : renouvellement automatique, verrou de transfert, double authentification au registraire, DNSSEC si offert.
+6. **Vérifiez** : `http://lavoiemaher.com` doit arriver sur `https://lavoiemaher.ca` ; securityheaders.com doit donner A ou A+ ; l'inspecteur LinkedIn (linkedin.com/post-inspector) doit afficher le logo et l'image de partage. Soumettez `https://lavoiemaher.ca/sitemap.xml` dans Google Search Console.
 
 ## Brancher le formulaire de démonstration
 

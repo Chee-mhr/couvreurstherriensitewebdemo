@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://lavoiemaher.ca/</loc>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lavoiemaher.ca/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lavoiemaher.ca/en.html"/>
+  </url>
+  <url>
+    <loc>https://lavoiemaher.ca/en.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://lavoiemaher.ca/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://lavoiemaher.ca/en.html"/>
+  </url>
+  <url>
+    <loc>https://lavoiemaher.ca/politique-de-confidentialite.html</loc>
+  </url>
+</urlset>

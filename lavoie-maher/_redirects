@@ -1,0 +1,5 @@
+# Netlify : une seule adresse, https://lavoiemaher.ca (301)
+https://www.lavoiemaher.ca/*  https://lavoiemaher.ca/:splat  301!
+https://lavoiemaher.com/*     https://lavoiemaher.ca/:splat  301!
+https://www.lavoiemaher.com/* https://lavoiemaher.ca/:splat  301!
+http://lavoiemaher.ca/*       https://lavoiemaher.ca/:splat  301!

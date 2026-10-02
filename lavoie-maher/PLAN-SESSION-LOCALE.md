@@ -58,8 +58,7 @@ Puis retirer l'encadré « Note interne » (`<p class="todo-note">…</p>`) de
 
 ## Étape 4 — Domaine et formulaire
 
-- Demander le nom de domaine ; remplacer `VOTRE-DOMAINE.ca` partout
-  (dans `index.html`, `en.html` et `politique-de-confidentialite.html` ; `grep -rn VOTRE-DOMAINE lavoie-maher/`).
+- Domaine : fait. Le site est réglé sur `https://lavoiemaher.ca` ; `lavoiemaher.com` et les `www` y redirigent (`.htaccess`, `_redirects`).
 - Si l'utilisateur a une adresse de service de formulaire (ex. Formspree), la coller dans
   `data-endpoint=""` sur `<form class="demo" …>` dans `index.html`. Sinon, le formulaire
   reste en mode démonstration (aucun envoi).
@@ -69,7 +68,7 @@ Puis retirer l'encadré « Note interne » (`<p class="todo-note">…</p>`) de
 - Ouvrir les deux pages sur ordinateur et en largeur mobile (~390 px) : pas de
   défilement horizontal, menu mobile fonctionnel, aucune erreur dans la console.
 - Vérifier qu'aucune requête ne part vers un site externe (onglet Réseau).
-- `grep -rn "À COMPLÉTER\|TO COMPLETE\|VOTRE-DOMAINE" lavoie-maher/` ne doit rien retourner (le courriel du responsable apparaît aussi au pied de `en.html`).
+- `grep -rn "À COMPLÉTER\|TO COMPLETE" lavoie-maher/` ne doit rien retourner (le courriel du responsable apparaît aussi au pied de `en.html`).
 
 ## Étape 6 — Enregistrer
 

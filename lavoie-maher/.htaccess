@@ -1,10 +1,14 @@
 # Sécurité — hébergeurs Apache (cPanel, la plupart des hébergeurs mutualisés).
 # connect-src : si votre service de formulaire n'est pas Formspree, remplacez https://formspree.io par son adresse.
 
-# 1. Toujours en HTTPS
+# 1. Une seule adresse : https://lavoiemaher.ca
+#    lavoiemaher.com, www.lavoiemaher.com, www.lavoiemaher.ca et http:// y sont redirigés (301).
+#    Les validations de certificat (Let's Encrypt) passent sans redirection.
 RewriteEngine On
-RewriteCond %{HTTPS} !=on
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^lavoiemaher\.ca$ [NC]
+RewriteRule ^ https://lavoiemaher.ca%{REQUEST_URI} [L,R=301]
 
 # 2. Pas de liste de fichiers, pas d'accès aux notes internes
 Options -Indexes
