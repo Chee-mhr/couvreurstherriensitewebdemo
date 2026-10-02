@@ -604,7 +604,7 @@ $("#dform").addEventListener("submit", async e => {
     const r = await fetch(url, { method: "POST", body: new FormData(f), headers: { Accept: "application/json" } });
     if (!r.ok) throw new Error(r.status);
     lastSent = Date.now(); f.reset(); say("Merci. Votre demande a bien été reçue ; nous vous écrirons sous peu pour fixer la rencontre.", true);
-  } catch { say("L'envoi n'a pas fonctionné. Réessayez dans un instant ou écrivez-nous directement.", false); }
+  } catch { say("L'envoi n'a pas fonctionné. Réessayez dans un instant ou écrivez-nous à contact@lavoiemaher.ca.", false); }
   finally { btn.disabled = false; }
 });
 })();

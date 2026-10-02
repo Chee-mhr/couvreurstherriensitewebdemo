@@ -14,6 +14,7 @@ Il fonctionne sur n'importe quel hébergeur web.
 | `og-image.png` | Aperçu affiché quand le lien est partagé (LinkedIn, Facebook, Teams, courriel) |
 | `politique-de-confidentialite.html` | Politique de confidentialité (Loi 25) |
 | `site-fr.js`, `site-en.js`, `politique.js` | Le code des animations et du formulaire (séparé du HTML pour la sécurité) |
+| `envoyer.php` | Envoi des demandes du formulaire à contact@lavoiemaher.ca (serveur WHC) |
 | `app.js`, `app.css` | La fenêtre Projecteur interactive (démo avec données fictives, en français et en anglais, calculée dans le navigateur) |
 | `logo/` | Le logo : `symbole.svg` (sceau gravé, 64 px et plus), `symbole-simple.svg` (anneau et L&M, 24 à 64 px), `icone-lm.svg` (L M seuls, sous 32 px et favicon), `logo-horizontal.svg` / `logo-horizontal-clair.svg` (sceau et nom), versions d'impression `symbole-clair.svg`, `symbole-or-plat.svg`, `symbole-noir.svg`, `symbole-blanc.svg`, et `icone-512.png` (réseaux sociaux) |
 | `_headers`, `.htaccess` | En-têtes de sécurité (Netlify / Cloudflare Pages, ou Apache / cPanel) |
@@ -36,19 +37,12 @@ Le site est configuré pour **https://lavoiemaher.ca** (adresses canoniques, ima
 5. **Protégez les domaines** : renouvellement automatique, verrou de transfert, double authentification au registraire, DNSSEC si offert.
 6. **Vérifiez** : `http://lavoiemaher.com` doit arriver sur `https://lavoiemaher.ca` ; securityheaders.com doit donner A ou A+ ; l'inspecteur LinkedIn (linkedin.com/post-inspector) doit afficher le logo et l'image de partage. Soumettez `https://lavoiemaher.ca/sitemap.xml` dans Google Search Console.
 
-## Brancher le formulaire de démonstration
+## Le formulaire de démonstration
 
-Sans configuration, le formulaire affiche un message et n'envoie rien.
-Pour recevoir les demandes par courriel :
-
-1. Créez un formulaire chez un service comme Formspree (formspree.io) ; vous obtenez une adresse du type `https://formspree.io/f/abcdwxyz`.
-2. Dans `index.html`, collez-la dans `data-endpoint=""` sur la balise `<form class="demo" …>`.
-
-Le site envoie les champs `nom`, `cabinet`, `courriel`, `type` et `message`.
-
-> **Loi 25** : ce service de formulaire recevra des renseignements personnels (nom, courriel).
-> Choisissez un fournisseur dont les serveurs et les conditions vous conviennent, mentionnez-le
-> dans votre politique de confidentialité, ou pointez `data-endpoint` vers un serveur hébergé au Québec.
+Le formulaire envoie chaque demande par courriel à `contact@lavoiemaher.ca`, depuis le serveur WHC (`envoyer.php`) : aucune donnée ne passe par un service étranger.
+Le courriel arrive avec le nom, le cabinet, le courriel, le type de dossiers et le volume ; « Répondre » écrit directement au demandeur.
+Protections : pot de miel contre les robots, même origine seulement, 5 envois au plus par 10 minutes par adresse IP, champs nettoyés (aucune injection d'en-têtes).
+Pour changer le destinataire : modifier `DEST` au début de `envoyer.php`.
 
 ## Avant la mise en ligne : à valider
 
@@ -82,8 +76,8 @@ Le site envoie les champs `nom`, `cabinet`, `courriel`, `type` et `message`.
 - **Vérification des en-têtes** après la mise en ligne : securityheaders.com et observatory.mozilla.org (visez A ou A+).
 - **Registre des incidents** (exigé par la Loi 25) : noter tout accès non autorisé et, en cas de risque de préjudice sérieux, aviser la Commission d'accès à l'information.
 
-### Si vous changez de service de formulaire
-Dans `_headers` et `.htaccess`, remplacez `https://formspree.io` (directive `connect-src`) par l'adresse de votre service, sinon l'envoi sera bloqué.
+### Formulaire
+Le formulaire passe par `envoyer.php` sur le même serveur : la règle `connect-src 'self'` suffit. Si un service externe était un jour utilisé, ajouter son adresse à `connect-src` dans `_headers` et `.htaccess`.
 
 
 ## Le logo

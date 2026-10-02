@@ -1342,8 +1342,8 @@ footer .brand-mark{width:1.5em;height:1.5em}
         <h2 style="margin-block:18px 22px">Confiez-nous un dossier. <em>Nous vous en montrerons la preuve.</em></h2>
         <p class="lede">Une rencontre de 30 minutes avec l'équipe de Lavoie&amp;Maher, sur un dossier fermé ou anonymisé de votre choix.</p>
       </div>
-      <!-- DÉPLOIEMENT : collez l'adresse de votre service de formulaire dans data-endpoint (ex. https://formspree.io/f/xxxxxxx). Vide = mode démo. -->
-      <form class="demo" id="dform" novalidate data-endpoint="">
+      <form class="demo" id="dform" novalidate data-endpoint="envoyer.php">
+        <input type="hidden" name="langue" value="fr">
         <label>Nom<input id="f-nom" name="nom" required maxlength="100" autocomplete="name"></label>
         <label>Cabinet<input id="f-cab" name="cabinet" maxlength="150" autocomplete="organization"></label>
         <label class="full">Courriel<input id="f-mail" name="courriel" type="email" required maxlength="254" autocomplete="email"></label>
@@ -1368,6 +1368,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
     <div>
       <a class="brand" href="#top"><img class="brand-mark" src="logo/symbole-simple.svg?v=bal1" alt="" width="34" height="34"><span>Lavoie<span class="amp">&amp;</span>Maher<small>INC.</small></span></a>
       <p style="margin-top:10px">Intelligence de preuve pour les professionnels du droit · Québec</p>
+      <p style="margin-top:6px">Nous joindre : <a href="mailto:contact@lavoiemaher.ca" style="color:var(--paper-dim)">contact@lavoiemaher.ca</a></p>
       <p style="margin-top:6px">Ce site n'utilise aucun témoin (cookie) et ne charge aucune ressource externe.</p>
       <p style="margin-top:6px">Les exemples présentés sur ce site sont fictifs. Les mesures de performance proviennent de nos tests internes et peuvent varier selon le dossier et l'équipement.</p>
       <p style="margin-top:6px"><a href="politique-de-confidentialite.html" style="color:var(--paper-dim)">Politique de confidentialité</a> · Responsable de la protection des renseignements personnels : Joshua Lavoie, <a href="mailto:confidentialite@lavoiemaher.ca" style="color:var(--paper-dim)">confidentialite@lavoiemaher.ca</a></p>

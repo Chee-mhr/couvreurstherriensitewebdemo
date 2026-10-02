@@ -1342,8 +1342,8 @@ footer .brand-mark{width:1.5em;height:1.5em}
         <h2 style="margin-block:18px 22px">Entrust us with a file. <em>We will show you its evidence.</em></h2>
         <p class="lede">A 30-minute meeting with the Lavoie&amp;Maher team, on a closed or anonymized file of your choice.</p>
       </div>
-      <!-- DEPLOYMENT: paste your form service URL into data-endpoint (e.g. https://formspree.io/f/xxxxxxx). Empty = demo mode. -->
-      <form class="demo" id="dform" novalidate data-endpoint="">
+      <form class="demo" id="dform" novalidate data-endpoint="envoyer.php">
+        <input type="hidden" name="langue" value="en">
         <label>Name<input id="f-nom" name="nom" required maxlength="100" autocomplete="name"></label>
         <label>Firm<input id="f-cab" name="cabinet" maxlength="150" autocomplete="organization"></label>
         <label class="full">Email<input id="f-mail" name="courriel" type="email" required maxlength="254" autocomplete="email"></label>
@@ -1368,6 +1368,7 @@ footer .brand-mark{width:1.5em;height:1.5em}
     <div>
       <a class="brand" href="#top"><img class="brand-mark" src="logo/symbole-simple.svg?v=bal1" alt="" width="34" height="34"><span>Lavoie<span class="amp">&amp;</span>Maher<small>INC.</small></span></a>
       <p style="margin-top:10px">Evidence intelligence for legal professionals · Québec</p>
+      <p style="margin-top:6px">Contact us: <a href="mailto:contact@lavoiemaher.ca" style="color:var(--paper-dim)">contact@lavoiemaher.ca</a></p>
       <p style="margin-top:6px">This site uses no cookies and loads no external resources.</p>
       <p style="margin-top:6px">The examples shown on this site are fictional. Performance figures come from our internal tests and may vary with the file and hardware.</p>
       <p style="margin-top:6px"><a href="politique-de-confidentialite.html" hreflang="fr" style="color:var(--paper-dim)">Privacy policy (in French)</a> · Person in charge of the protection of personal information: Joshua Lavoie, <a href="mailto:confidentialite@lavoiemaher.ca" style="color:var(--paper-dim)">confidentialite@lavoiemaher.ca</a></p>

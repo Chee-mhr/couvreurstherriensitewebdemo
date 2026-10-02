@@ -1,5 +1,4 @@
 # Sécurité — hébergeurs Apache (cPanel, la plupart des hébergeurs mutualisés).
-# connect-src : si votre service de formulaire n'est pas Formspree, remplacez https://formspree.io par son adresse.
 
 # 1. Une seule adresse : https://lavoiemaher.ca
 #    lavoiemaher.com, www.lavoiemaher.com, www.lavoiemaher.ca et http:// y sont redirigés (301).
@@ -22,7 +21,7 @@ Options -Indexes
 # 3. En-têtes de sécurité
 <IfModule mod_headers.c>
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-  Header always set Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+  Header always set Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "DENY"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"

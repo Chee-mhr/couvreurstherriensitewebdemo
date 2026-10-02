@@ -604,7 +604,7 @@ $("#dform").addEventListener("submit", async e => {
     const r = await fetch(url, { method: "POST", body: new FormData(f), headers: { Accept: "application/json" } });
     if (!r.ok) throw new Error(r.status);
     lastSent = Date.now(); f.reset(); say("Thank you. Your request was received; we will write to you shortly to set up the meeting.", true);
-  } catch { say("Sending failed. Try again in a moment or write to us directly.", false); }
+  } catch { say("Sending failed. Try again in a moment or write to us at contact@lavoiemaher.ca.", false); }
   finally { btn.disabled = false; }
 });
 })();
