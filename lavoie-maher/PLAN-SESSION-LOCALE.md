@@ -37,24 +37,11 @@ La vitrine est une fenêtre Projecteur interactive (`app.js`, `app.css`) qui rep
 chaque commande sur des données fictives. Ses textes français et anglais sont tous dans `app.js`.
 Si une commande du logiciel change, la mettre à jour dans la liste `CMDS` de `app.js`.
 
-## Étape 3 — Compléter les informations manquantes
+## Étape 3 — Informations de la politique : fait (2 octobre 2026)
 
-Trouver tous les passages : `grep -rn "À COMPLÉTER" lavoie-maher/`
-
-Demander à l'utilisateur :
-
-- nom, courriel et adresse du **responsable de la protection des renseignements personnels** ;
-- **dates** d'entrée en vigueur et de mise à jour de la politique ;
-- **hébergeur** du site, **service de formulaire**, **service de courriel**, et le lieu
-  d'hébergement de chacun (recommander des options au Québec ou au Canada, cohérentes
-  avec l'argument principal : la Loi 25) ;
-- **durées de conservation** : demandes du formulaire (suggestion 24 mois) et journaux
-  de l'hébergeur (suggestion 30 jours) ;
-- si l'équipe peut **accéder à l'installation d'un client** (soutien technique), et à
-  quelles conditions.
-
-Puis retirer l'encadré « Note interne » (`<p class="todo-note">…</p>`) de
-`politique-de-confidentialite.html` et vérifier qu'il ne reste aucun « À COMPLÉTER ».
+Responsable : Joshua Lavoie, confidentialite@lavoiemaher.ca. Hébergeur : WHC (Canada).
+Conservation du formulaire : 24 mois. Soutien technique : seulement sur autorisation écrite du client, supervisé et consigné.
+À revoir si l'un de ces choix change (ex. service de courriel autre que WHC).
 
 ## Étape 4 — Domaine et formulaire
 
