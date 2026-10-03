@@ -1,5 +1,4 @@
 # Signaler une faille de sécurité sur ce site — RFC 9116
-# Avant la mise en ligne : créer l'adresse securite@lavoiemaher.ca (ou la remplacer ci-dessous).
 Contact: mailto:securite@lavoiemaher.ca
 Expires: 2027-09-25T00:00:00.000Z
 Preferred-Languages: fr, en
